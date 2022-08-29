@@ -51,6 +51,9 @@
     "lint": "eslint --ignore-path .gitignore --max-warnings=0 . --ext ts --ext tsx --ext js --ext jsx",
     "prebuild": "rimraf dist"
   },
+  "publishConfig": {
+    "@SSWConsulting:registry": "https://npm.pkg.github.com"
+  },
   "eslintConfig": {
     "extends": "react-app"
   },
