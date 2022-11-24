@@ -13,7 +13,6 @@ import DesktopMenu from './desktop-menu';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import cs from 'classnames';
-import axios from 'axios';
 
 const searchUrl = `https://www.google.com.au/search?q=site:ssw.com.au%20`;
 class Menu extends React.Component {
@@ -70,10 +69,10 @@ class Wrapper extends React.Component {
 
   componentDidMount() {
     let currentComponent = this;
-    axios
-      .get('https://SSWConsulting.github.io/SSW.Website.Menu.json/menu.json')
+    fetch('https://SSWConsulting.github.io/SSW.Website.Menu.json/menu.json')
+      .then(res => res.json())
       .then(function (response) {
-        currentComponent.setState({ menuModel: response.data });
+        currentComponent.setState({ menuModel: response });
       })
       .catch(function (error) {
         console.log(error);

@@ -14,7 +14,6 @@ import {
 import cs from 'classnames';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
-import axios from 'axios';
 
 class MobileMenu extends React.Component {
   //const DesktopMenu = ({prefix}) => {
@@ -26,11 +25,11 @@ class MobileMenu extends React.Component {
   loadMenuModel() {
     if (!this.state.menuModel) {
       let currentComponent = this;
-      axios
-        .get('https://SSWConsulting.github.io/SSW.Website.Menu.json/menu.json')
-        .then(function (response) {
-          currentComponent.setState({ menuModel: response.data });
-        })
+      fetch('https://SSWConsulting.github.io/SSW.Website.Menu.json/menu.json')
+      .then(res => res.json())
+      .then(function (response) {
+        currentComponent.setState({ menuModel: response });
+      })
         .catch(function (error) {
           console.log(error);
         });
