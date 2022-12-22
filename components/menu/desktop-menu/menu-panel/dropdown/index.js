@@ -7,7 +7,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = void 0;
 var _react = _interopRequireDefault(require("react"));
 var _dropdownItem = _interopRequireDefault(require("./dropdown-item"));
-var _indexModule = require("./index.module.css");
+var _indexModule = _interopRequireDefault(require("./index.module.css"));
 var Dropdown = function Dropdown(_ref) {
   var items = _ref.items;
   var CountChildren = function CountChildren(items) {
@@ -55,7 +55,7 @@ var Dropdown = function Dropdown(_ref) {
     return blocks.map(function (column, index) {
       return /*#__PURE__*/_react.default.createElement("ul", {
         key: index,
-        className: _indexModule.colMd3
+        className: _indexModule.default.colMd3
       }, column.map(function (item, index) {
         return /*#__PURE__*/_react.default.createElement(_dropdownItem.default, {
           key: index,
@@ -65,7 +65,7 @@ var Dropdown = function Dropdown(_ref) {
     });
   };
   return /*#__PURE__*/_react.default.createElement("div", {
-    className: _indexModule.MenuWrapper
+    className: _indexModule.default.MenuWrapper
   }, createDropDown(items));
 };
 var _default = Dropdown;

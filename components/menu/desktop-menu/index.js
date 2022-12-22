@@ -10,7 +10,7 @@ var _createClass2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/c
 var _inherits2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/inherits"));
 var _createSuper2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/createSuper"));
 var _react = _interopRequireDefault(require("react"));
-var _indexModule = require("./index.module.css");
+var _indexModule = _interopRequireDefault(require("./index.module.css"));
 var _classnames = _interopRequireDefault(require("classnames"));
 var _reactFontawesome = require("@fortawesome/react-fontawesome");
 var _freeSolidSvgIcons = require("@fortawesome/free-solid-svg-icons");
@@ -38,19 +38,19 @@ var DesktopMenu = /*#__PURE__*/function (_React$Component) {
     function render() {
       var _this = this;
       return /*#__PURE__*/_react.default.createElement("div", {
-        className: (0, _classnames.default)(_indexModule.menuDrop, _indexModule.hiddenXs, _indexModule.hiddenSm)
+        className: (0, _classnames.default)(_indexModule.default.menuDrop, _indexModule.default.hiddenXs, _indexModule.default.hiddenSm)
       }, /*#__PURE__*/_react.default.createElement("ul", null, this.props.menuModel && this.props.menuModel.menuItems.map(function (item, index) {
         return /*#__PURE__*/_react.default.createElement("li", {
           key: index
         }, !item.children && /*#__PURE__*/_react.default.createElement("a", {
           href: item.navigateUrl ? item.navigateUrl : null,
-          className: (0, _classnames.default)(_indexModule.ignore, 'unstyled')
+          className: (0, _classnames.default)(_indexModule.default.ignore, 'unstyled')
         }, item.text), ' ', item.children && /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("a", {
-          className: (0, _classnames.default)(_indexModule.ignore, 'unstyled')
+          className: (0, _classnames.default)(_indexModule.default.ignore, 'unstyled')
         }, item.text, " ", /*#__PURE__*/_react.default.createElement(_reactFontawesome.FontAwesomeIcon, {
           icon: _freeSolidSvgIcons.faAngleDown
         })), /*#__PURE__*/_react.default.createElement("div", {
-          className: _indexModule.Menu
+          className: _indexModule.default.Menu
         }, /*#__PURE__*/_react.default.createElement(_menuPanel.default, {
           item: item,
           prefix: _this.props.prefix

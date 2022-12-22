@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 var _react = _interopRequireDefault(require("react"));
-var _indexModule = require("./index.module.css");
+var _indexModule = _interopRequireDefault(require("./index.module.css"));
 var _dropdown = _interopRequireDefault(require("./dropdown"));
 var MenuPanel = function MenuPanel(_ref) {
   var item = _ref.item,
@@ -18,9 +18,9 @@ var MenuPanel = function MenuPanel(_ref) {
     return '';
   };
   return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("div", {
-    className: _indexModule.MenuImg
+    className: _indexModule.default.MenuImg
   }, /*#__PURE__*/_react.default.createElement("img", {
-    src: getRootUrl() + require('../../../../assets/images/' + item.groupImageUrl).default,
+    src: item.src,
     alt: item.text,
     loading: "eager"
   })), /*#__PURE__*/_react.default.createElement(_dropdown.default, {
