@@ -111,8 +111,9 @@ var MobileMenu = /*#__PURE__*/function (_React$Component) {
         return /*#__PURE__*/_react.default.createElement("li", {
           key: index,
           className: _indexModule.default.dropdown
-        }, /*#__PURE__*/_react.default.createElement("a", {
-          className: (0, _classnames.default)(_indexModule.default.dropdownToggle, 'unstyled')
+        }, /*#__PURE__*/_react.default.createElement("div", {
+          role: "presentation",
+          className: (0, _classnames.default)(_indexModule.default.dropdownToggle)
         }, item.text, " ", /*#__PURE__*/_react.default.createElement(_reactFontawesome.FontAwesomeIcon, {
           icon: _freeSolidSvgIcons.faAngleDown
         })), /*#__PURE__*/_react.default.createElement("ul", {

@@ -45,8 +45,9 @@ var DesktopMenu = /*#__PURE__*/function (_React$Component) {
         }, !item.children && /*#__PURE__*/_react.default.createElement("a", {
           href: item.navigateUrl ? item.navigateUrl : null,
           className: (0, _classnames.default)(_indexModule.default.ignore, 'unstyled')
-        }, item.text), ' ', item.children && /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("a", {
-          className: (0, _classnames.default)(_indexModule.default.ignore, 'unstyled')
+        }, item.text), ' ', item.children && /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("div", {
+          role: "presentation",
+          className: (0, _classnames.default)(_indexModule.default.ignore, _indexModule.default['inline-block'], 'unstyled')
         }, item.text, " ", /*#__PURE__*/_react.default.createElement(_reactFontawesome.FontAwesomeIcon, {
           icon: _freeSolidSvgIcons.faAngleDown
         })), /*#__PURE__*/_react.default.createElement("div", {
