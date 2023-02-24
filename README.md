@@ -39,12 +39,9 @@ import './App.css';
 
 function App() {
   return (
-    <MenuBar
-      className="App"
-      header={<header className="App-header">Test MenuBar</header>}
-    >
-      <div>Some content</div>
-    </MenuBar>
+    <header className="App-header">Test MenuBar</header>
+    <MenuBar className="App" />
+    <div>Some content</div>
   );
 }
 
