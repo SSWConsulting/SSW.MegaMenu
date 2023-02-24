@@ -96,7 +96,7 @@ class MobileMenu extends React.Component {
       <div
         ref={this.props.innerRef}
         className={cs(styles.sbSlidebar, styles.sbLeft, this.props.className)}
-        style={{ width: this.props.isMenuOpened ? '84vw' : '0px' }}
+        style={{ left: this.props.isMenuOpened ? '0' : '-84vw' }}
         onClick={(event) => this.openItem(event)}
       >
         <div className={cs(styles.menuDrop, styles.navbarCollapse)}>
