@@ -10,7 +10,7 @@
 }
 .sbSlidebar {
   height: 100%;
-  width: 0px;
+  width: 84vw;
   overflow-y: auto;
   overflow-x: hidden;
   position: fixed;
@@ -21,7 +21,7 @@
 }
 .sbSlidebar {
   transition: 400ms ease;
-  transition-property: width;
+  transition-property: left;
 }
 .sbLeft {
   left: 0;
