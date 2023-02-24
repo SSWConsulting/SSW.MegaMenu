@@ -1,6 +1,6 @@
 import React from 'react';
 import App from './App';
-import { render, screen } from './tests/test-utils';
+import { render, screen } from '../scripts/tests/test-utils';
 
 import { describe, it, expect } from 'vitest';
 
