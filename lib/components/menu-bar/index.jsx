@@ -1,55 +1,24 @@
 import React from 'react';
 import Menu from '../menu';
 import MobileMenu from '../mobile-menu';
-import Portal from '../../utils/portal';
+import usePortal from 'react-useportal';
 
-class MenuBar extends React.Component {
-  constructor(props) {
-    super(props);
-    this.popupMenu = React.createRef();
-    this.container = this.props.container || document.body;
-    this.state = {
-      isMenuOpened: false,
-    };
-  }
+const MenuBar = (props) => {
+  const { Portal, openPortal, isOpen } = usePortal({
+    closeOnOutsideClick: true,
+    closeOnEsc: true,
+  });
 
-  componentDidMount() {
-    document.addEventListener('click', this.onClose.bind(this));
-  }
-
-  componentWillUnmount() {
-    document.removeEventListener('click', this.onClose.bind(this));
-  }
-
-  onOpen(e) {
-    e.preventDefault();
-    e.stopPropagation();
-    this.setState({ isMenuOpened: !this.state.isMenuOpened });
-  }
-
-  onClose(e) {
-    if (
-      this.state.isMenuOpened &&
-      this.popupMenu.current &&
-      !this.popupMenu.current.contains(e.target)
-    ) {
-      this.setState({ isMenuOpened: false });
-    }
-  }
-
-  render() {
-    return (
-      <div className={this.props.className} style={this.props.style}>
-        <Menu onClickToggle={(e) => this.onOpen(e)} />
-        <Portal className={this.props.overlayClassName}>
-          <MobileMenu
-            ref={this.popupMenu}
-            isMenuOpened={this.state.isMenuOpened}
-          />
+  return (
+    <div className={props.className} style={props.style}>
+      <Menu onClickToggle={(e) => openPortal(e)} />
+      {isOpen && (
+        <Portal>
+          <MobileMenu isMenuOpened={isOpen} />
         </Portal>
-      </div>
-    );
-  }
-}
+      )}
+    </div>
+  );
+};
 
 export default MenuBar;
