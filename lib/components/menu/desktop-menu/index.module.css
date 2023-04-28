@@ -26,7 +26,7 @@
   transition: all 0.3s ease-in-out 0s;
 }
 .inline-block {
-  display: inline-block; 
+  display: inline-block;
 }
 .menuDrop > ul > li:hover > a,
 .menuDrop > ul > li:hover > div {
@@ -69,7 +69,4 @@
 .ignore:after {
   content: none !important;
   padding-left: 0;
-}
-.MenuImg img {
-  width: 100%;
 }
