@@ -7,9 +7,7 @@ trigger:
   - main
 
 pool:
-  name: $(buildPoolName) # Runs on OnPrem Windows (for now)
-  demands:
-    - Agent.Name -equals $(buildAgentName)
+  vmImage: ubuntu-latest
 
 steps:
   - task: NodeTool@0
