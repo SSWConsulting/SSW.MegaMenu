@@ -3782,7 +3782,7 @@ const Pi = "_MenuImg_1chf9_1", Li = {
     }), a.map((c, f) => /* @__PURE__ */ M.createElement("ul", { key: f, className: An.colMd3 }, c.map((u, h) => /* @__PURE__ */ M.createElement(Wi, { key: h, item: u }))));
   };
   return /* @__PURE__ */ M.createElement("div", { className: An.MenuWrapper }, n(e));
-}, qi = ({ item: e, prefix: t }) => /* @__PURE__ */ M.createElement(M.Fragment, null, /* @__PURE__ */ M.createElement("div", { className: Li.MenuImg }, /* @__PURE__ */ M.createElement(
+}, qi = ({ item: e, prefix: t }) => /* @__PURE__ */ M.createElement(M.Fragment, null, e.src && /* @__PURE__ */ M.createElement("div", { className: Li.MenuImg }, /* @__PURE__ */ M.createElement(
   "img",
   {
     src: e.src,
