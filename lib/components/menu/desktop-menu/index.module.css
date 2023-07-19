@@ -70,3 +70,6 @@
   content: none !important;
   padding-left: 0;
 }
+.cursor-pointer {
+  cursor: pointer;
+}
