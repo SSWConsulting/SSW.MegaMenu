@@ -38,6 +38,7 @@ class DesktopMenu extends React.Component {
                         role="presentation"
                         className={cs(
                           styles.ignore,
+                          styles['cursor-pointer'],
                           styles['inline-block'],
                           'unstyled',
                         )}
