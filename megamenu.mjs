@@ -288,13 +288,14 @@ const gr = "_MegaMenu_nc8do_17", vr = "_menuContent_nc8do_35", pr = "_menuMobile
   sbToggleLeft: yr,
   menuSearch: Cr,
   searchBox: Ir
-}, Mr = "_menuDrop_1o4vl_1", Ar = "_Menu_1o4vl_46", Dr = "_hiddenXs_1o4vl_60", Yr = "_hiddenSm_1o4vl_65", xr = "_ignore_1o4vl_69", pe = {
+}, Mr = "_menuDrop_1gqj6_1", Ar = "_Menu_1gqj6_46", Dr = "_hiddenXs_1gqj6_60", Yr = "_hiddenSm_1gqj6_65", xr = "_ignore_1gqj6_69", we = {
   menuDrop: Mr,
-  "inline-block": "_inline-block_1o4vl_28",
+  "inline-block": "_inline-block_1gqj6_28",
   Menu: Ar,
   hiddenXs: Dr,
   hiddenSm: Yr,
-  ignore: xr
+  ignore: xr,
+  "cursor-pointer": "_cursor-pointer_1gqj6_73"
 };
 var Dn = { exports: {} };
 /*!
@@ -462,8 +463,8 @@ try {
   typeof window != "undefined" && (Yt = window), typeof document != "undefined" && (xn = document), typeof MutationObserver != "undefined" && (Gn = MutationObserver), typeof performance != "undefined" && (Bn = performance);
 } catch (e) {
 }
-var Fr = Yt.navigator || {}, Kt = Fr.userAgent, Xt = Kt === void 0 ? "" : Kt, ge = Yt, X = xn, Zt = Gn, Re = Bn;
-ge.document;
+var Fr = Yt.navigator || {}, Kt = Fr.userAgent, Xt = Kt === void 0 ? "" : Kt, ve = Yt, X = xn, Zt = Gn, Re = Bn;
+ve.document;
 var he = !!X.documentElement && !!X.head && typeof X.addEventListener == "function" && typeof X.createElement == "function", Sn = ~Xt.indexOf("MSIE") || ~Xt.indexOf("Trident/"), le = "___FONT_AWESOME___", ut = 16, Tn = "fa", On = "svg-inline--fa", Ee = "data-fa-i2svg", ht = "data-fa-pseudo-element", Hr = "data-fa-pseudo-element-pending", xt = "data-prefix", Gt = "data-icon", Ut = "fontawesome-i2svg", Nr = "async", Jr = ["HTML", "HEAD", "STYLE", "SCRIPT"], Pn = function() {
   try {
     return process.env.NODE_ENV === "production";
@@ -525,7 +526,7 @@ var he = !!X.documentElement && !!X.head && typeof X.addEventListener == "functi
   return "".concat(e, "x");
 })).concat(Xr.map(function(e) {
   return "w-".concat(e);
-})), jn = ge.FontAwesomeConfig || {};
+})), jn = ve.FontAwesomeConfig || {};
 function qr(e) {
   var t = X.querySelector("script[" + e + "]");
   if (t)
@@ -570,14 +571,14 @@ Object.keys(Se).forEach(function(e) {
     }
   });
 });
-ge.FontAwesomeConfig = D;
+ve.FontAwesomeConfig = D;
 var je = [];
 function ea(e) {
   return je.push(e), function() {
     je.splice(je.indexOf(e), 1);
   };
 }
-var we = ut, se = {
+var de = ut, se = {
   size: 16,
   x: 0,
   y: 0,
@@ -644,7 +645,7 @@ function aa(e) {
 }
 function ia(e) {
   var t = e.transform, n = e.width, r = n === void 0 ? ut : n, a = e.height, i = a === void 0 ? ut : a, o = e.startCentered, s = o === void 0 ? !1 : o, c = "";
-  return s && Sn ? c += "translate(".concat(t.x / we - r / 2, "em, ").concat(t.y / we - i / 2, "em) ") : s ? c += "translate(calc(-50% + ".concat(t.x / we, "em), calc(-50% + ").concat(t.y / we, "em)) ") : c += "translate(".concat(t.x / we, "em, ").concat(t.y / we, "em) "), c += "scale(".concat(t.size / we * (t.flipX ? -1 : 1), ", ").concat(t.size / we * (t.flipY ? -1 : 1), ") "), c += "rotate(".concat(t.rotate, "deg) "), c;
+  return s && Sn ? c += "translate(".concat(t.x / de - r / 2, "em, ").concat(t.y / de - i / 2, "em) ") : s ? c += "translate(calc(-50% + ".concat(t.x / de, "em), calc(-50% + ").concat(t.y / de, "em)) ") : c += "translate(".concat(t.x / de, "em, ").concat(t.y / de, "em) "), c += "scale(".concat(t.size / de * (t.flipX ? -1 : 1), ", ").concat(t.size / de * (t.flipY ? -1 : 1), ") "), c += "rotate(".concat(t.rotate, "deg) "), c;
 }
 var oa = `:root, :host {
   --fa-font-solid: normal 900 1em/1 "Font Awesome 6 Solid";
@@ -1429,7 +1430,7 @@ var sa = {
       }
     };
   }
-}, fe = ge || {};
+}, fe = ve || {};
 fe[le] || (fe[le] = {});
 fe[le].styles || (fe[le].styles = {});
 fe[le].hooks || (fe[le].hooks = {});
@@ -1578,7 +1579,7 @@ function ba(e) {
     iconName: null
   };
 }
-function ve() {
+function pe() {
   return Ot;
 }
 var Lt = function() {
@@ -1601,7 +1602,7 @@ function Ue(e) {
     }
     return o;
   }, Lt());
-  return (i.prefix === "fa" || a === "fa") && (i.prefix = ve() || "fas"), i;
+  return (i.prefix === "fa" || a === "fa") && (i.prefix = pe() || "fas"), i;
 }
 var Ea = /* @__PURE__ */ function() {
   function e() {
@@ -1680,7 +1681,7 @@ function ue() {
 }
 function gt(e) {
   e.prefix === "fa" && (e.prefix = "fas");
-  var t = e.iconName, n = e.prefix || ve();
+  var t = e.iconName, n = e.prefix || pe();
   if (t)
     return t = Me(n, t) || t, Vt(Un.definitions, n, t) || Vt(ie.styles, n, t);
 }
@@ -1720,12 +1721,12 @@ var Un = new Ea(), Ia = function() {
         skipLookups: !0
       });
       return {
-        prefix: a.prefix || ve(),
+        prefix: a.prefix || pe(),
         iconName: Me(a.prefix, a.iconName) || a.iconName
       };
     }
     if (typeof t == "string") {
-      var i = ve();
+      var i = pe();
       return {
         prefix: i,
         iconName: Me(i, t) || t
@@ -1935,7 +1936,7 @@ function Sa(e, t) {
 }
 function pt(e, t) {
   var n = t;
-  return t === "fa" && D.styleDefault !== null && (t = ve()), new Promise(function(r, a) {
+  return t === "fa" && D.styleDefault !== null && (t = pe()), new Promise(function(r, a) {
     if (ue("missingIconAbstract"), n === "fa") {
       var i = Zn(e) || {};
       e = i.iconName || e, t = i.prefix || t;
@@ -2048,7 +2049,7 @@ function _n(e, t) {
     n();
   else {
     var r = rn;
-    D.mutateApproach === Nr && (r = ge.requestAnimationFrame || rn), r(function() {
+    D.mutateApproach === Nr && (r = ve.requestAnimationFrame || rn), r(function() {
       var a = La(), i = kt.begin("mutate");
       e.map(a), i(), n();
     });
@@ -2067,7 +2068,7 @@ function an(e) {
     var t = e.treeCallback, n = t === void 0 ? Fe : t, r = e.nodeCallback, a = r === void 0 ? Fe : r, i = e.pseudoElementsCallback, o = i === void 0 ? Fe : i, s = e.observeMutationsRoot, c = s === void 0 ? X : s;
     We = new Zt(function(f) {
       if (!jt) {
-        var u = ve();
+        var u = pe();
         xe(f).forEach(function(h) {
           if (h.type === "childList" && h.addedNodes.length > 0 && !nn(h.addedNodes[0]) && (D.searchPseudoElements && o(h.target), n(h.target)), h.type === "attributes" && h.target.parentNode && D.searchPseudoElements && o(h.target.parentNode), h.type === "attributes" && nn(h.target) && ~Zr.indexOf(h.attributeName))
             if (h.attributeName === "class" && Oa(h.target)) {
@@ -2097,7 +2098,7 @@ function Ha(e) {
 }
 function Na(e) {
   var t = e.getAttribute("data-prefix"), n = e.getAttribute("data-icon"), r = e.innerText !== void 0 ? e.innerText.trim() : "", a = Ue(St(e));
-  return a.prefix || (a.prefix = ve()), t && n && (a.prefix = t, a.iconName = n), a.iconName && a.prefix || a.prefix && r.length > 0 && (a.iconName = pa(a.prefix, e.innerText) || Pt(a.prefix, mt(e.innerText))), a;
+  return a.prefix || (a.prefix = pe()), t && n && (a.prefix = t, a.iconName = n), a.iconName && a.prefix || a.prefix && r.length > 0 && (a.iconName = pa(a.prefix, e.innerText) || Pt(a.prefix, mt(e.innerText))), a;
 }
 function Ja(e) {
   var t = xe(e.attributes).reduce(function(a, i) {
@@ -2419,7 +2420,7 @@ function ln(e, t) {
       return r();
     var i = xe(e.children), o = i.filter(function(Q) {
       return Q.getAttribute(ht) === t;
-    })[0], s = ge.getComputedStyle(e, t), c = s.getPropertyValue("font-family").match(zr), f = s.getPropertyValue("font-weight"), u = s.getPropertyValue("content");
+    })[0], s = ve.getComputedStyle(e, t), c = s.getPropertyValue("font-family").match(zr), f = s.getPropertyValue("font-weight"), u = s.getPropertyValue("content");
     if (o && !c)
       return e.removeChild(o), r();
     if (c && u !== "none" && u !== "") {
@@ -2618,7 +2619,7 @@ var oi = {
         var a = r.getAttribute("data-fa-mask"), i = a ? Ue(a.split(" ").map(function(o) {
           return o.trim();
         })) : Lt();
-        return i.prefix || (i.prefix = ve()), n.mask = i, n.maskId = r.getAttribute("data-fa-mask-id"), n;
+        return i.prefix || (i.prefix = pe()), n.mask = i, n.maskId = r.getAttribute("data-fa-mask-id"), n;
       }
     };
   },
@@ -2680,7 +2681,7 @@ var oi = {
 }, si = {
   provides: function(t) {
     var n = !1;
-    ge.matchMedia && (n = ge.matchMedia("(prefers-reduced-motion: reduce)").matches), t.missingIconAbstract = function() {
+    ve.matchMedia && (n = ve.matchMedia("(prefers-reduced-motion: reduce)").matches), t.missingIconAbstract = function() {
       var r = [], a = {
         fill: "currentColor"
       }, i = {
@@ -3447,7 +3448,7 @@ function In(e, t) {
   }
   return n;
 }
-function de(e) {
+function ge(e) {
   for (var t = 1; t < arguments.length; t++) {
     var n = arguments[t] != null ? arguments[t] : {};
     t % 2 ? In(Object(n), !0).forEach(function(r) {
@@ -3594,7 +3595,7 @@ function ir(e, t) {
   }, {
     attrs: {}
   }), i = n.style, o = i === void 0 ? {} : i, s = rr(n, Yi);
-  return a.attrs.style = de(de({}, a.attrs.style), o), e.apply(void 0, [t.tag, de(de({}, a.attrs), s)].concat(It(r)));
+  return a.attrs.style = ge(ge({}, a.attrs.style), o), e.apply(void 0, [t.tag, ge(ge({}, a.attrs), s)].concat(It(r)));
 }
 var or = !1;
 try {
@@ -3632,7 +3633,7 @@ function ct(e, t) {
 }
 var Si = ["forwardedRef"];
 function Ce(e) {
-  var t = e.forwardedRef, n = rr(e, Si), r = n.icon, a = n.mask, i = n.symbol, o = n.className, s = n.title, c = n.titleId, f = n.maskId, u = Mn(r), h = ct("classes", [].concat(It(Ai(n)), It(o.split(" ")))), g = ct("transform", typeof n.transform == "string" ? yt.transform(n.transform) : n.transform), C = ct("mask", Mn(a)), A = fi(u, de(de(de(de({}, h), g), C), {}, {
+  var t = e.forwardedRef, n = rr(e, Si), r = n.icon, a = n.mask, i = n.symbol, o = n.className, s = n.title, c = n.titleId, f = n.maskId, u = Mn(r), h = ct("classes", [].concat(It(Ai(n)), It(o.split(" ")))), g = ct("transform", typeof n.transform == "string" ? yt.transform(n.transform) : n.transform), C = ct("mask", Mn(a)), A = fi(u, ge(ge(ge(ge({}, h), g), C), {}, {
     symbol: i,
     title: s,
     titleId: c,
@@ -3801,11 +3802,11 @@ class Vi extends M.Component {
   //   return '';
   // }
   render() {
-    return /* @__PURE__ */ M.createElement("div", { className: q(pe.menuDrop, pe.hiddenXs, pe.hiddenSm) }, /* @__PURE__ */ M.createElement("ul", null, this.props.menuModel && this.props.menuModel.menuItems.map((t, n) => /* @__PURE__ */ M.createElement("li", { key: n }, !t.children && /* @__PURE__ */ M.createElement(
+    return /* @__PURE__ */ M.createElement("div", { className: q(we.menuDrop, we.hiddenXs, we.hiddenSm) }, /* @__PURE__ */ M.createElement("ul", null, this.props.menuModel && this.props.menuModel.menuItems.map((t, n) => /* @__PURE__ */ M.createElement("li", { key: n }, !t.children && /* @__PURE__ */ M.createElement(
       "a",
       {
         href: t.navigateUrl ? t.navigateUrl : null,
-        className: q(pe.ignore, "unstyled")
+        className: q(we.ignore, "unstyled")
       },
       t.text
     ), " ", t.children && /* @__PURE__ */ M.createElement(M.Fragment, null, /* @__PURE__ */ M.createElement(
@@ -3813,15 +3814,16 @@ class Vi extends M.Component {
       {
         role: "presentation",
         className: q(
-          pe.ignore,
-          pe["inline-block"],
+          we.ignore,
+          we["cursor-pointer"],
+          we["inline-block"],
           "unstyled"
         )
       },
       t.text,
       " ",
       /* @__PURE__ */ M.createElement(Ce, { icon: sr })
-    ), /* @__PURE__ */ M.createElement("div", { className: pe.Menu }, /* @__PURE__ */ M.createElement(qi, { item: t, prefix: this.props.prefix })))))));
+    ), /* @__PURE__ */ M.createElement("div", { className: we.Menu }, /* @__PURE__ */ M.createElement(qi, { item: t, prefix: this.props.prefix })))))));
   }
 }
 const _i = [
