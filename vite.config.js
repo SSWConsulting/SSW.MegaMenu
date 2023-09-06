@@ -18,7 +18,7 @@ export default defineConfig({
     { ...react(), apply: 'serve' },
   ],
   build: {
-    target: 'es2015',
+    target: 'es2022',
     minify: 'esbuild',
     copyPublicDir: false,
     lib: {
@@ -28,7 +28,15 @@ export default defineConfig({
       fileName: 'megamenu',
     },
     rollupOptions: {
-      external: ['react', 'react-dom'],
+      external: [
+        'react', 
+        'react-dom', 
+        "classnames", 
+        "@fortawesome/fontawesome-svg-core", 
+        "@fortawesome/free-solid-svg-icons", 
+        "@fortawesome/react-fontawesome", 
+        "react-useportal"
+      ],
       output: {
         globals: {
           react: 'React',
