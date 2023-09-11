@@ -32,13 +32,13 @@ export default defineConfig({
         "classnames", 
         "@fortawesome/fontawesome-svg-core", 
         "@fortawesome/free-solid-svg-icons", 
-        "@fortawesome/react-fontawesome", 
-        "react-useportal"
+        "@fortawesome/react-fontawesome",
       ],
       output: {
         globals: {
           react: 'React',
           'react-dom': 'ReactDOM',
+          "classnames": "cs",
         },
       },
     },

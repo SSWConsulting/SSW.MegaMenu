@@ -13,8 +13,7 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.35",
     "@fortawesome/free-solid-svg-icons": "^5.15.3",
     "@fortawesome/react-fontawesome": "^0.1.14",
-    "classnames": "^2.3.2",
-    "react-useportal": "^1.0.17"
+    "classnames": "^2.3.2"
   },
   "devDependencies": {
     "@testing-library/dom": "^9.0.0",
@@ -36,6 +35,7 @@
     "prettier": "2.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-useportal": "^1.0.17",
     "stylelint": "^14.16.1",
     "stylelint-config-recommended": "^9.0.0",
     "typescript": "^4.9.5",
