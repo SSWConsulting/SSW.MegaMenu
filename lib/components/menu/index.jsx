@@ -59,6 +59,9 @@ class Menu extends React.Component {
 }
 
 const parseMenuData = (menuData) => {
+  if (!menuData) {
+    return {};
+  }
   return {
     ...menuData,
     menuItems: menuData.menuItems.map((menuItem) => {
