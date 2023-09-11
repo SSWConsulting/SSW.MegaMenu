@@ -17,7 +17,7 @@ export default defineConfig({
   ],
   build: {
     target: 'es6',
-    minify: false,
+    minify: "esbuild",
     copyPublicDir: false,
     lib: {
       entry: path.resolve(__dirname, 'lib/index.js'),
@@ -32,15 +32,13 @@ export default defineConfig({
         "classnames", 
         "@fortawesome/fontawesome-svg-core", 
         "@fortawesome/free-solid-svg-icons", 
-        "@fortawesome/react-fontawesome", 
-        "react-useportal"
+        "@fortawesome/react-fontawesome",
       ],
       output: {
         globals: {
           react: 'React',
           'react-dom': 'ReactDOM',
           "classnames": "cs",
-          "react-useportal": "usePortal"
         },
       },
     },
