@@ -1,129 +1,129 @@
-var U = Object.defineProperty, W = Object.defineProperties;
-var D = Object.getOwnPropertyDescriptors;
-var v = Object.getOwnPropertySymbols;
-var O = Object.prototype.hasOwnProperty, B = Object.prototype.propertyIsEnumerable;
-var N = (e, t, a) => t in e ? U(e, t, { enumerable: !0, configurable: !0, writable: !0, value: a }) : e[t] = a, g = (e, t) => {
-  for (var a in t || (t = {}))
-    O.call(t, a) && N(e, a, t[a]);
-  if (v)
-    for (var a of v(t))
-      B.call(t, a) && N(e, a, t[a]);
+var pe = Object.defineProperty, ge = Object.defineProperties;
+var ve = Object.getOwnPropertyDescriptors;
+var ne = Object.getOwnPropertySymbols;
+var _e = Object.prototype.hasOwnProperty, he = Object.prototype.propertyIsEnumerable;
+var te = (e, n, r) => n in e ? pe(e, n, { enumerable: !0, configurable: !0, writable: !0, value: r }) : e[n] = r, x = (e, n) => {
+  for (var r in n || (n = {}))
+    _e.call(n, r) && te(e, r, n[r]);
+  if (ne)
+    for (var r of ne(n))
+      he.call(n, r) && te(e, r, n[r]);
   return e;
-}, M = (e, t) => W(e, D(t));
-import n, { useEffect as L } from "react";
-import o from "classnames";
-import { FontAwesomeIcon as f } from "@fortawesome/react-fontawesome";
-import { faAngleDown as k, faBars as j } from "@fortawesome/free-solid-svg-icons";
-import T from "react-useportal";
-const q = "_MegaMenu_nc8do_17", $ = "_menuContent_nc8do_35", P = "_menuMobile_nc8do_40", z = "_visibleXs_nc8do_45", X = "_visibleSm_nc8do_46", F = "_sbToggleLeft_nc8do_59", R = "_menuSearch_nc8do_80", A = "_searchBox_nc8do_88", u = {
-  MegaMenu: q,
-  menuContent: $,
-  menuMobile: P,
-  visibleXs: z,
-  visibleSm: X,
-  sbToggleLeft: F,
-  menuSearch: R,
-  searchBox: A
-}, V = "_menuDrop_1gqj6_1", K = "_Menu_1gqj6_46", G = "_hiddenXs_1gqj6_60", H = "_hiddenSm_1gqj6_65", J = "_ignore_1gqj6_69", i = {
-  menuDrop: V,
+}, F = (e, n) => ge(e, ve(n));
+import t, { useEffect as be } from "react";
+import f from "classnames";
+import { FontAwesomeIcon as K } from "@fortawesome/react-fontawesome";
+import { faAngleDown as se, faBars as Me } from "@fortawesome/free-solid-svg-icons";
+import Ee from "react-dom";
+const we = "_MegaMenu_nc8do_17", Se = "_menuContent_nc8do_35", Ne = "_menuMobile_nc8do_40", Ce = "_visibleXs_nc8do_45", ye = "_visibleSm_nc8do_46", Oe = "_sbToggleLeft_nc8do_59", ke = "_menuSearch_nc8do_80", je = "_searchBox_nc8do_88", k = {
+  MegaMenu: we,
+  menuContent: Se,
+  menuMobile: Ne,
+  visibleXs: Ce,
+  visibleSm: ye,
+  sbToggleLeft: Oe,
+  menuSearch: ke,
+  searchBox: je
+}, Pe = "_menuDrop_1gqj6_1", Ie = "_Menu_1gqj6_46", Ue = "_hiddenXs_1gqj6_60", Le = "_hiddenSm_1gqj6_65", Te = "_ignore_1gqj6_69", j = {
+  menuDrop: Pe,
   "inline-block": "_inline-block_1gqj6_28",
-  Menu: K,
-  hiddenXs: G,
-  hiddenSm: H,
-  ignore: J,
+  Menu: Ie,
+  hiddenXs: Ue,
+  hiddenSm: Le,
+  ignore: Te,
   "cursor-pointer": "_cursor-pointer_1gqj6_73"
-}, Q = "_MenuImg_1chf9_1", Y = {
-  MenuImg: Q
-}, Z = "_Popular_p6zl5_1", ee = "_ignore_p6zl5_6", ne = "_ClickableMenuItem_p6zl5_11", te = "_NonClickableMenuItem_p6zl5_16", ae = "_level1_p6zl5_22", le = "_level2_p6zl5_49", se = "_map_p6zl5_74", oe = "_featVideo_p6zl5_79", r = {
-  Popular: Z,
-  ignore: ee,
-  ClickableMenuItem: ne,
-  NonClickableMenuItem: te,
-  level1: ae,
-  level2: le,
-  map: se,
-  featVideo: oe
-}, re = ({ item: e, index: t }) => {
-  const a = [
-    r.NonClickableMenuItem,
-    r.level1,
-    r.level2,
-    r.ignore,
-    r.ClickableMenuItem
-  ], l = e.data.navigateUrlOnMobileOnly ? o(r.NonClickableMenuItem, r.level1) : e.data.cssClass ? o(a[e.data.cssClass], r.level1) : r.level1;
-  return /* @__PURE__ */ n.createElement(n.Fragment, null, e.level === 1 && /* @__PURE__ */ n.createElement("li", { key: t, className: l }, (!e.data.navigateUrl || e.data.navigateUrlOnMobileOnly) && /* @__PURE__ */ n.createElement("span", { className: o(r.ignore, "unstyled") }, e.data.text), e.data.navigateUrl && !e.data.navigateUrlOnMobileOnly && /* @__PURE__ */ n.createElement(
+}, We = "_MenuImg_1chf9_1", De = {
+  MenuImg: We
+}, Be = "_Popular_p6zl5_1", xe = "_ignore_p6zl5_6", Re = "_ClickableMenuItem_p6zl5_11", $e = "_NonClickableMenuItem_p6zl5_16", qe = "_level1_p6zl5_22", ze = "_level2_p6zl5_49", Xe = "_map_p6zl5_74", He = "_featVideo_p6zl5_79", g = {
+  Popular: Be,
+  ignore: xe,
+  ClickableMenuItem: Re,
+  NonClickableMenuItem: $e,
+  level1: qe,
+  level2: ze,
+  map: Xe,
+  featVideo: He
+}, Ae = ({ item: e, index: n }) => {
+  const r = [
+    g.NonClickableMenuItem,
+    g.level1,
+    g.level2,
+    g.ignore,
+    g.ClickableMenuItem
+  ], s = e.data.navigateUrlOnMobileOnly ? f(g.NonClickableMenuItem, g.level1) : e.data.cssClass ? f(r[e.data.cssClass], g.level1) : g.level1;
+  return /* @__PURE__ */ t.createElement(t.Fragment, null, e.level === 1 && /* @__PURE__ */ t.createElement("li", { key: n, className: s }, (!e.data.navigateUrl || e.data.navigateUrlOnMobileOnly) && /* @__PURE__ */ t.createElement("span", { className: f(g.ignore, "unstyled") }, e.data.text), e.data.navigateUrl && !e.data.navigateUrlOnMobileOnly && /* @__PURE__ */ t.createElement(
     "a",
     {
       href: e.data.navigateUrl ? e.data.navigateUrl : null,
-      className: o(r.ignore, "unstyled")
+      className: f(g.ignore, "unstyled")
     },
     e.data.text
-  )), e.level === 2 && /* @__PURE__ */ n.createElement(
+  )), e.level === 2 && /* @__PURE__ */ t.createElement(
     "li",
     {
-      key: t,
-      className: e.data.cssClass ? o(a[e.data.cssClass], r.ClickableMenuItem, r.level2) : o(r.ClickableMenuItem, r.level2)
+      key: n,
+      className: e.data.cssClass ? f(r[e.data.cssClass], g.ClickableMenuItem, g.level2) : f(g.ClickableMenuItem, g.level2)
     },
-    /* @__PURE__ */ n.createElement(
+    /* @__PURE__ */ t.createElement(
       "a",
       {
         href: e.data.navigateUrl ? e.data.navigateUrl : null,
-        className: o(r.ignore, "unstyled")
+        className: f(g.ignore, "unstyled")
       },
       e.data.text
     )
   ));
-}, ce = "_colMd3_qrlih_1", ue = "_MenuWrapper_qrlih_11", ie = "_level1_qrlih_23", de = "_level2_qrlih_44", S = {
-  colMd3: ce,
-  MenuWrapper: ue,
-  level1: ie,
-  level2: de
-}, me = ({ items: e }) => {
-  const t = (l) => {
-    let c = l.length;
-    return l.forEach((_) => {
-      _.children && (c += _.children.length);
-    }), c;
-  }, a = (l) => {
-    let c = [];
-    c.push([]);
-    let _ = t(l), h = 0, m = 0;
-    return l.forEach((d) => {
-      d.breakListBefore && (m++, h = 0, c.push([])), c[m].push({ level: 1, data: d }), d.children && d.children.forEach((p) => {
-        p.breakListBefore && (h++, (p.breakListBefore || h > _ / m) && (m++, h = 0, c.push([]))), c[m].push({ level: 2, data: p });
+}, Fe = "_colMd3_qrlih_1", Ve = "_MenuWrapper_qrlih_11", Ke = "_level1_qrlih_23", Ge = "_level2_qrlih_44", re = {
+  colMd3: Fe,
+  MenuWrapper: Ve,
+  level1: Ke,
+  level2: Ge
+}, Ye = ({ items: e }) => {
+  const n = (s) => {
+    let o = s.length;
+    return s.forEach((E) => {
+      E.children && (o += E.children.length);
+    }), o;
+  }, r = (s) => {
+    let o = [];
+    o.push([]);
+    let E = n(s), y = 0, N = 0;
+    return s.forEach((a) => {
+      a.breakListBefore && (N++, y = 0, o.push([])), o[N].push({ level: 1, data: a }), a.children && a.children.forEach((i) => {
+        i.breakListBefore && (y++, (i.breakListBefore || y > E / N) && (N++, y = 0, o.push([]))), o[N].push({ level: 2, data: i });
       });
-    }), c.map((d, p) => /* @__PURE__ */ n.createElement("ul", { key: p, className: S.colMd3 }, d.map((I, x) => /* @__PURE__ */ n.createElement(re, { key: x, item: I }))));
+    }), o.map((a, i) => /* @__PURE__ */ t.createElement("ul", { key: i, className: re.colMd3 }, a.map((_, d) => /* @__PURE__ */ t.createElement(Ae, { key: d, item: _ }))));
   };
-  return /* @__PURE__ */ n.createElement("div", { className: S.MenuWrapper }, a(e));
-}, pe = ({ item: e, prefix: t }) => /* @__PURE__ */ n.createElement(n.Fragment, null, e.src && /* @__PURE__ */ n.createElement("div", { className: Y.MenuImg }, /* @__PURE__ */ n.createElement(
+  return /* @__PURE__ */ t.createElement("div", { className: re.MenuWrapper }, r(e));
+}, Je = ({ item: e, prefix: n }) => /* @__PURE__ */ t.createElement(t.Fragment, null, e.src && /* @__PURE__ */ t.createElement("div", { className: De.MenuImg }, /* @__PURE__ */ t.createElement(
   "img",
   {
     src: e.src,
     alt: e.text,
     loading: "eager"
   }
-)), /* @__PURE__ */ n.createElement(me, { items: e.children })), ge = (e) => /* @__PURE__ */ n.createElement("div", { className: o(i.menuDrop, i.hiddenXs, i.hiddenSm) }, /* @__PURE__ */ n.createElement("ul", null, e.menuModel && e.menuModel.menuItems.map((t, a) => /* @__PURE__ */ n.createElement("li", { key: a }, !t.children && /* @__PURE__ */ n.createElement(
+)), /* @__PURE__ */ t.createElement(Ye, { items: e.children })), Qe = (e) => /* @__PURE__ */ t.createElement("div", { className: f(j.menuDrop, j.hiddenXs, j.hiddenSm) }, /* @__PURE__ */ t.createElement("ul", null, e.menuModel && e.menuModel.menuItems.map((n, r) => /* @__PURE__ */ t.createElement("li", { key: r }, !n.children && /* @__PURE__ */ t.createElement(
   "a",
   {
-    href: t.navigateUrl ? t.navigateUrl : null,
-    className: o(i.ignore, "unstyled")
+    href: n.navigateUrl ? n.navigateUrl : null,
+    className: f(j.ignore, "unstyled")
   },
-  t.text
-), " ", t.children && /* @__PURE__ */ n.createElement(n.Fragment, null, /* @__PURE__ */ n.createElement(
+  n.text
+), " ", n.children && /* @__PURE__ */ t.createElement(t.Fragment, null, /* @__PURE__ */ t.createElement(
   "div",
   {
     role: "presentation",
-    className: o(
-      i.ignore,
-      i["cursor-pointer"],
-      i["inline-block"],
+    className: f(
+      j.ignore,
+      j["cursor-pointer"],
+      j["inline-block"],
       "unstyled"
     )
   },
-  t.text,
+  n.text,
   " ",
-  /* @__PURE__ */ n.createElement(f, { icon: k })
-), /* @__PURE__ */ n.createElement("div", { className: i.Menu }, /* @__PURE__ */ n.createElement(pe, { item: t, prefix: e.prefix }))))))), _e = [
+  /* @__PURE__ */ t.createElement(K, { icon: se })
+), /* @__PURE__ */ t.createElement("div", { className: j.Menu }, /* @__PURE__ */ t.createElement(Je, { item: n, prefix: e.prefix }))))))), Ze = [
   {
     text: "Services",
     groupImageUrl: "https://raw.githubusercontent.com/SSWConsulting/SSW.MegaMenu/main/lib/assets/images/Menu-Banner-Services.png",
@@ -160,144 +160,304 @@ const q = "_MegaMenu_nc8do_17", $ = "_menuContent_nc8do_35", P = "_menuMobile_nc
     navigateUrl: "http://tv.ssw.com",
     target: "_blank"
   }
-], he = {
-  menuItems: _e
-}, Me = "https://www.google.com.au/search?q=site:ssw.com.au%20";
-class be extends n.Component {
-  menu_Search(t) {
-    window && window.open(Me + t);
+], en = {
+  menuItems: Ze
+}, nn = "https://www.google.com.au/search?q=site:ssw.com.au%20";
+class tn extends t.Component {
+  menu_Search(n) {
+    window && window.open(nn + n);
   }
-  handleKeyDownOnMenuSearchInput(t) {
-    t.key === "Enter" && this.menu_Search(t.target.value);
+  handleKeyDownOnMenuSearchInput(n) {
+    n.key === "Enter" && this.menu_Search(n.target.value);
   }
   render() {
-    const { menuModel: t } = this.props;
+    const { menuModel: n } = this.props;
     return (
       // this.state.menuModel &&
-      /* @__PURE__ */ n.createElement("div", { className: u.MegaMenu }, /* @__PURE__ */ n.createElement("div", { className: u.menuContent }, /* @__PURE__ */ n.createElement(
+      /* @__PURE__ */ t.createElement("div", { className: k.MegaMenu }, /* @__PURE__ */ t.createElement("div", { className: k.menuContent }, /* @__PURE__ */ t.createElement(
         "div",
         {
-          className: o(
-            u.menuMobile,
-            u.visibleXs,
-            u.visibleSm
+          className: f(
+            k.menuMobile,
+            k.visibleXs,
+            k.visibleSm
           )
         },
-        /* @__PURE__ */ n.createElement(
+        /* @__PURE__ */ t.createElement(
           "div",
           {
-            className: u.sbToggleLeft,
-            onClick: (a) => this.props.onClickToggle(a)
+            className: k.sbToggleLeft,
+            onClick: (r) => this.props.onClickToggle(r)
           },
-          /* @__PURE__ */ n.createElement(f, { icon: j })
+          /* @__PURE__ */ t.createElement(K, { icon: Me })
         )
-      ), /* @__PURE__ */ n.createElement(
-        ge,
+      ), /* @__PURE__ */ t.createElement(
+        Qe,
         {
           prefix: this.props.prefix,
-          menuModel: t
+          menuModel: n
         }
-      ), /* @__PURE__ */ n.createElement("div", { className: u.menuSearch }, /* @__PURE__ */ n.createElement(
+      ), /* @__PURE__ */ t.createElement("div", { className: k.menuSearch }, /* @__PURE__ */ t.createElement(
         "input",
         {
           type: "text",
-          className: u.searchBox,
-          onKeyDown: (a) => this.handleKeyDownOnMenuSearchInput(a)
+          className: k.searchBox,
+          onKeyDown: (r) => this.handleKeyDownOnMenuSearchInput(r)
         }
       ))))
     );
   }
 }
-const E = (e) => e ? M(g({}, e), {
-  menuItems: e.menuItems.map((t) => M(g({}, t), {
-    src: t.groupImageUrl
+const ae = (e) => e ? F(x({}, e), {
+  menuItems: e.menuItems.map((n) => F(x({}, n), {
+    src: n.groupImageUrl
   }))
 }) : {};
-class fe extends n.Component {
-  constructor(t) {
-    super(t), this.state = {
-      menuModel: E(he),
+class rn extends t.Component {
+  constructor(n) {
+    super(n), this.state = {
+      menuModel: ae(en),
       menuLoaded: !1
     };
   }
   componentDidMount() {
-    let t = this;
-    fetch("https://SSWConsulting.github.io/SSW.Website.Menu.json/menu.json").then((a) => a.json()).then(function(a) {
-      t.setState({
-        menuModel: E(a),
+    let n = this;
+    fetch("https://SSWConsulting.github.io/SSW.Website.Menu.json/menu.json").then((r) => r.json()).then(function(r) {
+      n.setState({
+        menuModel: ae(r),
         menuLoaded: !0
       });
-    }).catch(function(a) {
-      console.log(a);
+    }).catch(function(r) {
+      console.log(r);
     });
   }
   render() {
-    const { menuModel: t, menuLoaded: a } = this.state;
-    return /* @__PURE__ */ n.createElement(be, g({ menuModel: t, menuLoaded: a }, this.props));
+    const { menuModel: n, menuLoaded: r } = this.state;
+    return /* @__PURE__ */ t.createElement(tn, x({ menuModel: n, menuLoaded: r }, this.props));
   }
 }
-const ve = "_sbSlidebar_13nfl_1", Ne = "_sbLeft_13nfl_26", Se = "_menuDrop_13nfl_29", Ee = "_fa_13nfl_73", we = "_open_13nfl_85", Ce = "_dropdownMenu_13nfl_95", ke = "_navbarCollapse_13nfl_130", ye = "_collapse_13nfl_144", Ie = "_dropdown_13nfl_95", xe = "_ignore_13nfl_157", Ue = "_dropdownToggle_13nfl_161", We = "_navbarNav_13nfl_188", s = {
-  sbSlidebar: ve,
-  sbLeft: Ne,
-  menuDrop: Se,
-  fa: Ee,
-  open: we,
-  dropdownMenu: Ce,
-  navbarCollapse: ke,
-  collapse: ye,
-  dropdown: Ie,
-  ignore: xe,
-  dropdownToggle: Ue,
-  navbarNav: We
-}, De = (e) => {
-  const [t, a] = n.useState(null);
-  return L(() => {
-    t || fetch("https://SSWConsulting.github.io/SSW.Website.Menu.json/menu.json").then((l) => l.json()).then((l) => {
-      a(l);
-    }).catch((l) => {
-      console.error(l);
+const an = "_sbSlidebar_13nfl_1", on = "_sbLeft_13nfl_26", ln = "_menuDrop_13nfl_29", sn = "_fa_13nfl_73", cn = "_open_13nfl_85", un = "_dropdownMenu_13nfl_95", dn = "_navbarCollapse_13nfl_130", mn = "_collapse_13nfl_144", fn = "_dropdown_13nfl_95", pn = "_ignore_13nfl_157", gn = "_dropdownToggle_13nfl_161", vn = "_navbarNav_13nfl_188", u = {
+  sbSlidebar: an,
+  sbLeft: on,
+  menuDrop: ln,
+  fa: sn,
+  open: cn,
+  dropdownMenu: un,
+  navbarCollapse: dn,
+  collapse: mn,
+  dropdown: fn,
+  ignore: pn,
+  dropdownToggle: gn,
+  navbarNav: vn
+}, _n = (e) => {
+  const [n, r] = t.useState(null);
+  return be(() => {
+    n || fetch("https://SSWConsulting.github.io/SSW.Website.Menu.json/menu.json").then((s) => s.json()).then((s) => {
+      r(s);
+    }).catch((s) => {
+      console.error(s);
     });
-  }, []), /* @__PURE__ */ n.createElement(
+  }, []), /* @__PURE__ */ t.createElement(
     "div",
     {
       ref: e.innerRef,
-      className: o(s.sbSlidebar, s.sbLeft, e.className),
+      className: f(u.sbSlidebar, u.sbLeft, e.className),
       style: { left: e.isMenuOpened ? "0" : "-84vw" },
-      onClick: (l) => Oe(l)
+      onClick: (s) => hn(s)
     },
-    /* @__PURE__ */ n.createElement("div", { className: o(s.menuDrop, s.navbarCollapse) }, /* @__PURE__ */ n.createElement("ul", { className: s.navbarNav }, t && t.menuItems.map(
-      (l, c) => /* @__PURE__ */ n.createElement(y, { item: l, key: c })
+    /* @__PURE__ */ t.createElement("div", { className: f(u.menuDrop, u.navbarCollapse) }, /* @__PURE__ */ t.createElement("ul", { className: u.navbarNav }, n && n.menuItems.map(
+      (s, o) => /* @__PURE__ */ t.createElement(ce, { item: s, key: o })
     )))
   );
-}, y = ({ item: e }) => !e.children || e.navigateUrlOnMobileOnly ? /* @__PURE__ */ n.createElement("li", { className: s.dropdown }, /* @__PURE__ */ n.createElement(
+}, ce = ({ item: e }) => !e.children || e.navigateUrlOnMobileOnly ? /* @__PURE__ */ t.createElement("li", { className: u.dropdown }, /* @__PURE__ */ t.createElement(
   "a",
   {
     href: e.navigateUrl ? e.navigateUrl : null,
-    className: o(s.ignore, "unstyled")
+    className: f(u.ignore, "unstyled")
   },
   e.text
-)) : e.children ? /* @__PURE__ */ n.createElement("li", { className: s.dropdown }, /* @__PURE__ */ n.createElement("div", { role: "presentation", className: o(s.dropdownToggle) }, e.text, " ", /* @__PURE__ */ n.createElement(f, { icon: k })), /* @__PURE__ */ n.createElement("ul", { className: s.dropdownMenu }, e.children.map(
-  (t, a) => /* @__PURE__ */ n.createElement(y, { item: t, key: a })
-))) : /* @__PURE__ */ n.createElement(n.Fragment, null), b = (e) => {
-  var a;
-  var t = document.getElementsByClassName(o(s.dropdown, s.open));
-  for (let l of t)
-    l !== ((a = e.parentNode) == null ? void 0 : a.parentNode) && (l.className = s.dropdown);
-}, w = (e) => {
-  e.className = s.dropdown;
-}, C = (e) => {
-  b(e), e.className = o(s.dropdown, s.open);
-}, Oe = (e) => {
-  e.target.parentNode.className === s.dropdown ? (b(e.target.parentNode), C(e.target.parentNode)) : e.target.parentNode.parentNode.className === s.dropdown ? (b(e.target.parentNode), C(e.target.parentNode.parentNode)) : e.target.parentNode.className === o(s.dropdown, s.open) ? w(e.target.parentNode) : e.target.parentNode.parentNode.className === o(s.dropdown, s.open) && w(e.target.parentNode.parentNode);
-}, Be = n.forwardRef((e, t) => /* @__PURE__ */ n.createElement(De, g({ innerRef: t }, e))), ze = (e) => {
-  const { Portal: t, openPortal: a, isOpen: l } = T({
+)) : e.children ? /* @__PURE__ */ t.createElement("li", { className: u.dropdown }, /* @__PURE__ */ t.createElement("div", { role: "presentation", className: f(u.dropdownToggle) }, e.text, " ", /* @__PURE__ */ t.createElement(K, { icon: se })), /* @__PURE__ */ t.createElement("ul", { className: u.dropdownMenu }, e.children.map(
+  (n, r) => /* @__PURE__ */ t.createElement(ce, { item: n, key: r })
+))) : /* @__PURE__ */ t.createElement(t.Fragment, null), V = (e) => {
+  var r;
+  var n = document.getElementsByClassName(f(u.dropdown, u.open));
+  for (let s of n)
+    s !== ((r = e.parentNode) == null ? void 0 : r.parentNode) && (s.className = u.dropdown);
+}, oe = (e) => {
+  e.className = u.dropdown;
+}, le = (e) => {
+  V(e), e.className = f(u.dropdown, u.open);
+}, hn = (e) => {
+  e.target.parentNode.className === u.dropdown ? (V(e.target.parentNode), le(e.target.parentNode)) : e.target.parentNode.parentNode.className === u.dropdown ? (V(e.target.parentNode), le(e.target.parentNode.parentNode)) : e.target.parentNode.className === f(u.dropdown, u.open) ? oe(e.target.parentNode) : e.target.parentNode.parentNode.className === f(u.dropdown, u.open) && oe(e.target.parentNode.parentNode);
+}, bn = t.forwardRef((e, n) => /* @__PURE__ */ t.createElement(_n, x({ innerRef: n }, e)));
+var P = typeof globalThis != "undefined" ? globalThis : typeof window != "undefined" ? window : typeof global != "undefined" ? global : typeof self != "undefined" ? self : {};
+function Mn(e) {
+  return e && e.__esModule && Object.prototype.hasOwnProperty.call(e, "default") ? e.default : e;
+}
+var ue = {}, ie = {};
+(function(e) {
+  var n = P && P.__assign || function() {
+    return n = Object.assign || function(v) {
+      for (var h, C = 1, I = arguments.length; C < I; C++) {
+        h = arguments[C];
+        for (var T in h)
+          Object.prototype.hasOwnProperty.call(h, T) && (v[T] = h[T]);
+      }
+      return v;
+    }, n.apply(this, arguments);
+  };
+  Object.defineProperty(e, "__esModule", { value: !0 });
+  var r;
+  (function(v) {
+    v.Browser = "browser", v.Server = "server", v.Native = "native";
+  })(r = e.Device || (e.Device = {}));
+  var s = r.Browser, o = r.Server, E = r.Native, y = !!(typeof window != "undefined" && window.document && window.document.createElement), N = typeof navigator != "undefined" && navigator.product == "ReactNative", a = N ? E : y ? s : o, i = {
+    isBrowser: a === s,
+    isServer: a === o,
+    isNative: a === E,
+    device: a,
+    canUseWorkers: typeof Worker != "undefined",
+    canUseEventListeners: a === s && !!window.addEventListener,
+    canUseViewport: a === s && !!window.screen
+  }, _ = function() {
+    for (var v = [], h = 0; h < arguments.length; h++)
+      v[h] = arguments[h];
+    return v.reduce(function(C, I) {
+      return n(n({}, C), I);
+    }, {});
+  }, d = function(v) {
+    return Object.keys(v).map(function(h) {
+      return v[h];
+    });
+  }, p = function() {
+    return _((d(i), i));
+  }, L = p();
+  e.weAreServer = function() {
+    i.isServer = !0, L = p();
+  }, e.useSSR = function() {
+    return L;
+  }, e.default = e.useSSR;
+})(ie);
+(function(e) {
+  var n = P && P.__assign || function() {
+    return n = Object.assign || function(a) {
+      for (var i, _ = 1, d = arguments.length; _ < d; _++) {
+        i = arguments[_];
+        for (var p in i)
+          Object.prototype.hasOwnProperty.call(i, p) && (a[p] = i[p]);
+      }
+      return a;
+    }, n.apply(this, arguments);
+  }, r = P && P.__rest || function(a, i) {
+    var _ = {};
+    for (var d in a)
+      Object.prototype.hasOwnProperty.call(a, d) && i.indexOf(d) < 0 && (_[d] = a[d]);
+    if (a != null && typeof Object.getOwnPropertySymbols == "function")
+      for (var p = 0, d = Object.getOwnPropertySymbols(a); p < d.length; p++)
+        i.indexOf(d[p]) < 0 && Object.prototype.propertyIsEnumerable.call(a, d[p]) && (_[d[p]] = a[d[p]]);
+    return _;
+  }, s = P && P.__importDefault || function(a) {
+    return a && a.__esModule ? a : { default: a };
+  };
+  Object.defineProperty(e, "__esModule", { value: !0 });
+  var o = t, E = Ee, y = s(ie);
+  e.errorMessage1 = "You must either add a `ref` to the element you are interacting with or pass an `event` to openPortal(e) or togglePortal(e).";
+  function N(a) {
+    a === void 0 && (a = {});
+    var i = a.closeOnOutsideClick, _ = i === void 0 ? !0 : i, d = a.closeOnEsc, p = d === void 0 ? !0 : d, L = a.bindTo, v = a.isOpen, h = v === void 0 ? !1 : v, C = a.onOpen, I = a.onClose, T = a.onPortalClick, R = r(a, ["closeOnOutsideClick", "closeOnEsc", "bindTo", "isOpen", "onOpen", "onClose", "onPortalClick"]), G = y.default(), M = G.isServer, X = G.isBrowser, Y = o.useState(h), de = Y[0], me = Y[1], U = o.useRef(de), W = o.useCallback(function(l) {
+      U.current = l, me(l);
+    }, []), w = o.useRef(), m = o.useRef(X ? document.createElement("div") : null);
+    o.useEffect(function() {
+      X && !m.current && (m.current = document.createElement("div"));
+    }, [X, m]);
+    var $ = o.useMemo(function() {
+      if (!M)
+        return L && E.findDOMNode(L) || document.body;
+    }, [M, L]), D = function(l) {
+      if (!l)
+        return { portal: m, targetEl: w, event: l };
+      var c = l || {};
+      c.persist && c.persist(), c.portal = m, c.targetEl = w, c.event = l;
+      var b = l.currentTarget;
+      return !w.current && b && b !== document && (w.current = c.currentTarget), c;
+    }, J = Object.entries(R).reduce(function(l, c) {
+      var b = c[0], S = c[1];
+      return l[b] = function(B) {
+        M || S(D(B));
+      }, l;
+    }, {}), q = o.useCallback(function(l) {
+      if (!M) {
+        var c = D(l);
+        if (w.current == null)
+          throw setTimeout(function() {
+            return W(!0);
+          }, 0), Error(e.errorMessage1);
+        C && C(c), W(!0);
+      }
+    }, [M, m, W, w, C]), O = o.useCallback(function(l) {
+      if (!M) {
+        var c = D(l);
+        I && U.current && I(c), U.current && W(!1);
+      }
+    }, [M, I, W]), Q = o.useCallback(function(l) {
+      return U.current ? O(l) : q(l);
+    }, [O, q]), H = o.useCallback(function(l) {
+      return l.key === "Escape" && p ? O(l) : void 0;
+    }, [p, O]), A = o.useCallback(function(l) {
+      var c = function(b) {
+        return b.current.contains(l.target);
+      };
+      c(m) || l.button !== 0 || !U.current || c(w) || _ && O(l);
+    }, [M, O, _, m]), Z = o.useCallback(function(l) {
+      if (!(M || !(m.current instanceof HTMLElement))) {
+        var c = D(l);
+        m.current.contains(c.target) && T && T(c), A(l);
+      }
+    }, [A]), z = o.useRef({});
+    o.useEffect(function() {
+      if (!M && !(!($ instanceof HTMLElement) || !(m.current instanceof HTMLElement))) {
+        var l = {
+          onScroll: "scroll",
+          onWheel: "wheel"
+        }, c = m.current;
+        return $.appendChild(m.current), Object.entries(l).forEach(function(b) {
+          var S = b[0], B = b[1];
+          R[S] && (z.current[S] = function(fe) {
+            return R[S](D(fe));
+          }, document.addEventListener(B, z.current[S]));
+        }), document.addEventListener("keydown", H), document.addEventListener("mousedown", Z), function() {
+          Object.entries(l).forEach(function(b) {
+            var S = b[0], B = b[1];
+            R[S] && (document.removeEventListener(B, z.current[S]), delete z.current[S]);
+          }), document.removeEventListener("keydown", H), document.removeEventListener("mousedown", Z), $.removeChild(c);
+        };
+      }
+    }, [M, A, H, $, m]);
+    var ee = o.useCallback(function(l) {
+      var c = l.children;
+      return m.current != null ? E.createPortal(c, m.current) : null;
+    }, [m]);
+    return Object.assign([q, O, U.current, ee, Q, w, m], n(n({
+      isOpen: U.current,
+      openPortal: q,
+      ref: w,
+      closePortal: O,
+      togglePortal: Q,
+      Portal: ee,
+      portalRef: m
+    }, J), { bind: n({ ref: w }, J) }));
+  }
+  e.default = N;
+})(ue);
+const En = /* @__PURE__ */ Mn(ue), kn = (e) => {
+  const { Portal: n, openPortal: r, isOpen: s } = En({
     closeOnOutsideClick: !0,
     closeOnEsc: !0
   });
-  return /* @__PURE__ */ n.createElement("div", { className: e.className, style: e.style }, /* @__PURE__ */ n.createElement(fe, { onClickToggle: (c) => a(c) }), l && /* @__PURE__ */ n.createElement(t, null, /* @__PURE__ */ n.createElement(Be, { isMenuOpened: l })));
+  return /* @__PURE__ */ t.createElement("div", { className: e.className, style: e.style }, /* @__PURE__ */ t.createElement(rn, { onClickToggle: (o) => r(o) }), s && /* @__PURE__ */ t.createElement(n, null, /* @__PURE__ */ t.createElement(bn, { isMenuOpened: s })));
 };
 export {
-  fe as Menu,
-  ze as MenuBar,
-  Be as MobileMenu
+  rn as Menu,
+  kn as MenuBar,
+  bn as MobileMenu
 };
