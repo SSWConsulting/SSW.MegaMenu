@@ -17,7 +17,7 @@ export default defineConfig({
   ],
   build: {
     target: 'es6',
-    minify: "esbuild",
+    minify: false,
     copyPublicDir: false,
     lib: {
       entry: path.resolve(__dirname, 'lib/index.js'),
@@ -39,6 +39,8 @@ export default defineConfig({
         globals: {
           react: 'React',
           'react-dom': 'ReactDOM',
+          "classnames": "cs",
+          "react-useportal": "usePortal"
         },
       },
     },
