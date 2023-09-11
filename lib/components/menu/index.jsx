@@ -58,11 +58,23 @@ class Menu extends React.Component {
   }
 }
 
+const parseMenuData = (menuData) => {
+  return {
+    ...menuData,
+    menuItems: menuData.menuItems.map((menuItem) => {
+      return {
+        ...menuItem,
+        src: menuItem.groupImageUrl,
+      };
+    }),
+  }
+}
+
 class Wrapper extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      menuModel: menu ?? {},
+      menuModel: parseMenuData(menu),
       menuLoaded: false,
     };
   }
@@ -73,15 +85,8 @@ class Wrapper extends React.Component {
       .then((res) => res.json())
       .then(function (response) {
         currentComponent.setState({
-          menuModel: {
-            ...response,
-            menuItems: response.menuItems.map((menuItem) => {
-              return {
-                ...menuItem,
-                src: menuItem.groupImageUrl,
-              };
-            }),
-          },
+          menuModel: parseMenuData(response),
+          menuLoaded: true,
         });
       })
       .catch(function (error) {
