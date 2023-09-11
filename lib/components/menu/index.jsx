@@ -6,12 +6,6 @@ import { faBars } from '@fortawesome/free-solid-svg-icons';
 import cs from 'classnames';
 
 import menu from '@assets/data/menu.json';
-import services from '@assets/images/Menu-Banner-Services.png';
-import products from '@assets/images/Menu-Banner-Products.png';
-import training from '@assets/images/Menu-Banner-Training.png';
-import user_group from '@assets/images/Menu-Banner-UserGroup.png';
-import rules from '@assets/images/Menu-Banner-Standards.png';
-import about_us from '@assets/images/Menu-Banner-AboutUs.png';
 
 const searchUrl = `https://www.google.com.au/search?q=site:ssw.com.au%20`;
 class Menu extends React.Component {
@@ -64,17 +58,6 @@ class Menu extends React.Component {
   }
 }
 
-// This is a temporary workaround
-// Ideally the images should be hosted and the image url passed in via https://SSWConsulting.github.io/SSW.Website.Menu.json/menu.json
-const imageLibrary = {
-  'Menu-Banner-Services.png': services,
-  'Menu-Banner-Products.png': products,
-  'Menu-Banner-Training.png': training,
-  'Menu-Banner-UserGroup.png': user_group,
-  'Menu-Banner-Standards.png': rules,
-  'Menu-Banner-AboutUs.png': about_us,
-};
-
 class Wrapper extends React.Component {
   constructor(props) {
     super(props);
@@ -95,7 +78,7 @@ class Wrapper extends React.Component {
             menuItems: response.menuItems.map((menuItem) => {
               return {
                 ...menuItem,
-                src: imageLibrary[menuItem.groupImageUrl],
+                src: menuItem.groupImageUrl,
               };
             }),
           },
