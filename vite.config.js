@@ -4,7 +4,6 @@
 import path from 'path';
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
-import image from '@rollup/plugin-image';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -14,12 +13,11 @@ export default defineConfig({
     },
   },
   plugins: [
-    { ...image(), enforce: 'pre', apply: 'build' },
     { ...react(), apply: 'serve' },
   ],
   build: {
-    target: 'es2015',
-    minify: 'esbuild',
+    target: 'es6',
+    minify: "esbuild",
     copyPublicDir: false,
     lib: {
       entry: path.resolve(__dirname, 'lib/index.js'),
@@ -28,7 +26,15 @@ export default defineConfig({
       fileName: 'megamenu',
     },
     rollupOptions: {
-      external: ['react', 'react-dom'],
+      external: [
+        'react', 
+        'react-dom', 
+        "classnames", 
+        "@fortawesome/fontawesome-svg-core", 
+        "@fortawesome/free-solid-svg-icons", 
+        "@fortawesome/react-fontawesome", 
+        "react-useportal"
+      ],
       output: {
         globals: {
           react: 'React',
