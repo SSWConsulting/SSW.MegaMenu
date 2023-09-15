@@ -2,32 +2,32 @@
   "menuItems": [
     {
       "text": "Services",
-      "groupImageUrl": "https://raw.githubusercontent.com/SSWConsulting/SSW.MegaMenu/main/lib/assets/images/Menu-Banner-Services.png",
+      "groupImageUrlWeb": "https://raw.githubusercontent.com/SSWConsulting/SSW.MegaMenu/main/lib/assets/images/Menu-Banner-Services.png",
       "children": []
     },
     {
       "text": "Products",
-      "groupImageUrl": "https://raw.githubusercontent.com/SSWConsulting/SSW.MegaMenu/main/lib/assets/images/Menu-Banner-Products.png",
+      "groupImageUrlWeb": "https://raw.githubusercontent.com/SSWConsulting/SSW.MegaMenu/main/lib/assets/images/Menu-Banner-Products.png",
       "children": []
     },
     {
       "text": "Training",
-      "groupImageUrl": "https://raw.githubusercontent.com/SSWConsulting/SSW.MegaMenu/main/lib/assets/images/Menu-Banner-Training.png",
+      "groupImageUrlWeb": "https://raw.githubusercontent.com/SSWConsulting/SSW.MegaMenu/main/lib/assets/images/Menu-Banner-Training.png",
       "children": []
     },
     {
       "text": "User Group",
-      "groupImageUrl": "https://raw.githubusercontent.com/SSWConsulting/SSW.MegaMenu/main/lib/assets/images/Menu-Banner-UserGroup.png",
+      "groupImageUrlWeb": "https://raw.githubusercontent.com/SSWConsulting/SSW.MegaMenu/main/lib/assets/images/Menu-Banner-UserGroup.png",
       "children": []
     },
     {
       "text": "Rules",
-      "groupImageUrl": "https://raw.githubusercontent.com/SSWConsulting/SSW.MegaMenu/main/lib/assets/images/Menu-Banner-Standards.png",
+      "groupImageUrlWeb": "https://raw.githubusercontent.com/SSWConsulting/SSW.MegaMenu/main/lib/assets/images/Menu-Banner-Standards.png",
       "children": []
     },
     {
       "text": "About Us",
-      "groupImageUrl": "https://raw.githubusercontent.com/SSWConsulting/SSW.MegaMenu/main/lib/assets/images/Menu-Banner-AboutUs.png",
+      "groupImageUrlWeb": "https://raw.githubusercontent.com/SSWConsulting/SSW.MegaMenu/main/lib/assets/images/Menu-Banner-AboutUs.png",
       "children": []
     },
     {

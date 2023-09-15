@@ -67,7 +67,7 @@ const parseMenuData = (menuData) => {
     menuItems: menuData.menuItems.map((menuItem) => {
       return {
         ...menuItem,
-        src: menuItem.groupImageUrl,
+        src: menuItem.groupImageUrlWeb,
       };
     }),
   }
