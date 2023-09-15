@@ -1,21 +1,21 @@
 var pe = Object.defineProperty, ge = Object.defineProperties;
 var ve = Object.getOwnPropertyDescriptors;
 var ne = Object.getOwnPropertySymbols;
-var _e = Object.prototype.hasOwnProperty, he = Object.prototype.propertyIsEnumerable;
+var _e = Object.prototype.hasOwnProperty, be = Object.prototype.propertyIsEnumerable;
 var te = (e, n, r) => n in e ? pe(e, n, { enumerable: !0, configurable: !0, writable: !0, value: r }) : e[n] = r, x = (e, n) => {
   for (var r in n || (n = {}))
     _e.call(n, r) && te(e, r, n[r]);
   if (ne)
     for (var r of ne(n))
-      he.call(n, r) && te(e, r, n[r]);
+      be.call(n, r) && te(e, r, n[r]);
   return e;
 }, F = (e, n) => ge(e, ve(n));
-import t, { useEffect as be } from "react";
+import t, { useEffect as he } from "react";
 import f from "classnames";
 import { FontAwesomeIcon as K } from "@fortawesome/react-fontawesome";
 import { faAngleDown as se, faBars as Me } from "@fortawesome/free-solid-svg-icons";
 import Ee from "react-dom";
-const we = "_MegaMenu_nc8do_17", Se = "_menuContent_nc8do_35", Ne = "_menuMobile_nc8do_40", Ce = "_visibleXs_nc8do_45", ye = "_visibleSm_nc8do_46", Oe = "_sbToggleLeft_nc8do_59", ke = "_menuSearch_nc8do_80", je = "_searchBox_nc8do_88", k = {
+const we = "_MegaMenu_nc8do_17", Se = "_menuContent_nc8do_35", Ne = "_menuMobile_nc8do_40", Ce = "_visibleXs_nc8do_45", ye = "_visibleSm_nc8do_46", Oe = "_sbToggleLeft_nc8do_59", ke = "_menuSearch_nc8do_80", We = "_searchBox_nc8do_88", k = {
   MegaMenu: we,
   menuContent: Se,
   menuMobile: Ne,
@@ -23,17 +23,17 @@ const we = "_MegaMenu_nc8do_17", Se = "_menuContent_nc8do_35", Ne = "_menuMobile
   visibleSm: ye,
   sbToggleLeft: Oe,
   menuSearch: ke,
-  searchBox: je
-}, Pe = "_menuDrop_1gqj6_1", Ie = "_Menu_1gqj6_46", Ue = "_hiddenXs_1gqj6_60", Le = "_hiddenSm_1gqj6_65", Te = "_ignore_1gqj6_69", j = {
-  menuDrop: Pe,
+  searchBox: We
+}, je = "_menuDrop_1gqj6_1", Pe = "_Menu_1gqj6_46", Ie = "_hiddenXs_1gqj6_60", Ue = "_hiddenSm_1gqj6_65", Le = "_ignore_1gqj6_69", W = {
+  menuDrop: je,
   "inline-block": "_inline-block_1gqj6_28",
-  Menu: Ie,
-  hiddenXs: Ue,
-  hiddenSm: Le,
-  ignore: Te,
+  Menu: Pe,
+  hiddenXs: Ie,
+  hiddenSm: Ue,
+  ignore: Le,
   "cursor-pointer": "_cursor-pointer_1gqj6_73"
-}, We = "_MenuImg_1chf9_1", De = {
-  MenuImg: We
+}, Te = "_MenuImg_1chf9_1", De = {
+  MenuImg: Te
 }, Be = "_Popular_p6zl5_1", xe = "_ignore_p6zl5_6", Re = "_ClickableMenuItem_p6zl5_11", $e = "_NonClickableMenuItem_p6zl5_16", qe = "_level1_p6zl5_22", ze = "_level2_p6zl5_49", Xe = "_map_p6zl5_74", He = "_featVideo_p6zl5_79", g = {
   Popular: Be,
   ignore: xe,
@@ -102,11 +102,11 @@ const we = "_MegaMenu_nc8do_17", Se = "_menuContent_nc8do_35", Ne = "_menuMobile
     alt: e.text,
     loading: "eager"
   }
-)), /* @__PURE__ */ t.createElement(Ye, { items: e.children })), Qe = (e) => /* @__PURE__ */ t.createElement("div", { className: f(j.menuDrop, j.hiddenXs, j.hiddenSm) }, /* @__PURE__ */ t.createElement("ul", null, e.menuModel && e.menuModel.menuItems.map((n, r) => /* @__PURE__ */ t.createElement("li", { key: r }, !n.children && /* @__PURE__ */ t.createElement(
+)), /* @__PURE__ */ t.createElement(Ye, { items: e.children })), Qe = (e) => /* @__PURE__ */ t.createElement("div", { className: f(W.menuDrop, W.hiddenXs, W.hiddenSm) }, /* @__PURE__ */ t.createElement("ul", null, e.menuModel && e.menuModel.menuItems.map((n, r) => /* @__PURE__ */ t.createElement("li", { key: r }, !n.children && /* @__PURE__ */ t.createElement(
   "a",
   {
     href: n.navigateUrl ? n.navigateUrl : null,
-    className: f(j.ignore, "unstyled")
+    className: f(W.ignore, "unstyled")
   },
   n.text
 ), " ", n.children && /* @__PURE__ */ t.createElement(t.Fragment, null, /* @__PURE__ */ t.createElement(
@@ -114,44 +114,44 @@ const we = "_MegaMenu_nc8do_17", Se = "_menuContent_nc8do_35", Ne = "_menuMobile
   {
     role: "presentation",
     className: f(
-      j.ignore,
-      j["cursor-pointer"],
-      j["inline-block"],
+      W.ignore,
+      W["cursor-pointer"],
+      W["inline-block"],
       "unstyled"
     )
   },
   n.text,
   " ",
   /* @__PURE__ */ t.createElement(K, { icon: se })
-), /* @__PURE__ */ t.createElement("div", { className: j.Menu }, /* @__PURE__ */ t.createElement(Je, { item: n, prefix: e.prefix }))))))), Ze = [
+), /* @__PURE__ */ t.createElement("div", { className: W.Menu }, /* @__PURE__ */ t.createElement(Je, { item: n, prefix: e.prefix }))))))), Ze = [
   {
     text: "Services",
-    groupImageUrl: "https://raw.githubusercontent.com/SSWConsulting/SSW.MegaMenu/main/lib/assets/images/Menu-Banner-Services.png",
+    groupImageUrlWeb: "https://raw.githubusercontent.com/SSWConsulting/SSW.MegaMenu/main/lib/assets/images/Menu-Banner-Services.png",
     children: []
   },
   {
     text: "Products",
-    groupImageUrl: "https://raw.githubusercontent.com/SSWConsulting/SSW.MegaMenu/main/lib/assets/images/Menu-Banner-Products.png",
+    groupImageUrlWeb: "https://raw.githubusercontent.com/SSWConsulting/SSW.MegaMenu/main/lib/assets/images/Menu-Banner-Products.png",
     children: []
   },
   {
     text: "Training",
-    groupImageUrl: "https://raw.githubusercontent.com/SSWConsulting/SSW.MegaMenu/main/lib/assets/images/Menu-Banner-Training.png",
+    groupImageUrlWeb: "https://raw.githubusercontent.com/SSWConsulting/SSW.MegaMenu/main/lib/assets/images/Menu-Banner-Training.png",
     children: []
   },
   {
     text: "User Group",
-    groupImageUrl: "https://raw.githubusercontent.com/SSWConsulting/SSW.MegaMenu/main/lib/assets/images/Menu-Banner-UserGroup.png",
+    groupImageUrlWeb: "https://raw.githubusercontent.com/SSWConsulting/SSW.MegaMenu/main/lib/assets/images/Menu-Banner-UserGroup.png",
     children: []
   },
   {
     text: "Rules",
-    groupImageUrl: "https://raw.githubusercontent.com/SSWConsulting/SSW.MegaMenu/main/lib/assets/images/Menu-Banner-Standards.png",
+    groupImageUrlWeb: "https://raw.githubusercontent.com/SSWConsulting/SSW.MegaMenu/main/lib/assets/images/Menu-Banner-Standards.png",
     children: []
   },
   {
     text: "About Us",
-    groupImageUrl: "https://raw.githubusercontent.com/SSWConsulting/SSW.MegaMenu/main/lib/assets/images/Menu-Banner-AboutUs.png",
+    groupImageUrlWeb: "https://raw.githubusercontent.com/SSWConsulting/SSW.MegaMenu/main/lib/assets/images/Menu-Banner-AboutUs.png",
     children: []
   },
   {
@@ -210,7 +210,7 @@ class tn extends t.Component {
 }
 const ae = (e) => e ? F(x({}, e), {
   menuItems: e.menuItems.map((n) => F(x({}, n), {
-    src: n.groupImageUrl
+    src: n.groupImageUrlWeb
   }))
 }) : {};
 class rn extends t.Component {
@@ -251,7 +251,7 @@ const an = "_sbSlidebar_13nfl_1", on = "_sbLeft_13nfl_26", ln = "_menuDrop_13nfl
   navbarNav: vn
 }, _n = (e) => {
   const [n, r] = t.useState(null);
-  return be(() => {
+  return he(() => {
     n || fetch("https://SSWConsulting.github.io/SSW.Website.Menu.json/menu.json").then((s) => s.json()).then((s) => {
       r(s);
     }).catch((s) => {
@@ -263,7 +263,7 @@ const an = "_sbSlidebar_13nfl_1", on = "_sbLeft_13nfl_26", ln = "_menuDrop_13nfl
       ref: e.innerRef,
       className: f(u.sbSlidebar, u.sbLeft, e.className),
       style: { left: e.isMenuOpened ? "0" : "-84vw" },
-      onClick: (s) => hn(s)
+      onClick: (s) => bn(s)
     },
     /* @__PURE__ */ t.createElement("div", { className: f(u.menuDrop, u.navbarCollapse) }, /* @__PURE__ */ t.createElement("ul", { className: u.navbarNav }, n && n.menuItems.map(
       (s, o) => /* @__PURE__ */ t.createElement(ce, { item: s, key: o })
@@ -287,21 +287,21 @@ const an = "_sbSlidebar_13nfl_1", on = "_sbLeft_13nfl_26", ln = "_menuDrop_13nfl
   e.className = u.dropdown;
 }, le = (e) => {
   V(e), e.className = f(u.dropdown, u.open);
-}, hn = (e) => {
+}, bn = (e) => {
   e.target.parentNode.className === u.dropdown ? (V(e.target.parentNode), le(e.target.parentNode)) : e.target.parentNode.parentNode.className === u.dropdown ? (V(e.target.parentNode), le(e.target.parentNode.parentNode)) : e.target.parentNode.className === f(u.dropdown, u.open) ? oe(e.target.parentNode) : e.target.parentNode.parentNode.className === f(u.dropdown, u.open) && oe(e.target.parentNode.parentNode);
-}, bn = t.forwardRef((e, n) => /* @__PURE__ */ t.createElement(_n, x({ innerRef: n }, e)));
-var P = typeof globalThis != "undefined" ? globalThis : typeof window != "undefined" ? window : typeof global != "undefined" ? global : typeof self != "undefined" ? self : {};
+}, hn = t.forwardRef((e, n) => /* @__PURE__ */ t.createElement(_n, x({ innerRef: n }, e)));
+var j = typeof globalThis != "undefined" ? globalThis : typeof window != "undefined" ? window : typeof global != "undefined" ? global : typeof self != "undefined" ? self : {};
 function Mn(e) {
   return e && e.__esModule && Object.prototype.hasOwnProperty.call(e, "default") ? e.default : e;
 }
 var ue = {}, ie = {};
 (function(e) {
-  var n = P && P.__assign || function() {
+  var n = j && j.__assign || function() {
     return n = Object.assign || function(v) {
-      for (var h, C = 1, I = arguments.length; C < I; C++) {
-        h = arguments[C];
-        for (var T in h)
-          Object.prototype.hasOwnProperty.call(h, T) && (v[T] = h[T]);
+      for (var b, C = 1, P = arguments.length; C < P; C++) {
+        b = arguments[C];
+        for (var L in b)
+          Object.prototype.hasOwnProperty.call(b, L) && (v[L] = b[L]);
       }
       return v;
     }, n.apply(this, arguments);
@@ -320,26 +320,26 @@ var ue = {}, ie = {};
     canUseEventListeners: a === s && !!window.addEventListener,
     canUseViewport: a === s && !!window.screen
   }, _ = function() {
-    for (var v = [], h = 0; h < arguments.length; h++)
-      v[h] = arguments[h];
-    return v.reduce(function(C, I) {
-      return n(n({}, C), I);
+    for (var v = [], b = 0; b < arguments.length; b++)
+      v[b] = arguments[b];
+    return v.reduce(function(C, P) {
+      return n(n({}, C), P);
     }, {});
   }, d = function(v) {
-    return Object.keys(v).map(function(h) {
-      return v[h];
+    return Object.keys(v).map(function(b) {
+      return v[b];
     });
   }, p = function() {
     return _((d(i), i));
-  }, L = p();
+  }, U = p();
   e.weAreServer = function() {
-    i.isServer = !0, L = p();
+    i.isServer = !0, U = p();
   }, e.useSSR = function() {
-    return L;
+    return U;
   }, e.default = e.useSSR;
 })(ie);
 (function(e) {
-  var n = P && P.__assign || function() {
+  var n = j && j.__assign || function() {
     return n = Object.assign || function(a) {
       for (var i, _ = 1, d = arguments.length; _ < d; _++) {
         i = arguments[_];
@@ -348,7 +348,7 @@ var ue = {}, ie = {};
       }
       return a;
     }, n.apply(this, arguments);
-  }, r = P && P.__rest || function(a, i) {
+  }, r = j && j.__rest || function(a, i) {
     var _ = {};
     for (var d in a)
       Object.prototype.hasOwnProperty.call(a, d) && i.indexOf(d) < 0 && (_[d] = a[d]);
@@ -356,7 +356,7 @@ var ue = {}, ie = {};
       for (var p = 0, d = Object.getOwnPropertySymbols(a); p < d.length; p++)
         i.indexOf(d[p]) < 0 && Object.prototype.propertyIsEnumerable.call(a, d[p]) && (_[d[p]] = a[d[p]]);
     return _;
-  }, s = P && P.__importDefault || function(a) {
+  }, s = j && j.__importDefault || function(a) {
     return a && a.__esModule ? a : { default: a };
   };
   Object.defineProperty(e, "__esModule", { value: !0 });
@@ -364,25 +364,25 @@ var ue = {}, ie = {};
   e.errorMessage1 = "You must either add a `ref` to the element you are interacting with or pass an `event` to openPortal(e) or togglePortal(e).";
   function N(a) {
     a === void 0 && (a = {});
-    var i = a.closeOnOutsideClick, _ = i === void 0 ? !0 : i, d = a.closeOnEsc, p = d === void 0 ? !0 : d, L = a.bindTo, v = a.isOpen, h = v === void 0 ? !1 : v, C = a.onOpen, I = a.onClose, T = a.onPortalClick, R = r(a, ["closeOnOutsideClick", "closeOnEsc", "bindTo", "isOpen", "onOpen", "onClose", "onPortalClick"]), G = y.default(), M = G.isServer, X = G.isBrowser, Y = o.useState(h), de = Y[0], me = Y[1], U = o.useRef(de), W = o.useCallback(function(l) {
-      U.current = l, me(l);
+    var i = a.closeOnOutsideClick, _ = i === void 0 ? !0 : i, d = a.closeOnEsc, p = d === void 0 ? !0 : d, U = a.bindTo, v = a.isOpen, b = v === void 0 ? !1 : v, C = a.onOpen, P = a.onClose, L = a.onPortalClick, R = r(a, ["closeOnOutsideClick", "closeOnEsc", "bindTo", "isOpen", "onOpen", "onClose", "onPortalClick"]), G = y.default(), M = G.isServer, X = G.isBrowser, Y = o.useState(b), de = Y[0], me = Y[1], I = o.useRef(de), T = o.useCallback(function(l) {
+      I.current = l, me(l);
     }, []), w = o.useRef(), m = o.useRef(X ? document.createElement("div") : null);
     o.useEffect(function() {
       X && !m.current && (m.current = document.createElement("div"));
     }, [X, m]);
     var $ = o.useMemo(function() {
       if (!M)
-        return L && E.findDOMNode(L) || document.body;
-    }, [M, L]), D = function(l) {
+        return U && E.findDOMNode(U) || document.body;
+    }, [M, U]), D = function(l) {
       if (!l)
         return { portal: m, targetEl: w, event: l };
       var c = l || {};
       c.persist && c.persist(), c.portal = m, c.targetEl = w, c.event = l;
-      var b = l.currentTarget;
-      return !w.current && b && b !== document && (w.current = c.currentTarget), c;
+      var h = l.currentTarget;
+      return !w.current && h && h !== document && (w.current = c.currentTarget), c;
     }, J = Object.entries(R).reduce(function(l, c) {
-      var b = c[0], S = c[1];
-      return l[b] = function(B) {
+      var h = c[0], S = c[1];
+      return l[h] = function(B) {
         M || S(D(B));
       }, l;
     }, {}), q = o.useCallback(function(l) {
@@ -390,28 +390,28 @@ var ue = {}, ie = {};
         var c = D(l);
         if (w.current == null)
           throw setTimeout(function() {
-            return W(!0);
+            return T(!0);
           }, 0), Error(e.errorMessage1);
-        C && C(c), W(!0);
+        C && C(c), T(!0);
       }
-    }, [M, m, W, w, C]), O = o.useCallback(function(l) {
+    }, [M, m, T, w, C]), O = o.useCallback(function(l) {
       if (!M) {
         var c = D(l);
-        I && U.current && I(c), U.current && W(!1);
+        P && I.current && P(c), I.current && T(!1);
       }
-    }, [M, I, W]), Q = o.useCallback(function(l) {
-      return U.current ? O(l) : q(l);
+    }, [M, P, T]), Q = o.useCallback(function(l) {
+      return I.current ? O(l) : q(l);
     }, [O, q]), H = o.useCallback(function(l) {
       return l.key === "Escape" && p ? O(l) : void 0;
     }, [p, O]), A = o.useCallback(function(l) {
-      var c = function(b) {
-        return b.current.contains(l.target);
+      var c = function(h) {
+        return h.current.contains(l.target);
       };
-      c(m) || l.button !== 0 || !U.current || c(w) || _ && O(l);
+      c(m) || l.button !== 0 || !I.current || c(w) || _ && O(l);
     }, [M, O, _, m]), Z = o.useCallback(function(l) {
       if (!(M || !(m.current instanceof HTMLElement))) {
         var c = D(l);
-        m.current.contains(c.target) && T && T(c), A(l);
+        m.current.contains(c.target) && L && L(c), A(l);
       }
     }, [A]), z = o.useRef({});
     o.useEffect(function() {
@@ -420,14 +420,14 @@ var ue = {}, ie = {};
           onScroll: "scroll",
           onWheel: "wheel"
         }, c = m.current;
-        return $.appendChild(m.current), Object.entries(l).forEach(function(b) {
-          var S = b[0], B = b[1];
+        return $.appendChild(m.current), Object.entries(l).forEach(function(h) {
+          var S = h[0], B = h[1];
           R[S] && (z.current[S] = function(fe) {
             return R[S](D(fe));
           }, document.addEventListener(B, z.current[S]));
         }), document.addEventListener("keydown", H), document.addEventListener("mousedown", Z), function() {
-          Object.entries(l).forEach(function(b) {
-            var S = b[0], B = b[1];
+          Object.entries(l).forEach(function(h) {
+            var S = h[0], B = h[1];
             R[S] && (document.removeEventListener(B, z.current[S]), delete z.current[S]);
           }), document.removeEventListener("keydown", H), document.removeEventListener("mousedown", Z), $.removeChild(c);
         };
@@ -437,8 +437,8 @@ var ue = {}, ie = {};
       var c = l.children;
       return m.current != null ? E.createPortal(c, m.current) : null;
     }, [m]);
-    return Object.assign([q, O, U.current, ee, Q, w, m], n(n({
-      isOpen: U.current,
+    return Object.assign([q, O, I.current, ee, Q, w, m], n(n({
+      isOpen: I.current,
       openPortal: q,
       ref: w,
       closePortal: O,
@@ -454,10 +454,10 @@ const En = /* @__PURE__ */ Mn(ue), kn = (e) => {
     closeOnOutsideClick: !0,
     closeOnEsc: !0
   });
-  return /* @__PURE__ */ t.createElement("div", { className: e.className, style: e.style }, /* @__PURE__ */ t.createElement(rn, { onClickToggle: (o) => r(o) }), s && /* @__PURE__ */ t.createElement(n, null, /* @__PURE__ */ t.createElement(bn, { isMenuOpened: s })));
+  return /* @__PURE__ */ t.createElement("div", { className: e.className, style: e.style }, /* @__PURE__ */ t.createElement(rn, { onClickToggle: (o) => r(o) }), s && /* @__PURE__ */ t.createElement(n, null, /* @__PURE__ */ t.createElement(hn, { isMenuOpened: s })));
 };
 export {
   rn as Menu,
   kn as MenuBar,
-  bn as MobileMenu
+  hn as MobileMenu
 };
