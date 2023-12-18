@@ -1,11 +1,11 @@
 import { Bars3Icon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import React, { useState } from "react";
-import { NavMenuGroup } from "../../../types/megamenu";
+import { NavMenuGroup } from "../../types/megamenu";
 import { SocialIcons, SocialTypes } from "../../util/socialIcons";
-import DesktopMenu from "../DesktopMenu/desktop-menu";
+import DesktopMenu from "../DesktopMenu/DesktopMenu";
 import Logo from "../Logo/logo";
-import MobileMenu from "../MobileMenu/mobile-menu";
+import MobileMenu from "../MobileMenu/MobileMenu";
 import Search from "../search";
 
 export interface MegaMenuWrapperProps extends React.PropsWithChildren {
@@ -20,7 +20,6 @@ const MegaMenuLayout: React.FC<MegaMenuWrapperProps> = ({
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
   return (
     <>
-      {/* eslint-disable-next-line tailwindcss/no-arbitrary-value */}
       <div className="relative z-10 flex h-16 w-full items-center justify-center lg:h-[120px]">
         <nav
           className="flex h-full w-full items-center justify-between gap-x-4 overflow-hidden px-0"

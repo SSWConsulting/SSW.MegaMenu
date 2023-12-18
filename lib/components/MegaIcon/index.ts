@@ -1,4 +1,4 @@
-import MegaIcon, { MegaIconProps } from "./mega-icon";
+import MegaIcon, { MegaIconProps } from "./MegaIcon";
 
 export { MegaIcon };
 export type { MegaIconProps };

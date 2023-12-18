@@ -2,9 +2,9 @@
 import { Popover, Transition } from "@headlessui/react";
 import React, { Fragment } from "react";
 import { twMerge } from "tailwind-merge";
-import { NavMenuColumn, Sidebar, ViewAll } from "../../../types/megamenu";
+import { NavMenuColumn, Sidebar, ViewAll } from "../../types/megamenu";
 import { MegaIcon } from "../MegaIcon";
-import SubMenuGroup from "../SubMenuGroup/sub-menu-group";
+import SubMenuGroup from "../SubMenuGroup/SubMenuGroup";
 
 interface MenuItemWithSubmenuProps {
   name: string;
@@ -45,7 +45,6 @@ export const MenuItemWithSubmenu: React.FC<MenuItemWithSubmenuProps> = ({
         leaveFrom="opacity-100 translate-y-0"
         leaveTo="opacity-0 -translate-y-1"
       >
-        {/* eslint-disable-next-line tailwindcss/no-arbitrary-value */}
         <Popover.Panel className="absolute inset-x-0 top-[120px] -z-10 bg-white shadow-md shadow-gray-400">
           <SubMenuGroup
             menuColumns={menuColumns}

@@ -1,4 +1,4 @@
-import SubMenuGroup, { SubMenuGroupProps } from "./sub-menu-group";
+import SubMenuGroup, { SubMenuGroupProps } from "./SubMenuGroup";
 
 export { SubMenuGroup };
 

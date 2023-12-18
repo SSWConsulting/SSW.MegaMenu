@@ -9,9 +9,9 @@ import {
   Sidebar,
   ViewAll,
 } from "../../../types/megamenu";
-import MegaIcon from "../MegaIcon/mega-icon";
-import { ClosePopoverContext } from "./../DesktopMenu/desktop-menu";
-import SubMenuWidget from "./sub-menu-widget";
+import MegaIcon from "../MegaIcon/MegaIcon";
+import { ClosePopoverContext } from "../DesktopMenu/DesktopMenu";
+import SubMenuWidget from "./SubMenuWidget";
 
 export interface SubMenuGroupProps {
   menuColumns: NavMenuColumn[];

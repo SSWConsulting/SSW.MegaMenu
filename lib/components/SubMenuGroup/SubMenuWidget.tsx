@@ -1,9 +1,9 @@
 "use client";
 import React from "react";
-import { AvailableIcons, SidebarItem } from "../../../types/megamenu";
-import { CustomLink } from "../../customLink";
+import { AvailableIcons, SidebarItem } from "../../types/megamenu";
+import { CustomLink } from "../CustomLink";
 import { MegaIcon } from "../MegaIcon";
-import FeaturedCard from "./featured-card";
+import FeaturedCard from "./FeaturedCard";
 
 interface SubMenuWidgetProps {
   item: SidebarItem;

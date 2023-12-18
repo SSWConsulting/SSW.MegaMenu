@@ -1,12 +1,12 @@
 import { Popover } from "@headlessui/react";
 import React, { createContext } from "react";
-import { NavMenuGroup } from "../../../types/megamenu";
+import { NavMenuGroup } from "../../types/megamenu";
 import { SocialIcons, SocialTypes } from "../../util/socialIcons";
 import { CountryDropdown } from "../CountryDropdown";
 import Divider from "../divider";
 import Search from "../search";
-import { MenuItemLink } from "./menu-item-link";
-import { MenuItemWithSubmenu } from "./menu-item-with-submenu";
+import { MenuItemLink } from "./MenuItemLink";
+import { MenuItemWithSubmenu } from "./MenuItemWithSubmenu";
 
 export interface DesktopMenuProps {
   menuGroups: NavMenuGroup[];

@@ -1,3 +1,3 @@
-import CountryDropdown from "./country-dropdown";
+import CountryDropdown from "./CountryDropdown";
 
 export { CountryDropdown };

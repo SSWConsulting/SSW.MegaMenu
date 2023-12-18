@@ -1,4 +1,4 @@
-import MobileMenu, { MobileMenuProps } from "./mobile-menu";
+import MobileMenu, { MobileMenuProps } from "./MobileMenu";
 
 export { MobileMenu };
 

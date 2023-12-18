@@ -4,7 +4,7 @@ import React from "react";
 import { NavMenuGroup } from "../../../types/megamenu";
 import { CustomLink } from "../../customLink";
 import { MegaIcon } from "../MegaIcon";
-import SubMenuGroup from "../SubMenuGroup/sub-menu-group";
+import SubMenuGroup from "../SubMenuGroup/SubMenuGroup";
 
 export interface MobileMenuProps {
   isMobileMenuOpen: boolean;

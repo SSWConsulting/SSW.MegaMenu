@@ -1,4 +1,4 @@
-import DesktopMenu, { DesktopMenuProps } from "./desktop-menu";
+import DesktopMenu, { DesktopMenuProps } from "./DesktopMenu";
 
 export { DesktopMenu };
 

@@ -1,10 +1,11 @@
 "use client";
 import { Popover, Transition } from "@headlessui/react";
-import React, { Fragment, useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { twMerge } from "tailwind-merge";
-import { Flag } from "../../blocks";
-import { CustomLink } from "../../customLink";
+import { Flag } from "../Flag";
+import { CustomLink } from "../CustomLink";
 import { Countries } from "../../types/country";
+import { useLocation } from "react-use";
 
 const websites: { country: Countries; url: string }[] = [
   {
@@ -20,15 +21,6 @@ const websites: { country: Countries; url: string }[] = [
     url: "https://www.ssw.fr",
   },
 ] as const;
-
-type CountryFlagProps = {
-  country: Countries;
-  className?: string;
-};
-
-const CountryFlag = (props: CountryFlagProps) => {
-  return <Flag {...props} height={32} width={32} />;
-};
 
 const CountryDropdown = () => {
   const { host } = useLocation();
@@ -52,7 +44,7 @@ const CountryDropdown = () => {
         )}
         onClick={() => setIsOpened(!isOpened)}
       >
-        <CountryFlag country={currentCountry} />
+        <Flag country={currentCountry} />
       </Popover.Button>
 
       <Transition
@@ -70,13 +62,11 @@ const CountryDropdown = () => {
             .map((country) => (
               <CustomLink
                 key={country.country}
-                // eslint-disable-next-line tailwindcss/no-arbitrary-value
                 className="block py-2 hover:bg-gray-100 lg:min-w-[80px]"
                 href={country.url}
                 title={country.country}
               >
-                <CountryFlag
-                  className="inline-block"
+                <Flag
                   country={country.country}
                 />
               </CustomLink>
