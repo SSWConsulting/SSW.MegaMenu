@@ -26,6 +26,6 @@
     "forceConsistentCasingInFileNames": true,
     "declarationMap": true,
   },
-  "include": ["src"],
+  "include": ["src", "lib"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
