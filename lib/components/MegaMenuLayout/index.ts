@@ -1,4 +1,4 @@
-import MegaMenuLayout, { MegaMenuWrapperProps } from "./mega-menu-layout";
+import MegaMenuLayout, { MegaMenuWrapperProps } from "./MegaMenuLayout";
 
 export { MegaMenuLayout };
 

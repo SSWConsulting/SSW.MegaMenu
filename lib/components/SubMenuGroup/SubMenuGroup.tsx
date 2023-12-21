@@ -109,7 +109,9 @@ const LinkItem: React.FC<{ link: NavMenuColumnGroupItem }> = ({
         "unstyled flex items-start gap-x-3 rounded-md bg-white hover:bg-gray-100 focus:outline-none",
         description ? "p-4" : "p-2",
       )}
-      onClick={() => close()}
+      onClick={() => {
+        if (close) close();
+      }}
     >
       {(icon || iconImg) && (
         <div className="text-ssw-red flex shrink-0 items-center justify-center">

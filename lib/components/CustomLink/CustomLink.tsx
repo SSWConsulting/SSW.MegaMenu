@@ -5,6 +5,10 @@ export type CustomLinkProps = {
   className?: string;
 } & React.AnchorHTMLAttributes<HTMLAnchorElement>;
 
-export const CustomLink = ({ href, className }: CustomLinkProps) => {
-  return <a href={href} className={className}></a>
-}
+export const CustomLink = ({ href, className, children }: CustomLinkProps) => {
+  return (
+    <a href={href} className={className}>
+      {children}
+    </a>
+  );
+};

@@ -1,11 +1,11 @@
 import { Bars3Icon } from "@heroicons/react/24/outline";
-import { CustomLink } from "../CustomLink";
 import React, { useState } from "react";
 import { NavMenuGroup } from "../../types/megamenu";
-import { SocialIcons, SocialTypes } from "../../util/socialIcons";
+import { CustomLink } from "../CustomLink";
 import DesktopMenu from "../DesktopMenu/DesktopMenu";
 import Logo from "../Logo/logo";
 import MobileMenu from "../MobileMenu/MobileMenu";
+import { PhoneButton } from "../PhoneButton";
 import Search from "../search";
 
 export interface MegaMenuWrapperProps extends React.PropsWithChildren {
@@ -39,15 +39,7 @@ const MegaMenuLayout: React.FC<MegaMenuWrapperProps> = ({
             </CustomLink>
           </div>
           <div className="flex items-center xl:hidden">
-            <SocialIcons
-              className="max-sm:hidden"
-              excludeMobile={Object.values(SocialTypes).filter(
-                (social) => social !== SocialTypes.phone
-              )}
-              excludeDesktop={Object.values(SocialTypes).filter(
-                (social) => social !== SocialTypes.phone
-              )}
-            />
+            <PhoneButton className="max-sm:hidden" />
             <Search />
             <Divider />
             <button
@@ -68,16 +60,7 @@ const MegaMenuLayout: React.FC<MegaMenuWrapperProps> = ({
           closeMobileMenu={() => setMobileMenuOpen(false)}
         />
       </div>
-
-      <SocialIcons
-        className="pb-4 sm:hidden"
-        excludeMobile={Object.values(SocialTypes).filter(
-          (social) => social !== SocialTypes.phone
-        )}
-        excludeDesktop={Object.values(SocialTypes).filter(
-          (social) => social !== SocialTypes.phone
-        )}
-      />
+      <PhoneButton className="pb-4 sm:hidden" />
     </>
   );
 };
