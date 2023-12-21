@@ -21,7 +21,17 @@ export default defineConfig({
     },
     rollupOptions: {
       plugins: [svgr()],
-      external: ["react", "react-dom", "@headlessui/react", "@heroicons/react"],
+      external: [
+        "react",
+        "react-dom",
+        "@headlessui/react",
+        "@heroicons/react",
+        "clsx",
+        "react-device-detect",
+        "react-hotkeys-hook",
+        "react-use",
+        "tailwind-merge",
+      ],
       output: {
         globals: {
           react: "React",

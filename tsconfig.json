@@ -28,6 +28,6 @@
     "allowSyntheticDefaultImports": true,
     "declarationMap": true,
   },
-  "include": ["lib"],
+  "include": ["src, lib"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
