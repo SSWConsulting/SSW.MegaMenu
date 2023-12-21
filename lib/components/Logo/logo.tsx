@@ -8,8 +8,8 @@ const Logo: React.FC = () => {
   const date = new Date();
   const isXmas = date.getMonth() === 11 && date.getDate() <= 25;
   const logoPath = isXmas
-    ? "/images/ssw-logo-xmas.svg"
-    : "/images/ssw-logo.svg";
+    ? "https://ssw.com.au/images/ssw-logo-xmas.svg"
+    : "https://ssw.com.au/images/ssw-logo.svg";
 
   return (
     <>

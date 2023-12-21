@@ -28,6 +28,7 @@
     "sourceMap": true,
     "allowSyntheticDefaultImports": true,
     "declarationMap": true,
+    "types": ["vite/client"]
   },
   "include": ["lib"],
   "references": [{ "path": "./tsconfig.node.json" }]

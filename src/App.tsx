@@ -1,6 +1,6 @@
 // import { MegaMenuLayout } from "../lib/components";
-import { useEffect, useState } from "react";
-// import { MegaMenuLayout } from "../dist/ssw-megamenu";
+import React, { useEffect, useState } from "react";
+import { MegaMenuLayout } from "../lib/components";
 import { NavMenuColumnGroup } from "../lib/types/megamenu";
 
 function App() {
@@ -24,7 +24,7 @@ function App() {
       <header className="App-header">Test MegaMenu</header>
       {data && (
         <div className="mx-auto max-w-7xl px-8">
-          {/* <MegaMenuLayout menuBarItems={data.menuGroups} /> */}
+          <MegaMenuLayout menuBarItems={data.menuGroups} />
         </div>
       )}
       <pre>

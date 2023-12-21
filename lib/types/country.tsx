@@ -1,15 +1,15 @@
-import { AustraliaFlag } from "../components/Flag/flags/AustraliaFlag";
-import { ChinaFlag } from "../components/Flag/flags/ChinaFlag";
-import { FranceFlag } from "../components/Flag/flags/FranceFlag";
+import australiaFlag from "../components/Flag/flags/australia-flag.svg";
+import chinaFlag from "../components/Flag/flags/china-flag.svg";
+import franceFlag from "../components/Flag/flags/france-flag.svg";
 
 export type FlagProps = {
   className?: string;
 };
 
 export const countryMap = {
-  Australia: AustraliaFlag,
-  China: ChinaFlag,
-  France: FranceFlag,
+  Australia: australiaFlag,
+  China: chinaFlag,
+  France: franceFlag,
 };
 
 export type Countries = keyof typeof countryMap;
