@@ -1,4 +1,4 @@
-import { iconMap } from "../components/megamenu/MegaIcon/mega-icon";
+import type { AvailableIcons } from "../components/MegaIcon";
 
 export const availableWidgets = [
   "standardLink",
@@ -6,7 +6,6 @@ export const availableWidgets = [
   "bookNow",
 ] as const;
 
-export type AvailableIcons = keyof typeof iconMap;
 export type AvailableWidgets = (typeof availableWidgets)[number];
 
 export interface NavMenuGroup {

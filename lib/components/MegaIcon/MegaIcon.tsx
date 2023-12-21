@@ -13,27 +13,44 @@ import {
   SquaresPlusIcon,
   XMarkIcon,
 } from "@heroicons/react/24/outline";
-import Image from "next/image";
 import React from "react";
-import { AvailableIcons } from "../../../types/megamenu";
-import { Flag } from "../../blocks";
+import { CustomImage } from "../CustomImage";
+import { Flag } from "../Flag";
 
-export const iconMap = {
-  chevronDown: (props) => <ChevronDownIcon className={props.className} />,
-  chevronLeft: (props) => <ChevronLeftIcon className={props.className} />,
-  magnifyingGlass: (props) => (
+type IconProps = {
+  className?: string;
+};
+
+export type AvailableIcons = keyof typeof iconMap;
+
+const iconMap = {
+  chevronDown: (props: IconProps) => (
+    <ChevronDownIcon className={props.className} />
+  ),
+  chevronLeft: (props: IconProps) => (
+    <ChevronLeftIcon className={props.className} />
+  ),
+  magnifyingGlass: (props: IconProps) => (
     <MagnifyingGlassIcon className={props.className} />
   ),
-  phone: (props) => <PhoneIcon className={props.className} />,
-  xMark: (props) => <XMarkIcon className={props.className} />,
-  chartPie: (props) => <ChartPieIcon className={props.className} />,
-  cursorArrowRays: (props) => (
+  phone: (props: IconProps) => <PhoneIcon className={props.className} />,
+  xMark: (props: IconProps) => <XMarkIcon className={props.className} />,
+  chartPie: (props: IconProps) => <ChartPieIcon className={props.className} />,
+  cursorArrowRays: (props: IconProps) => (
     <CursorArrowRaysIcon className={props.className} />
   ),
-  fingerPrint: (props) => <FingerPrintIcon className={props.className} />,
-  squaresPlus: (props) => <SquaresPlusIcon className={props.className} />,
-  playCircle: (props) => <PlayCircleIcon className={props.className} />,
-  rectangleGroup: (props) => <RectangleGroupIcon className={props.className} />,
+  fingerPrint: (props: IconProps) => (
+    <FingerPrintIcon className={props.className} />
+  ),
+  squaresPlus: (props: IconProps) => (
+    <SquaresPlusIcon className={props.className} />
+  ),
+  playCircle: (props: IconProps) => (
+    <PlayCircleIcon className={props.className} />
+  ),
+  rectangleGroup: (props: IconProps) => (
+    <RectangleGroupIcon className={props.className} />
+  ),
   chinaFlag: () => <Flag country="China" className="mr-2" />,
 };
 
@@ -50,7 +67,7 @@ const MegaIconMapper = ({
     return <></>;
   }
 
-  return <Icon icon={icon} className={className} />;
+  return <Icon className={className} />;
 };
 
 export interface MegaIconProps {
@@ -60,13 +77,17 @@ export interface MegaIconProps {
   className?: string;
 }
 
-const MegaIcon: React.FC<MegaIconProps> = ({ icon, iconImg, className }) => {
+export const MegaIcon: React.FC<MegaIconProps> = ({
+  icon,
+  iconImg,
+  className,
+}) => {
   //if icon is an SVGElement, just return it with props spread into it
   // if (icon instanceof SVGElement) {
   //   return <span {...props}>{icon}</span>;
   // }
 
-  if (!iconImg) {
+  if (!iconImg && icon) {
     return (
       <>
         <span className="sr-only">{icon}</span>
@@ -77,7 +98,7 @@ const MegaIcon: React.FC<MegaIconProps> = ({ icon, iconImg, className }) => {
 
   return (
     <div>
-      <Image
+      <CustomImage
         className="h-5 w-5"
         src={iconImg}
         alt={iconImg}

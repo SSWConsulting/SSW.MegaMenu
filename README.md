@@ -20,7 +20,7 @@ import { Menu, MobileMenu, MenuBar } from 'ssw.megamenu';
 
 ### Usage
 
-The Megame Menu is split in 3 components to give more freedom on how the mobile menu interact with the website.
+The Megame Menu is split in 3 components to give more freedom on how the mobile menu interacts with the website.
 
 The 3 components are:
 
@@ -97,14 +97,14 @@ function App() {
 
 In the project directory, you can run:
 
-### `yarn dev`
+### `pnpm dev`
 
 Runs the app in the development mode.<br />
 Open [http://localhost:5173](http://localhost:5173) to view it in the browser.
 
 The page will reload if you make edits.<br />
 
-### `yarn build`
+### `pnpm build`
 
 Builds the lib for production to the `dist` folder.<br />
 

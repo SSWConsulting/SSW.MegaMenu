@@ -22,10 +22,12 @@ const DesktopMenu: React.FC<DesktopMenuProps> = ({ menuGroups }) => {
       <div className="hidden flex-1 xl:block">
         <Popover.Group className="flex items-center justify-center text-sm font-semibold text-ssw-black outline-none">
           {menuGroups.map((group) => {
-            if (group.menuColumns && group.menuColumns.length > 0) {
+            if (!!group.menuColumns && !!group.sidebarItems && group.menuColumns.length > 0 && group.sidebarItems.length > 0) {
               return (
                 <Popover key={group.name}>
                   {({ open, close }) => {
+                    {/* TODO: Duplicated check needed here to appease Typescript */}
+                    if (!group.menuColumns || !group.sidebarItems) return <></>
                     return (
                       <ClosePopoverContext.Provider value={close}>
                         <MenuItemWithSubmenu

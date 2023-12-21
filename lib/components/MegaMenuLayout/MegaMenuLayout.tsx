@@ -1,5 +1,5 @@
 import { Bars3Icon } from "@heroicons/react/24/outline";
-import Link from "next/link";
+import { CustomLink } from "../CustomLink";
 import React, { useState } from "react";
 import { NavMenuGroup } from "../../types/megamenu";
 import { SocialIcons, SocialTypes } from "../../util/socialIcons";
@@ -26,19 +26,17 @@ const MegaMenuLayout: React.FC<MegaMenuWrapperProps> = ({
           aria-label="Global"
         >
           <div className="flex items-center">
-            <Link
+            <CustomLink
               href="/"
-              passHref
               className="unstyled flex items-center gap-1 whitespace-nowrap"
             >
-              {/* eslint-disable-next-line tailwindcss/no-arbitrary-value */}
               <div className="flex min-w-[4rem] max-w-[14rem] items-center justify-center">
                 <Logo />
                 <div className="w-fit whitespace-break-spaces text-sm font-semibold uppercase leading-4 text-gray-700">
                   <span className="ml-4 hidden xl:block">{tagline}</span>
                 </div>
               </div>
-            </Link>
+            </CustomLink>
           </div>
           <div className="flex items-center xl:hidden">
             <SocialIcons

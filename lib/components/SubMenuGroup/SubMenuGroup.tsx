@@ -2,15 +2,14 @@
 import React, { useContext } from "react";
 import { twMerge } from "tailwind-merge";
 import {
-  AvailableIcons,
   NavMenuColumn,
   NavMenuColumnGroup,
   NavMenuColumnGroupItem,
   Sidebar,
   ViewAll,
-} from "../../../types/megamenu";
-import MegaIcon from "../MegaIcon/MegaIcon";
+} from "../../types/megamenu";
 import { ClosePopoverContext } from "../DesktopMenu/DesktopMenu";
+import { MegaIcon, type AvailableIcons } from "../MegaIcon";
 import SubMenuWidget from "./SubMenuWidget";
 
 export interface SubMenuGroupProps {
@@ -26,7 +25,7 @@ export const SubMenuGroup: React.FC<SubMenuGroupProps> = ({
 }) => {
   return (
     <>
-      <div className="mx-auto flex max-w-9xl flex-col lg:flex-row">
+      <div className="max-w-9xl mx-auto flex flex-col lg:flex-row">
         <div className="grid gap-x-4 p-4 lg:grow lg:grid-flow-col">
           {menuColumns.map((column, i) => (
             <div key={"column" + i} className="flex grow flex-col gap-y-4">
@@ -36,6 +35,7 @@ export const SubMenuGroup: React.FC<SubMenuGroupProps> = ({
                   item={item}
                   viewAll={viewAll}
                   showViewAll={
+                    !!column.menuColumnGroups &&
                     i === menuColumns.length - 1 &&
                     j == column.menuColumnGroups.length - 1
                   }
@@ -45,7 +45,6 @@ export const SubMenuGroup: React.FC<SubMenuGroupProps> = ({
           ))}
         </div>
 
-        {/* eslint-disable-next-line tailwindcss/no-arbitrary-value */}
         <div className="shrink-0 overflow-x-hidden bg-gray-50 lg:relative lg:w-[350px] lg:before:absolute lg:before:inset-0 lg:before:-z-10 lg:before:w-[1000px] lg:before:bg-gray-50">
           <div className="flex flex-col gap-y-2 px-8 py-4">
             {sidebarItems?.map((sideBarItem, i) => (
@@ -72,7 +71,7 @@ const Heading: React.FC<{
   children: React.ReactNode;
 }> = ({ className, children }) => {
   return (
-    <h3 className={twMerge("pb-6 text-lg font-bold text-ssw-black", className)}>
+    <h3 className={twMerge("text-ssw-black pb-6 text-lg font-bold", className)}>
       {children}
     </h3>
   );
@@ -107,13 +106,13 @@ const LinkItem: React.FC<{ link: NavMenuColumnGroupItem }> = ({
     <a
       href={url || ""}
       className={twMerge(
-        "flex items-start gap-x-3 rounded-md bg-white hover:bg-gray-100 focus:outline-none unstyled",
-        description ? "p-4" : "p-2"
+        "unstyled flex items-start gap-x-3 rounded-md bg-white hover:bg-gray-100 focus:outline-none",
+        description ? "p-4" : "p-2",
       )}
       onClick={() => close()}
     >
       {(icon || iconImg) && (
-        <div className="flex shrink-0 items-center justify-center text-ssw-red">
+        <div className="text-ssw-red flex shrink-0 items-center justify-center">
           <MegaIcon
             className="h-6 w-6"
             icon={icon as AvailableIcons}
@@ -126,13 +125,13 @@ const LinkItem: React.FC<{ link: NavMenuColumnGroupItem }> = ({
         <span>
           {name && description ? (
             <>
-              <p className="font-bold text-ssw-black">{name}</p>
-              <p className="mt-1 text-sm font-normal text-ssw-gray">
+              <p className="text-ssw-black font-bold">{name}</p>
+              <p className="text-ssw-gray mt-1 text-sm font-normal">
                 {description}
               </p>
             </>
           ) : (
-            <p className="pl-4 text-sm font-normal text-ssw-black">{name}</p>
+            <p className="text-ssw-black pl-4 text-sm font-normal">{name}</p>
           )}
         </span>
       </div>
@@ -151,7 +150,7 @@ const ViewAllLink: React.FC<{ href?: string; name?: string }> = ({
     <div className="flex grow flex-col-reverse items-end self-end pt-4">
       <a
         href={href}
-        className="unstyled rounded-md px-3 py-1 text-sm font-semibold leading-6 text-ssw-red hover:bg-ssw-red hover:text-white"
+        className="unstyled text-ssw-red hover:bg-ssw-red rounded-md px-3 py-1 text-sm font-semibold leading-6 hover:text-white"
       >
         {name} &rarr;
       </a>
