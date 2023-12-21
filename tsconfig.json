@@ -9,7 +9,6 @@
     /* Bundler mode */
     "moduleResolution": "Node",
     "allowImportingTsExtensions": true,
-    "noEmit": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "react-jsx",
@@ -23,11 +22,13 @@
     /* From v3 */
     "declaration": true,
     "esModuleInterop": true,
+    "emitDeclarationOnly": true,
+    "outDir": "dist",
     "forceConsistentCasingInFileNames": true,
     "sourceMap": true,
     "allowSyntheticDefaultImports": true,
     "declarationMap": true,
   },
-  "include": ["src, lib"],
+  "include": ["lib"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

@@ -29,6 +29,7 @@
     "tailwind-merge": "^2.1.0"
   },
   "devDependencies": {
+    "@rollup/plugin-typescript": "^11.1.5",
     "@svgr/rollup": "^8.1.0",
     "@testing-library/jest-dom": "^6.1.5",
     "@testing-library/react": "^14.1.2",

@@ -16,8 +16,9 @@ export default defineConfig({
     copyPublicDir: false,
     lib: {
       entry: resolve(__dirname, "lib/index.ts"),
-      formats: ["es"],
+      name: "megamenu",
       fileName: "index",
+      formats: ["es", "cjs", "umd"],
     },
     rollupOptions: {
       plugins: [svgr()],
