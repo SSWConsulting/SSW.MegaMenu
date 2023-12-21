@@ -9,7 +9,9 @@ export default {
     extend: {
       colors: {
         ssw: {
-          red: "#cc4141"
+          red: "#cc4141",
+          gray: "#797979",
+          black: "#333333"
         }
       }
     },

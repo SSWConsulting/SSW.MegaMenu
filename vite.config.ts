@@ -1,22 +1,27 @@
 /// <reference types="vitest" />
+/// <reference types="vite-plugin-svgr/client" />
 
+import svgr from "@svgr/rollup";
 import react from "@vitejs/plugin-react-swc";
 import { resolve } from "path";
 import { defineConfig } from "vite";
+import dts from "vite-plugin-dts";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react(), dts()],
   build: {
-    target: "es2020",
+    target: "esnext",
     minify: false,
     copyPublicDir: false,
     lib: {
       entry: resolve(__dirname, "lib/index.ts"),
       formats: ["es"],
+      fileName: "index",
     },
     rollupOptions: {
-      external: ["react", "react-dom"],
+      plugins: [svgr()],
+      external: ["react", "react-dom", "@headlessui/react", "@heroicons/react"],
       output: {
         globals: {
           react: "React",

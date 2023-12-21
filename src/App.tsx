@@ -1,7 +1,6 @@
 // import { MegaMenuLayout } from "../lib/components";
 import { useEffect, useState } from "react";
-import { MegaMenuLayout } from "../dist/ssw-megamenu";
-import { PhoneButton } from "../lib/components/PhoneButton";
+// import { MegaMenuLayout } from "../dist/ssw-megamenu";
 import { NavMenuColumnGroup } from "../lib/types/megamenu";
 
 function App() {
@@ -10,6 +9,7 @@ function App() {
   );
 
   useEffect(() => {
+    console.log("mounted");
     fetch("http://localhost:3000/api/get-megamenu")
       .then((res) => res.json())
       .then((json) => {
@@ -21,16 +21,15 @@ function App() {
 
   return (
     <>
-      <pre>
-        <code>{JSON.stringify(data)}</code>
-      </pre>
       <header className="App-header">Test MegaMenu</header>
       {data && (
-        <div className="max-w-9xl mx-auto">
-          <MegaMenuLayout menuBarItems={data.menuGroups} />
+        <div className="mx-auto max-w-7xl px-8">
+          {/* <MegaMenuLayout menuBarItems={data.menuGroups} /> */}
         </div>
       )}
-      <div>Some content</div>
+      <pre>
+        <code>{JSON.stringify(data, null, 4)}</code>
+      </pre>
     </>
   );
 }
