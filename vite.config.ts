@@ -37,6 +37,13 @@ export default defineConfig({
         globals: {
           react: "React",
           "react-dom": "ReactDOM",
+          "@headlessui/react": "HeadlessUI",
+          "@heroicons/react": "HeroIcons",
+          clsx: "clsx",
+          "react-device-detect": "ReactDeviceDetect",
+          "react-hotkeys-hook": "ReactHotkeysHook",
+          "react-use": "ReactUse",
+          "tailwind-merge": "TailwindMerge",
         },
       },
     },
