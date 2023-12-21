@@ -2,9 +2,9 @@ import { Dialog, Transition } from "@headlessui/react";
 import React, { Fragment, useEffect, useRef, useState } from "react";
 import { useHotkeys } from "react-hotkeys-hook";
 import { useLocation } from "react-use";
-import { MegaIcon } from "./MegaIcon";
+import { MegaIcon } from "../MegaIcon";
 
-const Search: React.FC = () => {
+export const Search: React.FC = () => {
   const searchRef = useRef(null);
   const location = useLocation();
   const [isOpen, setIsOpen] = useState(false);
@@ -17,7 +17,7 @@ const Search: React.FC = () => {
         setIsOpen(true);
       }
     },
-    [isOpen]
+    [isOpen],
   );
 
   useEffect(() => {
@@ -39,7 +39,7 @@ const Search: React.FC = () => {
   return (
     <>
       <button
-        className="rounded p-4 text-ssw-black hover:bg-gray-100"
+        className="text-ssw-black rounded p-4 hover:bg-gray-100"
         onClick={() => setIsOpen(true)}
       >
         <MegaIcon icon="magnifyingGlass" className="h-5 w-5" />
@@ -72,7 +72,7 @@ const Search: React.FC = () => {
                 <div className="relative">
                   <MegaIcon
                     icon="magnifyingGlass"
-                    className="pointer-events-none absolute left-4 top-3.5 h-5 w-5 text-ssw-black text-opacity-40"
+                    className="text-ssw-black pointer-events-none absolute left-4 top-3.5 h-5 w-5 text-opacity-40"
                     aria-hidden="true"
                   />
                   <form
@@ -82,14 +82,14 @@ const Search: React.FC = () => {
                     <input
                       ref={searchRef}
                       type="text"
-                      className="h-12 grow border-0 bg-transparent pl-11 text-ssw-black focus:ring-0 sm:text-sm"
+                      className="text-ssw-black h-12 grow border-0 bg-transparent pl-11 focus:ring-0 sm:text-sm"
                       value={searchTerm}
                       onChange={(e) => setSearchTerm(e.target.value)}
                       placeholder="Search..."
                     />
                     <button
                       type="submit"
-                      className="relative -ml-px inline-flex items-center rounded-r-md bg-ssw-red px-3 py-2 text-sm font-semibold text-white hover:bg-ssw-red-light focus:z-10"
+                      className="hover:bg-ssw-red-light relative -ml-px inline-flex items-center rounded-r-md bg-ssw-red px-3 py-2 text-sm font-semibold text-white focus:z-10"
                     >
                       Search
                     </button>
@@ -103,5 +103,3 @@ const Search: React.FC = () => {
     </>
   );
 };
-
-export default Search;

@@ -1,4 +1,4 @@
-import Logo, { LogoSize } from "./logo";
+import Logo, { LogoSize } from "./Logo";
 
 export { Logo };
 

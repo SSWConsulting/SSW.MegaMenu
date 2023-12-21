@@ -3,8 +3,8 @@ import React, { createContext } from "react";
 import { NavMenuGroup } from "../../types/megamenu";
 import { CountryDropdown } from "../CountryDropdown";
 import { PhoneButton } from "../PhoneButton";
+import { Search } from "../Search";
 import Divider from "../divider";
-import Search from "../search";
 import { MenuItemLink } from "./MenuItemLink";
 import { MenuItemWithSubmenu } from "./MenuItemWithSubmenu";
 

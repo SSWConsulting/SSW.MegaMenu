@@ -1,8 +1,8 @@
 import { Dialog } from "@headlessui/react";
 import { ChevronRightIcon } from "@heroicons/react/24/solid";
 import React from "react";
-import { NavMenuGroup } from "../../../types/megamenu";
-import { CustomLink } from "../../customLink";
+import { NavMenuGroup } from "../../types/megamenu";
+import { CustomLink } from "../CustomLink";
 import { MegaIcon } from "../MegaIcon";
 import SubMenuGroup from "../SubMenuGroup/SubMenuGroup";
 
@@ -32,7 +32,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
       onClose={() => onCloseMobileMenu()}
     >
       <div className="fixed inset-0 z-10" />
-      <Dialog.Panel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white sm:max-w-sm sm:ring-1 sm:ring-ssw-black/10">
+      <Dialog.Panel className="sm:ring-ssw-black/10 fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white sm:max-w-sm sm:ring-1">
         <div className="flex h-16 flex-row-reverse">
           <button
             type="button"
@@ -45,7 +45,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
           {selectedMenuItem && (
             <div className="my-auto flex grow items-center pl-2">
               <button
-                className="text-sm font-semibold leading-4 text-ssw-black"
+                className="text-ssw-black text-sm font-semibold leading-4"
                 onClick={() => setSelectedMenuItem(null)}
               >
                 <MegaIcon className="mb-1 inline h-5 w-5" icon="chevronLeft" />
@@ -86,19 +86,19 @@ const MenuBarItems: React.FC<{
             <CustomLink
               key={item.name}
               href={item.url}
-              className="unstyled -mx-3 flex w-full items-center px-3 py-2 text-left text-lg leading-7 text-ssw-black hover:bg-gray-50"
+              className="unstyled text-ssw-black -mx-3 flex w-full items-center px-3 py-2 text-left text-lg leading-7 hover:bg-gray-50"
             >
               {item.name}
             </CustomLink>
           ) : (
             <button
               key={item.name}
-              className="-mx-3 flex w-full items-center px-3 py-2 text-left text-lg leading-7 text-ssw-black hover:bg-gray-50"
+              className="text-ssw-black -mx-3 flex w-full items-center px-3 py-2 text-left text-lg leading-7 hover:bg-gray-50"
               onClick={() => setSelectedMenuItem(item)}
             >
               {item.name}
               <ChevronRightIcon
-                className="ml-2 inline h-4 w-4 text-ssw-black"
+                className="text-ssw-black ml-2 inline h-4 w-4"
                 aria-hidden="true"
               />
             </button>

@@ -1,8 +1,8 @@
 "use client";
 import React from "react";
-import { AvailableIcons, SidebarItem } from "../../types/megamenu";
+import { SidebarItem } from "../../types/megamenu";
 import { CustomLink } from "../CustomLink";
-import { MegaIcon } from "../MegaIcon";
+import { AvailableIcons, MegaIcon } from "../MegaIcon";
 import FeaturedCard from "./FeaturedCard";
 
 interface SubMenuWidgetProps {
@@ -26,7 +26,7 @@ const SubMenuWidget: React.FC<SubMenuWidgetProps> = ({ item }) => {
     case "bookNow": {
       return (
         <CustomLink
-          className="unstyled relative flex w-full cursor-pointer items-center justify-center rounded-md bg-ssw-red font-semibold text-white hover:bg-ssw-red-light"
+          className="unstyled hover:bg-ssw-red-light relative flex w-full cursor-pointer items-center justify-center rounded-md bg-ssw-red font-semibold text-white"
           href={item.url}
         >
           <MegaIcon icon="phone" className="h-6" />
@@ -44,7 +44,7 @@ const SubMenuWidget: React.FC<SubMenuWidgetProps> = ({ item }) => {
               <p className="mt-2 text-sm">{item.description}</p>
             </>
           ) : (
-            <span className="pl-4 text-sm font-normal text-ssw-black">
+            <span className="text-ssw-black pl-4 text-sm font-normal">
               {item.name}
             </span>
           )}

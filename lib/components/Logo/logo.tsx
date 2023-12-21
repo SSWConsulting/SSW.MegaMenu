@@ -1,5 +1,5 @@
-import Image from "next/image";
 import React from "react";
+import { CustomImage } from "../CustomImage";
 
 export type LogoSize = "small" | "medium" | "large";
 
@@ -13,13 +13,12 @@ const Logo: React.FC = () => {
 
   return (
     <>
-      <Image
+      <CustomImage
         src={logoPath}
         alt="SSW - Enterprise Software Development"
         height={60}
         width={100}
         className="h-full"
-        priority
       />
       <span className="sr-only">SSW</span>
     </>

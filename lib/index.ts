@@ -1,5 +1,3 @@
-import Menu from './components/menu';
-import MobileMenu from './components/mobile-menu';
-import MenuBar from './components/menu-bar';
+import { MegaMenuLayout } from "./components";
 
-export { Menu, MobileMenu, MenuBar };
+export { MegaMenuLayout };

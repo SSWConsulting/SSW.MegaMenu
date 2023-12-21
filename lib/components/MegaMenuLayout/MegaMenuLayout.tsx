@@ -3,10 +3,10 @@ import React, { useState } from "react";
 import { NavMenuGroup } from "../../types/megamenu";
 import { CustomLink } from "../CustomLink";
 import DesktopMenu from "../DesktopMenu/DesktopMenu";
-import Logo from "../Logo/logo";
+import { Logo } from "../Logo";
 import MobileMenu from "../MobileMenu/MobileMenu";
 import { PhoneButton } from "../PhoneButton";
-import Search from "../search";
+import { Search } from "../Search";
 
 export interface MegaMenuWrapperProps extends React.PropsWithChildren {
   tagline?: string;
