@@ -1,5 +1,4 @@
-import React from "react";
-import { CustomLink } from "../../customLink";
+import { CustomLink } from "../CustomLink";
 
 type MenuItemLinkProps = {
   name: string;
