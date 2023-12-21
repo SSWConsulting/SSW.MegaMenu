@@ -31,7 +31,7 @@ export const SubMenuGroup: React.FC<SubMenuGroupProps> = ({
             <div key={"column" + i} className="flex grow flex-col gap-y-4">
               {column.menuColumnGroups?.map((item, j) => (
                 <MenuItem
-                  key={"menuItem" + i}
+                  key={"menuItem" + item.name + i}
                   item={item}
                   viewAll={viewAll}
                   showViewAll={
@@ -71,7 +71,7 @@ const Heading: React.FC<{
   children: React.ReactNode;
 }> = ({ className, children }) => {
   return (
-    <h3 className={twMerge("text-ssw-black pb-6 text-lg font-bold", className)}>
+    <h3 className={twMerge("pb-6 text-lg font-bold text-ssw-black", className)}>
       {children}
     </h3>
   );
@@ -114,7 +114,7 @@ const LinkItem: React.FC<{ link: NavMenuColumnGroupItem }> = ({
       }}
     >
       {(icon || iconImg) && (
-        <div className="text-ssw-red flex shrink-0 items-center justify-center">
+        <div className="flex shrink-0 items-center justify-center text-ssw-red">
           <MegaIcon
             className="h-6 w-6"
             icon={icon as AvailableIcons}
@@ -127,13 +127,13 @@ const LinkItem: React.FC<{ link: NavMenuColumnGroupItem }> = ({
         <span>
           {name && description ? (
             <>
-              <p className="text-ssw-black font-bold">{name}</p>
-              <p className="text-ssw-gray mt-1 text-sm font-normal">
+              <p className="font-bold text-ssw-black">{name}</p>
+              <p className="mt-1 text-sm font-normal text-ssw-gray">
                 {description}
               </p>
             </>
           ) : (
-            <p className="text-ssw-black pl-4 text-sm font-normal">{name}</p>
+            <p className="pl-4 text-sm font-normal text-ssw-black">{name}</p>
           )}
         </span>
       </div>
@@ -152,7 +152,7 @@ const ViewAllLink: React.FC<{ href?: string; name?: string }> = ({
     <div className="flex grow flex-col-reverse items-end self-end pt-4">
       <a
         href={href}
-        className="unstyled text-ssw-red hover:bg-ssw-red rounded-md px-3 py-1 text-sm font-semibold leading-6 hover:text-white"
+        className="unstyled rounded-md px-3 py-1 text-sm font-semibold leading-6 text-ssw-red hover:bg-ssw-red hover:text-white"
       >
         {name} &rarr;
       </a>

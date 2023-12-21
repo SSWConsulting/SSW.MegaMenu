@@ -1,5 +1,6 @@
 import { Bars3Icon } from "@heroicons/react/24/outline";
 import React, { useState } from "react";
+import { useMenuItems } from "../../hooks/useMenuItems";
 import { NavMenuGroup } from "../../types/megamenu";
 import { CustomLink } from "../CustomLink";
 import DesktopMenu from "../DesktopMenu/DesktopMenu";
@@ -10,7 +11,7 @@ import { Search } from "../Search";
 
 export interface MegaMenuWrapperProps extends React.PropsWithChildren {
   tagline?: string;
-  menuBarItems: NavMenuGroup[];
+  menuBarItems?: NavMenuGroup[];
 }
 
 const MegaMenuLayout: React.FC<MegaMenuWrapperProps> = ({
@@ -18,6 +19,9 @@ const MegaMenuLayout: React.FC<MegaMenuWrapperProps> = ({
   menuBarItems,
 }) => {
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const { menuItems } = useMenuItems(menuBarItems);
+
   return (
     <>
       <div className="relative z-10 flex h-16 w-full items-center justify-center lg:h-[120px]">
@@ -51,12 +55,12 @@ const MegaMenuLayout: React.FC<MegaMenuWrapperProps> = ({
               <Bars3Icon className="h-6 w-6" aria-hidden="true" />
             </button>
           </div>
-          <DesktopMenu menuGroups={menuBarItems} />
+          <DesktopMenu menuGroups={menuItems} />
         </nav>
 
         <MobileMenu
           isMobileMenuOpen={isMobileMenuOpen}
-          menuBarItems={menuBarItems}
+          menuBarItems={menuItems}
           closeMobileMenu={() => setMobileMenuOpen(false)}
         />
       </div>

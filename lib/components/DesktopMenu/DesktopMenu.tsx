@@ -4,7 +4,6 @@ import { NavMenuGroup } from "../../types/megamenu";
 import { CountryDropdown } from "../CountryDropdown";
 import { PhoneButton } from "../PhoneButton";
 import { Search } from "../Search";
-import Divider from "../divider";
 import { MenuItemLink } from "./MenuItemLink";
 import { MenuItemWithSubmenu } from "./MenuItemWithSubmenu";
 
@@ -18,7 +17,7 @@ const DesktopMenu: React.FC<DesktopMenuProps> = ({ menuGroups }) => {
   return (
     <>
       <div className="hidden flex-1 xl:block">
-        <Popover.Group className="text-ssw-black flex items-center justify-center text-sm font-semibold outline-none">
+        <Popover.Group className="flex items-center justify-center text-sm font-semibold text-ssw-black outline-none">
           {menuGroups.map((group) => {
             if (
               !!group.menuColumns &&
@@ -70,6 +69,10 @@ const DesktopMenu: React.FC<DesktopMenuProps> = ({ menuGroups }) => {
       </div>
     </>
   );
+};
+
+const Divider: React.FC = () => {
+  return <div className="hidden h-5 w-px bg-gray-700/30 sm:block"></div>;
 };
 
 export default DesktopMenu;
