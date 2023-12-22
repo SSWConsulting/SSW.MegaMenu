@@ -13,7 +13,7 @@ const SubMenuWidget: React.FC<SubMenuWidgetProps> = ({ item }) => {
   switch (item.widgetType) {
     case "featured": {
       return (
-        <CustomLink className="unstyled" href={item.url}>
+        <CustomLink href={item.url}>
           <FeaturedCard
             title={<span> {item.name}</span>}
             icon={item.icon as AvailableIcons}
@@ -26,7 +26,7 @@ const SubMenuWidget: React.FC<SubMenuWidgetProps> = ({ item }) => {
     case "bookNow": {
       return (
         <CustomLink
-          className="unstyled hover:bg-ssw-red-light relative flex w-full cursor-pointer items-center justify-center rounded-md bg-ssw-red font-semibold text-white"
+          className="relative flex w-full cursor-pointer items-center justify-center rounded-md bg-ssw-red font-semibold text-white hover:bg-ssw-light-red"
           href={item.url}
         >
           <MegaIcon icon="phone" className="h-6" />
@@ -37,14 +37,14 @@ const SubMenuWidget: React.FC<SubMenuWidgetProps> = ({ item }) => {
     case "classicMenu":
     default: {
       return (
-        <CustomLink className="unstyled block" href={item.url}>
+        <CustomLink className="block" href={item.url}>
           {item.name && item.description ? (
             <>
               <span className="font-bold">{item.name}</span>
               <p className="mt-2 text-sm">{item.description}</p>
             </>
           ) : (
-            <span className="text-ssw-black pl-4 text-sm font-normal">
+            <span className="pl-4 text-sm font-normal text-ssw-black">
               {item.name}
             </span>
           )}

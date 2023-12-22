@@ -39,7 +39,7 @@ export const Search: React.FC = () => {
   return (
     <>
       <button
-        className="text-ssw-black rounded p-4 hover:bg-gray-100"
+        className="rounded p-4 text-ssw-black hover:bg-gray-100"
         onClick={() => setIsOpen(true)}
       >
         <MegaIcon icon="magnifyingGlass" className="h-5 w-5" />
@@ -72,7 +72,7 @@ export const Search: React.FC = () => {
                 <div className="relative">
                   <MegaIcon
                     icon="magnifyingGlass"
-                    className="text-ssw-black pointer-events-none absolute left-4 top-3.5 h-5 w-5 text-opacity-40"
+                    className="pointer-events-none absolute left-4 top-3.5 h-5 w-5 text-ssw-black text-opacity-40"
                     aria-hidden="true"
                   />
                   <form
@@ -82,14 +82,14 @@ export const Search: React.FC = () => {
                     <input
                       ref={searchRef}
                       type="text"
-                      className="text-ssw-black h-12 grow border-0 bg-transparent pl-11 focus:ring-0 sm:text-sm"
+                      className="h-12 grow border-0 bg-transparent pl-11 text-ssw-black focus:ring-0 sm:text-sm"
                       value={searchTerm}
                       onChange={(e) => setSearchTerm(e.target.value)}
                       placeholder="Search..."
                     />
                     <button
                       type="submit"
-                      className="hover:bg-ssw-red-light relative -ml-px inline-flex items-center rounded-r-md bg-ssw-red px-3 py-2 text-sm font-semibold text-white focus:z-10"
+                      className="relative -ml-px inline-flex items-center rounded-r-md bg-ssw-red px-3 py-2 text-sm font-semibold text-white hover:bg-ssw-light-red focus:z-10"
                     >
                       Search
                     </button>

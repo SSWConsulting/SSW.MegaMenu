@@ -25,7 +25,7 @@ export const SubMenuGroup: React.FC<SubMenuGroupProps> = ({
 }) => {
   return (
     <>
-      <div className="max-w-9xl mx-auto flex flex-col lg:flex-row">
+      <div className="mx-auto flex max-w-9xl flex-col lg:flex-row">
         <div className="grid gap-x-4 p-4 lg:grow lg:grid-flow-col">
           {menuColumns.map((column, i) => (
             <div key={"column" + i} className="flex grow flex-col gap-y-4">
@@ -106,7 +106,7 @@ const LinkItem: React.FC<{ link: NavMenuColumnGroupItem }> = ({
     <a
       href={url || ""}
       className={twMerge(
-        "unstyled flex items-start gap-x-3 rounded-md bg-white hover:bg-gray-100 focus:outline-none",
+        "flex items-start gap-x-3 rounded-md bg-white hover:bg-gray-100 focus:outline-none",
         description ? "p-4" : "p-2",
       )}
       onClick={() => {
@@ -152,7 +152,7 @@ const ViewAllLink: React.FC<{ href?: string; name?: string }> = ({
     <div className="flex grow flex-col-reverse items-end self-end pt-4">
       <a
         href={href}
-        className="unstyled rounded-md px-3 py-1 text-sm font-semibold leading-6 text-ssw-red hover:bg-ssw-red hover:text-white"
+        className="rounded-md px-3 py-1 text-sm font-semibold leading-6 text-ssw-red hover:bg-ssw-red hover:text-white"
       >
         {name} &rarr;
       </a>

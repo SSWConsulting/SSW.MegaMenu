@@ -32,7 +32,7 @@ const MegaMenuLayout: React.FC<MegaMenuWrapperProps> = ({
           <div className="flex items-center">
             <CustomLink
               href="/"
-              className="unstyled flex items-center gap-1 whitespace-nowrap"
+              className="flex items-center gap-1 whitespace-nowrap"
             >
               <div className="flex min-w-[4rem] max-w-[14rem] items-center justify-center">
                 <Logo />

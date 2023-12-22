@@ -40,6 +40,7 @@ function App() {
 ```
 
 ### Usage with SSR 
+
 The `<MegaMenuLayout />` component can be used with SSG (Static Site Generation) and SSR (Server Side Rendering) frameworks like Next.js and Gatsby. This is achieved by providing an optional prop in the `<MegaMenuLayout />` component called `menuBarItems`, which is an array of objects that represent the menu bar items.
 
 #### Example usage with SSR (Next.js):

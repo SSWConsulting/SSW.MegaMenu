@@ -9,7 +9,7 @@ export const MenuItemLink = ({ name, href }: MenuItemLinkProps) => {
   return (
     <CustomLink
       href={href}
-      className="unstyled flex items-center justify-center rounded-md px-3 py-1"
+      className="flex items-center justify-center rounded-md px-3 py-1"
     >
       {name}
     </CustomLink>

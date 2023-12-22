@@ -38,9 +38,9 @@ const CountryDropdown = () => {
     <Popover>
       <Popover.Button
         className={twMerge(
-          "flex items-center justify-center gap-x-1 rounded-md py-1 px-4 text-sm font-semibold text-ssw-black outline-none",
+          "flex items-center justify-center gap-x-1 rounded-md px-4 py-1 text-sm font-semibold text-ssw-black outline-none",
           "hover:bg-gray-100",
-          isOpened && "bg-gray-100"
+          isOpened && "bg-gray-100",
         )}
         onClick={() => setIsOpened(!isOpened)}
       >
@@ -66,9 +66,7 @@ const CountryDropdown = () => {
                 href={country.url}
                 title={country.country}
               >
-                <Flag
-                  country={country.country}
-                />
+                <Flag country={country.country} />
               </CustomLink>
             ))}
         </Popover.Panel>
