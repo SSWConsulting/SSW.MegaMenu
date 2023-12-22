@@ -25,9 +25,7 @@
     "emitDeclarationOnly": true,
     "outDir": "dist",
     "forceConsistentCasingInFileNames": true,
-    "sourceMap": true,
     "allowSyntheticDefaultImports": true,
-    "declarationMap": true,
     "types": ["vite/client"]
   },
   "include": ["lib"],
