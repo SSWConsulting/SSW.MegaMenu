@@ -1,18 +1,14 @@
 import { useEffect, useState } from "react";
 import { NavMenuGroup } from "../types/megamenu";
 
-const DAY = 1000 * 60 * 60 * 24;
+const API_URL = "https://www.ssw.com.au/api/get-megamenu";
 
 const refreshData = async () => {
-  const res = await fetch("https://www.ssw.com.au/api/get-megamenu");
+  const res = await fetch(API_URL);
 
   const json = await res.json();
   if (window?.localStorage) {
-    const cached = {
-      value: json,
-      ttl: new Date().getTime() + DAY,
-    };
-    window.localStorage.setItem("megamenu", JSON.stringify(cached));
+    window.localStorage.setItem("megamenu", JSON.stringify(json));
   }
 
   return json;
@@ -29,13 +25,7 @@ export const useMenuItems = (
     if (menuBarItems) {
       setMenuItems(menuBarItems);
     } else if (cached) {
-      if (cached.ttl < new Date().getTime()) {
-        refreshData().then((data) => {
-          setMenuItems(data);
-        });
-      } else {
-        setMenuItems(cached.value);
-      }
+      setMenuItems(cached);
     } else {
       refreshData().then((data) => {
         setMenuItems(data);
