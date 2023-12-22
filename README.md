@@ -18,21 +18,13 @@ const { Menu, MobileMenu, MenuBar } = require('ssw.megamenu');
 import { Menu, MobileMenu, MenuBar } from 'ssw.megamenu';
 ```
 
-### Usage
+### Basic Usage
 
-The Megame Menu is split in 3 components to give more freedom on how the mobile menu interact with the website.
+The `ssw.megamenu` NPM package provides you with the `<MegaMenuLayout />` component, which can be used in both client-side and server-side rendered React apps.
 
-The 3 components are:
+#### Example:
 
-- `<Menu />`: this component is used to display the desktop menu
-- `<MobileMenu />`: this component is used to display the mobile menu
-- `<MenuBar />` [Recommended]: this component is a ready-to-use menu using `<Menu />` and `<MobileMenu />`
-
-#### Example of implementation:
-
-1. With `<MenuBar />`
-
-```jsx
+```tsx
 import React, { useState, useRef } from 'react';
 import { Menu, MobileMenu } from 'ssw.megamenu';
 import './App.css';
@@ -40,71 +32,57 @@ import './App.css';
 function App() {
   return (
     <header className="App-header">Test MenuBar</header>
-    <MenuBar className="App" />
+    <MegaMenuLayout />
     <div>Some content</div>
   );
 }
 
 ```
 
-2. With `<Menu />` and `<MobileMenu />`
+### Usage with SSR 
 
-```jsx
+The `<MegaMenuLayout />` component can be used with SSG (Static Site Generation) and SSR (Server Side Rendering) frameworks like Next.js and Gatsby. This is achieved by providing an optional prop in the `<MegaMenuLayout />` component called `menuBarItems`, which is an array of objects that represent the menu bar items.
+
+#### Example usage with SSR (Next.js):
+
+```tsx
+
 import React, { useState, useRef } from 'react';
 import { Menu, MobileMenu } from 'ssw.megamenu';
 import './App.css';
 
-function App() {
-  const node = useRef();
-  const [isMenuOpened, setIsMenuOpened] = useState(false);
-
-  const actionOnToggleClick = () => {
-    setIsMenuOpened(!isMenuOpened);
-  };
-
-  const handleClick = (e) => {
-    if (node.current.contains(e.target)) {
-      setIsMenuOpened(false);
-    }
-  };
-
+function App(props) {
   return (
-    <>
-      <div
-        ref={node}
-        className="App"
-        onMouseDown={isMenuOpened ? (event) => handleClick(event) : null}
-        style={{
-          transform: isMenuOpened ? 'translateX(84%)' : 'translateX(0px)',
-        }}
-      >
-        <header className="App-header">Test MegaMenu</header>
-        <Menu onClickToggle={() => actionOnToggleClick()} prefix="."></Menu>
-        <div> Some content</div>
-      </div>
-      <MobileMenu isMenuOpened={isMenuOpened}></MobileMenu>
-    </>
+    <header className="App-header">Test MenuBar</header>
+    <MegaMenuLayout menuBarItems={props.menuBarItems} />
+    <div>Some content</div>
   );
 }
+
+export function getStaticProps() {
+  const menuItems = await getMenuItems();
+
+  return {
+    props: {
+      menuItems,
+    },
+  };
+}
+
 ```
-
-### Static assets
-
-1. Menu items | /lib/assets/data/menu.json
-2. Images | /lib/assets/images/*
 
 ## How to contribute?
 
 In the project directory, you can run:
 
-### `yarn dev`
+### `pnpm dev`
 
 Runs the app in the development mode.<br />
 Open [http://localhost:5173](http://localhost:5173) to view it in the browser.
 
 The page will reload if you make edits.<br />
 
-### `yarn build`
+### `pnpm build`
 
 Builds the lib for production to the `dist` folder.<br />
 

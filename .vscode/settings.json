@@ -1,4 +1,9 @@
 {
   "vitest.commandLine": "yarn test --",
-  "vitest.enable": true
+  "vitest.enable": true,
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": [
+    "source.fixAll.eslint",
+    "source.sortImports"
+  ],
 }
