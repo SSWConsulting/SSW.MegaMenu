@@ -12,8 +12,7 @@ export const useMenuItems = (
     } else if (window?.localStorage?.megamenu) {
       setMenuItems(JSON.parse(window.localStorage.megamenu));
     } else {
-      console.log("hopefully this branch never runs");
-      fetch("http://localhost:3000/api/get-megamenu")
+      fetch("https://www.ssw.com.au/api/get-megamenu")
         .then((res) => res.json())
         .then((json) => {
           setMenuItems(json);
