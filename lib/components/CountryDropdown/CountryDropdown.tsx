@@ -1,11 +1,11 @@
 "use client";
 import { Popover, Transition } from "@headlessui/react";
 import { Fragment, useEffect, useState } from "react";
-import { twMerge } from "tailwind-merge";
-import { Flag } from "../Flag";
-import { CustomLink } from "../CustomLink";
-import { Countries } from "../../types/country";
 import { useLocation } from "react-use";
+import { Countries } from "../../types/country";
+import { cx } from "../../util/cx";
+import { CustomLink } from "../CustomLink";
+import { Flag } from "../Flag";
 
 const websites: { country: Countries; url: string }[] = [
   {
@@ -37,7 +37,7 @@ const CountryDropdown = () => {
   return (
     <Popover>
       <Popover.Button
-        className={twMerge(
+        className={cx(
           "flex items-center justify-center gap-x-1 rounded-md px-4 py-1 text-sm font-semibold text-ssw-black outline-none",
           "hover:bg-gray-100",
           isOpened && "bg-gray-100",

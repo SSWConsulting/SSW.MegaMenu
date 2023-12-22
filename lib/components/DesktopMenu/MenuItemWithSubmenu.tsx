@@ -1,8 +1,8 @@
 "use client";
 import { Popover, Transition } from "@headlessui/react";
 import React, { Fragment } from "react";
-import { twMerge } from "tailwind-merge";
 import { NavMenuColumn, Sidebar, ViewAll } from "../../types/megamenu";
+import { cx } from "../../util/cx";
 import { MegaIcon } from "../MegaIcon";
 import SubMenuGroup from "../SubMenuGroup/SubMenuGroup";
 
@@ -24,7 +24,7 @@ export const MenuItemWithSubmenu: React.FC<MenuItemWithSubmenuProps> = ({
   return (
     <>
       <Popover.Button
-        className={twMerge(
+        className={cx(
           "flex cursor-pointer items-center justify-center gap-x-1 whitespace-nowrap rounded-md px-3 py-1 focus:outline-none focus-visible:ring-opacity-0",
           isOpened ? "bg-gray-100" : "hover:bg-gray-100",
         )}

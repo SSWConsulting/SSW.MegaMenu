@@ -1,6 +1,5 @@
 "use client";
 import React, { useContext } from "react";
-import { twMerge } from "tailwind-merge";
 import {
   NavMenuColumn,
   NavMenuColumnGroup,
@@ -8,6 +7,7 @@ import {
   Sidebar,
   ViewAll,
 } from "../../types/megamenu";
+import { cx } from "../../util/cx";
 import { ClosePopoverContext } from "../DesktopMenu/DesktopMenu";
 import { MegaIcon, type AvailableIcons } from "../MegaIcon";
 import SubMenuWidget from "./SubMenuWidget";
@@ -25,7 +25,7 @@ export const SubMenuGroup: React.FC<SubMenuGroupProps> = ({
 }) => {
   return (
     <>
-      <div className="mx-auto flex max-w-9xl flex-col lg:flex-row">
+      <div className="max-w-9xl mx-auto flex flex-col lg:flex-row">
         <div className="grid gap-x-4 p-4 lg:grow lg:grid-flow-col">
           {menuColumns.map((column, i) => (
             <div key={"column" + i} className="flex grow flex-col gap-y-4">
@@ -71,7 +71,7 @@ const Heading: React.FC<{
   children: React.ReactNode;
 }> = ({ className, children }) => {
   return (
-    <h3 className={twMerge("pb-6 text-lg font-bold text-ssw-black", className)}>
+    <h3 className={cx("pb-6 text-lg font-bold text-ssw-black", className)}>
       {children}
     </h3>
   );
@@ -105,7 +105,7 @@ const LinkItem: React.FC<{ link: NavMenuColumnGroupItem }> = ({
   return (
     <a
       href={url || ""}
-      className={twMerge(
+      className={cx(
         "flex items-start gap-x-3 rounded-md bg-white hover:bg-gray-100 focus:outline-none",
         description ? "p-4" : "p-2",
       )}
