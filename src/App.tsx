@@ -6,7 +6,10 @@ function App() {
     <>
       <header>Test MegaMenu</header>
       <div className="mx-auto max-w-7xl px-8">
-        <MegaMenuLayout />
+        <MegaMenuLayout
+          title="Rules"
+          subtitle="Secret ingredients to quality software"
+        />
       </div>
     </>
   );

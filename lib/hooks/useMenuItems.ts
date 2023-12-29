@@ -7,11 +7,10 @@ const refreshData = async () => {
   const res = await fetch(API_URL);
 
   const json = await res.json();
-  if (window?.localStorage) {
-    window.localStorage.setItem("megamenu", JSON.stringify(json));
-  }
 
-  return json;
+  const { menuGroups } = json;
+
+  return menuGroups;
 };
 
 export const useMenuItems = (
@@ -20,12 +19,8 @@ export const useMenuItems = (
   const [menuItems, setMenuItems] = useState<NavMenuGroup[] | null>([]);
 
   useEffect(() => {
-    const cached = JSON.parse(window.localStorage.getItem("megamenu") || "{}");
-
     if (menuBarItems) {
       setMenuItems(menuBarItems);
-    } else if (cached) {
-      setMenuItems(cached);
     } else {
       refreshData().then((data) => {
         setMenuItems(data);

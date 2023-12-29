@@ -9,41 +9,74 @@ import MobileMenu from "../MobileMenu/MobileMenu";
 import { PhoneButton } from "../PhoneButton";
 import { Search } from "../Search";
 
-export interface MegaMenuWrapperProps extends React.PropsWithChildren {
-  tagline?: string;
+export type MegaMenuWrapperProps = {
   menuBarItems?: NavMenuGroup[];
-}
+  subtitle?: string;
+  rightSideActionsOverride?: () => JSX.Element;
+} & React.PropsWithChildren &
+  (Tagline | Title);
+
+type Tagline = {
+  title?: never;
+  tagline?: string;
+};
+
+type Title = {
+  title: string;
+  tagline?: never;
+};
 
 const MegaMenuLayout: React.FC<MegaMenuWrapperProps> = ({
-  tagline = "Enterprise Software Development",
+  tagline,
+  title,
+  subtitle,
   menuBarItems,
+  rightSideActionsOverride,
 }) => {
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const { menuItems } = useMenuItems(menuBarItems);
 
+  const RightSideActions = rightSideActionsOverride;
+
   return (
     <>
-      <div className="relative z-10 flex h-16 w-full items-center justify-center lg:h-[120px]">
+      <div className="relative z-10 flex h-16 w-full items-center justify-center sm:h-[120px]">
         <nav
           className="flex h-full w-full items-center justify-between gap-x-4 overflow-hidden px-0"
           aria-label="Global"
         >
           <div className="flex items-center">
-            <CustomLink
-              href="/"
-              className="flex items-center gap-1 whitespace-nowrap"
-            >
+            <CustomLink href="/" className="gap-1 whitespace-nowrap">
               <div className="flex min-w-[4rem] max-w-[14rem] items-center justify-center">
                 <Logo />
-                <div className="w-fit whitespace-break-spaces text-sm font-semibold uppercase leading-4 text-gray-700">
-                  <span className="ml-4 hidden xl:block">{tagline}</span>
-                </div>
+
+                {tagline && (
+                  <div className="w-fit whitespace-break-spaces text-sm font-semibold uppercase leading-4 text-gray-700">
+                    <span className="ml-4 hidden xl:block">{tagline}</span>
+                  </div>
+                )}
+                {title && (
+                  <div className="mb-3 ml-2 mt-2 text-4xl leading-5">
+                    {title}
+                  </div>
+                )}
               </div>
+              {subtitle && (
+                <p className="relative text-xs text-ssw-black opacity-70">
+                  {subtitle}
+                </p>
+              )}
             </CustomLink>
           </div>
           <div className="flex items-center xl:hidden">
-            <PhoneButton className="max-sm:hidden" />
+            {RightSideActions ? (
+              <div className="max-sm:hidden">
+                <RightSideActions />
+              </div>
+            ) : (
+              <PhoneButton className="max-sm:hidden" />
+            )}
             <Search />
             <Divider />
             <button
@@ -55,7 +88,10 @@ const MegaMenuLayout: React.FC<MegaMenuWrapperProps> = ({
               <Bars3Icon className="h-6 w-6" aria-hidden="true" />
             </button>
           </div>
-          <DesktopMenu menuGroups={menuItems} />
+          <DesktopMenu
+            menuGroups={menuItems}
+            sideActionsOverride={rightSideActionsOverride}
+          />
         </nav>
 
         <MobileMenu
@@ -64,7 +100,13 @@ const MegaMenuLayout: React.FC<MegaMenuWrapperProps> = ({
           closeMobileMenu={() => setMobileMenuOpen(false)}
         />
       </div>
-      <PhoneButton className="pb-4 sm:hidden" />
+      {RightSideActions ? (
+        <div className="sm:hidden">
+          <RightSideActions />
+        </div>
+      ) : (
+        <PhoneButton className="pb-4 sm:hidden" />
+      )}
     </>
   );
 };

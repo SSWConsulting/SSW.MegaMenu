@@ -19,7 +19,6 @@ module.exports = {
     ],
     "tailwindcss/no-custom-classname": "error",
     "tailwindcss/classnames-order": "error",
-    "tailwindcss/no-arbitrary-value": "warn",
     "react/prop-types": "error",
     "react/react-in-jsx-scope": "off",
   },

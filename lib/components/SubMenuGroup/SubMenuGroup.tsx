@@ -25,7 +25,7 @@ export const SubMenuGroup: React.FC<SubMenuGroupProps> = ({
 }) => {
   return (
     <>
-      <div className="max-w-9xl mx-auto flex flex-col lg:flex-row">
+      <div className="mx-auto flex max-w-9xl flex-col lg:flex-row">
         <div className="grid gap-x-4 p-4 lg:grow lg:grid-flow-col">
           {menuColumns.map((column, i) => (
             <div key={"column" + i} className="flex grow flex-col gap-y-4">
