@@ -9,11 +9,19 @@ import { MenuItemWithSubmenu } from "./MenuItemWithSubmenu";
 
 export interface DesktopMenuProps {
   menuGroups: NavMenuGroup[];
+  sideActionsOverride?: () => JSX.Element;
+  hidePhone?: boolean;
 }
 
 export const ClosePopoverContext = createContext<(() => void) | null>(null);
 
-const DesktopMenu: React.FC<DesktopMenuProps> = ({ menuGroups }) => {
+const DesktopMenu: React.FC<DesktopMenuProps> = ({
+  menuGroups,
+  sideActionsOverride,
+  hidePhone,
+}) => {
+  const SideActions = sideActionsOverride;
+
   return (
     <>
       <div className="hidden flex-1 xl:block">
@@ -62,11 +70,27 @@ const DesktopMenu: React.FC<DesktopMenuProps> = ({ menuGroups }) => {
       </div>
 
       <div className="hidden shrink items-center justify-end xl:flex">
-        <PhoneButton hideMobile />
-        <Search />
-        <Divider />
-        <CountryDropdown />
+        {SideActions ? (
+          <SideActions />
+        ) : (
+          <DefaultSideActions hidePhone={hidePhone} />
+        )}
       </div>
+    </>
+  );
+};
+
+type DefaultSideActionsProps = {
+  hidePhone?: boolean;
+};
+
+const DefaultSideActions = ({ hidePhone }: DefaultSideActionsProps) => {
+  return (
+    <>
+      {!hidePhone && <PhoneButton hideMobile />}
+      <Search />
+      <Divider />
+      <CountryDropdown />
     </>
   );
 };

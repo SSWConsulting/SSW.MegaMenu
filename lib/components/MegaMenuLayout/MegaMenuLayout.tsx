@@ -4,7 +4,7 @@ import { useMenuItems } from "../../hooks/useMenuItems";
 import { NavMenuGroup } from "../../types/megamenu";
 import { CustomLink } from "../CustomLink";
 import DesktopMenu from "../DesktopMenu/DesktopMenu";
-import { Logo } from "../Logo";
+import { Logo as BaseLogo } from "../Logo";
 import MobileMenu from "../MobileMenu/MobileMenu";
 import { PhoneButton } from "../PhoneButton";
 import { Search } from "../Search";
@@ -12,19 +12,28 @@ import { Search } from "../Search";
 export interface MegaMenuWrapperProps extends React.PropsWithChildren {
   tagline?: string;
   menuBarItems?: NavMenuGroup[];
+  logoOverride?: () => JSX.Element;
+  sideActionsOverride?: () => JSX.Element;
+  hidePhone?: boolean;
 }
 
 const MegaMenuLayout: React.FC<MegaMenuWrapperProps> = ({
   tagline = "Enterprise Software Development",
   menuBarItems,
+  logoOverride,
+  sideActionsOverride,
+  hidePhone,
 }) => {
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const { menuItems } = useMenuItems(menuBarItems);
 
+  const Logo = logoOverride;
+  const SideActions = sideActionsOverride;
+
   return (
     <>
-      <div className="relative z-10 flex h-16 w-full items-center justify-center lg:h-[120px]">
+      <div className="relative z-10 flex h-16 w-full items-center justify-center sm:h-[120px]">
         <nav
           className="flex h-full w-full items-center justify-between gap-x-4 overflow-hidden px-0"
           aria-label="Global"
@@ -35,15 +44,26 @@ const MegaMenuLayout: React.FC<MegaMenuWrapperProps> = ({
               className="flex items-center gap-1 whitespace-nowrap"
             >
               <div className="flex min-w-[4rem] max-w-[14rem] items-center justify-center">
-                <Logo />
-                <div className="w-fit whitespace-break-spaces text-sm font-semibold uppercase leading-4 text-gray-700">
-                  <span className="ml-4 hidden xl:block">{tagline}</span>
-                </div>
+                {Logo ? (
+                  <Logo />
+                ) : (
+                  <>
+                    <BaseLogo />
+                    <div className="w-fit whitespace-break-spaces text-sm font-semibold uppercase leading-4 text-gray-700">
+                      <span className="ml-4 hidden xl:block">{tagline}</span>
+                    </div>
+                  </>
+                )}
               </div>
             </CustomLink>
           </div>
           <div className="flex items-center xl:hidden">
-            <PhoneButton className="max-sm:hidden" />
+            {!hidePhone && <PhoneButton className="max-sm:hidden" />}
+            {SideActions && (
+              <div className="max-sm:hidden">
+                <SideActions />
+              </div>
+            )}
             <Search />
             <Divider />
             <button
@@ -55,7 +75,10 @@ const MegaMenuLayout: React.FC<MegaMenuWrapperProps> = ({
               <Bars3Icon className="h-6 w-6" aria-hidden="true" />
             </button>
           </div>
-          <DesktopMenu menuGroups={menuItems} />
+          <DesktopMenu
+            menuGroups={menuItems}
+            sideActionsOverride={sideActionsOverride}
+          />
         </nav>
 
         <MobileMenu
@@ -64,7 +87,12 @@ const MegaMenuLayout: React.FC<MegaMenuWrapperProps> = ({
           closeMobileMenu={() => setMobileMenuOpen(false)}
         />
       </div>
-      <PhoneButton className="pb-4 sm:hidden" />
+      {!hidePhone && <PhoneButton className="pb-4 sm:hidden" />}
+      {SideActions && (
+        <div className="sm:hidden">
+          <SideActions />
+        </div>
+      )}
     </>
   );
 };
