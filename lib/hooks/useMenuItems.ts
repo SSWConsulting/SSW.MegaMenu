@@ -10,10 +10,6 @@ const refreshData = async () => {
 
   const { menuGroups } = json;
 
-  if (window?.localStorage && menuGroups?.length > 0) {
-    window.localStorage.setItem("megamenu", JSON.stringify(menuGroups));
-  }
-
   return menuGroups;
 };
 
@@ -23,13 +19,8 @@ export const useMenuItems = (
   const [menuItems, setMenuItems] = useState<NavMenuGroup[] | null>([]);
 
   useEffect(() => {
-    const cached = JSON.parse(window.localStorage.getItem("megamenu") || "[]");
-    console.log("cached", cached);
-
     if (menuBarItems) {
       setMenuItems(menuBarItems);
-    } else if (cached?.length > 0) {
-      setMenuItems(cached);
     } else {
       refreshData().then((data) => {
         setMenuItems(data);

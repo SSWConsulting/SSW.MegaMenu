@@ -14,6 +14,7 @@ export interface MegaMenuWrapperProps extends React.PropsWithChildren {
   menuBarItems?: NavMenuGroup[];
   logoOverride?: () => JSX.Element;
   sideActionsOverride?: () => JSX.Element;
+  // TODO: REmove
   hidePhone?: boolean;
 }
 
@@ -29,7 +30,7 @@ const MegaMenuLayout: React.FC<MegaMenuWrapperProps> = ({
   const { menuItems } = useMenuItems(menuBarItems);
 
   const Logo = logoOverride;
-  const SideActions = sideActionsOverride;
+  const RightSideActions = sideActionsOverride;
 
   return (
     <>
@@ -59,9 +60,9 @@ const MegaMenuLayout: React.FC<MegaMenuWrapperProps> = ({
           </div>
           <div className="flex items-center xl:hidden">
             {!hidePhone && <PhoneButton className="max-sm:hidden" />}
-            {SideActions && (
+            {RightSideActions && (
               <div className="max-sm:hidden">
-                <SideActions />
+                <RightSideActions />
               </div>
             )}
             <Search />
@@ -88,9 +89,9 @@ const MegaMenuLayout: React.FC<MegaMenuWrapperProps> = ({
         />
       </div>
       {!hidePhone && <PhoneButton className="pb-4 sm:hidden" />}
-      {SideActions && (
+      {RightSideActions && (
         <div className="sm:hidden">
-          <SideActions />
+          <RightSideActions />
         </div>
       )}
     </>
