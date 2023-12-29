@@ -4,33 +4,40 @@ import { useMenuItems } from "../../hooks/useMenuItems";
 import { NavMenuGroup } from "../../types/megamenu";
 import { CustomLink } from "../CustomLink";
 import DesktopMenu from "../DesktopMenu/DesktopMenu";
-import { Logo as BaseLogo } from "../Logo";
+import { Logo } from "../Logo";
 import MobileMenu from "../MobileMenu/MobileMenu";
 import { PhoneButton } from "../PhoneButton";
 import { Search } from "../Search";
 
-export interface MegaMenuWrapperProps extends React.PropsWithChildren {
-  tagline?: string;
+export type MegaMenuWrapperProps = {
   menuBarItems?: NavMenuGroup[];
-  logoOverride?: () => JSX.Element;
-  sideActionsOverride?: () => JSX.Element;
-  // TODO: REmove
-  hidePhone?: boolean;
-}
+  subtitle?: string;
+  rightSideActionsOverride?: () => JSX.Element;
+} & React.PropsWithChildren &
+  (Tagline | Title);
+
+type Tagline = {
+  title?: never;
+  tagline?: string;
+};
+
+type Title = {
+  title: string;
+  tagline?: never;
+};
 
 const MegaMenuLayout: React.FC<MegaMenuWrapperProps> = ({
-  tagline = "Enterprise Software Development",
+  tagline,
+  title,
+  subtitle,
   menuBarItems,
-  logoOverride,
-  sideActionsOverride,
-  hidePhone,
+  rightSideActionsOverride,
 }) => {
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const { menuItems } = useMenuItems(menuBarItems);
 
-  const Logo = logoOverride;
-  const RightSideActions = sideActionsOverride;
+  const RightSideActions = rightSideActionsOverride;
 
   return (
     <>
@@ -40,30 +47,35 @@ const MegaMenuLayout: React.FC<MegaMenuWrapperProps> = ({
           aria-label="Global"
         >
           <div className="flex items-center">
-            <CustomLink
-              href="/"
-              className="flex items-center gap-1 whitespace-nowrap"
-            >
+            <CustomLink href="/" className="gap-1 whitespace-nowrap">
               <div className="flex min-w-[4rem] max-w-[14rem] items-center justify-center">
-                {Logo ? (
-                  <Logo />
-                ) : (
-                  <>
-                    <BaseLogo />
-                    <div className="w-fit whitespace-break-spaces text-sm font-semibold uppercase leading-4 text-gray-700">
-                      <span className="ml-4 hidden xl:block">{tagline}</span>
-                    </div>
-                  </>
+                <Logo />
+
+                {tagline && (
+                  <div className="w-fit whitespace-break-spaces text-sm font-semibold uppercase leading-4 text-gray-700">
+                    <span className="ml-4 hidden xl:block">{tagline}</span>
+                  </div>
+                )}
+                {title && (
+                  <div className="mb-3 ml-2 mt-2 text-4xl leading-5">
+                    {title}
+                  </div>
                 )}
               </div>
+              {subtitle && (
+                <p className="relative text-xs text-ssw-black opacity-70">
+                  {subtitle}
+                </p>
+              )}
             </CustomLink>
           </div>
           <div className="flex items-center xl:hidden">
-            {!hidePhone && <PhoneButton className="max-sm:hidden" />}
-            {RightSideActions && (
+            {RightSideActions ? (
               <div className="max-sm:hidden">
                 <RightSideActions />
               </div>
+            ) : (
+              <PhoneButton className="max-sm:hidden" />
             )}
             <Search />
             <Divider />
@@ -78,7 +90,7 @@ const MegaMenuLayout: React.FC<MegaMenuWrapperProps> = ({
           </div>
           <DesktopMenu
             menuGroups={menuItems}
-            sideActionsOverride={sideActionsOverride}
+            sideActionsOverride={rightSideActionsOverride}
           />
         </nav>
 
@@ -88,11 +100,12 @@ const MegaMenuLayout: React.FC<MegaMenuWrapperProps> = ({
           closeMobileMenu={() => setMobileMenuOpen(false)}
         />
       </div>
-      {!hidePhone && <PhoneButton className="pb-4 sm:hidden" />}
-      {RightSideActions && (
+      {RightSideActions ? (
         <div className="sm:hidden">
           <RightSideActions />
         </div>
+      ) : (
+        <PhoneButton className="pb-4 sm:hidden" />
       )}
     </>
   );
