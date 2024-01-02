@@ -12,17 +12,26 @@ jobs:
       - uses: pnpm/action-setup@v2
         with:
           version: 8.13.0
+
       - uses: actions/setup-node@v4
         with:
           node-version-file: ".nvmrc"
           registry-url: "https://registry.npmjs.org"
           cache: "pnpm"
-      - name: Install dependencies 📦️
+
+      - name: 📦️ Install dependencies
         run: pnpm install
-      - name: Build 🏗️
+
+      - name: 🏗️ Build
         run: |
           pnpm build
-      - name: Publish to NPM 🚀️
-        run: pnpm publish
+
+      - name: 📋 Copy package.json + README to dist
+        run: |
+          cp package.json dist/
+          cp README.md dist/
+
+      - name: 🚀️ Publish to NPM
+        run: pnpm publish --no-git-checks --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
