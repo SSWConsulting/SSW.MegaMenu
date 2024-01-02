@@ -2,20 +2,34 @@
 
 ### Installation
 
-1. install package
+1. Install package
 ```bash
 npm install ssw.megamenu
 ```
-2. import global styles
-```javascript
-import "ssw.megamenu/dist/style.css";
+
+```bash
+yarn add ssw.megamenu
 ```
-3. use components in your project
+
+```bash
+pnpm add ssw.megamenu
+```
+
+2. Import the generated styles
+
+**NOTE: If you have TailwindCSS installed in your project, you can skip this step**
+
 ```javascript
-// commonjs
+import "ssw.megamenu/style.css";
+```
+
+3. You can then use the components in your React app like so:
+```javascript
+// CommonJS
 const { Menu, MobileMenu, MenuBar } = require('ssw.megamenu');
-// es module
-import { Menu, MobileMenu, MenuBar } from 'ssw.megamenu';
+
+// ESM
+import { MegaMenuLayout } from 'ssw.megamenu';
 ```
 
 ### Basic Usage
@@ -25,15 +39,12 @@ The `ssw.megamenu` NPM package provides you with the `<MegaMenuLayout />` compon
 #### Example:
 
 ```tsx
-import React, { useState, useRef } from 'react';
-import { Menu, MobileMenu } from 'ssw.megamenu';
-import './App.css';
+import { MegaMenuLayout } from 'ssw.megamenu';
 
 function App() {
   return (
-    <header className="App-header">Test MenuBar</header>
     <MegaMenuLayout />
-    <div>Some content</div>
+    /* {{ CONTENT_HERE }} */
   );
 }
 
@@ -46,16 +57,12 @@ The `<MegaMenuLayout />` component can be used with SSG (Static Site Generation)
 #### Example usage with SSR (Next.js):
 
 ```tsx
-
-import React, { useState, useRef } from 'react';
-import { Menu, MobileMenu } from 'ssw.megamenu';
-import './App.css';
+import { MegaMenuLayout } from 'ssw.megamenu';
 
 function App(props) {
   return (
-    <header className="App-header">Test MenuBar</header>
     <MegaMenuLayout menuBarItems={props.menuBarItems} />
-    <div>Some content</div>
+    /* {{ CONTENT_HERE }} */
   );
 }
 
@@ -71,16 +78,29 @@ export function getStaticProps() {
 
 ```
 
+### Available Props 
+
+| Prop Name | Type | Description | Required |
+| --- | --- | --- | --- |
+| `menuBarItems` | `MenuBarItem[]` | An array of objects that represent the menu bar items provided by SSR or other data fetching mechanisms. If this prop isn't supplied, the component will fetch the data from the Next.js API route. | No |
+| `title` | `string` | The title text displayed next to the SSW logo. | Yes (If there is no `tagline` provided) |
+| `subtitle` | `string` | The text displayed underneath the SSW logo | No |
+| `tagline` | `string` | The URL of the menu bar item. | No |
+| `rightSideActionsOverride` | `() => JSX.Element` | The component to replace the "Call Us" and search buttons that are displayed by default on the right side of the menu. | No |
+
+
 ## How to contribute?
 
 In the project directory, you can run:
 
 ### `pnpm dev`
 
-Runs the app in the development mode.<br />
+Runs the app in the development mode.
+
+
 Open [http://localhost:5173](http://localhost:5173) to view it in the browser.
 
-The page will reload if you make edits.<br />
+The page will reload if you make edits.
 
 ### `pnpm build`
 
@@ -88,8 +108,8 @@ Builds the lib for production to the `dist` folder.<br />
 
 ### How to publish?
 
-1. **Important: Before to push your changes, you need to increment the version number in the file package.json**
-2. Make a pull request to integrate your code into the main branch.
+1. **Important: Before to push your changes, you need to increment the version number in the file package.json using [semver](https://semver.org/)**
+2. Make a pull request to add your code into the `main` branch.
 3. Get the pull request approved
-4. Merged your code into main branch
-5. Package published by github actions
+4. Merge your code into the `main` branch
+5. Publish a GitHub release with the same version number as the one you incremented in the file package.json at https://github.com/SSWConsulting/SSW.MegaMenu/releases
