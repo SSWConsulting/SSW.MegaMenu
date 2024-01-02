@@ -1,6 +1,7 @@
 name: Publish npm Package
 
 on:
+  workflow_dispatch:
   release:
     types: [published]
 
@@ -25,11 +26,6 @@ jobs:
       - name: 🏗️ Build
         run: |
           pnpm build
-
-      - name: 📋 Copy package.json + README to dist
-        run: |
-          cp package.json dist/
-          cp README.md dist/
 
       - name: 🚀️ Publish to NPM
         run: pnpm publish --no-git-checks --access public
