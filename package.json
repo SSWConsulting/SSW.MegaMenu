@@ -1,8 +1,14 @@
 {
-  "name": "ssw-megamenu",
-  "private": true,
+  "name": "ssw.megamenu",
   "version": "4.0.0",
   "type": "module",
+  "main": "dist/index.js",
+  "module": "dist/index.es.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "README.md"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
@@ -72,9 +78,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "publishConfig": {
-    "directory": "dist"
   },
   "packageManager": "pnpm@8.13.0+sha256.fbcf256db6d06bc189e31df34b3ed61220f3ba9f78a2ca8fe7be0fce4670dbd3"
 }
