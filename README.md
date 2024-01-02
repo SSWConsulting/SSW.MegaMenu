@@ -86,7 +86,7 @@ export function getStaticProps() {
 | `title` | `string` | The title text displayed next to the SSW logo. | Yes (If there is no `tagline` provided) |
 | `subtitle` | `string` | The text displayed underneath the SSW logo | No |
 | `tagline` | `string` | The URL of the menu bar item. | No |
-| `rightSideActionsOverride` | `() => JSX.Element` | The component to replace the "Call Us" and search buttons that are displayed by default on the right side of the menu | No |
+| `rightSideActionsOverride` | `() => JSX.Element` | The component to replace the "Call Us" and search buttons that are displayed by default on the right side of the menu. | No |
 
 
 ## How to contribute?
