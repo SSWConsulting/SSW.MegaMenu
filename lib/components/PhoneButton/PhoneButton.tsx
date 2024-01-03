@@ -21,7 +21,7 @@ export const PhoneButton = ({ className }: PhoneButtonProps) => {
       <CustomLink
         href={url}
         className={cx(
-          "flex h-12 w-fit shrink-0 cursor-pointer items-center justify-center rounded-lg bg-ssw-red px-5 text-xl hover:opacity-70",
+          "flex h-12 w-full shrink-0 cursor-pointer items-center justify-center rounded-lg bg-ssw-red px-5 text-xl hover:opacity-70 max-sm:my-5 sm:w-fit",
         )}
       >
         <FaPhoneAlt color="white" className="text-2xl" />

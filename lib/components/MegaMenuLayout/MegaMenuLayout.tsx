@@ -41,7 +41,7 @@ const MegaMenuLayout: React.FC<MegaMenuWrapperProps> = ({
 
   return (
     <>
-      <div className="relative z-10 flex h-16 w-full items-center justify-center sm:h-[120px]">
+      <div className="relative z-10 flex w-full items-center justify-center sm:h-[120px]">
         <nav
           className="flex h-full w-full items-center justify-between gap-x-4 overflow-hidden px-0"
           aria-label="Global"
@@ -105,7 +105,7 @@ const MegaMenuLayout: React.FC<MegaMenuWrapperProps> = ({
           <RightSideActions />
         </div>
       ) : (
-        <PhoneButton className="pb-4 sm:hidden" />
+        <PhoneButton className="flex-grow pb-4 sm:hidden" />
       )}
     </>
   );

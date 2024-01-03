@@ -5,7 +5,6 @@ const API_URL = "https://www.ssw.com.au/api/get-megamenu";
 
 const refreshData = async () => {
   const res = await fetch(API_URL);
-
   const json = await res.json();
 
   const { menuGroups } = json;
@@ -16,16 +15,19 @@ const refreshData = async () => {
 export const useMenuItems = (
   menuBarItems?: NavMenuGroup[],
 ): { menuItems: NavMenuGroup[] } => {
-  const [menuItems, setMenuItems] = useState<NavMenuGroup[] | null>([]);
+  const [menuItems, setMenuItems] = useState<NavMenuGroup[]>(
+    menuBarItems || [],
+  );
 
   useEffect(() => {
-    if (menuBarItems) {
-      setMenuItems(menuBarItems);
-    } else {
-      refreshData().then((data) => {
+    refreshData()
+      .then((data) => {
         setMenuItems(data);
+      })
+      .catch((err) => {
+        setMenuItems(menuBarItems || []);
+        console.error(err);
       });
-    }
   }, [menuBarItems]);
 
   return { menuItems: menuItems || [] };

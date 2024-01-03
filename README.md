@@ -17,10 +17,26 @@ pnpm add ssw.megamenu
 
 2. Import the generated styles
 
-**NOTE: If you have TailwindCSS installed in your project, you can skip this step**
-
 ```javascript
-import "ssw.megamenu/style.css";
+import "ssw.megamenu/dist/style.css";
+```
+
+**NOTE: If you have TailwindCSS installed in your project, you can instead list the `ssw.megamenu` package in your `tailwind.config.js` content array like so:**
+
+```js
+// tailwind.config.js
+
+// ...
+
+module.exports = {
+  // ...
+  content: [
+    // ...
+    "node_modules/ssw.megamenu/**/*.js",
+  ],
+  // ...
+};
+
 ```
 
 3. You can then use the components in your React app like so:
