@@ -43,7 +43,7 @@ const MegaMenuLayout: React.FC<MegaMenuWrapperProps> = ({
     <>
       <div className="relative z-10 flex w-full items-center justify-center sm:h-[120px]">
         <nav
-          className="flex h-full w-full items-center justify-between gap-x-4 overflow-hidden px-0"
+          className="flex h-full w-full items-center justify-between gap-x-4 px-0"
           aria-label="Global"
         >
           <div className="flex items-center">
