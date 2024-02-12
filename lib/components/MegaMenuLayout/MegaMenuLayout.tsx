@@ -11,6 +11,7 @@ import { Search } from "../Search";
 
 export type MegaMenuWrapperProps = {
   menuBarItems?: NavMenuGroup[];
+  url?: string;
   subtitle?: string;
   searchUrl?: string;
   rightSideActionsOverride?: () => JSX.Element;
@@ -30,6 +31,7 @@ type Title = {
 const MegaMenuLayout: React.FC<MegaMenuWrapperProps> = ({
   tagline,
   title,
+  url,
   subtitle,
   searchUrl,
   menuBarItems,
@@ -49,7 +51,7 @@ const MegaMenuLayout: React.FC<MegaMenuWrapperProps> = ({
           aria-label="Global"
         >
           <div className="flex items-center">
-            <CustomLink href="/" className="gap-1 whitespace-nowrap">
+            <CustomLink href={url || "/"} className="gap-1 whitespace-nowrap">
               <div className="flex min-w-[4rem] max-w-[14rem] items-center justify-center">
                 <Logo />
 
