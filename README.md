@@ -102,6 +102,7 @@ export function getStaticProps() {
 | `title` | `string` | The title text displayed next to the SSW logo. | Yes (If there is no `tagline` provided) |
 | `subtitle` | `string` | The text displayed underneath the SSW logo | No |
 | `tagline` | `string` | The URL of the menu bar item. | No |
+| `searchUrl` | `string` | The absolute URL the search takes you to. If not provided, will default to the host address. i.e. for SSW <www.ssw.com.au> | No |
 | `rightSideActionsOverride` | `() => JSX.Element` | The component to replace the "Call Us" and search buttons that are displayed by default on the right side of the menu. | No |
 
 

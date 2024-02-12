@@ -12,6 +12,7 @@ import { Search } from "../Search";
 export type MegaMenuWrapperProps = {
   menuBarItems?: NavMenuGroup[];
   subtitle?: string;
+  searchUrl?: string;
   rightSideActionsOverride?: () => JSX.Element;
 } & React.PropsWithChildren &
   (Tagline | Title);
@@ -30,6 +31,7 @@ const MegaMenuLayout: React.FC<MegaMenuWrapperProps> = ({
   tagline,
   title,
   subtitle,
+  searchUrl,
   menuBarItems,
   rightSideActionsOverride,
 }) => {
@@ -77,7 +79,7 @@ const MegaMenuLayout: React.FC<MegaMenuWrapperProps> = ({
             ) : (
               <PhoneButton className="max-sm:hidden" />
             )}
-            <Search />
+            <Search url={searchUrl} />
             <Divider />
             <button
               type="button"
@@ -89,6 +91,7 @@ const MegaMenuLayout: React.FC<MegaMenuWrapperProps> = ({
             </button>
           </div>
           <DesktopMenu
+            searchUrl={searchUrl}
             menuGroups={menuItems}
             sideActionsOverride={rightSideActionsOverride}
           />
