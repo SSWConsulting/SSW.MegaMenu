@@ -4,7 +4,11 @@ import { useHotkeys } from "react-hotkeys-hook";
 import { useLocation } from "react-use";
 import { MegaIcon } from "../MegaIcon";
 
-export const Search: React.FC = () => {
+export interface SearchProps {
+  url?: string;
+}
+
+export const Search: React.FC<SearchProps> = ({ url }) => {
   const searchRef = useRef(null);
   const location = useLocation();
   const [isOpen, setIsOpen] = useState(false);
@@ -30,7 +34,7 @@ export const Search: React.FC = () => {
   const performSearch = () => {
     if (searchTerm) {
       const searchUrl = `https://www.google.com.au/search?q=site:${
-        location.hostname
+        url || location.hostname
       }%20${encodeURIComponent(searchTerm)}`;
       window.open(searchUrl, "_blank");
     }
