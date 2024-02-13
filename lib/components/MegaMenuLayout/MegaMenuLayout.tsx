@@ -2,6 +2,7 @@ import { Bars3Icon } from "@heroicons/react/24/outline";
 import React, { useState } from "react";
 import { useMenuItems } from "../../hooks/useMenuItems";
 import { NavMenuGroup } from "../../types/megamenu";
+import { DEFAULT_URL } from "../../util/constants";
 import { CustomLink } from "../CustomLink";
 import DesktopMenu from "../DesktopMenu/DesktopMenu";
 import { Logo } from "../Logo";
@@ -33,7 +34,7 @@ const MegaMenuLayout: React.FC<MegaMenuWrapperProps> = ({
   title,
   url,
   subtitle,
-  searchUrl,
+  searchUrl = DEFAULT_URL,
   menuBarItems,
   rightSideActionsOverride,
 }) => {

@@ -15,8 +15,8 @@ const refreshData = async () => {
 export const useMenuItems = (
   menuBarItems?: NavMenuGroup[],
 ): { menuItems: NavMenuGroup[] } => {
-  const [menuItems, setMenuItems] = useState<NavMenuGroup[]>(
-    menuBarItems || [],
+  const [menuItems, setMenuItems] = useState<NavMenuGroup[] | undefined>(
+    menuBarItems,
   );
 
   useEffect(() => {
@@ -25,9 +25,14 @@ export const useMenuItems = (
         setMenuItems(data);
       })
       .catch((err) => {
-        setMenuItems(menuBarItems || []);
         console.error(err);
       });
+  }, []);
+
+  useEffect(() => {
+    if (menuBarItems) {
+      setMenuItems(menuBarItems);
+    }
   }, [menuBarItems]);
 
   return { menuItems: menuItems || [] };
