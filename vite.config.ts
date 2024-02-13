@@ -4,16 +4,22 @@
 import svgr from "@svgr/rollup";
 import react from "@vitejs/plugin-react-swc";
 import { resolve } from "path";
+import nodeExternals from "rollup-plugin-node-externals";
 import { defineConfig } from "vite";
 import dts from "vite-plugin-dts";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react(), dts({ rollupTypes: true })],
+  plugins: [
+    react(),
+    dts({ rollupTypes: true }),
+    { ...nodeExternals(), enforce: "pre" },
+  ],
   build: {
     target: "esnext",
     minify: false,
     copyPublicDir: false,
+    sourcemap: true,
     lib: {
       entry: resolve(__dirname, "lib/index.ts"),
       name: "megamenu",
@@ -22,27 +28,14 @@ export default defineConfig({
     },
     rollupOptions: {
       plugins: [svgr()],
-      external: [
-        "react",
-        "react-dom",
-        "@headlessui/react",
-        "@heroicons/react",
-        "clsx",
-        "react-device-detect",
-        "react-hotkeys-hook",
-        "react-icons",
-        "tailwind-merge",
-      ],
       output: {
         globals: {
           react: "React",
           "react-dom": "ReactDOM",
           "@headlessui/react": "HeadlessUI",
-          "@heroicons/react": "HeroIcons",
           clsx: "clsx",
           "react-device-detect": "react-dd",
           "react-hotkeys-hook": "ReactHotkeysHook",
-          "react-icons": "ReactIcons",
           "tailwind-merge": "twmerge",
         },
       },
