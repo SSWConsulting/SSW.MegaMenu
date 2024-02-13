@@ -1,4 +1,4 @@
-import { createContext } from "react";
+import { ReactNode, createContext } from "react";
 import type { LinkComponentType } from "./index";
 
 const defaultLinkComponent: LinkComponentType = ({
@@ -16,13 +16,15 @@ const defaultLinkComponent: LinkComponentType = ({
 export const LinkContext =
   createContext<LinkComponentType>(defaultLinkComponent);
 
+type LinkProviderProps = {
+  linkComponent?: LinkComponentType;
+  children?: ReactNode;
+};
+
 export const LinkProvider = ({
   children,
   linkComponent = defaultLinkComponent,
-}: {
-  children?: JSX.Element;
-  linkComponent?: LinkComponentType;
-}) => {
+}: LinkProviderProps) => {
   return (
     <LinkContext.Provider value={linkComponent}>
       {children}
