@@ -19,7 +19,6 @@ export default defineConfig({
     target: "esnext",
     minify: false,
     copyPublicDir: false,
-    sourcemap: true,
     lib: {
       entry: resolve(__dirname, "lib/index.ts"),
       name: "megamenu",
