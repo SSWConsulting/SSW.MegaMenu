@@ -1,5 +1,6 @@
 import { isMobile } from "react-device-detect";
-import { FaPhoneAlt } from "react-icons/fa";
+// Fix for Next.js as per https://github.com/react-icons/react-icons/issues/821#issuecomment-1747679972
+import { FaPhoneAlt } from "react-icons/fa/index.js";
 import { cx } from "../../util/cx";
 import { CustomLink } from "../CustomLink";
 
