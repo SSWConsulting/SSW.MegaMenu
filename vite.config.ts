@@ -31,7 +31,6 @@ export default defineConfig({
         "react-device-detect",
         "react-hotkeys-hook",
         "react-icons",
-        "react-use",
         "tailwind-merge",
       ],
       output: {
@@ -43,7 +42,6 @@ export default defineConfig({
           clsx: "clsx",
           "react-device-detect": "react-dd",
           "react-hotkeys-hook": "ReactHotkeysHook",
-          "react-use": "ReactUse",
           "react-icons": "ReactIcons",
           "tailwind-merge": "twmerge",
         },

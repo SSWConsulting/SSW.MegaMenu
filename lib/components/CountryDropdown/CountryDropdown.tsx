@@ -1,7 +1,6 @@
 "use client";
 import { Popover, Transition } from "@headlessui/react";
 import { Fragment, useEffect, useState } from "react";
-import useLocation from "react-use/esm/useLocation";
 import { Countries } from "../../types/country";
 import { cx } from "../../util/cx";
 import { CustomLink } from "../CustomLink";
@@ -22,17 +21,28 @@ const websites: { country: Countries; url: string }[] = [
   },
 ] as const;
 
-const CountryDropdown = () => {
-  const { host } = useLocation();
+type CountryDropdownProps = {
+  url?: string;
+};
+
+const CountryDropdown = ({ url }: CountryDropdownProps) => {
   const [isOpened, setIsOpened] = useState(false);
   const [currentCountry, setCurrentCountry] = useState<Countries>("Australia");
 
   useEffect(() => {
-    const website = websites.find((w) => host?.endsWith(w.url));
-    if (website) {
-      setCurrentCountry(website.country);
+    try {
+      console.log("url", url);
+      const { hostname } = new URL(url || "");
+      console.log(hostname);
+
+      const website = websites.find((w) => hostname?.endsWith(w.url));
+      if (website) {
+        setCurrentCountry(website.country);
+      }
+    } catch (err) {
+      console.error(err);
     }
-  }, [host]);
+  }, [url]);
 
   return (
     <Popover>

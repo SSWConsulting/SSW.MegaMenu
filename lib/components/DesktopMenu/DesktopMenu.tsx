@@ -11,7 +11,7 @@ export interface DesktopMenuProps {
   menuGroups: NavMenuGroup[];
   sideActionsOverride?: () => JSX.Element;
   hidePhone?: boolean;
-  searchUrl?: string;
+  searchUrl: string;
 }
 
 export const ClosePopoverContext = createContext<(() => void) | null>(null);
@@ -84,7 +84,7 @@ const DesktopMenu: React.FC<DesktopMenuProps> = ({
 
 type DefaultSideActionsProps = {
   hidePhone?: boolean;
-  searchUrl?: string;
+  searchUrl: string;
 };
 
 const DefaultSideActions = ({
@@ -96,7 +96,7 @@ const DefaultSideActions = ({
       {!hidePhone && <PhoneButton hideMobile />}
       <Search url={searchUrl} />
       <Divider />
-      <CountryDropdown />
+      <CountryDropdown url={searchUrl} />
     </>
   );
 };

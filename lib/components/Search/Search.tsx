@@ -1,7 +1,6 @@
 import { Dialog, Transition } from "@headlessui/react";
 import React, { Fragment, useEffect, useRef, useState } from "react";
 import { useHotkeys } from "react-hotkeys-hook";
-import useLocation from "react-use/esm/useLocation";
 import { MegaIcon } from "../MegaIcon";
 
 export interface SearchProps {
@@ -10,7 +9,6 @@ export interface SearchProps {
 
 export const Search: React.FC<SearchProps> = ({ url }) => {
   const searchRef = useRef(null);
-  const location = useLocation();
   const [isOpen, setIsOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
 
@@ -33,9 +31,9 @@ export const Search: React.FC<SearchProps> = ({ url }) => {
 
   const performSearch = () => {
     if (searchTerm) {
-      const searchUrl = `https://www.google.com.au/search?q=site:${
-        url || location.hostname
-      }%20${encodeURIComponent(searchTerm)}`;
+      const searchUrl = `https://www.google.com.au/search?q=site:${url}%20${encodeURIComponent(
+        searchTerm,
+      )}`;
       window.open(searchUrl, "_blank");
     }
   };
