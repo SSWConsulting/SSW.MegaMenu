@@ -1,8 +1,10 @@
 import { Bars3Icon } from "@heroicons/react/24/outline";
+import type { ClassValue } from "clsx";
 import React, { useState } from "react";
 import { useMenuItems } from "../../hooks/useMenuItems";
 import { NavMenuGroup } from "../../types/megamenu";
 import { DEFAULT_URL } from "../../util/constants";
+import { cx } from "../../util/cx";
 import { CustomLink } from "../CustomLink";
 import DesktopMenu from "../DesktopMenu/DesktopMenu";
 import { Logo } from "../Logo";
@@ -11,6 +13,7 @@ import { PhoneButton } from "../PhoneButton";
 import { Search } from "../Search";
 
 export type MegaMenuWrapperProps = {
+  className?: ClassValue;
   menuBarItems?: NavMenuGroup[];
   url?: string;
   subtitle?: string;
@@ -30,6 +33,7 @@ type Title = {
 };
 
 const MegaMenuLayout: React.FC<MegaMenuWrapperProps> = ({
+  className = "",
   tagline,
   title,
   url,
@@ -46,7 +50,12 @@ const MegaMenuLayout: React.FC<MegaMenuWrapperProps> = ({
 
   return (
     <>
-      <div className="relative z-10 flex w-full items-center justify-center sm:h-[120px]">
+      <div
+        className={cx(
+          className,
+          "relative z-10 flex w-full items-center justify-center sm:h-[120px]",
+        )}
+      >
         <nav
           className="flex h-full w-full items-center justify-between gap-x-4 overflow-hidden px-0"
           aria-label="Global"
