@@ -31,9 +31,7 @@ const CountryDropdown = ({ url }: CountryDropdownProps) => {
 
   useEffect(() => {
     try {
-      console.log("url", url);
       const { hostname } = new URL(url || "");
-      console.log(hostname);
 
       const website = websites.find((w) => hostname?.endsWith(w.url));
       if (website) {
