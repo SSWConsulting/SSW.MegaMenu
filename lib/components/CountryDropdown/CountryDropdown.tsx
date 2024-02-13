@@ -1,7 +1,7 @@
 "use client";
 import { Popover, Transition } from "@headlessui/react";
 import { Fragment, useEffect, useState } from "react";
-import { useLocation } from "react-use";
+import useLocation from "react-use/esm/useLocation";
 import { Countries } from "../../types/country";
 import { cx } from "../../util/cx";
 import { CustomLink } from "../CustomLink";

@@ -1,7 +1,7 @@
 import { Dialog, Transition } from "@headlessui/react";
 import React, { Fragment, useEffect, useRef, useState } from "react";
 import { useHotkeys } from "react-hotkeys-hook";
-import { useLocation } from "react-use";
+import useLocation from "react-use/esm/useLocation";
 import { MegaIcon } from "../MegaIcon";
 
 export interface SearchProps {
