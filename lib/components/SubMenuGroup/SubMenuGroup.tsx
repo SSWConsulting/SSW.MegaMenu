@@ -1,5 +1,6 @@
 "use client";
 import React, { useContext } from "react";
+import { useLinkComponent } from "../../hooks/useLinkComponent";
 import {
   NavMenuColumn,
   NavMenuColumnGroup,
@@ -8,7 +9,6 @@ import {
   ViewAll,
 } from "../../types/megamenu";
 import { cx } from "../../util/cx";
-import { CustomLink } from "../CustomLink";
 import { ClosePopoverContext } from "../DesktopMenu/DesktopMenu";
 import { MegaIcon, type AvailableIcons } from "../MegaIcon";
 import SubMenuWidget from "./SubMenuWidget";
@@ -102,6 +102,7 @@ const LinkItem: React.FC<{ link: NavMenuColumnGroupItem }> = ({
   link: { name, url, description, icon, iconImg },
 }) => {
   const close = useContext(ClosePopoverContext);
+  const CustomLink = useLinkComponent();
 
   return (
     <CustomLink
@@ -146,9 +147,12 @@ const ViewAllLink: React.FC<{ href?: string; name?: string }> = ({
   name,
   href,
 }) => {
+  const CustomLink = useLinkComponent();
+
   if (!name || !href) {
     return <></>;
   }
+
   return (
     <div className="flex grow flex-col-reverse items-end self-end pt-4">
       <CustomLink

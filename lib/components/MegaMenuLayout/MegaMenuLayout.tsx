@@ -1,11 +1,11 @@
 import { Bars3Icon } from "@heroicons/react/24/outline";
 import type { ClassValue } from "clsx";
 import React, { useState } from "react";
+import { useLinkComponent } from "../../hooks/useLinkComponent";
 import { useMenuItems } from "../../hooks/useMenuItems";
 import { NavMenuGroup } from "../../types/megamenu";
 import { DEFAULT_URL } from "../../util/constants";
 import { cx } from "../../util/cx";
-import { CustomLink } from "../CustomLink";
 import DesktopMenu from "../DesktopMenu/DesktopMenu";
 import { Logo } from "../Logo";
 import MobileMenu from "../MobileMenu/MobileMenu";
@@ -45,6 +45,7 @@ const MegaMenuLayout: React.FC<MegaMenuWrapperProps> = ({
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const { menuItems } = useMenuItems(menuBarItems);
+  const CustomLink = useLinkComponent();
 
   const RightSideActions = rightSideActionsOverride;
 

@@ -1,10 +1,5 @@
-import React, { createContext } from "react";
-
-type LinkComponentType = React.FC<{
-  href: string;
-  className?: string;
-  children?: JSX.Element;
-}>;
+import { createContext } from "react";
+import type { LinkComponentType } from "./index";
 
 const defaultLinkComponent: LinkComponentType = ({
   href,

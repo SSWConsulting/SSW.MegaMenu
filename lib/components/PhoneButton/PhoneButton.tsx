@@ -1,8 +1,8 @@
 import { isMobile } from "react-device-detect";
 // Fix for Next.js as per https://github.com/react-icons/react-icons/issues/821#issuecomment-1747679972
 import { FaPhoneAlt } from "react-icons/fa/index.js";
+import { useLinkComponent } from "../../hooks/useLinkComponent";
 import { cx } from "../../util/cx";
-import { CustomLink } from "../CustomLink";
 
 type PhoneButtonProps = {
   className?: string;
@@ -10,6 +10,8 @@ type PhoneButtonProps = {
 };
 
 export const PhoneButton = ({ className }: PhoneButtonProps) => {
+  const CustomLink = useLinkComponent();
+
   const url = isMobile
     ? "tel:+61299533000"
     : "https://ssw.com.au/company/contact-us";

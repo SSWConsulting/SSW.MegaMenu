@@ -1,6 +1,6 @@
 import React, { createContext } from "react";
 
-type LinkComponentType = React.FC<{
+export type LinkComponentType = React.FC<{
   href: string;
   className?: string;
   children?: JSX.Element;

@@ -1,8 +1,8 @@
 import { Dialog } from "@headlessui/react";
 import { ChevronRightIcon } from "@heroicons/react/24/solid";
 import React from "react";
+import { useLinkComponent } from "../../hooks/useLinkComponent";
 import { NavMenuGroup } from "../../types/megamenu";
-import { CustomLink } from "../CustomLink";
 import { MegaIcon } from "../MegaIcon";
 import SubMenuGroup from "../SubMenuGroup/SubMenuGroup";
 
@@ -78,6 +78,8 @@ const MenuBarItems: React.FC<{
   menuBarItems: NavMenuGroup[];
   setSelectedMenuItem: (item: NavMenuGroup) => void;
 }> = ({ menuBarItems, setSelectedMenuItem }) => {
+  const CustomLink = useLinkComponent();
+
   return (
     <div className="-my-6 divide-y divide-gray-500/10 pl-6">
       <div className="space-y-2">
