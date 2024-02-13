@@ -8,6 +8,7 @@ import {
   ViewAll,
 } from "../../types/megamenu";
 import { cx } from "../../util/cx";
+import { CustomLink } from "../CustomLink";
 import { ClosePopoverContext } from "../DesktopMenu/DesktopMenu";
 import { MegaIcon, type AvailableIcons } from "../MegaIcon";
 import SubMenuWidget from "./SubMenuWidget";
@@ -103,7 +104,7 @@ const LinkItem: React.FC<{ link: NavMenuColumnGroupItem }> = ({
   const close = useContext(ClosePopoverContext);
 
   return (
-    <a
+    <CustomLink
       href={url || ""}
       className={cx(
         "flex items-start gap-x-3 rounded-md bg-white hover:bg-gray-100 focus:outline-none",
@@ -137,7 +138,7 @@ const LinkItem: React.FC<{ link: NavMenuColumnGroupItem }> = ({
           )}
         </span>
       </div>
-    </a>
+    </CustomLink>
   );
 };
 
@@ -150,12 +151,12 @@ const ViewAllLink: React.FC<{ href?: string; name?: string }> = ({
   }
   return (
     <div className="flex grow flex-col-reverse items-end self-end pt-4">
-      <a
+      <CustomLink
         href={href}
         className="rounded-md px-3 py-1 text-sm font-semibold leading-6 text-ssw-red hover:bg-ssw-red hover:text-white"
       >
         {name} &rarr;
-      </a>
+      </CustomLink>
     </div>
   );
 };
