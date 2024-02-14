@@ -1,5 +1,6 @@
 import React, { PropsWithChildren } from "react";
-import { AvailableIcons, MegaIcon } from "../MegaIcon";
+import { AvailableIcons } from "../../types/icon";
+import { MegaIcon } from "../MegaIcon";
 
 interface FeaturedCardProps extends PropsWithChildren {
   title: React.ReactNode;
