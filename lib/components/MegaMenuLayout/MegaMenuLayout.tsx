@@ -27,12 +27,12 @@ export type MegaMenuWrapperProps = {
 } & React.PropsWithChildren &
   (Tagline | Title);
 
-type Tagline = {
+export type Tagline = {
   title?: never;
   tagline?: string;
 };
 
-type Title = {
+export type Title = {
   title: string;
   tagline?: never;
 };

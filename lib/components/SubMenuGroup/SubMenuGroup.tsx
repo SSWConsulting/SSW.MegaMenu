@@ -1,6 +1,7 @@
 "use client";
 import React, { useContext } from "react";
 import { useLinkComponent } from "../../hooks/useLinkComponent";
+import { type AvailableIcons } from "../../types/icon";
 import {
   NavMenuColumn,
   NavMenuColumnGroup,
@@ -10,7 +11,7 @@ import {
 } from "../../types/megamenu";
 import { cx } from "../../util/cx";
 import { ClosePopoverContext } from "../DesktopMenu/DesktopMenu";
-import { MegaIcon, type AvailableIcons } from "../MegaIcon";
+import { MegaIcon } from "../MegaIcon";
 import SubMenuWidget from "./SubMenuWidget";
 
 export interface SubMenuGroupProps {

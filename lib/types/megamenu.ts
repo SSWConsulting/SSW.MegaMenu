@@ -1,4 +1,4 @@
-import type { AvailableIcons } from "../components/MegaIcon";
+import { AvailableIcons } from "./icon";
 
 export const availableWidgets = [
   "standardLink",
