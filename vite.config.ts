@@ -12,7 +12,21 @@ import dts from "vite-plugin-dts";
 export default defineConfig({
   plugins: [
     react(),
-    dts({ rollupTypes: true }),
+    dts({
+      rollupTypes: true,
+      // config relating to api-extractor, which rolls up the types
+      rollupConfig: {
+        messages: {
+          extractorMessageReporting: {
+            "ae-forgotten-export": {
+              // @ts-expect-error - this is a valid config
+              logLevel: "warning",
+              addToApiReportFile: true,
+            },
+          },
+        },
+      },
+    }),
     { ...nodeExternals(), enforce: "pre" },
   ],
   build: {
