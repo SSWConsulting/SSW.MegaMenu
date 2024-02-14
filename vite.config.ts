@@ -21,7 +21,6 @@ export default defineConfig({
             "ae-forgotten-export": {
               // @ts-expect-error - this is a valid config
               logLevel: "warning",
-              addToApiReportFile: true,
             },
           },
         },
