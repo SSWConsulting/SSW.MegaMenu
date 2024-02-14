@@ -1,11 +1,15 @@
 import { Bars3Icon } from "@heroicons/react/24/outline";
 import type { ClassValue } from "clsx";
 import React, { useState } from "react";
+import {
+  LinkComponentType,
+  useLinkComponent,
+} from "../../hooks/useLinkComponent";
+import { LinkProvider } from "../../hooks/useLinkComponent/components";
 import { useMenuItems } from "../../hooks/useMenuItems";
 import { NavMenuGroup } from "../../types/megamenu";
 import { DEFAULT_URL } from "../../util/constants";
 import { cx } from "../../util/cx";
-import { CustomLink } from "../CustomLink";
 import DesktopMenu from "../DesktopMenu/DesktopMenu";
 import { Logo } from "../Logo";
 import MobileMenu from "../MobileMenu/MobileMenu";
@@ -19,6 +23,7 @@ export type MegaMenuWrapperProps = {
   subtitle?: string;
   searchUrl?: string;
   rightSideActionsOverride?: () => JSX.Element;
+  linkComponent?: LinkComponentType;
 } & React.PropsWithChildren &
   (Tagline | Title);
 
@@ -40,16 +45,18 @@ const MegaMenuLayout: React.FC<MegaMenuWrapperProps> = ({
   subtitle,
   searchUrl = DEFAULT_URL,
   menuBarItems,
+  linkComponent,
   rightSideActionsOverride,
 }) => {
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const { menuItems } = useMenuItems(menuBarItems);
+  const CustomLink = useLinkComponent();
 
   const RightSideActions = rightSideActionsOverride;
 
   return (
-    <>
+    <LinkProvider linkComponent={linkComponent}>
       <div
         className={cx(
           className,
@@ -122,7 +129,7 @@ const MegaMenuLayout: React.FC<MegaMenuWrapperProps> = ({
       ) : (
         <PhoneButton className="flex-grow pb-4 sm:hidden" />
       )}
-    </>
+    </LinkProvider>
   );
 };
 

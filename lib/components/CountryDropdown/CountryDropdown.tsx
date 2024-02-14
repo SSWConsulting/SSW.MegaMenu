@@ -1,9 +1,9 @@
 "use client";
 import { Popover, Transition } from "@headlessui/react";
 import { Fragment, useEffect, useState } from "react";
+import { useLinkComponent } from "../../hooks/useLinkComponent";
 import { Countries } from "../../types/country";
 import { cx } from "../../util/cx";
-import { CustomLink } from "../CustomLink";
 import { Flag } from "../Flag";
 
 const websites: { country: Countries; url: string }[] = [
@@ -28,6 +28,8 @@ type CountryDropdownProps = {
 const CountryDropdown = ({ url }: CountryDropdownProps) => {
   const [isOpened, setIsOpened] = useState(false);
   const [currentCountry, setCurrentCountry] = useState<Countries>("Australia");
+
+  const CustomLink = useLinkComponent();
 
   useEffect(() => {
     try {

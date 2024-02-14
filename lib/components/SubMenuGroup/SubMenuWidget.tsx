@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
+import { useLinkComponent } from "../../hooks/useLinkComponent";
 import { SidebarItem } from "../../types/megamenu";
-import { CustomLink } from "../CustomLink";
 import { AvailableIcons, MegaIcon } from "../MegaIcon";
 import FeaturedCard from "./FeaturedCard";
 
@@ -10,6 +10,8 @@ interface SubMenuWidgetProps {
 }
 
 const SubMenuWidget: React.FC<SubMenuWidgetProps> = ({ item }) => {
+  const CustomLink = useLinkComponent();
+
   switch (item.widgetType) {
     case "featured": {
       return (

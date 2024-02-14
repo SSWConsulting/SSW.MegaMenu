@@ -1,4 +1,4 @@
-import { CustomLink } from "../CustomLink";
+import { useLinkComponent } from "../../hooks/useLinkComponent";
 
 type MenuItemLinkProps = {
   name: string;
@@ -6,6 +6,8 @@ type MenuItemLinkProps = {
 };
 
 export const MenuItemLink = ({ name, href }: MenuItemLinkProps) => {
+  const CustomLink = useLinkComponent();
+
   return (
     <CustomLink
       href={href}

@@ -1,5 +1,6 @@
 "use client";
 import React, { useContext } from "react";
+import { useLinkComponent } from "../../hooks/useLinkComponent";
 import {
   NavMenuColumn,
   NavMenuColumnGroup,
@@ -101,9 +102,10 @@ const LinkItem: React.FC<{ link: NavMenuColumnGroupItem }> = ({
   link: { name, url, description, icon, iconImg },
 }) => {
   const close = useContext(ClosePopoverContext);
+  const CustomLink = useLinkComponent();
 
   return (
-    <a
+    <CustomLink
       href={url || ""}
       className={cx(
         "flex items-start gap-x-3 rounded-md bg-white hover:bg-gray-100 focus:outline-none",
@@ -137,7 +139,7 @@ const LinkItem: React.FC<{ link: NavMenuColumnGroupItem }> = ({
           )}
         </span>
       </div>
-    </a>
+    </CustomLink>
   );
 };
 
@@ -145,17 +147,20 @@ const ViewAllLink: React.FC<{ href?: string; name?: string }> = ({
   name,
   href,
 }) => {
+  const CustomLink = useLinkComponent();
+
   if (!name || !href) {
     return <></>;
   }
+
   return (
     <div className="flex grow flex-col-reverse items-end self-end pt-4">
-      <a
+      <CustomLink
         href={href}
         className="rounded-md px-3 py-1 text-sm font-semibold leading-6 text-ssw-red hover:bg-ssw-red hover:text-white"
       >
         {name} &rarr;
-      </a>
+      </CustomLink>
     </div>
   );
 };
