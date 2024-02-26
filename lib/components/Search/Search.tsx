@@ -31,7 +31,7 @@ export const Search: React.FC<SearchProps> = ({ url, callback }) => {
     }
   }, [isOpen]);
 
-  const performSearch = (e: Event) => {
+  const performSearch = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (searchTerm) {
