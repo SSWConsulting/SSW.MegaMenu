@@ -23,6 +23,7 @@ export type MegaMenuWrapperProps = {
   subtitle?: string;
   searchUrl?: string;
   rightSideActionsOverride?: () => JSX.Element;
+  callback?: (searchTerm: string) => void;
   linkComponent?: LinkComponentType;
 } & React.PropsWithChildren &
   (Tagline | Title);
@@ -47,6 +48,7 @@ const MegaMenuLayout: React.FC<MegaMenuWrapperProps> = ({
   menuBarItems,
   linkComponent,
   rightSideActionsOverride,
+  callback,
 }) => {
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -98,7 +100,7 @@ const MegaMenuLayout: React.FC<MegaMenuWrapperProps> = ({
             ) : (
               <PhoneButton className="max-sm:hidden" />
             )}
-            <Search url={searchUrl} />
+            <Search url={searchUrl} callback={callback} />
             <Divider />
             <button
               type="button"
@@ -113,6 +115,7 @@ const MegaMenuLayout: React.FC<MegaMenuWrapperProps> = ({
             searchUrl={searchUrl}
             menuGroups={menuItems}
             sideActionsOverride={rightSideActionsOverride}
+            callback={callback}
           />
         </nav>
 

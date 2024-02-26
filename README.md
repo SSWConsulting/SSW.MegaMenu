@@ -106,6 +106,7 @@ export function getStaticProps() {
 | `searchUrl` | `string` | The absolute URL the search takes you to. If not provided, will default to the host address. i.e. for SSW <www.ssw.com.au> | No |
 | `rightSideActionsOverride` | `() => JSX.Element` | The component to replace the "Call Us" and search buttons that are displayed by default on the right side of the menu. | No |
 | `linkComponent` | <code>React.FC<{<br>&nbsp;href: string;<br>&nbsp;className?: string;<br>&nbsp;title?: string;<br>&nbsp;onClick?: () => void;<br>&nbsp;children?: React.ReactNode;<br>}></code> | The component to use for the links in the menu. i.e. `<Link>` from `next/link` or `gatsby`  | No |
+| `callback` | `(seachTerm: string) => void` | Callback run on search. If provided, the search will not open a google tab. | No | 
   
 
 
