@@ -5,12 +5,14 @@ import { MegaIcon } from "../MegaIcon";
 
 export interface SearchProps {
   url?: string;
+  callback?: (searchTerm: string) => void;
 }
 
-export const Search: React.FC<SearchProps> = ({ url }) => {
+export const Search: React.FC<SearchProps> = ({ url, callback }) => {
+  console.debug(callback);
   const searchRef = useRef(null);
-  const [isOpen, setIsOpen] = useState(false);
-  const [searchTerm, setSearchTerm] = useState("");
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [searchTerm, setSearchTerm] = useState<string>("");
 
   useHotkeys(
     "mod+k",
@@ -29,12 +31,20 @@ export const Search: React.FC<SearchProps> = ({ url }) => {
     }
   }, [isOpen]);
 
-  const performSearch = () => {
+  const performSearch = (e: Event) => {
+    e.preventDefault();
+
     if (searchTerm) {
-      const searchUrl = `https://www.google.com.au/search?q=site:${url}%20${encodeURIComponent(
-        searchTerm,
-      )}`;
-      window.open(searchUrl, "_blank");
+      if (callback) {
+        callback(searchTerm);
+      } else {
+        const searchUrl = `https://www.google.com.au/search?q=site:${url}%20${encodeURIComponent(
+          searchTerm,
+        )}`;
+        window.open(searchUrl, "_blank");
+      }
+      setIsOpen(false);
+      setSearchTerm("");
     }
   };
 
@@ -79,7 +89,7 @@ export const Search: React.FC<SearchProps> = ({ url }) => {
                   />
                   <form
                     className="isolate inline-flex w-full rounded-md shadow-sm"
-                    onSubmit={() => performSearch()}
+                    onSubmit={(e) => performSearch(e)}
                   >
                     <input
                       ref={searchRef}

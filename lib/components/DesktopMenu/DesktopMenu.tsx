@@ -12,6 +12,7 @@ export interface DesktopMenuProps {
   sideActionsOverride?: () => JSX.Element;
   hidePhone?: boolean;
   searchUrl: string;
+  callback?: (searchTerm: string) => void;
 }
 
 export const ClosePopoverContext = createContext<(() => void) | null>(null);
@@ -21,6 +22,7 @@ const DesktopMenu: React.FC<DesktopMenuProps> = ({
   sideActionsOverride,
   hidePhone,
   searchUrl,
+  callback,
 }) => {
   const SideActions = sideActionsOverride;
 
@@ -75,7 +77,11 @@ const DesktopMenu: React.FC<DesktopMenuProps> = ({
         {SideActions ? (
           <SideActions />
         ) : (
-          <DefaultSideActions hidePhone={hidePhone} searchUrl={searchUrl} />
+          <DefaultSideActions
+            hidePhone={hidePhone}
+            searchUrl={searchUrl}
+            callback={callback}
+          />
         )}
       </div>
     </>
@@ -85,16 +91,18 @@ const DesktopMenu: React.FC<DesktopMenuProps> = ({
 type DefaultSideActionsProps = {
   hidePhone?: boolean;
   searchUrl: string;
+  callback?: (searchTerm: string) => void;
 };
 
 const DefaultSideActions = ({
   hidePhone,
   searchUrl,
+  callback,
 }: DefaultSideActionsProps) => {
   return (
     <>
       {!hidePhone && <PhoneButton hideMobile />}
-      <Search url={searchUrl} />
+      <Search url={searchUrl} callback={callback} />
       <Divider />
       <CountryDropdown url={searchUrl} />
     </>
