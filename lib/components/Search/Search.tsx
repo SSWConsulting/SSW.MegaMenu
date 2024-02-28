@@ -31,7 +31,9 @@ export const Search: React.FC<SearchProps> = ({ url, callback }) => {
     }
   }, [isOpen]);
 
-  const performSearch = () => {
+  const performSearch = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
     if (searchTerm) {
       if (callback) {
         callback(searchTerm);
@@ -41,6 +43,8 @@ export const Search: React.FC<SearchProps> = ({ url, callback }) => {
         )}`;
         window.open(searchUrl, "_blank");
       }
+      setIsOpen(false);
+      setSearchTerm("");
     }
   };
 
@@ -85,7 +89,7 @@ export const Search: React.FC<SearchProps> = ({ url, callback }) => {
                   />
                   <form
                     className="isolate inline-flex w-full rounded-md shadow-sm"
-                    onSubmit={() => performSearch()}
+                    onSubmit={(e) => performSearch(e)}
                   >
                     <input
                       ref={searchRef}
