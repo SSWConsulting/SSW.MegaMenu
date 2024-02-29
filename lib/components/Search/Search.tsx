@@ -22,6 +22,7 @@ export const Search: React.FC<SearchProps> = ({ url, callback }) => {
       }
     },
     [isOpen],
+    { preventDefault: true },
   );
 
   useEffect(() => {
