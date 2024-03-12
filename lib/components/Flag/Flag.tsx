@@ -18,6 +18,7 @@ export const Flag = ({
   return (
     <img
       className={cx("my-0 inline", className)}
+      alt={country + "flag"}
       src={countryFlag}
       width={width || 35}
       height={height || 35}
