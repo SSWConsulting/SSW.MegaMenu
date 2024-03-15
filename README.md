@@ -21,7 +21,7 @@ pnpm add ssw.megamenu
 import "ssw.megamenu/dist/style.css";
 ```
 
-**NOTE: If you have TailwindCSS installed in your project, you can instead list the `ssw.megamenu` package in your `tailwind.config.js` content array like so:**
+**NOTE: If you have TailwindCSS installed in your project, you can instead list the `ssw.megamenu` package in your `tailwind.config.js` content array and add the SSW colors like so:**
 
 ```js
 // tailwind.config.js
@@ -35,6 +35,20 @@ module.exports = {
     "node_modules/ssw.megamenu/**/*.js",
   ],
   // ...
+  theme: {
+    extend: {
+      colors: {
+        ssw: {
+          red: "#cc4141",
+          light: {
+            red: "#d26e6e",
+          },
+          gray: "#797979",
+          black: "#333333",
+        },
+      },
+    }
+  }
 };
 
 ```
