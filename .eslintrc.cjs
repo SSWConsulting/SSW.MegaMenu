@@ -21,6 +21,7 @@ module.exports = {
     "tailwindcss/classnames-order": "error",
     "react/prop-types": "error",
     "react/react-in-jsx-scope": "off",
+    "no-console": "warn",
   },
   settings: {
     react: {

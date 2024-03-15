@@ -9,7 +9,6 @@ export interface SearchProps {
 }
 
 export const Search: React.FC<SearchProps> = ({ url, callback }) => {
-  console.debug(callback);
   const searchRef = useRef(null);
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [searchTerm, setSearchTerm] = useState<string>("");

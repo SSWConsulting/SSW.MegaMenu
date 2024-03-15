@@ -40,6 +40,7 @@ const CountryDropdown = ({ url }: CountryDropdownProps) => {
         setCurrentCountry(website.country);
       }
     } catch (err) {
+      // eslint-disable-next-line no-console
       console.error(err);
     }
   }, [url]);
