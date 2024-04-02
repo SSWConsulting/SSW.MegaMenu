@@ -123,7 +123,19 @@ export function getStaticProps() {
 | `callback` | `(seachTerm: string) => void` | Callback run on search. If provided, the search will not open a google tab. | No | 
   
 
+### Testing 
 
+When using `pnpm link` on the SSW.Website project, we encountered some issues with using `ssw.megamenu`, so instead use `file:` in the `package.json` file to link the package like so:
+
+```json
+{
+  "dependencies": {
+    "ssw.megamenu": "file:../SSW.MegaMenu"
+  }
+}
+```
+
+Replace `../SSW.MegaMenu` with the path to the `SSW.MegaMenu` project on your local machine.
 
 ## How to contribute?
 

@@ -101,7 +101,7 @@ const DefaultSideActions = ({
 }: DefaultSideActionsProps) => {
   return (
     <>
-      {!hidePhone && <PhoneButton hideMobile />}
+      {!hidePhone && <PhoneButton />}
       <Search url={searchUrl} callback={callback} />
       <Divider />
       <CountryDropdown url={searchUrl} />
