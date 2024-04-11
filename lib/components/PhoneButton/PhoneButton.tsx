@@ -13,7 +13,7 @@ type PhoneButtonProps = {
 export const PhoneButton = ({ className }: PhoneButtonProps) => {
   const CustomLink = useLinkComponent();
 
-  const [url, setUrl] = useState("https://ssw.com.au/company/contact-us");
+  const [url, setUrl] = useState("https://www.ssw.com.au/company/contact-us");
   const [text, setText] = useState("CONTACT US");
 
   useEffect(() => {
