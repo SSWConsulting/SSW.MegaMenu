@@ -3,8 +3,8 @@ import React from "react";
 import { useLinkComponent } from "../../hooks/useLinkComponent";
 import { AvailableIcons } from "../../types/icon";
 import { SidebarItem } from "../../types/megamenu";
+import { MegaIcon } from "../MegaIcon";
 import FeaturedCard from "./FeaturedCard";
-import { FaPhoneAlt } from "react-icons/fa";
 
 interface SubMenuWidgetProps {
   item: SidebarItem;
@@ -32,7 +32,7 @@ const SubMenuWidget: React.FC<SubMenuWidgetProps> = ({ item }) => {
           className="relative flex w-full cursor-pointer items-center justify-center rounded bg-ssw-red font-semibold !text-white hover:bg-ssw-light-red"
           href={item.url}
         >
-          <FaPhoneAlt color="white" className="text-2xl" />
+          <MegaIcon icon="phoneAlt" className="text-2xl" />
           <span className="ml-2 py-4">{item.name.toUpperCase()}</span>
         </CustomLink>
       );

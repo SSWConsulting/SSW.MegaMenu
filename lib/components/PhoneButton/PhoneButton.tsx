@@ -1,7 +1,7 @@
 import { isMobile } from "react-device-detect";
 // Fix for Next.js as per https://github.com/react-icons/react-icons/issues/821#issuecomment-1747679972
 import { useEffect, useState } from "react";
-import { FaPhoneAlt } from "react-icons/fa/index.js";
+import { MegaIcon } from "../MegaIcon";
 import { useLinkComponent } from "../../hooks/useLinkComponent";
 import { cx } from "../../util/cx";
 
@@ -33,7 +33,7 @@ export const PhoneButton = ({ className }: PhoneButtonProps) => {
           "flex h-12 w-full shrink-0 cursor-pointer items-center justify-center rounded bg-ssw-red px-5 text-xl hover:opacity-70 max-sm:my-5 sm:w-fit",
         )}
       >
-        <FaPhoneAlt color="white" className="text-2xl" />
+        <MegaIcon icon="phoneAlt" className="text-2xl text-white" />
         <span className="ml-2 inline text-sm font-bold text-white">{text}</span>
       </CustomLink>
     </div>
