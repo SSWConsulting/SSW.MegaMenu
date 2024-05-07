@@ -33,7 +33,7 @@ const SubMenuWidget: React.FC<SubMenuWidgetProps> = ({ item }) => {
           href={item.url}
         >
           <MegaIcon icon="phoneAlt" className="text-2xl" />
-          <span className="ml-2 py-4">{item.name.toUpperCase()}</span>
+          <span className="ml-2 py-4">{item.name?.toUpperCase()}</span>
         </CustomLink>
       );
     }
