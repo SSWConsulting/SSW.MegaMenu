@@ -13,6 +13,7 @@ import {
   SquaresPlusIcon,
   XMarkIcon,
 } from "@heroicons/react/24/outline";
+import { FaPhoneAlt } from "react-icons/fa";
 
 import { Flag } from "../components/Flag";
 
@@ -33,6 +34,7 @@ export const iconMap = {
     <MagnifyingGlassIcon className={props.className} />
   ),
   phone: (props: IconProps) => <PhoneIcon className={props.className} />,
+  phoneAlt: (props: IconProps) => <FaPhoneAlt className={props.className} />,
   xMark: (props: IconProps) => <XMarkIcon className={props.className} />,
   chartPie: (props: IconProps) => <ChartPieIcon className={props.className} />,
   cursorArrowRays: (props: IconProps) => (

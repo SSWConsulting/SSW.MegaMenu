@@ -9,7 +9,7 @@ interface FeaturedCardProps extends PropsWithChildren {
 
 const FeaturedCard = (props: FeaturedCardProps) => {
   return (
-    <div className="rounded-md bg-ssw-black px-4 py-5 text-white hover:bg-ssw-gray">
+    <div className="rounded bg-ssw-black px-4 py-5 text-white hover:bg-ssw-gray">
       <div className="inline-flex items-center font-bold">
         {props.icon && <MegaIcon icon={props.icon} className="mr-2" />}
         {props.title}

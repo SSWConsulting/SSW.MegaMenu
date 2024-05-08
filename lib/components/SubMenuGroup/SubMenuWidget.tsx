@@ -29,11 +29,11 @@ const SubMenuWidget: React.FC<SubMenuWidgetProps> = ({ item }) => {
     case "bookNow": {
       return (
         <CustomLink
-          className="relative flex w-full cursor-pointer items-center justify-center rounded-md bg-ssw-red font-semibold !text-white hover:bg-ssw-light-red"
+          className="relative flex w-full cursor-pointer items-center justify-center rounded bg-ssw-red font-semibold !text-white hover:bg-ssw-light-red"
           href={item.url}
         >
-          <MegaIcon icon="phone" className="h-6" />
-          <span className="ml-2 py-4">{item.name}</span>
+          <MegaIcon icon="phoneAlt" className="text-2xl" />
+          <span className="ml-2 py-4">{item.name?.toUpperCase()}</span>
         </CustomLink>
       );
     }
