@@ -13,7 +13,7 @@ import {
   SquaresPlusIcon,
   XMarkIcon,
 } from "@heroicons/react/24/outline";
-import { FaPhoneAlt } from "react-icons/fa";
+import { FaPhoneAlt } from "react-icons/fa/index.js";
 
 import { Flag } from "../components/Flag";
 
