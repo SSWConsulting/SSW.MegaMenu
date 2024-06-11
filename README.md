@@ -1,5 +1,23 @@
 ## How to use the Mega Menu
 
+### Current Library Usage:
+
+We are currently using this library for the following projects:
+
+- SSW.Website
+- SSW.People
+- SSW.Rules
+
+The data for these projects is hosted on GitHub at: https://github.com/SSWConsulting/SSW.Website/blob/main/content/megamenu/menu.json.
+
+### Editing Process:
+
+To make any edits, you need to use TinaCMS mode to update the content.
+
+![MEGAMENU](https://github.com/SSWConsulting/SSW.MegaMenu/assets/71385247/39c7e9b6-d9fe-4e45-9ed2-6d41ec204dd3)
+
+**Figure: TinaCMS mode to edit the megamenu data** 
+ 
 ### Installation
 
 1. Install package
