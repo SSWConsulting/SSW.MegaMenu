@@ -1,6 +1,6 @@
 ## How to use the Mega Menu
 
-### Current Library Usage:
+### Current Library Usage
 
 We are currently using this library for the following projects:
 
@@ -10,7 +10,7 @@ We are currently using this library for the following projects:
 
 The data for these projects is hosted on GitHub at: https://github.com/SSWConsulting/SSW.Website/blob/main/content/megamenu/menu.json.
 
-### Editing Process:
+### Editing Process
 
 To make any edits, you need to use TinaCMS mode to update the content.
 
