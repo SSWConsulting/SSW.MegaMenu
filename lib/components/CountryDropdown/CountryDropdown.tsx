@@ -6,7 +6,7 @@ import { Countries } from "../../types/country";
 import { cx } from "../../util/cx";
 import { Flag } from "../Flag";
 
-export const websites: { country: Countries; url: string }[] = [
+const websites: { country: Countries; url: string }[] = [
   {
     country: "Australia",
     url: "https://www.ssw.com.au",
