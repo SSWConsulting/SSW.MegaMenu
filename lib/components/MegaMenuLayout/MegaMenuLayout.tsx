@@ -80,7 +80,7 @@ const MegaMenuLayout: React.FC<MegaMenuWrapperProps> = ({
         )}
       >
         <nav
-          className="xs:gap-x-4 flex h-full w-full items-center justify-between gap-x-1 overflow-hidden px-0"
+          className="flex h-full w-full items-center justify-between gap-x-1 overflow-hidden px-0 xs:gap-x-4"
           aria-label="Global"
         >
           <div className="flex items-center">
@@ -118,7 +118,7 @@ const MegaMenuLayout: React.FC<MegaMenuWrapperProps> = ({
             <Divider />
             <button
               type="button"
-              className="xs:px-4 inline-flex items-center justify-center rounded-md px-1 text-gray-700"
+              className="inline-flex items-center justify-center rounded-md px-1 text-gray-700 xs:px-4"
               onClick={() => setMobileMenuOpen(true)}
             >
               <span className="sr-only">Open main menu</span>

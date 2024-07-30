@@ -114,7 +114,7 @@ export const SearchInput: React.FC<SearchInputProps> = ({
           type="text"
           className={
             inputClassName ??
-            "border-radius h-12 grow rounded-l-md border bg-transparent pl-11 text-ssw-black focus:ring-0 sm:text-sm"
+            "h-12 grow rounded-l-md border bg-transparent pl-11 text-ssw-black focus:ring-0 sm:text-sm"
           }
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
