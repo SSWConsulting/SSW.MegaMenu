@@ -4,7 +4,7 @@ import React from "react";
 import { useLinkComponent } from "../../hooks/useLinkComponent";
 import { NavMenuGroup } from "../../types/megamenu";
 import { MegaIcon } from "../MegaIcon";
-import { SearchTermProps } from "../Search";
+import { SearchInput, SearchTermProps } from "../Search";
 import SubMenuGroup from "../SubMenuGroup/SubMenuGroup";
 
 export interface MobileMenuProps extends SearchTermProps {
@@ -126,45 +126,8 @@ const MenuBarItems: React.FC<MenuBarItemProps> = ({
         setSearchTerm={setSearchTerm}
         searchTerm={searchTerm}
         className="relative pr-6"
-      ></SearchInput>
-    </div>
-  );
-};
-
-interface SearchInputProps extends SearchTermProps {
-  className: string;
-}
-const SearchInput: React.FC<SearchInputProps> = ({
-  className,
-  performSearch,
-  searchTerm,
-  setSearchTerm,
-}) => {
-  return (
-    <div className={className}>
-      <MegaIcon
-        icon="magnifyingGlass"
-        className="pointer-events-none absolute left-4 top-3.5 h-5 w-5 text-ssw-black text-opacity-40"
-        aria-hidden="true"
+        inputClassName="border-radius h-12 grow rounded-l-md border bg-transparent pl-11 text-ssw-black focus:ring-0 sm:text-sm"
       />
-      <form
-        className="isolate inline-flex w-full rounded-md shadow-sm"
-        onSubmit={(e) => performSearch(e)}
-      >
-        <input
-          type="text"
-          className="border-radius h-12 grow rounded-l-md border bg-transparent pl-11 text-ssw-black focus:ring-0 sm:text-sm"
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          placeholder="Search..."
-        />
-        <button
-          type="submit"
-          className="relative -ml-px inline-flex items-center rounded-r-md bg-ssw-red px-3 py-2 text-sm font-semibold text-white hover:bg-ssw-light-red focus:z-10"
-        >
-          Search
-        </button>
-      </form>
     </div>
   );
 };

@@ -73,37 +73,60 @@ export const Search: React.FC<SearchTermProps> = ({
               leaveTo="opacity-0 scale-95"
             >
               <Dialog.Panel className="mx-auto max-w-2xl divide-y divide-gray-500 divide-opacity-10 overflow-hidden rounded-xl bg-white/80 shadow-2xl backdrop-blur transition-all">
-                <div className="relative">
-                  <MegaIcon
-                    icon="magnifyingGlass"
-                    className="pointer-events-none absolute left-4 top-3.5 h-5 w-5 text-ssw-black text-opacity-40"
-                    aria-hidden="true"
-                  />
-                  <form
-                    className="isolate inline-flex w-full rounded-md shadow-sm"
-                    onSubmit={(e) => handleSearch(e)}
-                  >
-                    <input
-                      ref={searchRef}
-                      type="text"
-                      className="h-12 grow border-0 bg-transparent pl-11 text-ssw-black focus:ring-0 sm:text-sm"
-                      value={searchTerm}
-                      onChange={(e) => setSearchTerm(e.target.value)}
-                      placeholder="Search..."
-                    />
-                    <button
-                      type="submit"
-                      className="relative -ml-px inline-flex items-center rounded-r-md bg-ssw-red px-3 py-2 text-sm font-semibold text-white hover:bg-ssw-light-red focus:z-10"
-                    >
-                      Search
-                    </button>
-                  </form>
-                </div>
+                <SearchInput
+                  setSearchTerm={setSearchTerm}
+                  searchTerm={searchTerm}
+                  performSearch={handleSearch}
+                />
               </Dialog.Panel>
             </Transition.Child>
           </div>
         </Dialog>
       </Transition.Root>
     </>
+  );
+};
+
+interface SearchInputProps extends SearchTermProps {
+  className: string;
+  inputClassName?: string;
+}
+
+export const SearchInput: React.FC<SearchInputProps> = ({
+  className,
+  performSearch,
+  searchTerm,
+  setSearchTerm,
+  inputClassName,
+}) => {
+  return (
+    <div className={className ?? "relative"}>
+      <MegaIcon
+        icon="magnifyingGlass"
+        className="pointer-events-none absolute left-4 top-3.5 h-5 w-5 text-ssw-black text-opacity-40"
+        aria-hidden="true"
+      />
+      <form
+        className="isolate inline-flex w-full rounded-md shadow-sm"
+        onSubmit={(e) => performSearch(e)}
+      >
+        <input
+          type="text"
+          className={
+            inputClassName ??
+            "border-radius h-12 grow rounded-l-md border bg-transparent pl-11 text-ssw-black focus:ring-0 sm:text-sm"
+          }
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          placeholder="Search..."
+        />
+        <button
+          type="submit"
+          className="relative -ml-px inline-flex items-center rounded-r-md bg-ssw-red px-3 py-2 text-sm font-semibold text-white hover:bg-ssw-light-red focus:z-10"
+        >
+          Search
+        </button>
+      </form>
+    </div>
   );
 };
