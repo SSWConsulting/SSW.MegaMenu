@@ -3,6 +3,7 @@ import { ChevronRightIcon } from "@heroicons/react/24/solid";
 import React from "react";
 import { useLinkComponent } from "../../hooks/useLinkComponent";
 import { NavMenuGroup } from "../../types/megamenu";
+import CountryDropdown from "../CountryDropdown/CountryDropdown";
 import { MegaIcon } from "../MegaIcon";
 import SubMenuGroup from "../SubMenuGroup/SubMenuGroup";
 
@@ -10,12 +11,14 @@ export interface MobileMenuProps {
   isMobileMenuOpen: boolean;
   menuBarItems: NavMenuGroup[];
   closeMobileMenu: () => void;
+  searchUrl: string;
 }
 
 const MobileMenu: React.FC<MobileMenuProps> = ({
   isMobileMenuOpen,
   menuBarItems,
   closeMobileMenu,
+  searchUrl,
 }) => {
   const [selectedMenuItem, setSelectedMenuItem] =
     React.useState<NavMenuGroup | null>(null);
@@ -64,6 +67,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
             />
           ) : (
             <MenuBarItems
+              url={searchUrl}
               menuBarItems={menuBarItems}
               setSelectedMenuItem={setSelectedMenuItem}
             />
@@ -77,7 +81,8 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
 const MenuBarItems: React.FC<{
   menuBarItems: NavMenuGroup[];
   setSelectedMenuItem: (item: NavMenuGroup) => void;
-}> = ({ menuBarItems, setSelectedMenuItem }) => {
+  searchUrl: string;
+}> = ({ menuBarItems, setSelectedMenuItem, searchUrl }) => {
   const CustomLink = useLinkComponent();
 
   return (
@@ -107,6 +112,7 @@ const MenuBarItems: React.FC<{
           );
         })}
       </div>
+      <CountryDropdown url={searchUrl} />
     </div>
   );
 };

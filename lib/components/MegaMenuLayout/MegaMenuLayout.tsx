@@ -120,6 +120,7 @@ const MegaMenuLayout: React.FC<MegaMenuWrapperProps> = ({
         </nav>
 
         <MobileMenu
+          searchUrl={searchUrl}
           isMobileMenuOpen={isMobileMenuOpen}
           menuBarItems={menuItems}
           closeMobileMenu={() => setMobileMenuOpen(false)}
