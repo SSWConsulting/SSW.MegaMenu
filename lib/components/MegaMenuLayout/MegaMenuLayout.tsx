@@ -57,10 +57,10 @@ const MegaMenuLayout: React.FC<MegaMenuWrapperProps> = ({
       if (callback) {
         callback(searchTerm);
       } else {
-        const searchUrl = `https://www.google.com.au/search?q=site:${url}%20${encodeURIComponent(
+        const queryUrl = `https://www.google.com.au/search?q=site:${searchUrl}%20${encodeURIComponent(
           searchTerm,
         )}`;
-        window.open(searchUrl, "_blank");
+        window.open(queryUrl, "_blank");
       }
     }
   };
