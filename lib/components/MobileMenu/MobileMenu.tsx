@@ -11,7 +11,6 @@ export interface MobileMenuProps extends SearchTermProps {
   isMobileMenuOpen: boolean;
   menuBarItems: NavMenuGroup[];
   closeMobileMenu: () => void;
-  searchUrl: string;
 }
 
 const MobileMenu: React.FC<MobileMenuProps> = ({
@@ -85,7 +84,6 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
 interface MenuBarItemProps extends SearchTermProps {
   menuBarItems: NavMenuGroup[];
   setSelectedMenuItem: (item: NavMenuGroup) => void;
-  searchUrl: string;
 }
 const MenuBarItems: React.FC<MenuBarItemProps> = ({
   menuBarItems,
