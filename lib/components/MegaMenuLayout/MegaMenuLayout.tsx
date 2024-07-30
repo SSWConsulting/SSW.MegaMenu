@@ -50,13 +50,27 @@ const MegaMenuLayout: React.FC<MegaMenuWrapperProps> = ({
   rightSideActionsOverride,
   callback,
 }) => {
+  const [searchTerm, setSearchTerm] = useState<string>("");
+  const performSearch = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (searchTerm) {
+      if (callback) {
+        callback(searchTerm);
+      } else {
+        const searchUrl = `https://www.google.com.au/search?q=site:${url}%20${encodeURIComponent(
+          searchTerm,
+        )}`;
+        window.open(searchUrl, "_blank");
+      }
+    }
+  };
+
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const { menuItems } = useMenuItems(menuBarItems);
   const CustomLink = useLinkComponent();
 
   const RightSideActions = rightSideActionsOverride;
-
   return (
     <LinkProvider linkComponent={linkComponent}>
       <div
@@ -112,14 +126,19 @@ const MegaMenuLayout: React.FC<MegaMenuWrapperProps> = ({
             </button>
           </div>
           <DesktopMenu
+            setSearchTerm={setSearchTerm}
+            searchTerm={searchTerm}
+            performSearch={performSearch}
             searchUrl={searchUrl}
             menuGroups={menuItems}
             sideActionsOverride={rightSideActionsOverride}
             callback={callback}
           />
         </nav>
-
         <MobileMenu
+          searchTerm={searchTerm}
+          setSearchTerm={setSearchTerm}
+          performSearch={performSearch}
           searchUrl={searchUrl}
           isMobileMenuOpen={isMobileMenuOpen}
           menuBarItems={menuItems}

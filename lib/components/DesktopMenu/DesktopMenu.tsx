@@ -3,11 +3,11 @@ import React, { createContext } from "react";
 import { NavMenuGroup } from "../../types/megamenu";
 import { CountryDropdown } from "../CountryDropdown";
 import { PhoneButton } from "../PhoneButton";
-import { Search } from "../Search";
+import { Search, SearchTermProps } from "../Search";
 import { MenuItemLink } from "./MenuItemLink";
 import { MenuItemWithSubmenu } from "./MenuItemWithSubmenu";
 
-export interface DesktopMenuProps {
+export interface DesktopMenuProps extends SearchTermProps {
   menuGroups: NavMenuGroup[];
   sideActionsOverride?: () => JSX.Element;
   hidePhone?: boolean;
@@ -23,6 +23,9 @@ const DesktopMenu: React.FC<DesktopMenuProps> = ({
   hidePhone,
   searchUrl,
   callback,
+  performSearch,
+  searchTerm,
+  setSearchTerm,
 }) => {
   const SideActions = sideActionsOverride;
 
@@ -78,6 +81,9 @@ const DesktopMenu: React.FC<DesktopMenuProps> = ({
           <SideActions />
         ) : (
           <DefaultSideActions
+            searchTerm={searchTerm}
+            setSearchTerm={setSearchTerm}
+            performSearch={performSearch}
             hidePhone={hidePhone}
             searchUrl={searchUrl}
             callback={callback}
@@ -88,21 +94,27 @@ const DesktopMenu: React.FC<DesktopMenuProps> = ({
   );
 };
 
-type DefaultSideActionsProps = {
+interface DefaultSideActionsProps extends SearchTermProps {
   hidePhone?: boolean;
   searchUrl: string;
   callback?: (searchTerm: string) => void;
-};
+}
 
 const DefaultSideActions = ({
   hidePhone,
   searchUrl,
-  callback,
+  searchTerm,
+  setSearchTerm,
+  performSearch,
 }: DefaultSideActionsProps) => {
   return (
     <>
       {!hidePhone && <PhoneButton />}
-      <Search url={searchUrl} callback={callback} />
+      <Search
+        performSearch={performSearch}
+        searchTerm={searchTerm}
+        setSearchTerm={setSearchTerm}
+      />
       <Divider />
       <CountryDropdown url={searchUrl} />
     </>

@@ -4,9 +4,10 @@ import React from "react";
 import { useLinkComponent } from "../../hooks/useLinkComponent";
 import { NavMenuGroup } from "../../types/megamenu";
 import { MegaIcon } from "../MegaIcon";
+import { SearchTermProps } from "../Search";
 import SubMenuGroup from "../SubMenuGroup/SubMenuGroup";
 
-export interface MobileMenuProps {
+export interface MobileMenuProps extends SearchTermProps {
   isMobileMenuOpen: boolean;
   menuBarItems: NavMenuGroup[];
   closeMobileMenu: () => void;
@@ -17,6 +18,9 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
   isMobileMenuOpen,
   menuBarItems,
   closeMobileMenu,
+  setSearchTerm,
+  searchTerm,
+  performSearch,
   searchUrl,
 }) => {
   const [selectedMenuItem, setSelectedMenuItem] =
@@ -66,7 +70,9 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
             />
           ) : (
             <MenuBarItems
-              url={searchUrl}
+              setSearchTerm={setSearchTerm}
+              searchTerm={searchTerm}
+              performSearch={performSearch}
               menuBarItems={menuBarItems}
               setSelectedMenuItem={setSelectedMenuItem}
             />
@@ -77,11 +83,18 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
   );
 };
 
-const MenuBarItems: React.FC<{
+interface MenuBarItemProps extends SearchTermProps {
   menuBarItems: NavMenuGroup[];
   setSelectedMenuItem: (item: NavMenuGroup) => void;
   searchUrl: string;
-}> = ({ menuBarItems, setSelectedMenuItem }) => {
+}
+const MenuBarItems: React.FC<MenuBarItemProps> = ({
+  menuBarItems,
+  setSelectedMenuItem,
+  performSearch,
+  setSearchTerm,
+  searchTerm,
+}) => {
   const CustomLink = useLinkComponent();
 
   return (
@@ -111,16 +124,25 @@ const MenuBarItems: React.FC<{
           );
         })}
       </div>
-      <SearchButton className="relative pr-6"></SearchButton>
+      <SearchButton
+        performSearch={performSearch}
+        setSearchTerm={setSearchTerm}
+        searchTerm={searchTerm}
+        className="relative pr-6"
+      ></SearchButton>
     </div>
   );
 };
 
-interface SearchButtonProps {
+interface SearchButtonProps extends SearchTermProps {
   className: string;
 }
-// lint my ball
-const SearchButton: React.FC<SearchButtonProps> = ({ className }) => {
+const SearchButton: React.FC<SearchButtonProps> = ({
+  className,
+  performSearch,
+  searchTerm,
+  setSearchTerm,
+}) => {
   return (
     <div className={className}>
       <MegaIcon
@@ -130,11 +152,13 @@ const SearchButton: React.FC<SearchButtonProps> = ({ className }) => {
       />
       <form
         className="isolate inline-flex w-full rounded-md shadow-sm"
-        // onSubmit={}
+        onSubmit={(e) => performSearch(e)}
       >
         <input
           type="text"
           className="border-radius h-12 grow rounded-l-md border bg-transparent pl-11 text-ssw-black focus:ring-0 sm:text-sm"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
           placeholder="Search..."
         />
         <button

@@ -3,15 +3,31 @@ import React, { Fragment, useEffect, useRef, useState } from "react";
 import { useHotkeys } from "react-hotkeys-hook";
 import { MegaIcon } from "../MegaIcon";
 
-export interface SearchProps {
-  url?: string;
-  callback?: (searchTerm: string) => void;
+export interface SearchTermProps {
+  searchTerm: string;
+  setSearchTerm: React.Dispatch<React.SetStateAction<string>>;
+  performSearch: (e: React.FormEvent<HTMLFormElement>) => void;
 }
 
-export const Search: React.FC<SearchProps> = ({ url, callback }) => {
-  const searchRef = useRef(null);
+export const Search: React.FC<SearchTermProps> = ({
+  searchTerm,
+  performSearch,
+  setSearchTerm,
+}) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const [searchTerm, setSearchTerm] = useState<string>("");
+  const searchRef = useRef(null);
+  useEffect(() => {
+    if (isOpen && searchRef?.current) {
+      const searchInput: HTMLElement = searchRef?.current;
+      searchInput?.focus();
+    }
+  }, [isOpen]);
+
+  const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
+    performSearch(e);
+    setIsOpen(false);
+    setSearchTerm("");
+  };
 
   useHotkeys(
     "mod+k",
@@ -23,30 +39,6 @@ export const Search: React.FC<SearchProps> = ({ url, callback }) => {
     [isOpen],
     { preventDefault: true },
   );
-
-  useEffect(() => {
-    if (isOpen && searchRef?.current) {
-      const searchInput: HTMLElement = searchRef?.current;
-      searchInput?.focus();
-    }
-  }, [isOpen]);
-
-  const performSearch = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    if (searchTerm) {
-      if (callback) {
-        callback(searchTerm);
-      } else {
-        const searchUrl = `https://www.google.com.au/search?q=site:${url}%20${encodeURIComponent(
-          searchTerm,
-        )}`;
-        window.open(searchUrl, "_blank");
-      }
-      setIsOpen(false);
-      setSearchTerm("");
-    }
-  };
 
   return (
     <>
@@ -89,7 +81,7 @@ export const Search: React.FC<SearchProps> = ({ url, callback }) => {
                   />
                   <form
                     className="isolate inline-flex w-full rounded-md shadow-sm"
-                    onSubmit={(e) => performSearch(e)}
+                    onSubmit={(e) => handleSearch(e)}
                   >
                     <input
                       ref={searchRef}
