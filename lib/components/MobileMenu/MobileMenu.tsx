@@ -21,7 +21,6 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
   setSearchTerm,
   searchTerm,
   performSearch,
-  searchUrl,
 }) => {
   const [selectedMenuItem, setSelectedMenuItem] =
     React.useState<NavMenuGroup | null>(null);
