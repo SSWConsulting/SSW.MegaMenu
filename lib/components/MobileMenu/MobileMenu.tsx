@@ -123,20 +123,20 @@ const MenuBarItems: React.FC<MenuBarItemProps> = ({
           );
         })}
       </div>
-      <SearchButton
+      <SearchInput
         performSearch={performSearch}
         setSearchTerm={setSearchTerm}
         searchTerm={searchTerm}
         className="relative pr-6"
-      ></SearchButton>
+      ></SearchInput>
     </div>
   );
 };
 
-interface SearchButtonProps extends SearchTermProps {
+interface SearchInputProps extends SearchTermProps {
   className: string;
 }
-const SearchButton: React.FC<SearchButtonProps> = ({
+const SearchInput: React.FC<SearchInputProps> = ({
   className,
   performSearch,
   searchTerm,
