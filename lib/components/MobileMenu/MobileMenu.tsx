@@ -3,7 +3,6 @@ import { ChevronRightIcon } from "@heroicons/react/24/solid";
 import React from "react";
 import { useLinkComponent } from "../../hooks/useLinkComponent";
 import { NavMenuGroup } from "../../types/megamenu";
-import CountryDropdown from "../CountryDropdown/CountryDropdown";
 import { MegaIcon } from "../MegaIcon";
 import SubMenuGroup from "../SubMenuGroup/SubMenuGroup";
 
@@ -82,11 +81,11 @@ const MenuBarItems: React.FC<{
   menuBarItems: NavMenuGroup[];
   setSelectedMenuItem: (item: NavMenuGroup) => void;
   searchUrl: string;
-}> = ({ menuBarItems, setSelectedMenuItem, searchUrl }) => {
+}> = ({ menuBarItems, setSelectedMenuItem }) => {
   const CustomLink = useLinkComponent();
 
   return (
-    <div className="-my-6 divide-y divide-gray-500/10 pl-6">
+    <div className="-my-6 flex flex-col gap-4 pl-6">
       <div className="space-y-2">
         {menuBarItems.map((item) => {
           return item.url ? (
@@ -112,7 +111,39 @@ const MenuBarItems: React.FC<{
           );
         })}
       </div>
-      <CountryDropdown url={searchUrl} />
+      <SearchButton className="relative pr-6"></SearchButton>
+    </div>
+  );
+};
+
+interface SearchButtonProps {
+  className: string;
+}
+// lint my ball
+const SearchButton: React.FC<SearchButtonProps> = ({ className }) => {
+  return (
+    <div className={className}>
+      <MegaIcon
+        icon="magnifyingGlass"
+        className="pointer-events-none absolute left-4 top-3.5 h-5 w-5 text-ssw-black text-opacity-40"
+        aria-hidden="true"
+      />
+      <form
+        className="isolate inline-flex w-full rounded-md shadow-sm"
+        // onSubmit={}
+      >
+        <input
+          type="text"
+          className="border-radius h-12 grow rounded-l-md border bg-transparent pl-11 text-ssw-black focus:ring-0 sm:text-sm"
+          placeholder="Search..."
+        />
+        <button
+          type="submit"
+          className="relative -ml-px inline-flex items-center rounded-r-md bg-ssw-red px-3 py-2 text-sm font-semibold text-white hover:bg-ssw-light-red focus:z-10"
+        >
+          Search
+        </button>
+      </form>
     </div>
   );
 };

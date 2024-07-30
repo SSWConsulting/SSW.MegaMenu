@@ -10,11 +10,11 @@ import { useMenuItems } from "../../hooks/useMenuItems";
 import { NavMenuGroup } from "../../types/megamenu";
 import { DEFAULT_URL } from "../../util/constants";
 import { cx } from "../../util/cx";
+import { CountryDropdown } from "../CountryDropdown";
 import DesktopMenu from "../DesktopMenu/DesktopMenu";
 import { Logo } from "../Logo";
 import MobileMenu from "../MobileMenu/MobileMenu";
 import { PhoneButton } from "../PhoneButton";
-import { Search } from "../Search";
 
 export type MegaMenuWrapperProps = {
   className?: ClassValue;
@@ -100,7 +100,7 @@ const MegaMenuLayout: React.FC<MegaMenuWrapperProps> = ({
             ) : (
               <PhoneButton className="max-sm:hidden" />
             )}
-            <Search url={searchUrl} callback={callback} />
+            <CountryDropdown />
             <Divider />
             <button
               type="button"
