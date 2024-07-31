@@ -10,11 +10,11 @@ import { useMenuItems } from "../../hooks/useMenuItems";
 import { NavMenuGroup } from "../../types/megamenu";
 import { DEFAULT_URL } from "../../util/constants";
 import { cx } from "../../util/cx";
+import { CountryDropdown } from "../CountryDropdown";
 import DesktopMenu from "../DesktopMenu/DesktopMenu";
 import { Logo } from "../Logo";
 import MobileMenu from "../MobileMenu/MobileMenu";
 import { PhoneButton } from "../PhoneButton";
-import { Search } from "../Search";
 
 export type MegaMenuWrapperProps = {
   className?: ClassValue;
@@ -50,13 +50,27 @@ const MegaMenuLayout: React.FC<MegaMenuWrapperProps> = ({
   rightSideActionsOverride,
   callback,
 }) => {
+  const [searchTerm, setSearchTerm] = useState<string>("");
+  const performSearch = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (searchTerm) {
+      if (callback) {
+        callback(searchTerm);
+      } else {
+        const queryUrl = `https://www.google.com.au/search?q=site:${searchUrl}%20${encodeURIComponent(
+          searchTerm,
+        )}`;
+        window.open(queryUrl, "_blank");
+      }
+    }
+  };
+
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const { menuItems } = useMenuItems(menuBarItems);
   const CustomLink = useLinkComponent();
 
   const RightSideActions = rightSideActionsOverride;
-
   return (
     <LinkProvider linkComponent={linkComponent}>
       <div
@@ -66,7 +80,7 @@ const MegaMenuLayout: React.FC<MegaMenuWrapperProps> = ({
         )}
       >
         <nav
-          className="flex h-full w-full items-center justify-between gap-x-4 overflow-hidden px-0"
+          className="flex h-full w-full items-center justify-between gap-x-1 overflow-hidden px-0 xs:gap-x-4"
           aria-label="Global"
         >
           <div className="flex items-center">
@@ -100,11 +114,11 @@ const MegaMenuLayout: React.FC<MegaMenuWrapperProps> = ({
             ) : (
               <PhoneButton className="max-sm:hidden" />
             )}
-            <Search url={searchUrl} callback={callback} />
+            <CountryDropdown />
             <Divider />
             <button
               type="button"
-              className="-m-2.5 inline-flex items-center justify-center rounded-md pl-6 pr-2 text-gray-700"
+              className="inline-flex items-center justify-center rounded-md px-1 text-gray-700 xs:px-4"
               onClick={() => setMobileMenuOpen(true)}
             >
               <span className="sr-only">Open main menu</span>
@@ -112,14 +126,19 @@ const MegaMenuLayout: React.FC<MegaMenuWrapperProps> = ({
             </button>
           </div>
           <DesktopMenu
+            setSearchTerm={setSearchTerm}
+            searchTerm={searchTerm}
+            performSearch={performSearch}
             searchUrl={searchUrl}
             menuGroups={menuItems}
             sideActionsOverride={rightSideActionsOverride}
             callback={callback}
           />
         </nav>
-
         <MobileMenu
+          searchTerm={searchTerm}
+          setSearchTerm={setSearchTerm}
+          performSearch={performSearch}
           isMobileMenuOpen={isMobileMenuOpen}
           menuBarItems={menuItems}
           closeMobileMenu={() => setMobileMenuOpen(false)}

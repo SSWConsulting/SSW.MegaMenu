@@ -49,7 +49,7 @@ const CountryDropdown = ({ url }: CountryDropdownProps) => {
     <Popover>
       <Popover.Button
         className={cx(
-          "flex items-center justify-center gap-x-1 rounded-md px-4 py-1 text-sm font-semibold text-ssw-black outline-none",
+          "flex items-center justify-center gap-x-1 rounded-md px-1 py-1 text-sm font-semibold text-ssw-black outline-none xs:px-4",
           "hover:bg-gray-100",
           isOpened && "bg-gray-100",
         )}
@@ -73,7 +73,7 @@ const CountryDropdown = ({ url }: CountryDropdownProps) => {
             .map((country) => (
               <CustomLink
                 key={country.country}
-                className="block py-2 hover:bg-gray-100 lg:min-w-[80px]"
+                className="block min-w-[80px] py-2 hover:bg-gray-100"
                 href={country.url}
                 title={country.country}
               >

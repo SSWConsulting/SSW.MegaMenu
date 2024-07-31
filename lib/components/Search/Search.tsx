@@ -3,15 +3,31 @@ import React, { Fragment, useEffect, useRef, useState } from "react";
 import { useHotkeys } from "react-hotkeys-hook";
 import { MegaIcon } from "../MegaIcon";
 
-export interface SearchProps {
-  url?: string;
-  callback?: (searchTerm: string) => void;
+export interface SearchTermProps {
+  searchTerm: string;
+  setSearchTerm: React.Dispatch<React.SetStateAction<string>>;
+  performSearch: (e: React.FormEvent<HTMLFormElement>) => void;
 }
 
-export const Search: React.FC<SearchProps> = ({ url, callback }) => {
-  const searchRef = useRef(null);
+export const Search: React.FC<SearchTermProps> = ({
+  searchTerm,
+  performSearch,
+  setSearchTerm,
+}) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const [searchTerm, setSearchTerm] = useState<string>("");
+  const searchRef = useRef(null);
+  useEffect(() => {
+    if (isOpen && searchRef?.current) {
+      const searchInput: HTMLElement = searchRef?.current;
+      searchInput?.focus();
+    }
+  }, [isOpen]);
+
+  const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
+    performSearch(e);
+    setIsOpen(false);
+    setSearchTerm("");
+  };
 
   useHotkeys(
     "mod+k",
@@ -23,30 +39,6 @@ export const Search: React.FC<SearchProps> = ({ url, callback }) => {
     [isOpen],
     { preventDefault: true },
   );
-
-  useEffect(() => {
-    if (isOpen && searchRef?.current) {
-      const searchInput: HTMLElement = searchRef?.current;
-      searchInput?.focus();
-    }
-  }, [isOpen]);
-
-  const performSearch = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    if (searchTerm) {
-      if (callback) {
-        callback(searchTerm);
-      } else {
-        const searchUrl = `https://www.google.com.au/search?q=site:${url}%20${encodeURIComponent(
-          searchTerm,
-        )}`;
-        window.open(searchUrl, "_blank");
-      }
-      setIsOpen(false);
-      setSearchTerm("");
-    }
-  };
 
   return (
     <>
@@ -81,37 +73,60 @@ export const Search: React.FC<SearchProps> = ({ url, callback }) => {
               leaveTo="opacity-0 scale-95"
             >
               <Dialog.Panel className="mx-auto max-w-2xl divide-y divide-gray-500 divide-opacity-10 overflow-hidden rounded-xl bg-white/80 shadow-2xl backdrop-blur transition-all">
-                <div className="relative">
-                  <MegaIcon
-                    icon="magnifyingGlass"
-                    className="pointer-events-none absolute left-4 top-3.5 h-5 w-5 text-ssw-black text-opacity-40"
-                    aria-hidden="true"
-                  />
-                  <form
-                    className="isolate inline-flex w-full rounded-md shadow-sm"
-                    onSubmit={(e) => performSearch(e)}
-                  >
-                    <input
-                      ref={searchRef}
-                      type="text"
-                      className="h-12 grow border-0 bg-transparent pl-11 text-ssw-black focus:ring-0 sm:text-sm"
-                      value={searchTerm}
-                      onChange={(e) => setSearchTerm(e.target.value)}
-                      placeholder="Search..."
-                    />
-                    <button
-                      type="submit"
-                      className="relative -ml-px inline-flex items-center rounded-r-md bg-ssw-red px-3 py-2 text-sm font-semibold text-white hover:bg-ssw-light-red focus:z-10"
-                    >
-                      Search
-                    </button>
-                  </form>
-                </div>
+                <SearchInput
+                  setSearchTerm={setSearchTerm}
+                  searchTerm={searchTerm}
+                  performSearch={handleSearch}
+                />
               </Dialog.Panel>
             </Transition.Child>
           </div>
         </Dialog>
       </Transition.Root>
     </>
+  );
+};
+
+interface SearchInputProps extends SearchTermProps {
+  className: string;
+  inputClassName?: string;
+}
+
+export const SearchInput: React.FC<SearchInputProps> = ({
+  className,
+  performSearch,
+  searchTerm,
+  setSearchTerm,
+  inputClassName,
+}) => {
+  return (
+    <div className={className ?? "relative"}>
+      <MegaIcon
+        icon="magnifyingGlass"
+        className="pointer-events-none absolute left-4 top-3.5 h-5 w-5 text-ssw-black text-opacity-40"
+        aria-hidden="true"
+      />
+      <form
+        className="isolate inline-flex w-full rounded-md shadow-sm"
+        onSubmit={(e) => performSearch(e)}
+      >
+        <input
+          type="text"
+          className={
+            inputClassName ??
+            "h-12 grow rounded-l-md border bg-transparent pl-11 text-ssw-black focus:ring-0 sm:text-sm"
+          }
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          placeholder="Search..."
+        />
+        <button
+          type="submit"
+          className="relative -ml-px inline-flex items-center rounded-r-md bg-ssw-red px-3 py-2 text-sm font-semibold text-white hover:bg-ssw-light-red focus:z-10"
+        >
+          Search
+        </button>
+      </form>
+    </div>
   );
 };

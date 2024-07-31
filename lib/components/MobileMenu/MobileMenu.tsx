@@ -4,9 +4,10 @@ import React from "react";
 import { useLinkComponent } from "../../hooks/useLinkComponent";
 import { NavMenuGroup } from "../../types/megamenu";
 import { MegaIcon } from "../MegaIcon";
+import { SearchInput, SearchTermProps } from "../Search";
 import SubMenuGroup from "../SubMenuGroup/SubMenuGroup";
 
-export interface MobileMenuProps {
+export interface MobileMenuProps extends SearchTermProps {
   isMobileMenuOpen: boolean;
   menuBarItems: NavMenuGroup[];
   closeMobileMenu: () => void;
@@ -16,6 +17,9 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
   isMobileMenuOpen,
   menuBarItems,
   closeMobileMenu,
+  setSearchTerm,
+  searchTerm,
+  performSearch,
 }) => {
   const [selectedMenuItem, setSelectedMenuItem] =
     React.useState<NavMenuGroup | null>(null);
@@ -64,6 +68,9 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
             />
           ) : (
             <MenuBarItems
+              setSearchTerm={setSearchTerm}
+              searchTerm={searchTerm}
+              performSearch={performSearch}
               menuBarItems={menuBarItems}
               setSelectedMenuItem={setSelectedMenuItem}
             />
@@ -74,14 +81,21 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
   );
 };
 
-const MenuBarItems: React.FC<{
+interface MenuBarItemProps extends SearchTermProps {
   menuBarItems: NavMenuGroup[];
   setSelectedMenuItem: (item: NavMenuGroup) => void;
-}> = ({ menuBarItems, setSelectedMenuItem }) => {
+}
+const MenuBarItems: React.FC<MenuBarItemProps> = ({
+  menuBarItems,
+  setSelectedMenuItem,
+  performSearch,
+  setSearchTerm,
+  searchTerm,
+}) => {
   const CustomLink = useLinkComponent();
 
   return (
-    <div className="-my-6 divide-y divide-gray-500/10 pl-6">
+    <div className="-my-6 flex flex-col gap-4 pl-6">
       <div className="space-y-2">
         {menuBarItems.map((item) => {
           return item.url ? (
@@ -107,6 +121,13 @@ const MenuBarItems: React.FC<{
           );
         })}
       </div>
+      <SearchInput
+        performSearch={performSearch}
+        setSearchTerm={setSearchTerm}
+        searchTerm={searchTerm}
+        className="relative pr-6"
+        inputClassName="border-radius h-12 grow rounded-l-md border bg-transparent pl-11 text-ssw-black focus:ring-0 sm:text-sm"
+      />
     </div>
   );
 };
