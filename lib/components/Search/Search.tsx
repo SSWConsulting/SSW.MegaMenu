@@ -88,7 +88,7 @@ export const Search: React.FC<SearchTermProps> = ({
 };
 
 interface SearchInputProps extends SearchTermProps {
-  className: string;
+  className?: string | undefined;
   inputClassName?: string;
 }
 
