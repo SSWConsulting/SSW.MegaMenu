@@ -60,8 +60,8 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
         </div>
         <div className="flow-root">
           {selectedMenuItem &&
-          selectedMenuItem.menuColumns &&
-          selectedMenuItem.sidebarItems ? (
+            selectedMenuItem.menuColumns &&
+            selectedMenuItem.sidebarItems ? (
             <SubMenuGroup
               menuColumns={selectedMenuItem.menuColumns}
               sidebarItems={selectedMenuItem.sidebarItems}
@@ -102,14 +102,14 @@ const MenuBarItems: React.FC<MenuBarItemProps> = ({
             <CustomLink
               key={item.name}
               href={item.url}
-              className="-mx-3 flex w-full items-center px-3 py-2 text-left text-lg leading-7 text-ssw-black hover:bg-gray-50"
+              className="-mx-3 flex w-full items-center px-3 py-2 text-left text-lg leading-7 text-ssw-black hover:text-ssw-red"
             >
               {item.name}
             </CustomLink>
           ) : (
             <button
               key={item.name}
-              className="-mx-3 flex w-full items-center px-3 py-2 text-left text-lg leading-7 text-ssw-black hover:bg-gray-50"
+              className="-mx-3 flex w-full items-center px-3 py-2 text-left text-lg leading-7 text-ssw-black hover:text-ssw-red"
               onClick={() => setSelectedMenuItem(item)}
             >
               {item.name}
