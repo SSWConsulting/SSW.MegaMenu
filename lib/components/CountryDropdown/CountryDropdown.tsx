@@ -50,8 +50,7 @@ const CountryDropdown = ({ url }: CountryDropdownProps) => {
       <Popover.Button
         className={cx(
           "flex items-center justify-center gap-x-1 rounded-md px-1 py-1 text-sm font-semibold text-ssw-black outline-none xs:px-4",
-          "hover:bg-gray-100",
-          isOpened && "bg-gray-100",
+          "hover:scale-105",
         )}
         onClick={() => setIsOpened(!isOpened)}
       >
