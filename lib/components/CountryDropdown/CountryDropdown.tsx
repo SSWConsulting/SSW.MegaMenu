@@ -72,7 +72,7 @@ const CountryDropdown = ({ url }: CountryDropdownProps) => {
             .map((country) => (
               <CustomLink
                 key={country.country}
-                className="block min-w-[80px] py-2 hover:bg-gray-100"
+                className="block min-w-[80px] py-2 hover:scale-105"
                 href={country.url}
                 title={country.country}
               >
