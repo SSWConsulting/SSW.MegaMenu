@@ -60,8 +60,8 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
         </div>
         <div className="flow-root">
           {selectedMenuItem &&
-            selectedMenuItem.menuColumns &&
-            selectedMenuItem.sidebarItems ? (
+          selectedMenuItem.menuColumns &&
+          selectedMenuItem.sidebarItems ? (
             <SubMenuGroup
               menuColumns={selectedMenuItem.menuColumns}
               sidebarItems={selectedMenuItem.sidebarItems}
