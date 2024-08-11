@@ -109,7 +109,7 @@ const LinkItem: React.FC<{ link: NavMenuColumnGroupItem }> = ({
     <CustomLink
       href={url || ""}
       className={cx(
-        "flex items-start gap-x-3 rounded-md bg-white hover:bg-gray-100 focus:outline-none",
+        "flex items-start gap-x-3 rounded-md bg-white text-ssw-black hover:text-ssw-red focus:outline-none",
         description ? "p-4" : "p-2",
       )}
       onClick={() => {
@@ -130,13 +130,15 @@ const LinkItem: React.FC<{ link: NavMenuColumnGroupItem }> = ({
         <span>
           {name && description ? (
             <>
-              <p className="font-bold text-ssw-black">{name}</p>
+              <p className="font-bold">{name}</p>
               <p className="mt-1 text-sm font-normal text-ssw-gray">
                 {description}
               </p>
             </>
           ) : (
-            <p className="pl-4 text-sm font-normal text-ssw-black">{name}</p>
+            <p className="pl-4 text-sm font-normal text-ssw-black hover:text-ssw-red">
+              {name}
+            </p>
           )}
         </span>
       </div>

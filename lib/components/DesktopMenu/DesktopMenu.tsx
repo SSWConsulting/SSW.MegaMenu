@@ -32,7 +32,7 @@ const DesktopMenu: React.FC<DesktopMenuProps> = ({
   return (
     <>
       <div className="hidden flex-1 xl:block">
-        <Popover.Group className="flex items-center justify-center text-sm font-semibold text-ssw-black outline-none">
+        <Popover.Group className="flex items-center justify-center gap-1 text-sm font-semibold text-ssw-black outline-none">
           {menuGroups.map((group) => {
             if (
               !!group.menuColumns &&
@@ -76,7 +76,7 @@ const DesktopMenu: React.FC<DesktopMenuProps> = ({
         </Popover.Group>
       </div>
 
-      <div className="hidden shrink items-center justify-end xl:flex">
+      <div className="hidden shrink items-center justify-end gap-1 xl:flex">
         {SideActions ? (
           <SideActions />
         ) : (
