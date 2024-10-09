@@ -13,7 +13,7 @@ const websites: { country: Countries; url: string }[] = [
   },
   {
     country: "China",
-    url: "https://www.ssw.com.cn",
+    url: "https://www.ssw.cn",
   },
   {
     country: "France",
