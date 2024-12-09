@@ -42,7 +42,7 @@ export const MenuItemWithSubmenu: React.FC<MenuItemWithSubmenuProps> = ({
         leaveFrom="opacity-100 translate-y-0"
         leaveTo="opacity-0 -translate-y-1"
       >
-        <Popover.Panel className="absolute inset-x-0 top-[120px] -z-10 bg-white shadow-md shadow-gray-400">
+        <Popover.Panel className="absolute inset-x-0 top-[120px] -z-10 bg-gray-50 shadow-md shadow-gray-400">
           <SubMenuGroup
             menuColumns={menuColumns}
             sidebarItems={sidebarItems}
