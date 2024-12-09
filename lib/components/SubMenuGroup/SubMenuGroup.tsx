@@ -73,7 +73,7 @@ const Heading: React.FC<{
   children: React.ReactNode;
 }> = ({ className, children }) => {
   return (
-    <h3 className={cx("pb-6 text-lg font-bold text-ssw-black", className)}>
+    <h3 className={cx("pb-4 text-lg font-bold text-ssw-black", className)}>
       {children}
     </h3>
   );
