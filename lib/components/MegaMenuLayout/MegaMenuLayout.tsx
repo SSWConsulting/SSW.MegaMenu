@@ -38,7 +38,7 @@ export type Title = {
   tagline?: never;
 };
 
-const MegaMenuLayout: React.FC<MegaMenuWrapperProps> = ({
+const MegaMenuContents: React.FC<MegaMenuWrapperProps> = ({
   className = "",
   tagline,
   title,
@@ -46,7 +46,6 @@ const MegaMenuLayout: React.FC<MegaMenuWrapperProps> = ({
   subtitle,
   searchUrl = DEFAULT_URL,
   menuBarItems,
-  linkComponent,
   rightSideActionsOverride,
   callback,
 }) => {
@@ -72,7 +71,7 @@ const MegaMenuLayout: React.FC<MegaMenuWrapperProps> = ({
 
   const RightSideActions = rightSideActionsOverride;
   return (
-    <LinkProvider linkComponent={linkComponent}>
+    <>
       <div
         className={cx(
           className,
@@ -151,12 +150,23 @@ const MegaMenuLayout: React.FC<MegaMenuWrapperProps> = ({
       ) : (
         <PhoneButton className="flex-grow pb-4 sm:hidden" />
       )}
-    </LinkProvider>
+    </>
   );
 };
 
 const Divider: React.FC = () => {
   return <div className="h-4 w-px bg-gray-700/30 sm:block"></div>;
+};
+
+const MegaMenuLayout: React.FC<MegaMenuWrapperProps> = ({
+  children,
+  ...props
+}) => {
+  return (
+    <LinkProvider linkComponent={props.linkComponent}>
+      <MegaMenuContents {...props}>{children}</MegaMenuContents>
+    </LinkProvider>
+  );
 };
 
 export default MegaMenuLayout;
