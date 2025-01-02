@@ -66,7 +66,7 @@ export const SubMenuGroup: React.FC<SubMenuGroupProps> = ({
                       imgSize="medium"
                       iconImg={sideBarItem.iconImg}
                       className={ICON_IMAGE_SIZES.medium}
-                      icon={sideBarItem.icon}
+                      icon={sideBarItem.icon as AvailableIcons}
                     />
                   )}
                 </Heading>
