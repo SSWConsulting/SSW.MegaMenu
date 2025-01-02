@@ -35,6 +35,8 @@ export interface NavMenuColumnGroupItem {
 
 export interface Sidebar {
   name: string;
+  icon?: AvailableIcons | string;
+  iconImg: string;
   items?: SidebarItem[];
 }
 

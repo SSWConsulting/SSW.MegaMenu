@@ -1,5 +1,6 @@
 import React from "react";
 import { AvailableIcons, iconMap } from "../../types/icon";
+import { ICON_IMAGE_SIZES, IconSizes } from "../../util/constants";
 import { CustomImage } from "../CustomImage";
 
 const MegaIconMapper = ({
@@ -22,12 +23,14 @@ export interface MegaIconProps {
   // TODO: implement below intended solution extends React.ComponentPropsWithoutRef<"span"> {
   iconImg?: string;
   icon?: AvailableIcons;
+  imgSize?: IconSizes;
   className?: string;
 }
 
 export const MegaIcon: React.FC<MegaIconProps> = ({
   icon,
   iconImg,
+  imgSize = "small",
   className,
 }) => {
   //if icon is an SVGElement, just return it with props spread into it
@@ -47,7 +50,7 @@ export const MegaIcon: React.FC<MegaIconProps> = ({
   return (
     <div>
       <CustomImage
-        className="h-5 w-5"
+        className={ICON_IMAGE_SIZES[imgSize]}
         src={iconImg}
         alt={iconImg}
         width={20}
