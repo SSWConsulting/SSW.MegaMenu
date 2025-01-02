@@ -1,6 +1,6 @@
 import React from "react";
 import { AvailableIcons, iconMap } from "../../types/icon";
-import { ICON_IMAGE_SIZES } from "../../util/constants";
+import { ICON_IMAGE_SIZES, IconSizes } from "../../util/constants";
 import { CustomImage } from "../CustomImage";
 
 const MegaIconMapper = ({
@@ -23,7 +23,7 @@ export interface MegaIconProps {
   // TODO: implement below intended solution extends React.ComponentPropsWithoutRef<"span"> {
   iconImg?: string;
   icon?: AvailableIcons;
-  imgSize?: "small" | "medium";
+  imgSize?: IconSizes;
   className?: string;
 }
 
