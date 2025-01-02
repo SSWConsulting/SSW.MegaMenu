@@ -1,4 +1,5 @@
 "use client";
+import clsx from "clsx";
 import React, { useContext } from "react";
 import { useLinkComponent } from "../../hooks/useLinkComponent";
 import { AvailableIcons } from "../../types/icon";
@@ -9,6 +10,7 @@ import {
   Sidebar,
   ViewAll,
 } from "../../types/megamenu";
+import { ICON_IMAGE_SIZES } from "../../util/constants";
 import { cx } from "../../util/cx";
 import { ClosePopoverContext } from "../DesktopMenu/DesktopMenu";
 import { MegaIcon } from "../MegaIcon";
@@ -51,8 +53,22 @@ export const SubMenuGroup: React.FC<SubMenuGroupProps> = ({
           <div className="flex flex-col gap-y-2 px-8 py-4">
             {sidebarItems?.map((sideBarItem, i) => (
               <div key={i}>
-                <Heading className={i > 0 ? "pt-6" : ""}>
+                <Heading
+                  className={clsx(
+                    i > 0 && "flex pt-6",
+                    "flex items-center gap-3",
+                  )}
+                >
                   {sideBarItem.name}
+
+                  {(sideBarItem.iconImg || sideBarItem.icon) && (
+                    <MegaIcon
+                      imgSize="medium"
+                      iconImg={sideBarItem.iconImg}
+                      className={ICON_IMAGE_SIZES.medium}
+                      icon={sideBarItem.icon}
+                    />
+                  )}
                 </Heading>
                 <div className="flex flex-col gap-y-4">
                   {sideBarItem.items?.map((item, i) => (
