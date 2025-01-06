@@ -12,7 +12,7 @@ const FeaturedCard = (props: FeaturedCardProps) => {
     <div className="rounded bg-ssw-black px-4 py-5 text-white hover:bg-ssw-gray">
       <div className="inline-flex items-center font-bold">
         {props.icon && (
-          <MegaIcon icon={props.icon} className="mr-2 size-10 flex-shrink-0" />
+          <MegaIcon icon={props.icon} className="mr-2 size-8 flex-shrink-0" />
         )}
         {props.title}
       </div>
