@@ -50,7 +50,7 @@ export const SubMenuGroup: React.FC<SubMenuGroupProps> = ({
         </div>
 
         <div className="shrink-0 overflow-x-hidden bg-gray-100 lg:relative lg:w-[350px] lg:before:absolute lg:before:inset-0 lg:before:-z-10 lg:before:w-[1000px] lg:before:bg-gray-50">
-          <div className="flex flex-col gap-y-2 px-6 py-4">
+          <div className="flex flex-col gap-y-2 px-6 pt-4 pb-8">
             {sidebarItems?.map((sideBarItem, i) => (
               <div key={i}>
                 <Heading
