@@ -50,7 +50,7 @@ export const SubMenuGroup: React.FC<SubMenuGroupProps> = ({
         </div>
 
         <div className="shrink-0 overflow-x-hidden bg-gray-100 lg:relative lg:w-[350px] lg:before:absolute lg:before:inset-0 lg:before:-z-10 lg:before:w-[1000px] lg:before:bg-gray-50">
-          <div className="flex flex-col gap-y-2 px-8 py-4">
+          <div className="flex flex-col gap-y-2 px-6 pb-8 pt-4">
             {sidebarItems?.map((sideBarItem, i) => (
               <div key={i}>
                 <Heading
@@ -89,7 +89,7 @@ const Heading: React.FC<{
   children: React.ReactNode;
 }> = ({ className, children }) => {
   return (
-    <h3 className={cx("pb-4 text-lg font-bold text-ssw-black", className)}>
+    <h3 className={cx("pb-2 pl-2 text-lg font-bold text-ssw-black", className)}>
       {children}
     </h3>
   );
@@ -125,7 +125,7 @@ const LinkItem: React.FC<{ link: NavMenuColumnGroupItem }> = ({
     <CustomLink
       href={url || ""}
       className={cx(
-        "flex items-start gap-x-3 text-ssw-black hover:text-ssw-red focus:outline-none",
+        "flex items-start gap-x-1 text-ssw-black hover:text-ssw-red focus:outline-none",
         description ? "p-4" : "p-2",
       )}
       onClick={() => {
@@ -152,7 +152,7 @@ const LinkItem: React.FC<{ link: NavMenuColumnGroupItem }> = ({
               </p>
             </>
           ) : (
-            <p className="pl-4 text-sm font-normal text-ssw-black hover:text-ssw-red">
+            <p className="pl-2 text-sm font-normal text-ssw-black hover:text-ssw-red">
               {name}
             </p>
           )}

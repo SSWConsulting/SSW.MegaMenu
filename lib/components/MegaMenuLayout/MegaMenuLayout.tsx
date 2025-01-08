@@ -88,8 +88,8 @@ const MegaMenuContents: React.FC<MegaMenuWrapperProps> = ({
                 <Logo />
 
                 {tagline && (
-                  <div className="w-fit whitespace-break-spaces text-sm font-semibold uppercase leading-4 text-gray-700">
-                    <span className="ml-4 hidden xl:block">{tagline}</span>
+                  <div className="w-fit whitespace-break-spaces text-xs font-semibold uppercase leading-3 text-gray-700">
+                    <span className="ml-3 hidden xl:block">{tagline}</span>
                   </div>
                 )}
                 {title && (
