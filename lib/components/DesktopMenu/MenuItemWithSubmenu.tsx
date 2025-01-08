@@ -25,7 +25,7 @@ export const MenuItemWithSubmenu: React.FC<MenuItemWithSubmenuProps> = ({
     <>
       <Popover.Button
         className={cx(
-          "flex cursor-pointer items-center justify-center gap-x-1 whitespace-nowrap rounded-md px-3 py-1 text-ssw-black focus:outline-none focus-visible:ring-opacity-0",
+          "flex cursor-pointer items-center justify-center whitespace-nowrap rounded-md px-3 py-1 text-ssw-black focus:outline-none focus-visible:ring-opacity-0",
           isOpened ? "text-ssw-red" : "hover:text-ssw-red",
         )}
       >
