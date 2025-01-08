@@ -72,7 +72,7 @@ export const Search: React.FC<SearchTermProps> = ({
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <Dialog.Panel className="mx-auto max-w-2xl divide-y divide-gray-500 divide-opacity-10 overflow-hidden rounded-xl bg-white/80 shadow-2xl backdrop-blur transition-all">
+              <Dialog.Panel className="mx-auto max-w-2xl divide-y divide-gray-500 divide-opacity-10 overflow-hidden rounded-md bg-white/80 shadow-2xl backdrop-blur transition-all">
                 <SearchInput
                   setSearchTerm={setSearchTerm}
                   searchTerm={searchTerm}
@@ -107,14 +107,14 @@ export const SearchInput: React.FC<SearchInputProps> = ({
         aria-hidden="true"
       />
       <form
-        className="isolate inline-flex w-full rounded-md shadow-sm"
+        className="isolate inline-flex w-full shadow-sm"
         onSubmit={(e) => performSearch(e)}
       >
         <input
           type="text"
           className={
             inputClassName ??
-            "h-12 grow rounded-l-md border bg-transparent pl-11 text-ssw-black focus:ring-0 sm:text-sm"
+            "h-12 grow rounded-l-md bg-transparent pl-11 text-ssw-black focus:ring-0 sm:text-sm"
           }
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
