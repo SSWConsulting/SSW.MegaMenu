@@ -43,7 +43,7 @@ export const Search: React.FC<SearchTermProps> = ({
   return (
     <>
       <button
-        className="rounded p-4 text-ssw-black hover:text-ssw-red"
+        className="rounded p-3 text-ssw-black hover:text-ssw-red"
         onClick={() => setIsOpen(true)}
       >
         <MegaIcon icon="magnifyingGlass" className="h-5 w-5" />
