@@ -152,7 +152,7 @@ const LinkItem: React.FC<{ link: NavMenuColumnGroupItem }> = ({
               </p>
             </>
           ) : (
-            <p className="pl-4 text-sm font-normal text-ssw-black hover:text-ssw-red">
+            <p className="pl-2 text-sm font-normal text-ssw-black hover:text-ssw-red">
               {name}
             </p>
           )}
