@@ -30,7 +30,7 @@ export const PhoneButton = ({ className }: PhoneButtonProps) => {
       <CustomLink
         href={url}
         className={cx(
-          "whitespace-nowrap·rounded·flex·h-12·w-full·shrink-0·cursor-pointer·items-center·justify-center bg-ssw-red px-4 text-xl hover:opacity-70 max-sm:my-5 sm:w-fit",
+          "whitespace-nowrap rounded flex h-12 w-full shrink-0 cursor-pointer items-center justify-center bg-ssw-red px-4 text-xl hover:opacity-70 max-sm:my-5 sm:w-fit",
         )}
       >
         <MegaIcon icon="phoneAlt" className="text-2xl text-white" />
