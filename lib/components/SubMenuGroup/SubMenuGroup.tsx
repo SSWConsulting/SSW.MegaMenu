@@ -116,49 +116,69 @@ const MenuItem: React.FC<{
 };
 
 const LinkItem: React.FC<{ link: NavMenuColumnGroupItem }> = ({
-  link: { name, url, description, icon, iconImg },
+  link: { name, url, description, icon, iconImg, youtubeLink, documentationLink },
 }) => {
   const close = useContext(ClosePopoverContext);
   const CustomLink = useLinkComponent();
 
   return (
-    <CustomLink
-      href={url || ""}
-      className={cx(
-        "flex items-start gap-x-1 text-ssw-black hover:text-ssw-red focus:outline-none",
-        description ? "p-4" : "p-2",
-      )}
-      onClick={() => {
-        if (close) close();
-      }}
-    >
-      {(icon || iconImg) && (
-        <div className="flex shrink-0 items-center justify-center text-ssw-red">
-          <MegaIcon
-            className="h-6 w-6"
-            icon={icon as AvailableIcons}
-            iconImg={iconImg}
-          />
-        </div>
-      )}
+    <div>
+      <CustomLink
+        href={url || ""}
+        className={cx(
+          "flex items-start gap-x-1 text-ssw-black hover:text-ssw-red focus:outline-none",
+          description ? "p-4" : "p-2",
+        )}
+        onClick={() => {
+          if (close) close();
+        }}
+      >
+        {(icon || iconImg) && (
+          <div className="flex shrink-0 items-center justify-center text-ssw-red">
+            <MegaIcon
+              className="h-6 w-6"
+              icon={icon as AvailableIcons}
+              iconImg={iconImg}
+            />
+          </div>
+        )}
 
-      <div className="min-w-0 flex-1">
-        <span>
-          {name && description ? (
-            <>
-              <p className="font-bold">{name}</p>
-              <p className="mt-1 text-sm font-normal text-ssw-gray">
-                {description}
+        <div className="min-w-0 flex-1">
+          <span>
+            {name && description ? (
+              <>
+                <p className="font-bold">{name}</p>
+                <p className="mt-1 text-sm font-normal text-ssw-gray">
+                  {description}
+                </p>
+              </>
+            ) : (
+              <p className="pl-2 text-sm font-normal text-ssw-black hover:text-ssw-red">
+                {name}
               </p>
-            </>
-          ) : (
-            <p className="pl-2 text-sm font-normal text-ssw-black hover:text-ssw-red">
-              {name}
-            </p>
+            )}
+          </span>
+        </div>
+      </CustomLink>
+      <div className="ml-10 font-light text-ssw-gray flex flex-row gap-x-4 text-sm">
+          {youtubeLink && (
+            <CustomLink
+              href={youtubeLink}
+              className="hover:text-ssw-red"
+            >
+              YouTube
+            </CustomLink>
           )}
-        </span>
+          {documentationLink && (
+            <CustomLink
+              href={documentationLink}
+              className="hover:text-ssw-red"
+            >
+              Docs
+            </CustomLink>
+          )}
       </div>
-    </CustomLink>
+    </div>
   );
 };
 
