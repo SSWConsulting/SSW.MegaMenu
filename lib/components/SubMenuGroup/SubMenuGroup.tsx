@@ -116,7 +116,15 @@ const MenuItem: React.FC<{
 };
 
 const LinkItem: React.FC<{ link: NavMenuColumnGroupItem }> = ({
-  link: { name, url, description, icon, iconImg, youtubeLink, documentationLink },
+  link: {
+    name,
+    url,
+    description,
+    icon,
+    iconImg,
+    youtubeLink,
+    documentationLink,
+  },
 }) => {
   const close = useContext(ClosePopoverContext);
   const CustomLink = useLinkComponent();
@@ -160,23 +168,17 @@ const LinkItem: React.FC<{ link: NavMenuColumnGroupItem }> = ({
           </span>
         </div>
       </CustomLink>
-      <div className="ml-10 font-light text-ssw-gray flex flex-row gap-x-4 text-sm">
-          {youtubeLink && (
-            <CustomLink
-              href={youtubeLink}
-              className="hover:text-ssw-red"
-            >
-              YouTube
-            </CustomLink>
-          )}
-          {documentationLink && (
-            <CustomLink
-              href={documentationLink}
-              className="hover:text-ssw-red"
-            >
-              Docs
-            </CustomLink>
-          )}
+      <div className="ml-10 flex flex-row gap-x-4 text-sm font-light text-ssw-gray">
+        {youtubeLink && (
+          <CustomLink href={youtubeLink} className="hover:text-ssw-red">
+            YouTube
+          </CustomLink>
+        )}
+        {documentationLink && (
+          <CustomLink href={documentationLink} className="hover:text-ssw-red">
+            Docs
+          </CustomLink>
+        )}
       </div>
     </div>
   );
