@@ -31,6 +31,8 @@ export interface NavMenuColumnGroupItem {
   description?: string;
   icon?: AvailableIcons | string;
   iconImg?: string;
+  youtubeLink?: string;
+  documentationLink?: string;
 }
 
 export interface Sidebar {
