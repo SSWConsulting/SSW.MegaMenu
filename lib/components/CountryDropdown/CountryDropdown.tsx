@@ -33,7 +33,7 @@ const CountryDropdown = ({ url }: CountryDropdownProps) => {
 
   useEffect(() => {
     try {
-      const { hostname } = new URL(url || "");
+      const { hostname } = new URL(url || "https://www.ssw.com.au");
 
       const website = websites.find((w) => hostname?.endsWith(w.url));
       if (website) {
