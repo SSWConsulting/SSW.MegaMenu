@@ -142,18 +142,7 @@ const LinkItem: React.FC<{ link: NavMenuColumnGroupItem }> = ({
           e.preventDefault();
           close();
         }}
-        // onClick={(e) => {
-        //   console.log("LinkItem clicked", url);
-
-        //   // if (close) close();
-        // }}
       >
-        {/* <div
-          onClick={() => {
-            if (close) close();
-          }}
-          className="absolute inset-0"
-        ></div> */}
         {(icon || iconImg) && (
           <div className="flex shrink-0 items-center justify-center text-ssw-red">
             <MegaIcon
