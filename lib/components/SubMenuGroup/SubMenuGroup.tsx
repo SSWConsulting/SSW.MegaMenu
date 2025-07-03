@@ -134,17 +134,30 @@ const LinkItem: React.FC<{ link: NavMenuColumnGroupItem }> = ({
   return (
     <div>
       <CustomLink
-        href={"#"}
+        href={"#asdad"}
         className={cx(
           "flex items-start gap-x-1 text-ssw-black hover:text-ssw-red focus:outline-none",
           description ? "p-4" : "p-2",
         )}
-        onClick={() => {
+        onClick={(e) => {
+          e.stopPropagation();
+          e.preventDefault();
+          console.log("close", close);
           console.log("LinkItem clicked", url);
-          if (close) close();
-          // if (close) close();
+          close();
         }}
+        // onClick={(e) => {
+        //   console.log("LinkItem clicked", url);
+
+        //   // if (close) close();
+        // }}
       >
+        {/* <div
+          onClick={() => {
+            if (close) close();
+          }}
+          className="absolute inset-0"
+        ></div> */}
         {(icon || iconImg) && (
           <div className="flex shrink-0 items-center justify-center text-ssw-red">
             <MegaIcon

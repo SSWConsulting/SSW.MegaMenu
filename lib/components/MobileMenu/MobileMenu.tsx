@@ -2,6 +2,7 @@ import { Dialog } from "@headlessui/react";
 import { ChevronRightIcon } from "@heroicons/react/24/solid";
 import React from "react";
 import { useLinkComponent } from "../../hooks/useLinkComponent";
+import { MenuContext, MenuContextProvider } from "../../hooks/useMenuState";
 import { NavMenuGroup } from "../../types/megamenu";
 import { MegaIcon } from "../MegaIcon";
 import { SearchInput, SearchTermProps } from "../Search";
@@ -58,10 +59,12 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
           {selectedMenuItem &&
           selectedMenuItem.menuColumns &&
           selectedMenuItem.sidebarItems ? (
-            <SubMenuGroup
-              menuColumns={selectedMenuItem.menuColumns}
-              sidebarItems={selectedMenuItem.sidebarItems}
-            />
+            <MenuContextProvider value={{ close: onCloseMobileMenu }}>
+              <SubMenuGroup
+                menuColumns={selectedMenuItem.menuColumns}
+                sidebarItems={selectedMenuItem.sidebarItems}
+              />
+            </MenuContextProvider>
           ) : (
             <MenuBarItems
               setSearchTerm={setSearchTerm}
