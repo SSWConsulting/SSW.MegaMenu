@@ -15,7 +15,7 @@ module.exports = {
     "prettier/prettier": [
       "error",
       {
-        endOfLine: "crlf",
+        endOfLine: "auto",
       },
     ],
     quotes: ["error", "double"],
