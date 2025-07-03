@@ -1,6 +1,6 @@
 import { Popover } from "@headlessui/react";
 import React from "react";
-import { ClosePopoverProvider } from "../../hooks/useClosePover";
+import { MenuContextProvider } from "../../hooks/useMenuState";
 import { NavMenuGroup } from "../../types/megamenu";
 import { CountryDropdown } from "../CountryDropdown";
 import { PhoneButton } from "../PhoneButton";
@@ -47,7 +47,7 @@ const DesktopMenu: React.FC<DesktopMenuProps> = ({
                     }
                     if (!group.menuColumns || !group.sidebarItems) return <></>;
                     return (
-                      <ClosePopoverProvider value={close}>
+                      <MenuContextProvider value={{ close }}>
                         <MenuItemWithSubmenu
                           name={group.name}
                           menuColumns={group.menuColumns}
@@ -55,7 +55,7 @@ const DesktopMenu: React.FC<DesktopMenuProps> = ({
                           isOpened={open}
                           viewAll={group.viewAll}
                         />
-                      </ClosePopoverProvider>
+                      </MenuContextProvider>
                     );
                   }}
                 </Popover>

@@ -1,8 +1,8 @@
 "use client";
 import clsx from "clsx";
 import React from "react";
-import { useClosePopover } from "../../hooks/useClosePover";
 import { useLinkComponent } from "../../hooks/useLinkComponent";
+import { useMenuState } from "../../hooks/useMenuState";
 import { AvailableIcons } from "../../types/icon";
 import {
   NavMenuColumn,
@@ -126,7 +126,7 @@ const LinkItem: React.FC<{ link: NavMenuColumnGroupItem }> = ({
     documentationLink,
   },
 }) => {
-  const close = useClosePopover();
+  const { close } = useMenuState();
 
   const CustomLink = useLinkComponent();
 

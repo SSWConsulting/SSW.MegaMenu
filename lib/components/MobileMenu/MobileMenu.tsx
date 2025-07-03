@@ -1,8 +1,8 @@
 import { Dialog } from "@headlessui/react";
 import { ChevronRightIcon } from "@heroicons/react/24/solid";
 import React from "react";
-import { ClosePopoverProvider } from "../../hooks/useClosePover";
 import { useLinkComponent } from "../../hooks/useLinkComponent";
+import { MenuContextProvider } from "../../hooks/useMenuState";
 import { NavMenuGroup } from "../../types/megamenu";
 import { MegaIcon } from "../MegaIcon";
 import { SearchInput, SearchTermProps } from "../Search";
@@ -63,11 +63,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
               sidebarItems={selectedMenuItem.sidebarItems}
             />
           ) : (
-            <ClosePopoverProvider
-              value={() => {
-                onCloseMobileMenu();
-              }}
-            >
+            <MenuContextProvider value={{ close: () => onCloseMobileMenu() }}>
               <MenuBarItems
                 setSearchTerm={setSearchTerm}
                 searchTerm={searchTerm}
@@ -75,7 +71,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
                 menuBarItems={menuBarItems}
                 setSelectedMenuItem={setSelectedMenuItem}
               />
-            </ClosePopoverProvider>
+            </MenuContextProvider>
           )}
         </div>
       </Dialog.Panel>
