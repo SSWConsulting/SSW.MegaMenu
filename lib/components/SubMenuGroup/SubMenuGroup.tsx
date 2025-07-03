@@ -127,10 +127,8 @@ const LinkItem: React.FC<{ link: NavMenuColumnGroupItem }> = ({
   },
 }) => {
   const { close } = useMenuState();
-
-  console.log("close", close);
   const CustomLink = useLinkComponent();
-  console.log("customLink", CustomLink);
+
   return (
     <div>
       <CustomLink
