@@ -3,35 +3,41 @@ import { ChevronRightIcon } from "@heroicons/react/24/solid";
 import React from "react";
 import { ClosePopoverProvider } from "../../hooks/useClosePover";
 import { useLinkComponent } from "../../hooks/useLinkComponent";
-import { useMenuState } from "../../hooks/useMenuState";
 import { NavMenuGroup } from "../../types/megamenu";
 import { MegaIcon } from "../MegaIcon";
 import { SearchInput, SearchTermProps } from "../Search";
 import SubMenuGroup from "../SubMenuGroup/SubMenuGroup";
 
 export interface MobileMenuProps extends SearchTermProps {
+  isMobileMenuOpen: boolean;
   menuBarItems: NavMenuGroup[];
-  // closeMobileMenu: () => void;
+  closeMobileMenu: () => void;
 }
 
 const MobileMenu: React.FC<MobileMenuProps> = ({
   menuBarItems,
-  // closeMobileMenu,
+  isMobileMenuOpen,
+
+  closeMobileMenu,
   setSearchTerm,
   searchTerm,
   performSearch,
 }) => {
-  const { isMenuOpen, setMenuOpen, setSelectedMenuItem, selectedMenuItem } =
-    useMenuState();
+  const [selectedMenuItem, setSelectedMenuItem] =
+    React.useState<NavMenuGroup | null>(null);
+  const onCloseMobileMenu = () => {
+    setSelectedMenuItem(null);
+    closeMobileMenu();
+  };
   return (
-    <Dialog as="div" open={isMenuOpen} onClose={() => setMenuOpen(false)}>
+    <Dialog as="div" open={isMobileMenuOpen} onClose={() => closeMobileMenu()}>
       <div className="fixed  inset-0 z-10" />
       <Dialog.Panel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white sm:max-w-sm sm:ring-1 sm:ring-ssw-black/10 xl:hidden">
         <div className="flex h-16 flex-row-reverse">
           <button
             type="button"
             className="p-4 text-gray-700"
-            onClick={() => setMenuOpen(false)}
+            onClick={() => onCloseMobileMenu()}
           >
             <span className="sr-only">Close menu</span>
             <MegaIcon icon="xMark" className="h-6 w-6" />
@@ -59,8 +65,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
           ) : (
             <ClosePopoverProvider
               value={() => {
-                setSelectedMenuItem(null);
-                setMenuOpen(false);
+                onCloseMobileMenu();
               }}
             >
               <MenuBarItems
@@ -84,13 +89,11 @@ interface MenuBarItemProps extends SearchTermProps {
 }
 const MenuBarItems: React.FC<MenuBarItemProps> = ({
   menuBarItems,
+  setSelectedMenuItem,
   performSearch,
   setSearchTerm,
   searchTerm,
 }) => {
-  const { setSelectedMenuItem } = useMenuState();
-
-  const { setMenuOpen } = useMenuState();
   const CustomLink = useLinkComponent();
 
   return (
@@ -101,9 +104,6 @@ const MenuBarItems: React.FC<MenuBarItemProps> = ({
             <CustomLink
               key={item.name}
               href={item.url}
-              onClick={() => {
-                setMenuOpen(false);
-              }}
               className="-mx-3 flex w-full items-center px-3 py-2 text-left text-lg leading-7 text-ssw-black hover:text-ssw-red"
             >
               {item.name}

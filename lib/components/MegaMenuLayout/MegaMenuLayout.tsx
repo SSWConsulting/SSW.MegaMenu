@@ -8,8 +8,6 @@ import {
 } from "../../hooks/useLinkComponent";
 import { LinkProvider } from "../../hooks/useLinkComponent/components";
 import { useMenuItems } from "../../hooks/useMenuItems";
-import { useMenuState } from "../../hooks/useMenuState";
-import { MenuProvider } from "../../hooks/useMenuState/components";
 import { NavMenuGroup } from "../../types/megamenu";
 import { DEFAULT_URL } from "../../util/constants";
 import { cx } from "../../util/cx";
@@ -67,7 +65,9 @@ const MegaMenuContents: React.FC<MegaMenuWrapperProps> = ({
     }
   };
 
-  const { setMenuOpen } = useMenuState();
+  const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  // const { setMenuOpen } = useMenuState();
 
   const { menuItems } = useMenuItems(menuBarItems);
   const CustomLink = useLinkComponent();
@@ -122,7 +122,7 @@ const MegaMenuContents: React.FC<MegaMenuWrapperProps> = ({
               type="button"
               className="inline-flex items-center justify-center rounded-md px-1 text-gray-700 xs:px-4"
               onClick={() => {
-                setMenuOpen(true);
+                setMobileMenuOpen(true);
               }}
             >
               <span className="sr-only">Open main menu</span>
@@ -140,6 +140,8 @@ const MegaMenuContents: React.FC<MegaMenuWrapperProps> = ({
           />
         </nav>
         <MobileMenu
+          closeMobileMenu={() => setMobileMenuOpen(false)}
+          isMobileMenuOpen={isMobileMenuOpen}
           searchTerm={searchTerm}
           setSearchTerm={setSearchTerm}
           performSearch={performSearch}
@@ -167,9 +169,7 @@ const MegaMenuLayout: React.FC<MegaMenuWrapperProps> = ({
 }) => {
   return (
     <LinkProvider linkComponent={props.linkComponent}>
-      <MenuProvider>
-        <MegaMenuContents {...props}>{children}</MegaMenuContents>
-      </MenuProvider>
+      <MegaMenuContents {...props}>{children}</MegaMenuContents>
     </LinkProvider>
   );
 };

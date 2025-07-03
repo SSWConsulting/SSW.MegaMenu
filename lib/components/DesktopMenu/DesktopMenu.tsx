@@ -1,9 +1,6 @@
 import { Popover } from "@headlessui/react";
-import React, { createContext } from "react";
-import {
-  ClosePopoverContext,
-  ClosePopoverProvider,
-} from "../../hooks/useClosePover";
+import React,  from "react";
+import { ClosePopoverProvider } from "../../hooks/useClosePover";
 import { NavMenuGroup } from "../../types/megamenu";
 import { CountryDropdown } from "../CountryDropdown";
 import { PhoneButton } from "../PhoneButton";
