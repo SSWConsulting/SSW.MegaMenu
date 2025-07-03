@@ -10,7 +10,7 @@ export const MenuItemLink = ({ name, href }: MenuItemLinkProps) => {
 
   return (
     <CustomLink
-      href={href}
+      href={"#"}
       className="flex items-center justify-center rounded-md px-2 py-1 hover:text-ssw-red"
     >
       {name}

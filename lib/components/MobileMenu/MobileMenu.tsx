@@ -2,7 +2,7 @@ import { Dialog } from "@headlessui/react";
 import { ChevronRightIcon } from "@heroicons/react/24/solid";
 import React from "react";
 import { useLinkComponent } from "../../hooks/useLinkComponent";
-import { MenuContextProvider } from "../../hooks/useMenuState";
+import { MenuContextProvider, useMenuState } from "../../hooks/useMenuState";
 import { NavMenuGroup } from "../../types/megamenu";
 import { MegaIcon } from "../MegaIcon";
 import { SearchInput, SearchTermProps } from "../Search";
@@ -26,6 +26,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
   const [selectedMenuItem, setSelectedMenuItem] =
     React.useState<NavMenuGroup | null>(null);
   const onCloseMobileMenu = () => {
+    console.log("onCloseMobileMenu");
     setSelectedMenuItem(null);
     closeMobileMenu();
   };
@@ -37,7 +38,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
           <button
             type="button"
             className="p-4 text-gray-700"
-            onClick={() => onCloseMobileMenu()}
+            onClick={onCloseMobileMenu}
           >
             <span className="sr-only">Close menu</span>
             <MegaIcon icon="xMark" className="h-6 w-6" />
@@ -58,12 +59,14 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
           {selectedMenuItem &&
           selectedMenuItem.menuColumns &&
           selectedMenuItem.sidebarItems ? (
-            <SubMenuGroup
-              menuColumns={selectedMenuItem.menuColumns}
-              sidebarItems={selectedMenuItem.sidebarItems}
-            />
+            <MenuContextProvider value={{ close: onCloseMobileMenu }}>
+              <SubMenuGroup
+                menuColumns={selectedMenuItem.menuColumns}
+                sidebarItems={selectedMenuItem.sidebarItems}
+              />
+            </MenuContextProvider>
           ) : (
-            <MenuContextProvider value={{ close: () => onCloseMobileMenu() }}>
+            <MenuContextProvider value={{ close: onCloseMobileMenu }}>
               <MenuBarItems
                 setSearchTerm={setSearchTerm}
                 searchTerm={searchTerm}
@@ -92,14 +95,17 @@ const MenuBarItems: React.FC<MenuBarItemProps> = ({
 }) => {
   const CustomLink = useLinkComponent();
 
+  const { close } = useMenuState();
+
   return (
     <div className="-my-6 flex flex-col gap-4 pl-6">
       <div className="space-y-2">
         {menuBarItems.map((item) => {
           return item.url ? (
             <CustomLink
-              key={item.name}
+              key={"#"}
               href={item.url}
+              onClick={() => close()}
               className="-mx-3 flex w-full items-center px-3 py-2 text-left text-lg leading-7 text-ssw-black hover:text-ssw-red"
             >
               {item.name}

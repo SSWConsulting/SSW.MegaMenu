@@ -128,18 +128,22 @@ const LinkItem: React.FC<{ link: NavMenuColumnGroupItem }> = ({
 }) => {
   const { close } = useMenuState();
 
+  console.log("close", close);
   const CustomLink = useLinkComponent();
-
+  console.log("customLink", CustomLink);
   return (
     <div>
       <CustomLink
-        href={url || ""}
+        href={"#item"}
         className={cx(
           "flex items-start gap-x-1 text-ssw-black hover:text-ssw-red focus:outline-none",
           description ? "p-4" : "p-2",
         )}
-        onClick={() => {
-          if (close) close();
+        onClick={(e: any) => {
+          e.preventDefault();
+          console.log("LinkItem clicked", url);
+          // close();
+          // if (close) close();
         }}
       >
         {(icon || iconImg) && (
