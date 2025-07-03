@@ -1,19 +1,12 @@
 "use client";
 import { Popover, Transition } from "@headlessui/react";
 import React, { Fragment } from "react";
-import { useMenuState } from "../../hooks/useMenuState";
-import {
-  NavMenuColumn,
-  NavMenuGroup,
-  Sidebar,
-  ViewAll,
-} from "../../types/megamenu";
+import { NavMenuColumn, Sidebar, ViewAll } from "../../types/megamenu";
 import { cx } from "../../util/cx";
 import { MegaIcon } from "../MegaIcon";
 import SubMenuGroup from "../SubMenuGroup/SubMenuGroup";
 
 interface MenuItemWithSubmenuProps {
-  group: NavMenuGroup;
   name: string;
   menuColumns: NavMenuColumn[];
   sidebarItems: Sidebar[];
@@ -22,32 +15,26 @@ interface MenuItemWithSubmenuProps {
 }
 
 export const MenuItemWithSubmenu: React.FC<MenuItemWithSubmenuProps> = ({
-  group,
   name,
   menuColumns,
   sidebarItems,
   isOpened,
   viewAll,
 }) => {
-  const { setSelectedMenuItem } = useMenuState();
   return (
     <>
-      <button
+      <Popover.Button
         className={cx(
           "flex cursor-pointer items-center justify-center whitespace-nowrap rounded-md px-2 py-1 text-ssw-black focus:outline-none focus-visible:ring-opacity-0",
           isOpened ? "text-ssw-red" : "hover:text-ssw-red",
         )}
-        onClick={() => {
-          console.log("setting menu group", group);
-          setSelectedMenuItem(group);
-        }}
       >
         {name}
         <MegaIcon icon="chevronDown" className="h-5 w-5 flex-none" />
-      </button>
+      </Popover.Button>
 
       <Transition
-        show={isOpened}
+        as={Fragment}
         enter="transition ease-out duration-200"
         enterFrom="opacity-0 -translate-y-1"
         enterTo="opacity-100 translate-y-0"
@@ -55,13 +42,13 @@ export const MenuItemWithSubmenu: React.FC<MenuItemWithSubmenuProps> = ({
         leaveFrom="opacity-100 translate-y-0"
         leaveTo="opacity-0 -translate-y-1"
       >
-        <div className="absolute inset-x-0 top-[120px] -z-10 bg-gray-50 shadow-md shadow-gray-400">
+        <Popover.Panel className="absolute inset-x-0 top-[120px] -z-10 bg-gray-50 shadow-md shadow-gray-400">
           <SubMenuGroup
             menuColumns={menuColumns}
             sidebarItems={sidebarItems}
             viewAll={viewAll}
           />
-        </div>
+        </Popover.Panel>
       </Transition>
     </>
   );
