@@ -1,5 +1,6 @@
-import { Popover } from "@headlessui/react";
+import { Popover, PopoverGroup } from "@headlessui/react";
 import React, { createContext } from "react";
+import { useMenuState } from "../../hooks/useMenuState";
 import { NavMenuGroup } from "../../types/megamenu";
 import { CountryDropdown } from "../CountryDropdown";
 import { PhoneButton } from "../PhoneButton";
@@ -29,10 +30,12 @@ const DesktopMenu: React.FC<DesktopMenuProps> = ({
 }) => {
   const SideActions = sideActionsOverride;
 
+  const { selectedMenuItem } = useMenuState();
+
   return (
     <>
       <div className="hidden flex-1 xl:block">
-        <Popover.Group className="flex items-center justify-center gap-1 text-sm font-semibold text-ssw-black outline-none">
+        <PopoverGroup className="flex items-center justify-center gap-1 text-sm font-semibold text-ssw-black outline-none">
           {menuGroups.map((group) => {
             if (
               !!group.menuColumns &&
@@ -40,27 +43,19 @@ const DesktopMenu: React.FC<DesktopMenuProps> = ({
               group.menuColumns.length > 0 &&
               group.sidebarItems.length > 0
             ) {
-              return (
-                <Popover key={group.name}>
-                  {({ open, close }) => {
-                    {
-                      /* TODO: Duplicated check needed here to appease Typescript */
-                    }
-                    if (!group.menuColumns || !group.sidebarItems) return <></>;
-                    return (
-                      <ClosePopoverContext.Provider value={close}>
-                        <MenuItemWithSubmenu
-                          name={group.name}
-                          menuColumns={group.menuColumns}
-                          sidebarItems={group.sidebarItems}
-                          isOpened={open}
-                          viewAll={group.viewAll}
-                        />
-                      </ClosePopoverContext.Provider>
-                    );
-                  }}
-                </Popover>
+              return !group.menuColumns || !group.sidebarItems ? (
+                <></>
+              ) : (
+                <MenuItemWithSubmenu
+                  group={group}
+                  name={group.name}
+                  menuColumns={group.menuColumns}
+                  sidebarItems={group.sidebarItems}
+                  isOpened={selectedMenuItem === group}
+                  viewAll={group.viewAll}
+                />
               );
+              // </ClosePopoverContext.Provider>
             } else if (group.url) {
               return (
                 <MenuItemLink
@@ -73,7 +68,7 @@ const DesktopMenu: React.FC<DesktopMenuProps> = ({
               return <></>;
             }
           })}
-        </Popover.Group>
+        </PopoverGroup>
       </div>
 
       <div className="hidden shrink items-center justify-end gap-1 xl:flex">

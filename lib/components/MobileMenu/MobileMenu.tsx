@@ -81,6 +81,8 @@ const MenuBarItems: React.FC<MenuBarItemProps> = ({
   searchTerm,
 }) => {
   const { setSelectedMenuItem } = useMenuState();
+
+  const { setMenuOpen } = useMenuState();
   const CustomLink = useLinkComponent();
 
   return (
@@ -91,6 +93,7 @@ const MenuBarItems: React.FC<MenuBarItemProps> = ({
             <CustomLink
               key={item.name}
               href={item.url}
+              onClick={() => setMenuOpen(false)}
               className="-mx-3 flex w-full items-center px-3 py-2 text-left text-lg leading-7 text-ssw-black hover:text-ssw-red"
             >
               {item.name}
