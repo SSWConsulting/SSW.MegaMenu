@@ -67,8 +67,6 @@ const MegaMenuContents: React.FC<MegaMenuWrapperProps> = ({
 
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  // const { setMenuOpen } = useMenuState();
-
   const { menuItems } = useMenuItems(menuBarItems);
   const CustomLink = useLinkComponent();
 
