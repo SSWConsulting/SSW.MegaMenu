@@ -132,7 +132,7 @@ const LinkItem: React.FC<{ link: NavMenuColumnGroupItem }> = ({
   return (
     <div>
       <CustomLink
-        href={url}
+        href={url || ""}
         className={cx(
           "flex items-start gap-x-1 text-ssw-black hover:text-ssw-red focus:outline-none",
           description ? "p-4" : "p-2",
