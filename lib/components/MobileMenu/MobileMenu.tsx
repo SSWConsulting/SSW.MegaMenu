@@ -2,7 +2,7 @@ import { Dialog } from "@headlessui/react";
 import { ChevronRightIcon } from "@heroicons/react/24/solid";
 import React from "react";
 import { useLinkComponent } from "../../hooks/useLinkComponent";
-import { MenuContext, MenuContextProvider } from "../../hooks/useMenuState";
+import { MenuContextProvider } from "../../hooks/useMenuState";
 import { NavMenuGroup } from "../../types/megamenu";
 import { MegaIcon } from "../MegaIcon";
 import { SearchInput, SearchTermProps } from "../Search";
@@ -26,7 +26,6 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
   const [selectedMenuItem, setSelectedMenuItem] =
     React.useState<NavMenuGroup | null>(null);
   const onCloseMobileMenu = () => {
-    console.log("onCloseMobileMenu");
     setSelectedMenuItem(null);
     closeMobileMenu();
   };
