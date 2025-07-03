@@ -1,6 +1,7 @@
 import { Dialog } from "@headlessui/react";
 import { ChevronRightIcon } from "@heroicons/react/24/solid";
 import React from "react";
+import { ClosePopoverProvider } from "../../hooks/useClosePover";
 import { useLinkComponent } from "../../hooks/useLinkComponent";
 import { useMenuState } from "../../hooks/useMenuState";
 import { NavMenuGroup } from "../../types/megamenu";
@@ -56,13 +57,20 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
               sidebarItems={selectedMenuItem.sidebarItems}
             />
           ) : (
-            <MenuBarItems
-              setSearchTerm={setSearchTerm}
-              searchTerm={searchTerm}
-              performSearch={performSearch}
-              menuBarItems={menuBarItems}
-              setSelectedMenuItem={setSelectedMenuItem}
-            />
+            <ClosePopoverProvider
+              value={() => {
+                setSelectedMenuItem(null);
+                setMenuOpen(false);
+              }}
+            >
+              <MenuBarItems
+                setSearchTerm={setSearchTerm}
+                searchTerm={searchTerm}
+                performSearch={performSearch}
+                menuBarItems={menuBarItems}
+                setSelectedMenuItem={setSelectedMenuItem}
+              />
+            </ClosePopoverProvider>
           )}
         </div>
       </Dialog.Panel>

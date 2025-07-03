@@ -1,8 +1,8 @@
 "use client";
 import clsx from "clsx";
-import React, { useContext } from "react";
+import React from "react";
+import { useClosePopover } from "../../hooks/useClosePover";
 import { useLinkComponent } from "../../hooks/useLinkComponent";
-import { useMenuState } from "../../hooks/useMenuState";
 import { AvailableIcons } from "../../types/icon";
 import {
   NavMenuColumn,
@@ -13,7 +13,6 @@ import {
 } from "../../types/megamenu";
 import { ICON_IMAGE_SIZES } from "../../util/constants";
 import { cx } from "../../util/cx";
-import { ClosePopoverContext } from "../DesktopMenu/DesktopMenu";
 import { MegaIcon } from "../MegaIcon";
 import SubMenuWidget from "./SubMenuWidget";
 
@@ -127,9 +126,7 @@ const LinkItem: React.FC<{ link: NavMenuColumnGroupItem }> = ({
     documentationLink,
   },
 }) => {
-  const close = useContext(ClosePopoverContext);
-
-  const { setMenuOpen } = useMenuState();
+  const close = useClosePopover();
 
   const CustomLink = useLinkComponent();
 
@@ -143,8 +140,6 @@ const LinkItem: React.FC<{ link: NavMenuColumnGroupItem }> = ({
         )}
         onClick={() => {
           if (close) close();
-
-          setMenuOpen(false);
         }}
       >
         {(icon || iconImg) && (

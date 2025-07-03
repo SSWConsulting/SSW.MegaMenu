@@ -1,5 +1,9 @@
 import { Popover } from "@headlessui/react";
 import React, { createContext } from "react";
+import {
+  ClosePopoverContext,
+  ClosePopoverProvider,
+} from "../../hooks/useClosePover";
 import { NavMenuGroup } from "../../types/megamenu";
 import { CountryDropdown } from "../CountryDropdown";
 import { PhoneButton } from "../PhoneButton";
@@ -14,8 +18,6 @@ export interface DesktopMenuProps extends SearchTermProps {
   searchUrl: string;
   callback?: (searchTerm: string) => void;
 }
-
-export const ClosePopoverContext = createContext<(() => void) | null>(null);
 
 const DesktopMenu: React.FC<DesktopMenuProps> = ({
   menuGroups,
@@ -48,7 +50,7 @@ const DesktopMenu: React.FC<DesktopMenuProps> = ({
                     }
                     if (!group.menuColumns || !group.sidebarItems) return <></>;
                     return (
-                      <ClosePopoverContext.Provider value={close}>
+                      <ClosePopoverProvider value={close}>
                         <MenuItemWithSubmenu
                           name={group.name}
                           menuColumns={group.menuColumns}
@@ -56,7 +58,7 @@ const DesktopMenu: React.FC<DesktopMenuProps> = ({
                           isOpened={open}
                           viewAll={group.viewAll}
                         />
-                      </ClosePopoverContext.Provider>
+                      </ClosePopoverProvider>
                     );
                   }}
                 </Popover>
