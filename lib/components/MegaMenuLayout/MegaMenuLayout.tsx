@@ -119,9 +119,7 @@ const MegaMenuContents: React.FC<MegaMenuWrapperProps> = ({
             <button
               type="button"
               className="inline-flex items-center justify-center rounded-md px-1 text-gray-700 xs:px-4"
-              onClick={() => {
-                setMobileMenuOpen(true);
-              }}
+              onClick={() => setMobileMenuOpen(true)}
             >
               <span className="sr-only">Open main menu</span>
               <Bars3Icon className="h-6 w-6" aria-hidden="true" />
