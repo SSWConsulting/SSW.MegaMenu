@@ -134,7 +134,7 @@ const LinkItem: React.FC<{ link: NavMenuColumnGroupItem }> = ({
   return (
     <div>
       <CustomLink
-        href={"#asdad"}
+        href={url}
         className={cx(
           "flex items-start gap-x-1 text-ssw-black hover:text-ssw-red focus:outline-none",
           description ? "p-4" : "p-2",
@@ -142,8 +142,6 @@ const LinkItem: React.FC<{ link: NavMenuColumnGroupItem }> = ({
         onClick={(e) => {
           e.stopPropagation();
           e.preventDefault();
-          console.log("close", close);
-          console.log("LinkItem clicked", url);
           close();
         }}
         // onClick={(e) => {
