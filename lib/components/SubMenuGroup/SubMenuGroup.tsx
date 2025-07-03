@@ -137,9 +137,7 @@ const LinkItem: React.FC<{ link: NavMenuColumnGroupItem }> = ({
           "flex items-start gap-x-1 text-ssw-black hover:text-ssw-red focus:outline-none",
           description ? "p-4" : "p-2",
         )}
-        onClick={(e) => {
-          e.stopPropagation();
-          e.preventDefault();
+        onClick={() => {
           close();
         }}
       >
