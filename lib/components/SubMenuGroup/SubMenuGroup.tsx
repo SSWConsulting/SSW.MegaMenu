@@ -2,6 +2,7 @@
 import clsx from "clsx";
 import React, { useContext } from "react";
 import { useLinkComponent } from "../../hooks/useLinkComponent";
+import { useMenuState } from "../../hooks/useMenuState";
 import { AvailableIcons } from "../../types/icon";
 import {
   NavMenuColumn,
@@ -127,6 +128,9 @@ const LinkItem: React.FC<{ link: NavMenuColumnGroupItem }> = ({
   },
 }) => {
   const close = useContext(ClosePopoverContext);
+
+  const { setMenuOpen } = useMenuState();
+
   const CustomLink = useLinkComponent();
 
   return (
@@ -139,6 +143,8 @@ const LinkItem: React.FC<{ link: NavMenuColumnGroupItem }> = ({
         )}
         onClick={() => {
           if (close) close();
+
+          setMenuOpen(false);
         }}
       >
         {(icon || iconImg) && (
