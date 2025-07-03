@@ -2,6 +2,7 @@ import { Dialog } from "@headlessui/react";
 import { ChevronRightIcon } from "@heroicons/react/24/solid";
 import React from "react";
 import { useLinkComponent } from "../../hooks/useLinkComponent";
+import { MenuContextProvider } from "../../hooks/useMenuState";
 import { NavMenuGroup } from "../../types/megamenu";
 import { MegaIcon } from "../MegaIcon";
 import { SearchInput, SearchTermProps } from "../Search";
@@ -14,8 +15,9 @@ export interface MobileMenuProps extends SearchTermProps {
 }
 
 const MobileMenu: React.FC<MobileMenuProps> = ({
-  isMobileMenuOpen,
   menuBarItems,
+  isMobileMenuOpen,
+
   closeMobileMenu,
   setSearchTerm,
   searchTerm,
@@ -23,25 +25,19 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
 }) => {
   const [selectedMenuItem, setSelectedMenuItem] =
     React.useState<NavMenuGroup | null>(null);
-
   const onCloseMobileMenu = () => {
     setSelectedMenuItem(null);
     closeMobileMenu();
   };
-
   return (
-    <Dialog
-      as="div"
-      open={isMobileMenuOpen}
-      onClose={() => onCloseMobileMenu()}
-    >
-      <div className="fixed inset-0 z-10" />
-      <Dialog.Panel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white sm:max-w-sm sm:ring-1 sm:ring-ssw-black/10">
+    <Dialog as="div" open={isMobileMenuOpen} onClose={onCloseMobileMenu}>
+      <div className="fixed  inset-0 z-10" />
+      <Dialog.Panel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white sm:max-w-sm sm:ring-1 sm:ring-ssw-black/10 xl:hidden">
         <div className="flex h-16 flex-row-reverse">
           <button
             type="button"
             className="p-4 text-gray-700"
-            onClick={() => onCloseMobileMenu()}
+            onClick={onCloseMobileMenu}
           >
             <span className="sr-only">Close menu</span>
             <MegaIcon icon="xMark" className="h-6 w-6" />
@@ -62,10 +58,12 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
           {selectedMenuItem &&
           selectedMenuItem.menuColumns &&
           selectedMenuItem.sidebarItems ? (
-            <SubMenuGroup
-              menuColumns={selectedMenuItem.menuColumns}
-              sidebarItems={selectedMenuItem.sidebarItems}
-            />
+            <MenuContextProvider value={{ close: onCloseMobileMenu }}>
+              <SubMenuGroup
+                menuColumns={selectedMenuItem.menuColumns}
+                sidebarItems={selectedMenuItem.sidebarItems}
+              />
+            </MenuContextProvider>
           ) : (
             <MenuBarItems
               setSearchTerm={setSearchTerm}

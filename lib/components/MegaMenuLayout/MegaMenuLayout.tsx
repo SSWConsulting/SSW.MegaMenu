@@ -1,5 +1,6 @@
 import { Bars3Icon } from "@heroicons/react/24/outline";
 import type { ClassValue } from "clsx";
+
 import React, { useState } from "react";
 import {
   LinkComponentType,
@@ -135,12 +136,12 @@ const MegaMenuContents: React.FC<MegaMenuWrapperProps> = ({
           />
         </nav>
         <MobileMenu
+          closeMobileMenu={() => setMobileMenuOpen(false)}
+          isMobileMenuOpen={isMobileMenuOpen}
           searchTerm={searchTerm}
           setSearchTerm={setSearchTerm}
           performSearch={performSearch}
-          isMobileMenuOpen={isMobileMenuOpen}
           menuBarItems={menuItems}
-          closeMobileMenu={() => setMobileMenuOpen(false)}
         />
       </div>
       {RightSideActions ? (

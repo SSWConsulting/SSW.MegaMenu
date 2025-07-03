@@ -5,9 +5,10 @@ const defaultLinkComponent: LinkComponentType = ({
   href,
   className,
   children,
+  onClick,
 }) => {
   return (
-    <a href={href} className={className}>
+    <a href={href} onClick={onClick} className={className}>
       {children}
     </a>
   );

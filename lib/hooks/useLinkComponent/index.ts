@@ -5,7 +5,7 @@ export type LinkComponentType = React.FC<{
   href: string;
   className?: string;
   title?: string;
-  onClick?: () => void;
+  onClick?: (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => void;
   children?: React.ReactNode;
 }>;
 
