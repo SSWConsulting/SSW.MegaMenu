@@ -98,7 +98,7 @@ const MenuBarItems: React.FC<MenuBarItemProps> = ({
         {menuBarItems.map((item) => {
           return item.url ? (
             <CustomLink
-              key={"#"}
+              key={item.name}
               href={item.url}
               className="-mx-3 flex w-full items-center px-3 py-2 text-left text-lg leading-7 text-ssw-black hover:text-ssw-red"
             >
