@@ -134,15 +134,14 @@ const LinkItem: React.FC<{ link: NavMenuColumnGroupItem }> = ({
   return (
     <div>
       <CustomLink
-        href={"#item"}
+        href={"#"}
         className={cx(
           "flex items-start gap-x-1 text-ssw-black hover:text-ssw-red focus:outline-none",
           description ? "p-4" : "p-2",
         )}
-        onClick={(e: any) => {
-          e.preventDefault();
+        onClick={() => {
           console.log("LinkItem clicked", url);
-          // close();
+          if (close) close();
           // if (close) close();
         }}
       >
