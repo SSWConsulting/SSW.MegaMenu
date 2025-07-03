@@ -1,5 +1,6 @@
 import { Bars3Icon } from "@heroicons/react/24/outline";
 import type { ClassValue } from "clsx";
+
 import React, { useState } from "react";
 import {
   LinkComponentType,
@@ -7,6 +8,8 @@ import {
 } from "../../hooks/useLinkComponent";
 import { LinkProvider } from "../../hooks/useLinkComponent/components";
 import { useMenuItems } from "../../hooks/useMenuItems";
+import { useMenuState } from "../../hooks/useMenuState";
+import { MenuProvider } from "../../hooks/useMenuState/components";
 import { NavMenuGroup } from "../../types/megamenu";
 import { DEFAULT_URL } from "../../util/constants";
 import { cx } from "../../util/cx";
@@ -64,7 +67,7 @@ const MegaMenuContents: React.FC<MegaMenuWrapperProps> = ({
     }
   };
 
-  const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { setMenuOpen } = useMenuState();
 
   const { menuItems } = useMenuItems(menuBarItems);
   const CustomLink = useLinkComponent();
@@ -118,7 +121,9 @@ const MegaMenuContents: React.FC<MegaMenuWrapperProps> = ({
             <button
               type="button"
               className="inline-flex items-center justify-center rounded-md px-1 text-gray-700 xs:px-4"
-              onClick={() => setMobileMenuOpen(true)}
+              onClick={() => {
+                setMenuOpen(true);
+              }}
             >
               <span className="sr-only">Open main menu</span>
               <Bars3Icon className="h-6 w-6" aria-hidden="true" />
@@ -138,9 +143,7 @@ const MegaMenuContents: React.FC<MegaMenuWrapperProps> = ({
           searchTerm={searchTerm}
           setSearchTerm={setSearchTerm}
           performSearch={performSearch}
-          isMobileMenuOpen={isMobileMenuOpen}
           menuBarItems={menuItems}
-          closeMobileMenu={() => setMobileMenuOpen(false)}
         />
       </div>
       {RightSideActions ? (
@@ -164,7 +167,9 @@ const MegaMenuLayout: React.FC<MegaMenuWrapperProps> = ({
 }) => {
   return (
     <LinkProvider linkComponent={props.linkComponent}>
-      <MegaMenuContents {...props}>{children}</MegaMenuContents>
+      <MenuProvider>
+        <MegaMenuContents {...props}>{children}</MegaMenuContents>
+      </MenuProvider>
     </LinkProvider>
   );
 };
