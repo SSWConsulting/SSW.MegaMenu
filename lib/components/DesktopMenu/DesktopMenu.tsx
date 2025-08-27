@@ -40,7 +40,7 @@ const DesktopMenu: React.FC<DesktopMenuProps> = ({
               group.sidebarItems.length > 0
             ) {
               return (
-                <Popover key={group.name}>
+                <Popover key={`popover-${group.name}`}>
                   {({ open, close }) => (
                     <MenuContextProvider value={{ close }}>
                       <MenuItemWithSubmenu
@@ -59,7 +59,7 @@ const DesktopMenu: React.FC<DesktopMenuProps> = ({
                 <MenuItemLink
                   name={group.name}
                   href={group.url}
-                  key={group.name}
+                  key={`link-${group.name}`}
                 />
               );
             } else {
