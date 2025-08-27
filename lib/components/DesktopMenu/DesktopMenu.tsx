@@ -41,23 +41,17 @@ const DesktopMenu: React.FC<DesktopMenuProps> = ({
             ) {
               return (
                 <Popover key={group.name}>
-                  {({ open, close }) => {
-                    {
-                      /* TODO: Duplicated check needed here to appease Typescript */
-                    }
-                    if (!group.menuColumns || !group.sidebarItems) return <></>;
-                    return (
-                      <MenuContextProvider value={{ close }}>
-                        <MenuItemWithSubmenu
-                          name={group.name}
-                          menuColumns={group.menuColumns}
-                          sidebarItems={group.sidebarItems}
-                          isOpened={open}
-                          viewAll={group.viewAll}
-                        />
-                      </MenuContextProvider>
-                    );
-                  }}
+                  {({ open, close }) => (
+                    <MenuContextProvider value={{ close }}>
+                      <MenuItemWithSubmenu
+                        name={group.name}
+                        menuColumns={group.menuColumns!}
+                        sidebarItems={group.sidebarItems!}
+                        isOpened={open}
+                        viewAll={group.viewAll}
+                      />
+                    </MenuContextProvider>
+                  )}
                 </Popover>
               );
             } else if (group.url) {
@@ -69,7 +63,8 @@ const DesktopMenu: React.FC<DesktopMenuProps> = ({
                 />
               );
             } else {
-              return <></>;
+              // avoids returning unkeyed fragments.
+              return null;
             }
           })}
         </Popover.Group>
