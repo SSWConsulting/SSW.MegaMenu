@@ -40,24 +40,18 @@ const DesktopMenu: React.FC<DesktopMenuProps> = ({
               group.sidebarItems.length > 0
             ) {
               return (
-                <Popover key={group.name}>
-                  {({ open, close }) => {
-                    {
-                      /* TODO: Duplicated check needed here to appease Typescript */
-                    }
-                    if (!group.menuColumns || !group.sidebarItems) return <></>;
-                    return (
-                      <MenuContextProvider value={{ close }}>
-                        <MenuItemWithSubmenu
-                          name={group.name}
-                          menuColumns={group.menuColumns}
-                          sidebarItems={group.sidebarItems}
-                          isOpened={open}
-                          viewAll={group.viewAll}
-                        />
-                      </MenuContextProvider>
-                    );
-                  }}
+                <Popover key={`popover-${group.name}`}>
+                  {({ open, close }) => (
+                    <MenuContextProvider value={{ close }}>
+                      <MenuItemWithSubmenu
+                        name={group.name}
+                        menuColumns={group.menuColumns!}
+                        sidebarItems={group.sidebarItems!}
+                        isOpened={open}
+                        viewAll={group.viewAll}
+                      />
+                    </MenuContextProvider>
+                  )}
                 </Popover>
               );
             } else if (group.url) {
@@ -65,11 +59,9 @@ const DesktopMenu: React.FC<DesktopMenuProps> = ({
                 <MenuItemLink
                   name={group.name}
                   href={group.url}
-                  key={group.name}
+                  key={`link-${group.name}`}
                 />
               );
-            } else {
-              return <></>;
             }
           })}
         </Popover.Group>

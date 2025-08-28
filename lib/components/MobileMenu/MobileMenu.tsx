@@ -17,7 +17,6 @@ export interface MobileMenuProps extends SearchTermProps {
 const MobileMenu: React.FC<MobileMenuProps> = ({
   menuBarItems,
   isMobileMenuOpen,
-
   closeMobileMenu,
   setSearchTerm,
   searchTerm,
@@ -83,6 +82,7 @@ interface MenuBarItemProps extends SearchTermProps {
   menuBarItems: NavMenuGroup[];
   setSelectedMenuItem: (item: NavMenuGroup) => void;
 }
+
 const MenuBarItems: React.FC<MenuBarItemProps> = ({
   menuBarItems,
   setSelectedMenuItem,
@@ -95,10 +95,10 @@ const MenuBarItems: React.FC<MenuBarItemProps> = ({
   return (
     <div className="-my-6 flex flex-col gap-4 pl-6">
       <div className="space-y-2">
-        {menuBarItems.map((item) => {
+        {menuBarItems.map((item, index) => {
           return item.url ? (
             <CustomLink
-              key={item.name}
+              key={`link-${item.name}-${index}`}
               href={item.url}
               className="-mx-3 flex w-full items-center px-3 py-2 text-left text-lg leading-7 text-ssw-black hover:text-ssw-red"
             >
@@ -106,7 +106,7 @@ const MenuBarItems: React.FC<MenuBarItemProps> = ({
             </CustomLink>
           ) : (
             <button
-              key={item.name}
+              key={`button-${item.name}-${index}`}
               className="-mx-3 flex w-full items-center px-3 py-2 text-left text-lg leading-7 text-ssw-black hover:text-ssw-red"
               onClick={() => setSelectedMenuItem(item)}
             >
