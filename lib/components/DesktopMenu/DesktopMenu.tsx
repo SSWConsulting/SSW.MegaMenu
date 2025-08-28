@@ -62,9 +62,6 @@ const DesktopMenu: React.FC<DesktopMenuProps> = ({
                   key={`link-${group.name}`}
                 />
               );
-            } else {
-              // avoids returning unkeyed fragments.
-              return null;
             }
           })}
         </Popover.Group>
