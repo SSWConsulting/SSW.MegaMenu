@@ -32,15 +32,16 @@ const DesktopMenu: React.FC<DesktopMenuProps> = ({
     <>
       <div className="hidden flex-1 xl:block">
         <Popover.Group className="flex items-center justify-center gap-1 text-sm font-semibold text-ssw-black outline-none">
-          {menuGroups.map((group) => {
+          {menuGroups.map((group, index) => {
             if (
               !!group.menuColumns &&
               !!group.sidebarItems &&
               group.menuColumns.length > 0 &&
-              group.sidebarItems.length > 0
+              group.sidebarItems.length > 0 &&
+              group.name
             ) {
               return (
-                <Popover key={`popover-${group.name}`}>
+                <Popover key={`popover-${group.name || `menu-${index}`}`}>
                   {({ open, close }) => (
                     <MenuContextProvider value={{ close }}>
                       <MenuItemWithSubmenu
@@ -59,10 +60,12 @@ const DesktopMenu: React.FC<DesktopMenuProps> = ({
                 <MenuItemLink
                   name={group.name}
                   href={group.url}
-                  key={`link-${group.name}`}
+                  key={`link-${group.name || `menu-${index}`}`}
                 />
               );
             }
+            // Return null for items that don't match any condition
+            return null;
           })}
         </Popover.Group>
       </div>
