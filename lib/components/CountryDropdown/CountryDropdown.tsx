@@ -1,5 +1,6 @@
 "use client";
 import { Popover, Transition } from "@headlessui/react";
+import type { ClassValue } from "clsx";
 import { Fragment, useEffect, useState } from "react";
 import { useLinkComponent } from "../../hooks/useLinkComponent";
 import { Countries } from "../../types/country";
@@ -23,9 +24,10 @@ const websites: { country: Countries; url: string }[] = [
 
 type CountryDropdownProps = {
   url?: string;
+  className?: ClassValue;
 };
 
-const CountryDropdown = ({ url }: CountryDropdownProps) => {
+const CountryDropdown = ({ url, className }: CountryDropdownProps) => {
   const [isOpened, setIsOpened] = useState(false);
   const [currentCountry, setCurrentCountry] = useState<Countries>("Australia");
 
@@ -46,10 +48,10 @@ const CountryDropdown = ({ url }: CountryDropdownProps) => {
   }, [url]);
 
   return (
-    <Popover>
+    <Popover className={cx(className)}>
       <Popover.Button
         className={cx(
-          "flex items-center justify-center gap-x-1 rounded-md px-1 py-1 text-sm font-semibold text-ssw-black outline-none xs:px-4",
+          "flex items-center justify-center gap-x-1 rounded-md px-4 py-1 xs:px-5 text-sm font-semibold text-ssw-black outline-none",
           "hover:scale-105",
         )}
         onClick={() => setIsOpened(!isOpened)}

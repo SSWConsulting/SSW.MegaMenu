@@ -16,6 +16,7 @@ import DesktopMenu from "../DesktopMenu/DesktopMenu";
 import { Logo } from "../Logo";
 import MobileMenu from "../MobileMenu/MobileMenu";
 import { PhoneButton } from "../PhoneButton";
+import { Divider } from "../ui/Divider";
 
 export type MegaMenuWrapperProps = {
   className?: ClassValue;
@@ -114,8 +115,8 @@ const MegaMenuContents: React.FC<MegaMenuWrapperProps> = ({
             ) : (
               <PhoneButton className="max-sm:hidden" />
             )}
-            <CountryDropdown />
-            <Divider />
+            <CountryDropdown className="max-sm:hidden" />
+            <Divider className="max-sm:hidden" />
             <button
               type="button"
               className="inline-flex items-center justify-center rounded-md px-1 text-gray-700 xs:px-4"
@@ -153,10 +154,6 @@ const MegaMenuContents: React.FC<MegaMenuWrapperProps> = ({
       )}
     </>
   );
-};
-
-const Divider: React.FC = () => {
-  return <div className="h-4 w-px bg-gray-700/30 sm:block"></div>;
 };
 
 const MegaMenuLayout: React.FC<MegaMenuWrapperProps> = ({
