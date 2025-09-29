@@ -9,7 +9,6 @@ function App() {
         <MegaMenuLayout
           title="Rules"
           subtitle="Secret ingredients to quality software"
-          isFlagVisible={false}
         />
       </div>
     </>
