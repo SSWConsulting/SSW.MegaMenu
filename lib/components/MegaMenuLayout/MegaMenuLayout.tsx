@@ -118,7 +118,7 @@ const MegaMenuContents: React.FC<MegaMenuWrapperProps> = ({
               <PhoneButton className="max-sm:hidden" />
             )}
             {isFlagVisible && <CountryDropdown />}
-            {isFlagVisible && <Divider />} 
+            {isFlagVisible && <Divider />}
             <button
               type="button"
               className="inline-flex items-center justify-center rounded-md px-1 text-gray-700 xs:px-4"

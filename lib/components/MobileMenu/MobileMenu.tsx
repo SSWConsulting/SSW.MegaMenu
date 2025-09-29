@@ -35,7 +35,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
         <div className="flex h-16 items-center justify-end p-4">
           <button
             type="button"
-            className="p-2 xs:p-4 text-gray-700"
+            className="p-2 text-gray-700 xs:p-4"
             onClick={onCloseMobileMenu}
           >
             <span className="sr-only">Close menu</span>
@@ -55,8 +55,8 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
         </div>
         <div className="flow-root">
           {selectedMenuItem &&
-            selectedMenuItem.menuColumns &&
-            selectedMenuItem.sidebarItems ? (
+          selectedMenuItem.menuColumns &&
+          selectedMenuItem.sidebarItems ? (
             <MenuContextProvider value={{ close: onCloseMobileMenu }}>
               <SubMenuGroup
                 menuColumns={selectedMenuItem.menuColumns}
