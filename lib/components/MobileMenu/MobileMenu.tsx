@@ -4,11 +4,9 @@ import React from "react";
 import { useLinkComponent } from "../../hooks/useLinkComponent";
 import { MenuContextProvider } from "../../hooks/useMenuState";
 import { NavMenuGroup } from "../../types/megamenu";
-import { CountryDropdown } from "../CountryDropdown";
 import { MegaIcon } from "../MegaIcon";
 import { SearchInput, SearchTermProps } from "../Search";
 import SubMenuGroup from "../SubMenuGroup/SubMenuGroup";
-import { Divider } from "../ui/Divider";
 
 export interface MobileMenuProps extends SearchTermProps {
   isMobileMenuOpen: boolean;
@@ -35,8 +33,6 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
       <div className="fixed inset-0 z-10" />
       <Dialog.Panel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white sm:max-w-sm sm:ring-1 sm:ring-ssw-black/10 xl:hidden">
         <div className="flex h-16 items-center justify-end p-4">
-          <CountryDropdown className="sm:hidden" />
-          <Divider className="sm:hidden" />
           <button
             type="button"
             className="p-2 xs:p-4 text-gray-700"

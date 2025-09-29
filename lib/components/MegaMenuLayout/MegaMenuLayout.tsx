@@ -27,6 +27,7 @@ export type MegaMenuWrapperProps = {
   rightSideActionsOverride?: () => JSX.Element;
   callback?: (searchTerm: string) => void;
   linkComponent?: LinkComponentType;
+  isFlagVisible?: boolean;
 } & React.PropsWithChildren &
   (Tagline | Title);
 
@@ -50,6 +51,7 @@ const MegaMenuContents: React.FC<MegaMenuWrapperProps> = ({
   menuBarItems,
   rightSideActionsOverride,
   callback,
+  isFlagVisible = true,
 }) => {
   const [searchTerm, setSearchTerm] = useState<string>("");
   const performSearch = (e: React.FormEvent<HTMLFormElement>) => {
@@ -115,8 +117,8 @@ const MegaMenuContents: React.FC<MegaMenuWrapperProps> = ({
             ) : (
               <PhoneButton className="max-sm:hidden" />
             )}
-            <CountryDropdown className="max-sm:hidden" />
-            <Divider className="max-sm:hidden" />
+            {isFlagVisible && <CountryDropdown />}
+            {isFlagVisible && <Divider />} 
             <button
               type="button"
               className="inline-flex items-center justify-center rounded-md px-1 text-gray-700 xs:px-4"
