@@ -30,12 +30,12 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
   };
   return (
     <Dialog as="div" open={isMobileMenuOpen} onClose={onCloseMobileMenu}>
-      <div className="fixed  inset-0 z-10" />
+      <div className="fixed inset-0 z-10" />
       <Dialog.Panel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white sm:max-w-sm sm:ring-1 sm:ring-ssw-black/10 xl:hidden">
-        <div className="flex h-16 flex-row-reverse">
+        <div className="flex h-16 items-center justify-end p-4">
           <button
             type="button"
-            className="p-4 text-gray-700"
+            className="p-2 text-gray-700 xs:p-4"
             onClick={onCloseMobileMenu}
           >
             <span className="sr-only">Close menu</span>
