@@ -189,9 +189,9 @@ const ViewAllLink: React.FC<{ href?: string; name?: string }> = ({
   href,
 }) => {
   const CustomLink = useLinkComponent();
-  
-  const {close} = useMenuState();
-  
+
+  const { close } = useMenuState();
+
   if (!name || !href) {
     return <></>;
   }
