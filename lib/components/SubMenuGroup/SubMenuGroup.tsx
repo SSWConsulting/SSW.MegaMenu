@@ -189,7 +189,9 @@ const ViewAllLink: React.FC<{ href?: string; name?: string }> = ({
   href,
 }) => {
   const CustomLink = useLinkComponent();
-
+  
+  const {close} = useMenuState();
+  
   if (!name || !href) {
     return <></>;
   }
@@ -198,6 +200,7 @@ const ViewAllLink: React.FC<{ href?: string; name?: string }> = ({
     <div className="flex grow flex-col-reverse items-end self-end pt-4">
       <CustomLink
         href={href}
+        onClick={close}
         className="rounded-md px-3 py-1 text-sm font-semibold leading-6 text-ssw-red hover:bg-ssw-red hover:text-white"
       >
         {name} &rarr;
