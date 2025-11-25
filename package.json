@@ -1,6 +1,6 @@
 {
   "name": "ssw.megamenu",
-  "version": "4.13.4",
+  "version": "4.13.5",
   "type": "module",
   "main": "dist/index.js",
   "module": "dist/index.js",
