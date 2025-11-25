@@ -121,7 +121,7 @@ const MegaMenuContents: React.FC<MegaMenuWrapperProps> = ({
             {isFlagVisible && <Divider />}
             <button
               type="button"
-              className="inline-flex items-center justify-center rounded-md px-1 text-gray-700 xs:px-4"
+              className="inline-flex items-center justify-center rounded-md text-gray-700 xs:px-4"
               onClick={() => setMobileMenuOpen(true)}
             >
               <span className="sr-only">Open main menu</span>
