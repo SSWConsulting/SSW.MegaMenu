@@ -24,6 +24,7 @@ export type MegaMenuWrapperProps = {
   url?: string;
   subtitle?: string;
   searchUrl?: string;
+  hidePhone?: boolean;
   rightSideActionsOverride?: () => JSX.Element;
   callback?: (searchTerm: string) => void;
   linkComponent?: LinkComponentType;
@@ -47,6 +48,7 @@ const MegaMenuContents: React.FC<MegaMenuWrapperProps> = ({
   title,
   url,
   subtitle,
+  hidePhone,
   searchUrl = DEFAULT_URL,
   menuBarItems,
   rightSideActionsOverride,
@@ -115,7 +117,7 @@ const MegaMenuContents: React.FC<MegaMenuWrapperProps> = ({
                 <RightSideActions />
               </div>
             ) : (
-              <PhoneButton className="max-sm:hidden" />
+              !hidePhone && <PhoneButton className="max-sm:hidden" />
             )}
             {isFlagVisible && <CountryDropdown />}
             {isFlagVisible && <Divider />}
@@ -133,6 +135,7 @@ const MegaMenuContents: React.FC<MegaMenuWrapperProps> = ({
             searchTerm={searchTerm}
             performSearch={performSearch}
             searchUrl={searchUrl}
+            hidePhone={hidePhone}
             menuGroups={menuItems}
             sideActionsOverride={rightSideActionsOverride}
             callback={callback}
@@ -152,7 +155,7 @@ const MegaMenuContents: React.FC<MegaMenuWrapperProps> = ({
           <RightSideActions />
         </div>
       ) : (
-        <PhoneButton className="flex-grow pb-4 sm:hidden" />
+        !hidePhone && <PhoneButton className="flex-grow pb-4 sm:hidden" />
       )}
     </>
   );
