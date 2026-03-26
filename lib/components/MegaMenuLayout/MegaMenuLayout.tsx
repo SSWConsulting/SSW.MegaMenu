@@ -111,7 +111,7 @@ const MegaMenuContents: React.FC<MegaMenuWrapperProps> = ({
               )}
             </CustomLink>
           </div>
-          <div className="flex items-center xl:hidden">
+          <div className="flex items-center gap-2 xl:hidden">
             {RightSideActions ? (
               <div className="max-sm:hidden">
                 <RightSideActions />
