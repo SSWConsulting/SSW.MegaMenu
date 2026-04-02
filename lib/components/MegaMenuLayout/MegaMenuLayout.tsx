@@ -155,7 +155,7 @@ const MegaMenuContents: React.FC<MegaMenuWrapperProps> = ({
           <RightSideActions />
         </div>
       ) : (
-        !hidePhone && <PhoneButton className="flex-grow pb-4 sm:hidden" />
+        !hidePhone && <PhoneButton className="flex-grow pb-4 px-4 sm:hidden" />
       )}
     </>
   );
