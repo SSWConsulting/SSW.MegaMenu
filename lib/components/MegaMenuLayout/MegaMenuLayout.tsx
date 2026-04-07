@@ -81,7 +81,7 @@ const MegaMenuContents: React.FC<MegaMenuWrapperProps> = ({
       <div
         className={cx(
           className,
-          "relative z-10 flex w-full items-center justify-center sm:h-[120px]",
+          "px-4 relative z-10 flex w-full items-center justify-center sm:h-[120px]",
         )}
       >
         <nav
