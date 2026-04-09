@@ -5,7 +5,7 @@ function App() {
   return (
     <>
       <header>Test MegaMenu</header>
-      <div className="mx-auto max-w-7xl px-8">
+      <div className="mx-auto max-w-7xl px-4">
         <MegaMenuLayout
           title="Rules"
           subtitle="Secret ingredients to quality software"
