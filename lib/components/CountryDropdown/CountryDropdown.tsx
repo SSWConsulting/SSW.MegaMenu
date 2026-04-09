@@ -51,7 +51,7 @@ const CountryDropdown = ({ url, className }: CountryDropdownProps) => {
     <Popover className={cx(className)}>
       <Popover.Button
         className={cx(
-          "flex items-center justify-center gap-x-1 rounded-md px-4 xl:pr-0 py-1 text-sm font-semibold text-ssw-black outline-none",
+          "flex items-center justify-center gap-x-1 rounded-md px-4 py-1 text-sm font-semibold text-ssw-black outline-none xl:pr-0",
           "hover:scale-105",
         )}
         onClick={() => setIsOpened(!isOpened)}
@@ -68,7 +68,7 @@ const CountryDropdown = ({ url, className }: CountryDropdownProps) => {
         leaveFrom="opacity-100 translate-y-0"
         leaveTo="opacity-0 -translate-y-1"
       >
-        <Popover.Panel className="absolute z-10 bg-white text-center shadow-md border px-4 mt-2">
+        <Popover.Panel className="absolute z-10 mt-2 border bg-white px-4 text-center shadow-md">
           {websites
             .filter((w) => w.country !== currentCountry)
             .map((country) => (

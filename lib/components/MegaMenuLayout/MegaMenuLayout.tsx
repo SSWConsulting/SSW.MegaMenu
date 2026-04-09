@@ -81,7 +81,7 @@ const MegaMenuContents: React.FC<MegaMenuWrapperProps> = ({
       <div
         className={cx(
           className,
-          "px-4 relative z-10 flex w-full items-center justify-center sm:h-[120px]",
+          "relative z-10 flex w-full items-center justify-center px-4 sm:h-[120px]",
         )}
       >
         <nav
@@ -123,7 +123,7 @@ const MegaMenuContents: React.FC<MegaMenuWrapperProps> = ({
             {isFlagVisible && <Divider />}
             <button
               type="button"
-              className="inline-flex items-center justify-center rounded-md text-gray-700 pl-2"
+              className="inline-flex items-center justify-center rounded-md pl-2 text-gray-700"
               onClick={() => setMobileMenuOpen(true)}
             >
               <span className="sr-only">Open main menu</span>
@@ -155,7 +155,7 @@ const MegaMenuContents: React.FC<MegaMenuWrapperProps> = ({
           <RightSideActions />
         </div>
       ) : (
-        !hidePhone && <PhoneButton className="flex-grow pb-4 px-4 sm:hidden" />
+        !hidePhone && <PhoneButton className="flex-grow px-4 pb-4 sm:hidden" />
       )}
     </>
   );
