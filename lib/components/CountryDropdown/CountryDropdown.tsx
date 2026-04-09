@@ -51,7 +51,7 @@ const CountryDropdown = ({ url, className }: CountryDropdownProps) => {
     <Popover className={cx(className)}>
       <Popover.Button
         className={cx(
-          "flex items-center justify-center gap-x-1 rounded-md pl-4 py-1 text-sm font-semibold text-ssw-black outline-none xs:pr-4",
+          "flex items-center justify-center gap-x-1 rounded-md px-4 xl:pr-0 py-1 text-sm font-semibold text-ssw-black outline-none",
           "hover:scale-105",
         )}
         onClick={() => setIsOpened(!isOpened)}
