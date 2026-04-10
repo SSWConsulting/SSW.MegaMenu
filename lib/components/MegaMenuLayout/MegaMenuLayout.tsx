@@ -90,7 +90,7 @@ const MegaMenuContents: React.FC<MegaMenuWrapperProps> = ({
         >
           <div className="flex items-center">
             <CustomLink href={url || "/"} className="gap-1 whitespace-nowrap">
-              <div className="flex min-w-[4rem] max-w-[14rem] items-center justify-center">
+              <div className="flex min-w-[4rem] max-w-[14rem] items-center">
                 <Logo />
 
                 {tagline && (
