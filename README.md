@@ -135,6 +135,8 @@ export function getStaticProps() {
 | `subtitle` | `string` | The text displayed underneath the SSW logo | No |
 | `tagline` | `string` | The text displayed next the SSW Logo. | No |
 | `url` | `string` | The URL of the menu bar item. | No |
+| `hidePhone` | `boolean` | Hides the "Contact Us" button on all screen sizes. | No |
+| `isFlagVisible` | `boolean` | Hides the language selector. | No |
 | `searchUrl` | `string` | The absolute URL the search takes you to. If not provided, will default to the host address. i.e. for SSW <www.ssw.com.au> | No |
 | `rightSideActionsOverride` | `() => JSX.Element` | The component to replace the "Call Us" and search buttons that are displayed by default on the right side of the menu. | No |
 | `linkComponent` | <code>React.FC<{<br>&nbsp;href: string;<br>&nbsp;className?: string;<br>&nbsp;title?: string;<br>&nbsp;onClick?: () => void;<br>&nbsp;children?: React.ReactNode;<br>}></code> | The component to use for the links in the menu. i.e. `<Link>` from `next/link` or `gatsby`  | No |
