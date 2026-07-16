@@ -26,7 +26,6 @@ const Logo: React.FC = () => {
         aria-hidden="true"
         className="hidden h-14 w-auto object-contain dark:block xl:h-11 min-[1400px]:h-14"
       />
-      <span className="sr-only">SSW</span>
     </>
   );
 };
