@@ -1,3 +1,21 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* SSW design tokens — mirror SSW.Website's styles.css so the menu themes via CSS
+   variables under a `.dark` scope. Consumers already define these globally; this
+   keeps the standalone preview themeable. */
+:root {
+  --text-strong: rgba(0, 0, 0, 0.9);
+  --text-weak: rgba(0, 0, 0, 0.6);
+  --background-base: #ffffff;
+  --hairline: #e5e7eb;
+  --logo-filter: none;
+}
+.dark {
+  --text-strong: #ffffff;
+  --text-weak: rgba(255, 255, 255, 0.78);
+  --background-base: #171717;
+  --hairline: #212121;
+  --logo-filter: brightness(0) invert(1);
+}

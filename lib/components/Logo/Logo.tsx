@@ -3,6 +3,10 @@ import { CustomImage } from "../CustomImage";
 
 export type LogoSize = "small" | "medium" | "large";
 
+// White-with-red logo for dark backgrounds (matches the SSW footer). Swapped in
+// via the `dark:` scope rather than inverting, so the red ring is preserved.
+const DARK_LOGO = "https://www.ssw.com.au/images/ssw-logo-darkmode.svg";
+
 const Logo: React.FC = () => {
   // show the xmas logo for 1-25 December
   const date = new Date();
@@ -18,7 +22,15 @@ const Logo: React.FC = () => {
         alt="SSW - Enterprise Software Development"
         height={60}
         width={100}
-        className="h-full"
+        className="h-full dark:hidden"
+      />
+      <CustomImage
+        src={DARK_LOGO}
+        alt=""
+        aria-hidden="true"
+        height={60}
+        width={100}
+        className="hidden h-full dark:block"
       />
       <span className="sr-only">SSW</span>
     </>

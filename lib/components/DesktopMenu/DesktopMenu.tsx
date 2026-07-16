@@ -31,7 +31,7 @@ const DesktopMenu: React.FC<DesktopMenuProps> = ({
   return (
     <>
       <div className="hidden flex-1 xl:block">
-        <Popover.Group className="flex items-center justify-center gap-1 text-sm font-semibold text-ssw-black outline-none">
+        <Popover.Group className="flex items-center justify-center gap-1 text-sm font-semibold text-foreground outline-none">
           {menuGroups.map((group, index) => {
             if (
               !!group.menuColumns &&
@@ -116,7 +116,7 @@ const DefaultSideActions = ({
 };
 
 const Divider: React.FC = () => {
-  return <div className="hidden h-5 w-px bg-gray-700/30 sm:block"></div>;
+  return <div className="hidden h-5 w-px bg-hairline sm:block"></div>;
 };
 
 export default DesktopMenu;

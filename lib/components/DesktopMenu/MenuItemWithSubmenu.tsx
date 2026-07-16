@@ -25,12 +25,15 @@ export const MenuItemWithSubmenu: React.FC<MenuItemWithSubmenuProps> = ({
     <>
       <Popover.Button
         className={cx(
-          "flex cursor-pointer items-center justify-center whitespace-nowrap rounded-md px-2 py-1 text-ssw-black focus:outline-none focus-visible:ring-opacity-0",
+          "flex cursor-pointer items-center justify-center gap-1 whitespace-nowrap rounded-md px-2 py-1 text-foreground focus:outline-none focus-visible:ring-opacity-0",
           isOpened ? "text-ssw-red" : "hover:text-ssw-red",
         )}
       >
         {name}
-        <MegaIcon icon="chevronDown" className="h-5 w-5 flex-none" />
+        <MegaIcon
+          icon="chevronDown"
+          className="h-4 w-4 flex-none text-muted-foreground"
+        />
       </Popover.Button>
 
       <Transition
