@@ -3,10 +3,7 @@ import { CustomImage } from "../CustomImage";
 
 export type LogoSize = "small" | "medium" | "large";
 
-// White-with-red mark for dark backgrounds, served from the consuming site's
-// /images dir; swapped in via the `dark:` scope rather than inverting, so the
-// red ring is preserved. Mark-only so it mirrors the light logo exactly.
-const DARK_LOGO = "/images/ssw-logo-darkmode-mark.svg";
+const DARK_LOGO = "/images/ssw-logo-darkmode.svg";
 
 const Logo: React.FC = () => {
   // show the xmas logo for 1-25 December
@@ -27,7 +24,7 @@ const Logo: React.FC = () => {
         src={DARK_LOGO}
         alt=""
         aria-hidden="true"
-        className="hidden h-14 w-auto object-contain dark:block"
+        className="hidden h-14 w-auto object-contain dark:block xl:h-11 min-[1400px]:h-14"
       />
       <span className="sr-only">SSW</span>
     </>
