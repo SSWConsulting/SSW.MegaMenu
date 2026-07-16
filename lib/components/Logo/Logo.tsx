@@ -3,9 +3,10 @@ import { CustomImage } from "../CustomImage";
 
 export type LogoSize = "small" | "medium" | "large";
 
-// White-with-red logo for dark backgrounds (matches the SSW footer). Swapped in
-// via the `dark:` scope rather than inverting, so the red ring is preserved.
-const DARK_LOGO = "https://www.ssw.com.au/images/ssw-logo-darkmode.svg";
+// White-with-red logo for dark backgrounds (matches the SSW footer). Served from
+// the consuming site's /images dir; swapped in via the `dark:` scope rather than
+// inverting, so the red ring is preserved.
+const DARK_LOGO = "/images/ssw-logo-darkmode.svg";
 
 const Logo: React.FC = () => {
   // show the xmas logo for 1-25 December
