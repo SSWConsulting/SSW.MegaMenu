@@ -43,11 +43,13 @@ const SubMenuWidget: React.FC<SubMenuWidgetProps> = ({ item }) => {
         <CustomLink className="block" href={item.url}>
           {item.name && item.description ? (
             <>
-              <span className="font-bold">{item.name}</span>
-              <p className="mt-2 text-sm">{item.description}</p>
+              <span className="font-bold dark:text-white">{item.name}</span>
+              <p className="mt-2 text-sm dark:text-white/60">
+                {item.description}
+              </p>
             </>
           ) : (
-            <span className="pl-4 text-sm font-normal text-ssw-black">
+            <span className="pl-4 text-sm font-normal text-ssw-black dark:text-white">
               {item.name}
             </span>
           )}
