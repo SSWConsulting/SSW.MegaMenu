@@ -19,13 +19,13 @@ const Logo: React.FC = () => {
       <CustomImage
         src={logoPath}
         alt="SSW - Enterprise Software Development"
-        className="h-14 w-auto object-contain dark:hidden xl:h-11 min-[1400px]:h-14"
+        className="h-14 w-auto object-contain xl:h-11 min-[1400px]:h-14 dark:hidden"
       />
       <CustomImage
         src={DARK_LOGO}
         alt=""
         aria-hidden="true"
-        className="hidden h-14 w-auto object-contain dark:block xl:h-11 min-[1400px]:h-14"
+        className="hidden h-14 w-auto object-contain xl:h-11 min-[1400px]:h-14 dark:block"
       />
     </>
   );
