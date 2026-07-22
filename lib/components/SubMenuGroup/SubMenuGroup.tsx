@@ -65,6 +65,7 @@ export const SubMenuGroup: React.FC<SubMenuGroupProps> = ({
                     <MegaIcon
                       imgSize="medium"
                       iconImg={sideBarItem.iconImg}
+                      iconImgDarkMode={sideBarItem.iconImgDarkMode}
                       className={ICON_IMAGE_SIZES.medium}
                       icon={sideBarItem.icon as AvailableIcons}
                     />
@@ -127,6 +128,7 @@ const LinkItem: React.FC<{ link: NavMenuColumnGroupItem }> = ({
     description,
     icon,
     iconImg,
+    iconImgDarkMode,
     youtubeLink,
     documentationLink,
   },
@@ -152,6 +154,7 @@ const LinkItem: React.FC<{ link: NavMenuColumnGroupItem }> = ({
               className="h-6 w-6"
               icon={icon as AvailableIcons}
               iconImg={iconImg}
+              iconImgDarkMode={iconImgDarkMode}
             />
           </div>
         )}

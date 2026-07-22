@@ -31,6 +31,7 @@ export interface NavMenuColumnGroupItem {
   description?: string;
   icon?: AvailableIcons | string;
   iconImg?: string;
+  iconImgDarkMode?: string;
   youtubeLink?: string;
   documentationLink?: string;
 }
@@ -39,6 +40,7 @@ export interface Sidebar {
   name: string;
   icon?: AvailableIcons | string;
   iconImg?: string;
+  iconImgDarkMode?: string;
   items?: SidebarItem[];
 }
 
