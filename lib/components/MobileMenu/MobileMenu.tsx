@@ -4,7 +4,10 @@ import React from "react";
 import { useLinkComponent } from "../../hooks/useLinkComponent";
 import { MenuContextProvider } from "../../hooks/useMenuState";
 import { NavMenuGroup } from "../../types/megamenu";
+import { cx } from "../../util/cx";
+import { CountryDropdown } from "../CountryDropdown";
 import { MegaIcon } from "../MegaIcon";
+import { PhoneButton } from "../PhoneButton";
 import { SearchInput, SearchTermProps } from "../Search";
 import SubMenuGroup from "../SubMenuGroup/SubMenuGroup";
 
@@ -12,6 +15,17 @@ export interface MobileMenuProps extends SearchTermProps {
   isMobileMenuOpen: boolean;
   menuBarItems: NavMenuGroup[];
   closeMobileMenu: () => void;
+  // Below lg the bar's actions collapse in here (see MegaMenuLayout). When the
+  // consumer overrides the side actions (e.g. the homepage) we render that;
+  // otherwise the default phone + region controls.
+  sideActions?: () => JSX.Element;
+  hidePhone?: boolean;
+  isFlagVisible?: boolean;
+  searchUrl?: string;
+  // Extra class for the (portaled) dialog root so a consumer can re-apply its
+  // theme scope: Headless UI portals this dialog to <body>, outside the page's
+  // scope, so e.g. the homepage passes "dark" to keep the dark tokens resolving.
+  mobileMenuClassName?: string;
 }
 
 const MobileMenu: React.FC<MobileMenuProps> = ({
@@ -21,6 +35,11 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
   setSearchTerm,
   searchTerm,
   performSearch,
+  sideActions,
+  hidePhone,
+  isFlagVisible,
+  searchUrl,
+  mobileMenuClassName,
 }) => {
   const [selectedMenuItem, setSelectedMenuItem] =
     React.useState<NavMenuGroup | null>(null);
@@ -29,13 +48,18 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
     closeMobileMenu();
   };
   return (
-    <Dialog as="div" open={isMobileMenuOpen} onClose={onCloseMobileMenu}>
+    <Dialog
+      as="div"
+      className={mobileMenuClassName}
+      open={isMobileMenuOpen}
+      onClose={onCloseMobileMenu}
+    >
       <div className="fixed inset-0 z-10" />
-      <Dialog.Panel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white sm:max-w-sm sm:ring-1 sm:ring-ssw-black/10 xl:hidden">
+      <Dialog.Panel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white sm:max-w-sm sm:ring-1 sm:ring-ssw-black/10 xl:hidden dark:bg-[#090909] dark:sm:ring-white/10">
         <div className="flex h-16 items-center justify-end p-4">
           <button
             type="button"
-            className="p-2 text-gray-700 xs:p-4"
+            className="p-2 text-gray-700 xs:p-4 dark:text-white"
             onClick={onCloseMobileMenu}
           >
             <span className="sr-only">Close menu</span>
@@ -44,7 +68,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
           {selectedMenuItem && (
             <div className="my-auto flex grow items-center pl-2">
               <button
-                className="text-sm font-semibold leading-4 text-ssw-black"
+                className="text-sm font-semibold leading-4 text-ssw-black dark:text-white"
                 onClick={() => setSelectedMenuItem(null)}
               >
                 <MegaIcon className="mb-1 inline h-5 w-5" icon="chevronLeft" />
@@ -70,6 +94,10 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
               performSearch={performSearch}
               menuBarItems={menuBarItems}
               setSelectedMenuItem={setSelectedMenuItem}
+              sideActions={sideActions}
+              hidePhone={hidePhone}
+              isFlagVisible={isFlagVisible}
+              searchUrl={searchUrl}
             />
           )}
         </div>
@@ -81,6 +109,10 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
 interface MenuBarItemProps extends SearchTermProps {
   menuBarItems: NavMenuGroup[];
   setSelectedMenuItem: (item: NavMenuGroup) => void;
+  sideActions?: () => JSX.Element;
+  hidePhone?: boolean;
+  isFlagVisible?: boolean;
+  searchUrl?: string;
 }
 
 const MenuBarItems: React.FC<MenuBarItemProps> = ({
@@ -89,8 +121,13 @@ const MenuBarItems: React.FC<MenuBarItemProps> = ({
   performSearch,
   setSearchTerm,
   searchTerm,
+  sideActions,
+  hidePhone,
+  isFlagVisible,
+  searchUrl,
 }) => {
   const CustomLink = useLinkComponent();
+  const SideActions = sideActions;
 
   return (
     <div className="-my-6 flex flex-col gap-4 pl-6">
@@ -100,19 +137,19 @@ const MenuBarItems: React.FC<MenuBarItemProps> = ({
             <CustomLink
               key={`link-${item.name}-${index}`}
               href={item.url}
-              className="-mx-3 flex w-full items-center px-3 py-2 text-left text-lg leading-7 text-ssw-black hover:text-ssw-red"
+              className="-mx-3 flex w-full items-center px-3 py-2 text-left text-lg leading-7 text-ssw-black hover:text-ssw-red dark:text-white"
             >
               {item.name}
             </CustomLink>
           ) : (
             <button
               key={`button-${item.name}-${index}`}
-              className="-mx-3 flex w-full items-center px-3 py-2 text-left text-lg leading-7 text-ssw-black hover:text-ssw-red"
+              className="-mx-3 flex w-full items-center px-3 py-2 text-left text-lg leading-7 text-ssw-black hover:text-ssw-red dark:text-white"
               onClick={() => setSelectedMenuItem(item)}
             >
               {item.name}
               <ChevronRightIcon
-                className="ml-2 inline h-4 w-4 text-ssw-black"
+                className="ml-2 inline h-4 w-4 text-ssw-black dark:text-white"
                 aria-hidden="true"
               />
             </button>
@@ -123,9 +160,22 @@ const MenuBarItems: React.FC<MenuBarItemProps> = ({
         performSearch={performSearch}
         setSearchTerm={setSearchTerm}
         searchTerm={searchTerm}
-        className="relative pr-6"
+        // When an override supplies its own search, only show this box at lg–xl
+        // (its own search covers below-lg, avoiding a duplicate).
+        className={cx("relative pr-6", SideActions && "hidden lg:block")}
         inputClassName="border-radius h-12 grow rounded-l-md border bg-transparent pl-11 text-ssw-black focus:ring-0 sm:text-sm"
       />
+      {/* The bar actions live here below lg; at lg+ they render in the bar. */}
+      <div className="pr-6 lg:hidden">
+        {SideActions ? (
+          <SideActions />
+        ) : (
+          <div className="flex flex-col items-start gap-4">
+            {!hidePhone && <PhoneButton />}
+            {isFlagVisible && <CountryDropdown url={searchUrl} />}
+          </div>
+        )}
+      </div>
     </div>
   );
 };
