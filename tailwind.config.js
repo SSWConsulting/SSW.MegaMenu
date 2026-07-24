@@ -1,6 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 import defaultTheme from "tailwindcss/defaultTheme";
 export default {
+  darkMode: "selector",
   content: ["./index.html", "./lib/**/*.{ts,tsx}", "./src/**/*.{ts,tsx}"],
   theme: {
     screens: {
@@ -9,6 +10,10 @@ export default {
     },
     extend: {
       colors: {
+        foreground: "var(--text-strong)",
+        background: "var(--background-base)",
+        "muted-foreground": "var(--text-weak)",
+        hairline: "var(--hairline)",
         ssw: {
           red: "#cc4141",
           light: {

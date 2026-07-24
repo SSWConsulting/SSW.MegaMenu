@@ -1,6 +1,6 @@
 {
   "name": "ssw.megamenu",
-  "version": "4.13.10",
+  "version": "4.14.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/SSWConsulting/SSW.MegaMenu"
@@ -23,6 +23,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
+    "prepare": "pnpm build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "lint:scripts": "eslint --ignore-path .gitignore --max-warnings=0 ./lib --ext ts --ext tsx --ext js --ext jsx",
     "lint:styles": "stylelint ./lib/**/*.css",

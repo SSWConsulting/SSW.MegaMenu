@@ -29,6 +29,7 @@ export type MegaMenuWrapperProps = {
   callback?: (searchTerm: string) => void;
   linkComponent?: LinkComponentType;
   isFlagVisible?: boolean;
+  mobileMenuClassName?: string;
 } & React.PropsWithChildren &
   (Tagline | Title);
 
@@ -44,7 +45,6 @@ export type Title = {
 
 const MegaMenuContents: React.FC<MegaMenuWrapperProps> = ({
   className = "",
-  tagline,
   title,
   url,
   subtitle,
@@ -54,6 +54,7 @@ const MegaMenuContents: React.FC<MegaMenuWrapperProps> = ({
   rightSideActionsOverride,
   callback,
   isFlagVisible = true,
+  mobileMenuClassName,
 }) => {
   const [searchTerm, setSearchTerm] = useState<string>("");
   const performSearch = (e: React.FormEvent<HTMLFormElement>) => {
@@ -81,7 +82,7 @@ const MegaMenuContents: React.FC<MegaMenuWrapperProps> = ({
       <div
         className={cx(
           className,
-          "relative z-10 flex w-full items-center justify-center px-4 sm:h-[120px]",
+          "relative z-10 flex w-full items-center justify-center px-4 max-sm:py-3 sm:h-[120px]",
         )}
       >
         <nav
@@ -92,12 +93,6 @@ const MegaMenuContents: React.FC<MegaMenuWrapperProps> = ({
             <CustomLink href={url || "/"} className="gap-1 whitespace-nowrap">
               <div className="flex min-w-[4rem] max-w-[14rem] items-center">
                 <Logo />
-
-                {tagline && (
-                  <div className="w-fit whitespace-break-spaces text-xs font-semibold uppercase leading-3 text-gray-700">
-                    <span className="ml-3 hidden xl:block">{tagline}</span>
-                  </div>
-                )}
                 {title && (
                   <div className="mb-3 ml-2 mt-2 text-4xl leading-5">
                     {title}
@@ -112,18 +107,20 @@ const MegaMenuContents: React.FC<MegaMenuWrapperProps> = ({
             </CustomLink>
           </div>
           <div className="flex items-center xl:hidden">
-            {RightSideActions ? (
-              <div className="max-sm:hidden">
+            {/* From lg–xl these actions sit in the bar as before; below lg they
+                collapse into the hamburger, leaving just the logo + burger. */}
+            <div className="hidden items-center lg:flex">
+              {RightSideActions ? (
                 <RightSideActions />
-              </div>
-            ) : (
-              !hidePhone && <PhoneButton className="max-sm:hidden" />
-            )}
-            {isFlagVisible && <CountryDropdown />}
-            {isFlagVisible && <Divider />}
+              ) : (
+                !hidePhone && <PhoneButton />
+              )}
+              {isFlagVisible && <CountryDropdown />}
+              {isFlagVisible && <Divider />}
+            </div>
             <button
               type="button"
-              className="inline-flex items-center justify-center rounded-md pl-2 text-gray-700"
+              className="inline-flex items-center justify-center rounded-md pl-2 text-foreground"
               onClick={() => setMobileMenuOpen(true)}
             >
               <span className="sr-only">Open main menu</span>
@@ -148,15 +145,13 @@ const MegaMenuContents: React.FC<MegaMenuWrapperProps> = ({
           setSearchTerm={setSearchTerm}
           performSearch={performSearch}
           menuBarItems={menuItems}
+          sideActions={rightSideActionsOverride}
+          hidePhone={hidePhone}
+          isFlagVisible={isFlagVisible}
+          searchUrl={searchUrl}
+          mobileMenuClassName={mobileMenuClassName}
         />
       </div>
-      {RightSideActions ? (
-        <div className="sm:hidden">
-          <RightSideActions />
-        </div>
-      ) : (
-        !hidePhone && <PhoneButton className="flex-grow px-4 pb-4 sm:hidden" />
-      )}
     </>
   );
 };

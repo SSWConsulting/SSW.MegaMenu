@@ -25,12 +25,15 @@ export const MenuItemWithSubmenu: React.FC<MenuItemWithSubmenuProps> = ({
     <>
       <Popover.Button
         className={cx(
-          "flex cursor-pointer items-center justify-center whitespace-nowrap rounded-md px-2 py-1 text-ssw-black focus:outline-none focus-visible:ring-opacity-0",
+          "flex cursor-pointer items-center justify-center gap-1 whitespace-nowrap rounded-md px-2 py-1 text-foreground focus:outline-none focus-visible:ring-opacity-0",
           isOpened ? "text-ssw-red" : "hover:text-ssw-red",
         )}
       >
         {name}
-        <MegaIcon icon="chevronDown" className="h-5 w-5 flex-none" />
+        <MegaIcon
+          icon="chevronDown"
+          className="h-4 w-4 flex-none text-muted-foreground"
+        />
       </Popover.Button>
 
       <Transition
@@ -42,7 +45,7 @@ export const MenuItemWithSubmenu: React.FC<MenuItemWithSubmenuProps> = ({
         leaveFrom="opacity-100 translate-y-0"
         leaveTo="opacity-0 -translate-y-1"
       >
-        <Popover.Panel className="absolute inset-x-0 top-[120px] -z-10 bg-gray-50 shadow-md shadow-gray-400">
+        <Popover.Panel className="absolute inset-x-0 top-[120px] -z-10 bg-gray-50 shadow-md shadow-gray-400 dark:bg-[#151515] dark:shadow-black/50">
           <SubMenuGroup
             menuColumns={menuColumns}
             sidebarItems={sidebarItems}
