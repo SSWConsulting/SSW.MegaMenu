@@ -36,7 +36,15 @@ export const useMenuItems = (
     menuBarItems,
   );
 
+  // A host that passes menuBarItems has already rendered the menu it shipped
+  // with, so fetching would only replace correct data with whatever the API's
+  // caches are still holding. Only hosts that supply nothing need the fetch.
   useEffect(() => {
+    if (menuBarItems) {
+      setMenuItems(menuBarItems);
+      return;
+    }
+
     refreshData()
       .then((data) => {
         setMenuItems(data);
@@ -45,12 +53,6 @@ export const useMenuItems = (
         // eslint-disable-next-line no-console
         console.error(err);
       });
-  }, []);
-
-  useEffect(() => {
-    if (menuBarItems) {
-      setMenuItems(menuBarItems);
-    }
   }, [menuBarItems]);
 
   return { menuItems: menuItems || [] };
