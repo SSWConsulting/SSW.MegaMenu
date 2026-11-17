@@ -1,4 +1,5 @@
 "use client";
+import { ArrowRightIcon } from "@heroicons/react/20/solid";
 import clsx from "clsx";
 import React from "react";
 import { useLinkComponent } from "../../hooks/useLinkComponent";
@@ -206,12 +207,15 @@ const ViewAllLink: React.FC<{ href?: string; name?: string }> = ({
 
   return (
     <div className="flex grow flex-col-reverse items-end self-end pt-4">
+      {/* SSW Design System ghost button, small size, with a trailing icon:
+          https://design.ssw.com.au/?path=/docs/ui-atoms-button--docs */}
       <CustomLink
         href={href}
         onClick={close}
-        className="rounded-md px-3 py-1 text-sm font-semibold leading-6 text-ssw-red hover:bg-ssw-red hover:text-white"
+        className="inline-flex h-8 items-center gap-1.5 rounded px-3 text-sm font-medium text-foreground transition-colors hover:bg-ssw-black/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ssw-red/50 dark:hover:bg-white/5"
       >
-        {name} &rarr;
+        {name}
+        <ArrowRightIcon aria-hidden="true" className="size-4 shrink-0" />
       </CustomLink>
     </div>
   );

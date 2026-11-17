@@ -85,6 +85,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
               <SubMenuGroup
                 menuColumns={selectedMenuItem.menuColumns}
                 sidebarItems={selectedMenuItem.sidebarItems}
+                viewAll={selectedMenuItem.viewAll}
               />
             </MenuContextProvider>
           ) : (
