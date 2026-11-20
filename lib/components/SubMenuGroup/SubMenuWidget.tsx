@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import { useLinkComponent } from "../../hooks/useLinkComponent";
+import { useMenuState } from "../../hooks/useMenuState";
 import { AvailableIcons } from "../../types/icon";
 import { SidebarItem } from "../../types/megamenu";
 import { MegaIcon } from "../MegaIcon";
@@ -12,11 +13,14 @@ interface SubMenuWidgetProps {
 
 const SubMenuWidget: React.FC<SubMenuWidgetProps> = ({ item }) => {
   const CustomLink = useLinkComponent();
+  // Close the menu on click, like the main-area links, so it doesn't stay open
+  // over the page after a client-side navigation.
+  const { close } = useMenuState();
 
   switch (item.widgetType) {
     case "featured": {
       return (
-        <CustomLink href={item.url}>
+        <CustomLink href={item.url} onClick={close}>
           <FeaturedCard
             title={<span> {item.name}</span>}
             icon={item.icon as AvailableIcons}
@@ -31,6 +35,7 @@ const SubMenuWidget: React.FC<SubMenuWidgetProps> = ({ item }) => {
         <CustomLink
           className="relative flex w-full cursor-pointer items-center justify-center rounded bg-ssw-red font-semibold !text-white hover:bg-ssw-light-red"
           href={item.url}
+          onClick={close}
         >
           <MegaIcon icon="phoneAlt" className="text-2xl" />
           <span className="ml-2 py-4">{item.name?.toUpperCase()}</span>
@@ -40,16 +45,18 @@ const SubMenuWidget: React.FC<SubMenuWidgetProps> = ({ item }) => {
     case "classicMenu":
     default: {
       return (
-        <CustomLink className="block" href={item.url}>
+        <CustomLink className="group block" href={item.url} onClick={close}>
           {item.name && item.description ? (
             <>
-              <span className="font-bold dark:text-white">{item.name}</span>
+              <span className="font-bold transition-colors group-hover:text-ssw-red dark:text-white dark:group-hover:text-ssw-red">
+                {item.name}
+              </span>
               <p className="mt-2 text-sm dark:text-white/60">
                 {item.description}
               </p>
             </>
           ) : (
-            <span className="pl-4 text-sm font-normal text-ssw-black dark:text-white">
+            <span className="pl-4 text-sm font-normal text-ssw-black transition-colors group-hover:text-ssw-red dark:text-white dark:group-hover:text-ssw-red">
               {item.name}
             </span>
           )}
