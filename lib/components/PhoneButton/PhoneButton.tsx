@@ -13,7 +13,8 @@ type PhoneButtonProps = {
 export const PhoneButton = ({ className }: PhoneButtonProps) => {
   const CustomLink = useLinkComponent();
 
-  const [url, setUrl] = useState("https://www.ssw.com.au/company/contact-us");
+  // Relative, so a PR preview slot or localhost stays on its own deployment.
+  const [url, setUrl] = useState("/company/contact-us");
   const [text, setText] = useState("CONTACT US");
 
   useEffect(() => {
