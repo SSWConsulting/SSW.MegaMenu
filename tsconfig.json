@@ -29,5 +29,6 @@
     "types": ["vite/client"]
   },
   "include": ["lib"],
+  "exclude": ["lib/**/*.test.ts", "lib/**/*.test.tsx"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

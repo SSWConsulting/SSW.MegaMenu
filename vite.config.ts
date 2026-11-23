@@ -26,7 +26,9 @@ export default defineConfig({
         },
       },
     }),
-    { ...nodeExternals(), enforce: "pre" },
+    // Only needed to keep dependencies out of the library bundle. Under vitest it
+    // breaks config resolution, so it runs for builds only.
+    { ...nodeExternals(), enforce: "pre", apply: "build" },
   ],
   build: {
     target: "esnext",
@@ -56,7 +58,7 @@ export default defineConfig({
   test: {
     globals: true,
     environment: "jsdom",
-    setupFiles: resolve(__dirname, "scripts/tests/setup.js"),
+    setupFiles: resolve(__dirname, "scripts/tests/setup.ts"),
     // you might want to disable it, if you don't have tests that rely on CSS
     // since parsing CSS is slow
     css: true,
