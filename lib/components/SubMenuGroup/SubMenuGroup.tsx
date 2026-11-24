@@ -212,7 +212,7 @@ const ViewAllLink: React.FC<{ href?: string; name?: string }> = ({
       <CustomLink
         href={href}
         onClick={close}
-        className="inline-flex h-8 items-center gap-1.5 rounded px-3 text-sm font-medium text-foreground transition-colors hover:bg-ssw-black/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ssw-red/50 dark:hover:bg-white/5"
+        className="inline-flex h-8 items-center gap-1.5 rounded px-3 text-sm font-medium text-foreground transition-colors hover:bg-black/8 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ssw-red/50 active:translate-y-px active:bg-black/12 dark:hover:bg-white/8 dark:active:bg-white/12"
       >
         {name}
         <ArrowRightIcon aria-hidden="true" className="size-4 shrink-0" />
