@@ -12,7 +12,7 @@ import {
   Sidebar,
   ViewAll,
 } from "../../types/megamenu";
-import { ICON_IMAGE_SIZES } from "../../util/constants";
+import { FOCUS_RING, ICON_IMAGE_SIZES } from "../../util/constants";
 import { cx } from "../../util/cx";
 import { MegaIcon } from "../MegaIcon";
 import SubMenuWidget from "./SubMenuWidget";
@@ -142,8 +142,9 @@ const LinkItem: React.FC<{ link: NavMenuColumnGroupItem }> = ({
       <CustomLink
         href={url || ""}
         className={cx(
-          "flex items-start gap-x-1 text-ssw-black hover:text-ssw-red focus:outline-none dark:text-white",
+          "flex items-start gap-x-1 text-ssw-black hover:text-ssw-red dark:text-white",
           description ? "p-4" : "p-2",
+          FOCUS_RING,
         )}
         onClick={() => {
           close();
@@ -179,12 +180,18 @@ const LinkItem: React.FC<{ link: NavMenuColumnGroupItem }> = ({
       </CustomLink>
       <div className="ml-10 flex flex-row gap-x-4 text-sm font-light text-ssw-gray dark:text-white/60">
         {youtubeLink && (
-          <CustomLink href={youtubeLink} className="hover:text-ssw-red">
+          <CustomLink
+            href={youtubeLink}
+            className={cx("hover:text-ssw-red", FOCUS_RING)}
+          >
             YouTube
           </CustomLink>
         )}
         {documentationLink && (
-          <CustomLink href={documentationLink} className="hover:text-ssw-red">
+          <CustomLink
+            href={documentationLink}
+            className={cx("hover:text-ssw-red", FOCUS_RING)}
+          >
             Docs
           </CustomLink>
         )}
@@ -212,7 +219,10 @@ const ViewAllLink: React.FC<{ href?: string; name?: string }> = ({
       <CustomLink
         href={href}
         onClick={close}
-        className="inline-flex h-8 items-center gap-1.5 rounded px-3 text-sm font-medium text-foreground transition-colors hover:bg-black/8 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ssw-red/50 active:translate-y-px active:bg-black/12 dark:hover:bg-white/8 dark:active:bg-white/12"
+        className={cx(
+          "inline-flex h-8 items-center gap-1.5 px-3 text-sm font-medium text-foreground transition-colors hover:bg-black/8 active:translate-y-px active:bg-black/12 dark:hover:bg-white/8 dark:active:bg-white/12",
+          FOCUS_RING,
+        )}
       >
         {name}
         <ArrowRightIcon aria-hidden="true" className="size-4 shrink-0" />
