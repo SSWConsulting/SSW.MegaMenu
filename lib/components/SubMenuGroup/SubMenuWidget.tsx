@@ -4,6 +4,8 @@ import { useLinkComponent } from "../../hooks/useLinkComponent";
 import { useMenuState } from "../../hooks/useMenuState";
 import { AvailableIcons } from "../../types/icon";
 import { SidebarItem } from "../../types/megamenu";
+import { FOCUS_RING } from "../../util/constants";
+import { cx } from "../../util/cx";
 import { MegaIcon } from "../MegaIcon";
 import FeaturedCard from "./FeaturedCard";
 
@@ -20,7 +22,7 @@ const SubMenuWidget: React.FC<SubMenuWidgetProps> = ({ item }) => {
   switch (item.widgetType) {
     case "featured": {
       return (
-        <CustomLink href={item.url} onClick={close}>
+        <CustomLink href={item.url} className={FOCUS_RING} onClick={close}>
           <FeaturedCard
             title={<span> {item.name}</span>}
             icon={item.icon as AvailableIcons}
@@ -33,7 +35,10 @@ const SubMenuWidget: React.FC<SubMenuWidgetProps> = ({ item }) => {
     case "bookNow": {
       return (
         <CustomLink
-          className="relative flex w-full cursor-pointer items-center justify-center rounded bg-ssw-red font-semibold !text-white hover:bg-ssw-light-red"
+          className={cx(
+            "relative flex w-full cursor-pointer items-center justify-center rounded bg-ssw-red font-semibold !text-white hover:bg-ssw-light-red",
+            FOCUS_RING,
+          )}
           href={item.url}
           onClick={close}
         >
@@ -45,7 +50,11 @@ const SubMenuWidget: React.FC<SubMenuWidgetProps> = ({ item }) => {
     case "classicMenu":
     default: {
       return (
-        <CustomLink className="group block" href={item.url} onClick={close}>
+        <CustomLink
+          className={cx("group block", FOCUS_RING)}
+          href={item.url}
+          onClick={close}
+        >
           {item.name && item.description ? (
             <>
               <span className="font-bold transition-colors group-hover:text-ssw-red dark:text-white dark:group-hover:text-ssw-red">

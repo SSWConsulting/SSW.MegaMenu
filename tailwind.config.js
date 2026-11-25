@@ -26,6 +26,11 @@ export default {
       maxWidth: {
         "9xl": "86rem",
       },
+      opacity: {
+        // SSW Design System ghost button hover (8%) and pressed (12%) tints
+        8: "0.08",
+        12: "0.12",
+      },
     },
   },
   plugins: [],
