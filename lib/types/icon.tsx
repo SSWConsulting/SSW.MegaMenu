@@ -37,5 +37,15 @@ export const iconMap = {
   squaresPlus: (props: IconProps) => <SquaresPlusIcon {...props} />,
   playCircle: (props: IconProps) => <PlayCircleIcon {...props} />,
   rectangleGroup: (props: IconProps) => <RectangleGroupIcon {...props} />,
-  chinaFlag: () => <Flag country="China" className="mr-2" />,
+  // The flag keeps its own size and margin rather than taking the caller's
+  // className, so it looks the same wherever it's used; it still takes
+  // aria-hidden like every other icon.
+  chinaFlag: (props: IconProps) => (
+    <Flag
+      country="China"
+      className="mr-2"
+      alt=""
+      aria-hidden={props["aria-hidden"]}
+    />
+  ),
 };

@@ -23,4 +23,12 @@ describe("MegaIcon", () => {
       );
     },
   );
+
+  it("hides the chinaFlag icon from screen readers", () => {
+    const { container } = render(<MegaIcon icon="chinaFlag" />);
+    const img = container.querySelector("img");
+
+    expect(img?.getAttribute("alt")).toBe("");
+    expect(img?.getAttribute("aria-hidden")).toBe("true");
+  });
 });
