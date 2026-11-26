@@ -57,7 +57,7 @@ const SubMenuWidget: React.FC<SubMenuWidgetProps> = ({ item }) => {
         >
           {item.name && item.description ? (
             <>
-              <span className="font-bold transition-colors group-hover:text-ssw-red dark:text-white dark:group-hover:text-ssw-red">
+              <span className="font-bold transition-colors group-hover:text-ssw-red dark:text-white dark:group-hover:text-ssw-light-red">
                 {item.name}
               </span>
               <p className="mt-2 text-sm dark:text-white/60">
@@ -65,7 +65,7 @@ const SubMenuWidget: React.FC<SubMenuWidgetProps> = ({ item }) => {
               </p>
             </>
           ) : (
-            <span className="pl-4 text-sm font-normal text-ssw-black transition-colors group-hover:text-ssw-red dark:text-white dark:group-hover:text-ssw-red">
+            <span className="pl-4 text-sm font-normal text-ssw-black transition-colors group-hover:text-ssw-red dark:text-white dark:group-hover:text-ssw-light-red">
               {item.name}
             </span>
           )}

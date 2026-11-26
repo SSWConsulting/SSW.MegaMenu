@@ -142,7 +142,7 @@ const LinkItem: React.FC<{ link: NavMenuColumnGroupItem }> = ({
       <CustomLink
         href={url || ""}
         className={cx(
-          "flex items-start gap-x-1 text-ssw-black hover:text-ssw-red dark:text-white",
+          "flex items-start gap-x-1 text-ssw-black hover:text-ssw-red dark:text-white dark:hover:text-ssw-light-red",
           description ? "p-4" : "p-2",
           FOCUS_RING,
         )}
@@ -171,7 +171,7 @@ const LinkItem: React.FC<{ link: NavMenuColumnGroupItem }> = ({
                 </p>
               </>
             ) : (
-              <p className="pl-2 text-sm font-normal text-ssw-black hover:text-ssw-red dark:text-white">
+              <p className="pl-2 text-sm font-normal text-ssw-black hover:text-ssw-red dark:text-white dark:hover:text-ssw-light-red">
                 {name}
               </p>
             )}
@@ -182,7 +182,10 @@ const LinkItem: React.FC<{ link: NavMenuColumnGroupItem }> = ({
         {youtubeLink && (
           <CustomLink
             href={youtubeLink}
-            className={cx("hover:text-ssw-red", FOCUS_RING)}
+            className={cx(
+              "hover:text-ssw-red dark:hover:text-ssw-light-red",
+              FOCUS_RING,
+            )}
           >
             YouTube
           </CustomLink>
@@ -190,7 +193,10 @@ const LinkItem: React.FC<{ link: NavMenuColumnGroupItem }> = ({
         {documentationLink && (
           <CustomLink
             href={documentationLink}
-            className={cx("hover:text-ssw-red", FOCUS_RING)}
+            className={cx(
+              "hover:text-ssw-red dark:hover:text-ssw-light-red",
+              FOCUS_RING,
+            )}
           >
             Docs
           </CustomLink>
