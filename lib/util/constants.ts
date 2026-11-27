@@ -1,3 +1,5 @@
+// Production on purpose: it feeds a Google "site:" search, and Google only
+// indexes production.
 export const DEFAULT_URL = "https://www.ssw.com.au";
 export const ICON_IMAGE_SIZES: { [key in IconSizes]: string } = {
   small: "h-5 w-5",

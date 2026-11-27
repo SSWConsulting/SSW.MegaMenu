@@ -7,6 +7,8 @@ import { Countries } from "../../types/country";
 import { cx } from "../../util/cx";
 import { Flag } from "../Flag";
 
+// Absolute on purpose: the dropdown hides the current country, so these links
+// only ever take a visitor to another country's site.
 const websites: { country: Countries; url: string }[] = [
   {
     country: "Australia",
@@ -22,6 +24,20 @@ const websites: { country: Countries; url: string }[] = [
   },
 ] as const;
 
+const bareHost = (hostname: string) => hostname.replace(/^www\./, "");
+
+// The country whose site `url` belongs to, e.g. "https://www.ssw.fr" → France.
+const countryForUrl = (url?: string): Countries | undefined => {
+  try {
+    const hostname = bareHost(new URL(url || websites[0].url).hostname);
+    return websites.find((w) =>
+      hostname.endsWith(bareHost(new URL(w.url).hostname)),
+    )?.country;
+  } catch {
+    return undefined;
+  }
+};
+
 type CountryDropdownProps = {
   url?: string;
   className?: ClassValue;
@@ -34,16 +50,9 @@ const CountryDropdown = ({ url, className }: CountryDropdownProps) => {
   const CustomLink = useLinkComponent();
 
   useEffect(() => {
-    try {
-      const { hostname } = new URL(url || "https://www.ssw.com.au");
-
-      const website = websites.find((w) => hostname?.endsWith(w.url));
-      if (website) {
-        setCurrentCountry(website.country);
-      }
-    } catch (err) {
-      // eslint-disable-next-line no-console
-      console.error(err);
+    const country = countryForUrl(url);
+    if (country) {
+      setCurrentCountry(country);
     }
   }, [url]);
 

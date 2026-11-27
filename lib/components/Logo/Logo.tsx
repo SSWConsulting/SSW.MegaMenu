@@ -5,14 +5,13 @@ export type LogoSize = "small" | "medium" | "large";
 
 const LIGHT_LOGO = "/images/ssw-logo-lightmode.svg";
 const DARK_LOGO = "/images/ssw-logo-darkmode.svg";
+const XMAS_LOGO = "/images/ssw-logo-xmas.svg";
 
 const Logo: React.FC = () => {
   // show the xmas logo for 1-25 December
   const date = new Date();
   const isXmas = date.getMonth() === 11 && date.getDate() <= 25;
-  const logoPath = isXmas
-    ? "https://www.ssw.com.au/images/ssw-logo-xmas.svg"
-    : LIGHT_LOGO;
+  const logoPath = isXmas ? XMAS_LOGO : LIGHT_LOGO;
 
   return (
     <>
