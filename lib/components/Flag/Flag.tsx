@@ -6,6 +6,10 @@ export type CountryFlagProps = {
   className?: string;
   height?: number;
   width?: number;
+  // Defaults to the country name. Pass "" when the control around the flag
+  // already has its own label, so the flag isn't announced twice.
+  alt?: string;
+  "aria-hidden"?: boolean;
 };
 
 export const Flag = ({
@@ -13,15 +17,18 @@ export const Flag = ({
   className,
   width,
   height,
+  alt,
+  "aria-hidden": ariaHidden,
 }: CountryFlagProps) => {
   const countryFlag = countryMap[country];
   return (
     <img
       className={cx("my-0 inline", className)}
-      alt={country + "flag"}
+      alt={alt ?? country}
       src={countryFlag}
       width={width || 35}
       height={height || 35}
+      aria-hidden={ariaHidden}
     />
   );
 };

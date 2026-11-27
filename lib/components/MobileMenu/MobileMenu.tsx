@@ -68,8 +68,10 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
           {selectedMenuItem && (
             <div className="my-auto flex grow items-center pl-2">
               <button
+                type="button"
                 className="text-sm font-semibold leading-4 text-ssw-black dark:text-white"
                 onClick={() => setSelectedMenuItem(null)}
+                aria-label={`Back to main menu from ${selectedMenuItem.name}`}
               >
                 <MegaIcon className="mb-1 inline h-5 w-5" icon="chevronLeft" />
                 <span className="ml-2">{selectedMenuItem.name}</span>

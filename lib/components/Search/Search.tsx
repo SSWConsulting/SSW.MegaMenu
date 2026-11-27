@@ -43,6 +43,8 @@ export const Search: React.FC<SearchTermProps> = ({
   return (
     <>
       <button
+        type="button"
+        aria-label="Search"
         className="rounded p-3 text-foreground hover:text-ssw-red"
         onClick={() => setIsOpen(true)}
       >

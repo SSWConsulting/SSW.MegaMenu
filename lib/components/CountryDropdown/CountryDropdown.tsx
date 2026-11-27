@@ -55,8 +55,9 @@ const CountryDropdown = ({ url, className }: CountryDropdownProps) => {
           "hover:scale-105",
         )}
         onClick={() => setIsOpened(!isOpened)}
+        aria-label={`Change country site, current: ${currentCountry}`}
       >
-        <Flag country={currentCountry} />
+        <Flag country={currentCountry} alt="" />
       </Popover.Button>
 
       <Transition
@@ -78,7 +79,10 @@ const CountryDropdown = ({ url, className }: CountryDropdownProps) => {
                 href={country.url}
                 title={country.country}
               >
-                <Flag country={country.country} />
+                <Flag
+                  country={country.country}
+                  alt={`SSW ${country.country}`}
+                />
               </CustomLink>
             ))}
         </Popover.Panel>

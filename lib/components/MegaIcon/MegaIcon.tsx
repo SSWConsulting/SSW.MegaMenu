@@ -17,7 +17,8 @@ const MegaIconMapper = ({
     return <></>;
   }
 
-  return <Icon className={className} />;
+  // Icons are decorative: the control's own text or aria-label names it.
+  return <Icon className={className} aria-hidden={true} />;
 };
 
 export interface MegaIconProps {
@@ -42,12 +43,9 @@ export const MegaIcon: React.FC<MegaIconProps> = ({
   // }
 
   if (!iconImg && icon) {
-    return (
-      <>
-        <span className="sr-only">{icon}</span>
-        <MegaIconMapper aria-hidden="true" icon={icon} className={className} />
-      </>
-    );
+    // No sr-only text here: the icon's code name (e.g. "chevronDown") means
+    // nothing to a screen reader user and can leak into search snippets.
+    return <MegaIconMapper icon={icon} className={className} />;
   }
 
   // When a dark-mode icon is supplied, render both and toggle with `dark:` so the
