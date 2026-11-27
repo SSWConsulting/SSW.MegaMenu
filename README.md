@@ -131,6 +131,7 @@ export function getStaticProps() {
 | Prop Name | Type | Description | Required |
 | --- | --- | --- | --- |
 | `menuBarItems` | `MenuBarItem[]` | An array of objects that represent the menu bar items provided by SSR or other data fetching mechanisms. If this prop isn't supplied, the component will fetch the data from the Next.js API route. | No |
+| `refreshMenu` | `boolean` | Defaults to `true`, which fetches the latest menu from the API on load and replaces `menuBarItems` with it. Set to `false` to keep the `menuBarItems` you supplied, e.g. when the host serves its own up-to-date menu. Ignored when `menuBarItems` is empty. | No |
 | `title` | `string` | The title text displayed next to the SSW logo. | Yes (If there is no `tagline` provided) |
 | `subtitle` | `string` | The text displayed underneath the SSW logo | No |
 | `tagline` | `string` | The text displayed next the SSW Logo. | No |
