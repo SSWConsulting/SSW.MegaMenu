@@ -21,6 +21,7 @@ import { Divider } from "../ui/Divider";
 export type MegaMenuWrapperProps = {
   className?: ClassValue;
   menuBarItems?: NavMenuGroup[];
+  refreshMenu?: boolean;
   url?: string;
   subtitle?: string;
   searchUrl?: string;
@@ -51,6 +52,7 @@ const MegaMenuContents: React.FC<MegaMenuWrapperProps> = ({
   hidePhone,
   searchUrl = DEFAULT_URL,
   menuBarItems,
+  refreshMenu = true,
   rightSideActionsOverride,
   callback,
   isFlagVisible = true,
@@ -73,7 +75,7 @@ const MegaMenuContents: React.FC<MegaMenuWrapperProps> = ({
 
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  const { menuItems } = useMenuItems(menuBarItems);
+  const { menuItems } = useMenuItems(menuBarItems, refreshMenu);
   const CustomLink = useLinkComponent();
 
   const RightSideActions = rightSideActionsOverride;

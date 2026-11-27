@@ -31,27 +31,48 @@ const refreshData = async () => {
 
 export const useMenuItems = (
   menuBarItems?: NavMenuGroup[],
+  refreshMenu = true,
 ): { menuItems: NavMenuGroup[] } => {
   const [menuItems, setMenuItems] = useState<NavMenuGroup[] | undefined>(
     menuBarItems,
   );
 
+  // An empty array counts as no menu, so a host whose menu failed to load
+  // still gets one from the API instead of rendering a blank bar.
+  const hasHostMenu = !!menuBarItems?.length;
+
   useEffect(() => {
+    if (hasHostMenu) {
+      setMenuItems(menuBarItems);
+    }
+  }, [hasHostMenu, menuBarItems]);
+
+  // By default the fetch still replaces the host's menu, so hosts that pass a
+  // build-time copy (SSW.People, SSW.Rules) keep getting live updates. A host
+  // that passes refreshMenu={false} has already rendered the menu it shipped
+  // with, and fetching would only replace it with whatever the API's caches
+  // are still holding.
+  const shouldFetch = refreshMenu || !hasHostMenu;
+
+  useEffect(() => {
+    if (!shouldFetch) return;
+
+    // If the host's menu arrives while this fetch is in flight, the cleanup
+    // stops the stale API response from overwriting it.
+    let cancelled = false;
     refreshData()
       .then((data) => {
-        setMenuItems(data);
+        if (!cancelled) setMenuItems(data);
       })
       .catch((err) => {
         // eslint-disable-next-line no-console
         console.error(err);
       });
-  }, []);
 
-  useEffect(() => {
-    if (menuBarItems) {
-      setMenuItems(menuBarItems);
-    }
-  }, [menuBarItems]);
+    return () => {
+      cancelled = true;
+    };
+  }, [shouldFetch]);
 
   return { menuItems: menuItems || [] };
 };
