@@ -4,12 +4,12 @@ import { render } from "../../../scripts/tests/test-utils";
 import { PhoneButton } from "./PhoneButton";
 
 describe("PhoneButton", () => {
-  it("links to the contact page on desktop", () => {
+  it("links to the contact page on desktop with a relative URL", () => {
     render(<PhoneButton />);
 
     expect(screen.getByRole("link", { name: /contact us/i })).toHaveAttribute(
       "href",
-      "https://www.ssw.com.au/company/contact-us",
+      "/company/contact-us",
     );
   });
 });
