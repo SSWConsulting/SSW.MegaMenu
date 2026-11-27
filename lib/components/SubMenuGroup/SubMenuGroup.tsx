@@ -1,4 +1,5 @@
 "use client";
+import { ArrowRightIcon } from "@heroicons/react/20/solid";
 import clsx from "clsx";
 import React from "react";
 import { useLinkComponent } from "../../hooks/useLinkComponent";
@@ -11,7 +12,7 @@ import {
   Sidebar,
   ViewAll,
 } from "../../types/megamenu";
-import { ICON_IMAGE_SIZES } from "../../util/constants";
+import { FOCUS_RING, ICON_IMAGE_SIZES } from "../../util/constants";
 import { cx } from "../../util/cx";
 import { MegaIcon } from "../MegaIcon";
 import SubMenuWidget from "./SubMenuWidget";
@@ -141,8 +142,9 @@ const LinkItem: React.FC<{ link: NavMenuColumnGroupItem }> = ({
       <CustomLink
         href={url || ""}
         className={cx(
-          "flex items-start gap-x-1 text-ssw-black hover:text-ssw-red focus:outline-none dark:text-white",
+          "flex items-start gap-x-1 text-ssw-black hover:text-ssw-red dark:text-white dark:hover:text-ssw-light-red",
           description ? "p-4" : "p-2",
+          FOCUS_RING,
         )}
         onClick={() => {
           close();
@@ -169,7 +171,7 @@ const LinkItem: React.FC<{ link: NavMenuColumnGroupItem }> = ({
                 </p>
               </>
             ) : (
-              <p className="pl-2 text-sm font-normal text-ssw-black hover:text-ssw-red dark:text-white">
+              <p className="pl-2 text-sm font-normal text-ssw-black hover:text-ssw-red dark:text-white dark:hover:text-ssw-light-red">
                 {name}
               </p>
             )}
@@ -178,12 +180,24 @@ const LinkItem: React.FC<{ link: NavMenuColumnGroupItem }> = ({
       </CustomLink>
       <div className="ml-10 flex flex-row gap-x-4 text-sm font-light text-ssw-gray dark:text-white/60">
         {youtubeLink && (
-          <CustomLink href={youtubeLink} className="hover:text-ssw-red">
+          <CustomLink
+            href={youtubeLink}
+            className={cx(
+              "hover:text-ssw-red dark:hover:text-ssw-light-red",
+              FOCUS_RING,
+            )}
+          >
             YouTube
           </CustomLink>
         )}
         {documentationLink && (
-          <CustomLink href={documentationLink} className="hover:text-ssw-red">
+          <CustomLink
+            href={documentationLink}
+            className={cx(
+              "hover:text-ssw-red dark:hover:text-ssw-light-red",
+              FOCUS_RING,
+            )}
+          >
             Docs
           </CustomLink>
         )}
@@ -206,12 +220,18 @@ const ViewAllLink: React.FC<{ href?: string; name?: string }> = ({
 
   return (
     <div className="flex grow flex-col-reverse items-end self-end pt-4">
+      {/* SSW Design System ghost button, small size, with a trailing icon:
+          https://design.ssw.com.au/?path=/docs/ui-atoms-button--docs */}
       <CustomLink
         href={href}
         onClick={close}
-        className="rounded-md px-3 py-1 text-sm font-semibold leading-6 text-ssw-red hover:bg-ssw-red hover:text-white"
+        className={cx(
+          "inline-flex h-8 items-center gap-1.5 px-3 text-sm font-medium text-foreground transition-colors hover:bg-black/8 active:translate-y-px active:bg-black/12 dark:hover:bg-white/8 dark:active:bg-white/12",
+          FOCUS_RING,
+        )}
       >
-        {name} &rarr;
+        {name}
+        <ArrowRightIcon aria-hidden="true" className="size-4 shrink-0" />
       </CustomLink>
     </div>
   );
